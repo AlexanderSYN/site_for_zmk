@@ -1,9 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap");
-html, body {
-  font-family: "Kadwa", serif;
-  text-rendering: optimizeLegibility;
-}
-
 ul {
   list-style-type: none;
 }
@@ -34,15 +29,26 @@ header .header_menu_list {
      -moz-column-gap: 50px;
           column-gap: 50px;
 }
+header .header_menu_item {
+  margin-top: -4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 47px;
+     -moz-column-gap: 47px;
+          column-gap: 47px;
+}
 header .header_menu_link {
   text-decoration: none;
   font-weight: bold;
   font-size: 32px;
   color: #FFFFFF;
   letter-spacing: 1.2px;
-  word-wrap: break-word;
 }
-header .btn_entry_head {
+header .header_actions {
+  margin-top: -6rem;
+}
+header .header_actions .btn_entry_head {
   height: 41px;
   width: 170px;
   background: var(--Background-Brand-Default, #2C2C2C);
