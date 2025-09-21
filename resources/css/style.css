@@ -1,18 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap");
 html, body {
-  font-size: 20px;
-  font-family: "Roboto Serif";
+  font-family: "Kadwa", serif;
   text-rendering: optimizeLegibility;
 }
 
 ul {
   list-style-type: none;
-}
-
-a {
-  color: #000000;
-  font-size: 25px;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 header {
@@ -28,9 +21,50 @@ header {
   -webkit-column-gap: 20px;
      -moz-column-gap: 20px;
           column-gap: 20px;
+  z-index: 10;
 }
 header .header_logo img {
   opacity: 0.6;
+}
+header .header_menu_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 50px;
+     -moz-column-gap: 50px;
+          column-gap: 50px;
+}
+header .header_menu_link {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 32px;
+  color: #FFFFFF;
+  letter-spacing: 1.2px;
+  word-wrap: break-word;
+}
+header .btn_entry_head {
+  height: 41px;
+  width: 170px;
+  background: var(--Background-Brand-Default, #2C2C2C);
+  padding: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  outline-offset: -1px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: "inline-flex";
+  gap: 8px;
+  font-size: 16px;
+  color: var(--Text-Brand-On-Brand, #F5F5F5);
+  font-weight: 400;
+  font-family: Inter;
+  word-wrap: break-word;
+  line-height: 16px;
 }
 
 .video__bg {
@@ -40,8 +74,9 @@ header .header_logo img {
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: 10;
+  z-index: 2;
   overflow: hidden;
+  position: absolute;
 }
 
 #myVideo {
