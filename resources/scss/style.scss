@@ -1,0 +1,73 @@
+// settings
+// header
+// main
+// video
+// footer
+
+// variables
+$white: #FFFFFF;
+$black: #000000;
+$font-size-header: 25px;
+$font-stack: "Roboto Serif";
+
+// settings
+html, body {
+    font-size: 20px;
+    font-family: $font-stack;
+    text-rendering: optimizeLegibility;
+} 
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: $black;
+	font-size: $font-size-header;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+// header
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    
+    // logo
+    .header_logo img {
+        opacity: 0.6;
+    }
+}
+
+// main
+
+// video
+.video__bg {
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 10;
+    overflow: hidden;
+}
+
+#myVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 10;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+video {
+    width: 100%;
+}
