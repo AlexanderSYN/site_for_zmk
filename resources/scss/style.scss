@@ -14,6 +14,11 @@ $font-size-header-text: 32px;
 $font-family: 'Kadwa', serif;
 
 // settings
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 ul {
     list-style-type: none;
 }
@@ -24,12 +29,15 @@ header {
     justify-content: space-between;
     align-items: center;
     column-gap: 20px;
-    z-index: 10;
+    z-index: 100;
+    padding-inline: 12px;
 
     
     // logo
     .header_logo img {
         opacity: 0.6;
+        width: 150px;
+        height: auto;
     }
 
     // haeder manu list
@@ -81,24 +89,16 @@ header {
             line-height: 16px; 
         }
     }
-
-    
-    
 }
 
 // main
 
 // video
 .video__bg {
-    right: 0;
-    bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 2;
-    overflow: hidden;
-    position: absolute;
+    width: 100%;
+    height: 50vh;
 }
 
 #myVideo {
@@ -115,4 +115,236 @@ header {
 
 video {
     width: 100%;
+}
+
+// main 
+// h1
+main {
+    align-items: center;
+    text-align: center;
+}
+
+.h1_main {
+    text-transform: uppercase;
+    font-size: 128px;
+    font-weight: bold;
+    color: $black;
+}
+
+// cards
+.main_cards {
+    margin-top: 22rem;
+
+    // cards one
+    .cards_vov {
+        background: #D9D9D9; 
+        box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
+        border-radius: 18px;
+        padding-bottom: 2rem;
+        width: auto;
+        height: auto;
+
+        // ...
+        h1 {
+            text-align: center; 
+            color: black; 
+            font-size: 73px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        h3 {
+            text-align: center; 
+            color: black; 
+            font-size: 43px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        img {
+            width: 542px;
+            height: 406px; 
+            border-radius: 18px;
+    
+        }
+    }
+
+    // cards svo
+    .cards_svo {
+        background: #D9D9D9; 
+        box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
+        border-radius: 18px;
+        margin-top: 5rem;
+        padding-bottom: 2rem;
+
+        // ...
+        h1 {
+            text-align: center; 
+            color: black; 
+            font-size: 73px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        h3 {
+            text-align: center; 
+            color: black; 
+            font-size: 43px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        img {
+            width: 542px;
+            height: 406px; 
+            border-radius: 18px;
+        }
+    }
+
+    // cards svo
+    .cards_mp {
+        background: #D9D9D9; 
+        box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
+        border-radius: 18px;
+        margin-top: 5rem;
+        padding-bottom: 2rem;
+
+        // ...
+        h1 {
+            text-align: center; 
+            color: black; 
+            font-size: 73px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        h3 {
+            text-align: center; 
+            color: black; 
+            font-size: 43px; 
+            font-weight: bold; 
+            word-wrap: break-word
+        }
+
+        img {
+            width: 542px;
+            height: 406px; 
+            border-radius: 18px;
+        }
+    }
+}
+
+// text UP
+.text_up {
+    text-decoration: none;
+    text-align: center; 
+    color: $black; 
+    font-size: 32px; 
+    font-weight: bold;
+}
+
+// footer 
+footer {
+    width: auto; 
+    height: auto; 
+    background: #D9D9D9;
+
+    // logo
+    .logo {
+        opacity: 0.6;
+    }
+    .logo img {
+        width: 200px;
+        height: auto;
+        margin-left: -10rem;
+    }
+
+    // text
+    .text_footer {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 20px;
+        z-index: 10;
+        padding-inline: 12px;
+        position: absolute;
+        margin-left: 5rem;
+
+        // haeder manu list
+        .footer_menu_list {
+            margin-top: -9rem;
+            display: flex;
+            column-gap: 50px;
+        }
+
+        // header menu item
+        .footer_menu_item {
+            display: flex;
+            column-gap: 47px;
+        }
+
+        // header menu link
+        .footer_menu_link {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: $font-size-header-text;
+            color: $black;
+            letter-spacing: 1.2px;
+
+        }
+    }
+}
+
+
+@media (max-width: 1125px) {
+    header {
+        .header_menu_link {
+            text-decoration: none;
+            font-weight: bold;
+            color: $white;
+            letter-spacing: 1.2px;
+            font-size: 21px;
+        }
+    }
+}
+
+@media (max-width: 1055px) {
+    //header 
+    header {
+        .header_menu_link {
+            font-size: 19px;
+        }
+    }
+}
+
+@media (max-width: 1042px) {
+    // header 
+    header {
+       
+
+        .header_menu {
+            
+
+            .header_menu_link {
+                font-size: 25px;
+            }
+        }
+
+    }
+    //...
+}
+
+@media (max-width: 824px) {
+    // header
+    header {
+        // logo ZMC
+        .header_logo img {
+            
+        }
+        
+        .header_menu_link {
+            
+        }
+    }
 }

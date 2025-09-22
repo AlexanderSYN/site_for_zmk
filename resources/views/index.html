@@ -21,14 +21,13 @@
     <div class="d-flex flex-column justify-content-between min-vh-100">
         
         <!-- HEADER -->
-        <header>
+        <header id="up">
             <!-- logo -->
             <a href="/" class="header_logo">
                 <img
                     class="header_logo_image"
                     src="../resources/image/main-zmc.png"
                     alt="лого ЗМК"
-                   width="145" height="148"
                     loading="lazy"
                 />
             </a>
@@ -58,25 +57,120 @@
             </nav>
 
             <div class="header_actions">
-                <button class="btn_entry_head">ВХОД</button>
+                <button class="btn_entry_head">ВОЙТИ</button>
             </div>
 
-    
+            
         </header>
 
 
         <!-- MAIN -->
         <main class="flex-grow-1">
+            <!-- Video -->
             <div class="video__bg">
-                <video src="../resources/video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
+                <video id="myVideo" src="../resources/video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
                 playsinline="" webkit-playsinline="" preload="metadata" muted="" loop="" 
                 autoplay=""></video>
             </div>
+
+            <!-- cards -->
+             <div class="main_cards">
+                <!-- main part -->
+                <h1 class="h1_main">Главные События</h1>
+                
+                <!-- cards one -->
+                <div class="cards_vov">
+                    <h1>ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА</h1>
+
+                    <h3>«Победа! Это величайшее счастье для солдата — сознание того, 
+                        что ты помог своему народу победить врага, отстоять свободу 
+                        Родины, вернуть ей мир» (К. К. Рокоссовский)
+                    </h3>
+
+                    <img src="../resources/image/img_index/image_vov.png" alt="картинка ВОВ" />
+                </div>
+
+                <!-- cards two -->
+                <div class="cards_svo">
+                    <h1>СПЕЦИАЛЬНАЯ ВОЕННАЯ ОПЕРАЦИЯ (СВО)</h1>
+
+                    <h3>Кто бы ни пытался помешать нам, а тем более создать угрозы для
+                        нашей страны, должны знать, что ответ России будет незамедлителен.
+                        И приведет вас к таким последствиям, с которыми вы в своей истории
+                        еще никогда не сталкивались. (Владимир Владимирович Путин)
+                    </h3>
+
+                    <img src="../resources/image/img_index/image_svo.png" alt="картинка СВО" />
+                </div>
+
+                <!-- cards three -->
+                <div class="cards_mp">
+                    <h1>ПАМЯТНЫЕ МЕСТА</h1>
+
+                    <h3>«Никто не забыт и ничто не забыто» — цитата из стихотворения
+                        Ольги Берггольц, написанного в <time>1959</time> году для мемориальной стелы
+                        на Пискарёвском кладбище в Ленинграде, где похоронены многие жертвы
+                        Ленинградской блокады.
+                    </h3>
+
+                    <img src="../resources/image/img_index/image_mp.png" alt="картинка Памятные Места" />
+                </div>
+             </div>
+            
+            <!-- UP -->
+            <a href="#up" class="text_up">
+                НАВЕРХ
+            </a>
         </main>
 
         <!-- FOOTER -->
         <footer>
+            <div class="container">
+                <!-- logo ZMC -->
+                <div class="logo">
+                    <a href="/" class="header_logo">
+                        <img
+                            class="header_logo_image"
+                            src="../resources/image/main-zmc.png"
+                            alt="лого ЗМК"
+        
+                            loading="lazy"
+                        />
+                    </a>
+                </div>
 
+                <!-- text -->
+                <div class="text_footer">
+                    <nav class="footer_menu">
+                        <ul class="footer_menu_list">
+                            <li class="footer_menu_item">
+
+                                <a href="/" class="footer_menu_link">
+                                    Главная
+                                </a>
+
+                                <a href="/1" class="footer_menu_link">
+                                    Герои ВОВ
+                                </a>
+
+                                <a href="/2" class="footer_menu_link">
+                                    Герои СВО
+                                </a>
+
+                                <a href="/3" class="footer_menu_link">
+                                    Памятные Места
+                                </a>
+
+                                <a href="/4" class="footer_menu_link">
+                                    ВХОД
+                                </a>
+                            
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
         </footer>
 
         
