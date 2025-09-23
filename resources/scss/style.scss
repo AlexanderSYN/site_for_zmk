@@ -46,11 +46,6 @@ header {
     position: relative;
     width: 100%;
 
-    // btn menu
-    .btn_call_menu_header {
-        display: none;
-    }
-
     // logo
     .header_logo img {
         opacity: 0.6;
@@ -190,7 +185,7 @@ main {
         }
 
         img {
-            width: 40%;
+            width: 40%;;
             min-width: 542px;
             height: auto; 
             border-radius: 18px;
@@ -285,30 +280,20 @@ footer {
         flex-direction: column;
         gap: 20px;
         padding: 15px;
+        background-color: $color-bg-btn-up;
         
-        .btn_call_menu_header {
- 
-            
-            border: 0;
-            background: transparent;
-        }
-
         .header_menu_item {
-   
             gap: 15px;
         }
         
         .header_menu_link {
- 
             font-size: 16px;
         }
-
     }
 
-    // main
-    // .video__bg {
-    //     margin-top: 0rem;
-    // }
+    .video__bg {
+        margin-top: 0rem;
+    }
     
     .video-container {
         height: 40vh;
@@ -333,6 +318,21 @@ footer {
     }
 }
 
+@media (max-width: 600px) {
+    // main
+    // image
+    .main_cards {
+        .cards_vov img, .cards_svo img , .cards_mp img {
+            width: 40%;
+            min-width: 320px;
+            height: auto;
+            border-radius: 18px;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+
 @media (max-width: 480px) {
     header {
         .header_menu_item {
@@ -348,5 +348,39 @@ footer {
     
     .main_cards {
         margin-top: 1rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    header {
+        .header_menu_item {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+    
+    .h1_main {
+        font-size: 36px;
+        margin: 20px 0;
+    }
+    
+    .main_cards {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 370px) {
+    // main
+    // image
+    .main_cards {
+        .cards_vov img, .cards_svo img , .cards_mp img {
+            width: 40%;
+            min-width: 220px;
+            height: auto;
+            border-radius: 18px;
+            display: block;
+            margin: 0 auto;
+        }
     }
 }
