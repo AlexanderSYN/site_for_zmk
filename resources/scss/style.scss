@@ -46,6 +46,18 @@ header {
     position: relative;
     width: 100%;
 
+    // btn show button
+    .btn_show_menu, .btn_close_menu {
+        //display: none;
+        border: none;
+        background: none;
+        padding: 0;
+        color: inherit;
+        cursor: pointer;
+        
+        
+    }
+
     // logo
     .header_logo img {
         opacity: 0.6;

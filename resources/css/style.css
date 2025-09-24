@@ -35,6 +35,13 @@ header {
   position: relative;
   width: 100%;
 }
+header .btn_show_menu, header .btn_close_menu {
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
 header .header_logo img {
   opacity: 0.6;
   width: 120px;
