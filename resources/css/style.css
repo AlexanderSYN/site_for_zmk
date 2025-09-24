@@ -40,7 +40,14 @@ header .btn_show_menu, header .btn_close_menu {
   background: none;
   padding: 0;
   color: inherit;
-  cursor: pointer;
+}
+header .btn_show_menu {
+  margin-top: -1rem;
+  position: absolute;
+  right: 0;
+}
+header .btn_show_menu img {
+  width: 40%;
 }
 header .header_logo img {
   opacity: 0.6;

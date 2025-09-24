@@ -53,9 +53,16 @@ header {
         background: none;
         padding: 0;
         color: inherit;
-        cursor: pointer;
-        
-        
+    }
+
+    .btn_show_menu  {
+        margin-top: -1rem;
+        position: absolute;
+        right: 0;
+
+        & img {
+            width: 40%;
+        }
     }
 
     // logo
