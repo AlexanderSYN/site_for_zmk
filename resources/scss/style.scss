@@ -45,10 +45,10 @@ header {
     z-index: 100;
     position: relative;
     width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
 
-    // btn show button
-
-
+    // show and close button 
     .btn_show_menu, .btn_close_menu  {
         position: absolute;
         margin-top: -1rem;
@@ -87,8 +87,17 @@ header {
         justify-content: center;
     }
 
+    // header menu form
+    .header_menu_form {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
     // header menu link
     .header_menu_link {
+        border: none;
+        background: inherit;
         text-decoration: none;
         font-weight: bold;
         font-size: clamp(16px, 3vw, $font-size-header-text);
@@ -102,6 +111,8 @@ header {
         }
         
     }
+
+    
 
     // header actions 
     .header_actions {
@@ -170,8 +181,22 @@ main {
     margin-top: 3rem;
     padding: 0 22px;
 
+    // animation fadeIn
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1;}
+    }
+
     // cards one
     .cards_vov, .cards_svo, .cards_mp {
+        //start animation
+        opacity: 0;
+        animation-name: fadeIn;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+        opacity: 1;
+
         background: #D9D9D9; 
         box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
         border-radius: 18px;
@@ -292,19 +317,18 @@ footer {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 847px) {
     header {
         flex-direction: column;
         gap: 20px;
         padding: 15px;
         background-color: $color-bg-btn-up;
-        
-        .header_menu_item {
-            gap: 15px;
-        }
-        
-        .header_menu_link {
-            font-size: 16px;
+
+        .header_actions .btn_entry_head {
+            background-color: #0c0b0b;
+            &:hover {
+                background-color: #302d2d;
+            }
         }
     }
 
@@ -332,6 +356,22 @@ footer {
         .footer_menu_item {
             gap: 15px;
         }
+    }
+}
+
+@media (max-width: 768px) {
+    //header 
+    .header_menu_item {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .header_menu_form {
+        gap: 15px;
+        flex-direction: column;
+    }
+        
+    .header_menu_link {
+        font-size: 16px;
     }
 }
 

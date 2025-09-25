@@ -63,25 +63,37 @@
                         <a href="/" class="header_menu_link">
                             Главная
                         </a>
+                        
+                        <form method="POST" action="/" class="header_menu_form">
+                            <!-- Герои ВОВ -->
+                            <input 
+                                class="header_menu_link" type="submit" 
+                                name="heroes_vov" value="Герои ВОВ"
+                            />
 
-                        <a href="/" class="header_menu_link">
-                            Герои ВОВ
-                        </a>
+                            <!-- Герои СВО -->
+                            <input 
+                                class="header_menu_link" type="submit" 
+                                name="heroes_svo" value="Герои СВО"
+                            />
 
-                        <a href="/" class="header_menu_link">
-                            Герои СВО
-                        </a>
-
-                        <a href="/" class="header_menu_link">
-                            Памятные Места
-                        </a>
+                            <!-- Памятные Места -->
+                            <input 
+                                class="header_menu_link" type="submit" 
+                                name="heroes_svo" value="Памятные Места"
+                            />
+                        </form>
                     
                     </li>
                 </ul>
             </nav>
 
             <div class="header_actions" id="header_actions">
-                <button class="btn_entry_head" id="header_actions">ВОЙТИ</button>
+                <!-- why is there a button instead of a link, just in case -->
+                <!-- (too lazy to redo the styles for the link) -->
+                <form method="POST" action="/">
+                    <button class="btn_entry_head" id="header_actions">ВОЙТИ</button>
+                </form>
             </div>
 
             

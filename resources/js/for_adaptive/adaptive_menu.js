@@ -22,7 +22,7 @@ const header_btn_entry = document.getElementById("header_actions");
 const header = document.getElementById('up');
 
 
-if (screenWidth > 768) {
+if (screenWidth > 847) {
     // hide btn for adaptive
     btn_show_menu.style.display = 'none';
     btn_close_menu.style.display = 'none';
@@ -33,7 +33,7 @@ if (screenWidth > 768) {
     header_btn_entry.style.display = 'initial';
 
     header.classList.toggle("show");
-} else if (screenWidth < 768 ){
+} else if (screenWidth < 847){
     // visible btn
     
     //
@@ -74,7 +74,7 @@ if (screenWidth > 768) {
 window.addEventListener('resize', (e) => {
     const screen_width = document.body.clientWidth;
 
-    if (screen_width > 768) {
+    if (screen_width > 847) {
         // hide btn for adaptive
         arrows.style.display = 'none';
         btn_show_menu.style.display = 'none';
@@ -85,7 +85,7 @@ window.addEventListener('resize', (e) => {
         header_btn_entry.style.display = 'initial';
 
         header.classList.toggle("show");
-    } else if (screen_width < 768 ){
+    } else if (screen_width < 847 ){
         // visible btn 
 
         //
@@ -134,6 +134,28 @@ btn_show_menu.addEventListener('click', function() {
     btn_close_menu.style.display = 'initial';
 
     // show header
+    // Starting the animation after a short delay
+    header_menu.style.opacity = '0';
+    header_logo.style.opacity = '0';
+    header_btn_entry.style.opacity = '0';
+    
+    //
+    // animation
+    //
+    setTimeout(() => {
+        header_menu.style.opacity = '1';
+        header_logo.style.opacity = '1';
+        header_btn_entry.style.opacity = '1';
+
+        header_menu.style.transition = 'all 0.3s ease-in-out';
+        header_menu.style.transform = "translateY(0)";
+        header_logo.style.transition = 'all 0.3s ease-in-out';
+        header_logo.style.transform = "translateY(0)";
+        header_btn_entry.style.transition = 'all 0.3s ease-in-out';
+        header_btn_entry.style.transform = "translateY(0)";
+        
+    }, 50)
+
     header_logo.style.display = 'flex';
     header_menu.style.display = 'flex';
     header_btn_entry.style.display = 'initial';
@@ -146,13 +168,14 @@ btn_show_menu.addEventListener('click', function() {
 btn_close_menu.addEventListener('click', function() {
     is_clicked_show_menu = false;
 
-    // hide btn_show_menu and close menu button
+    // show btn_show_menu and close menu button
     btn_close_menu.style.display = 'none';
     btn_show_menu.style.display = 'initial';
-    // show header
+    // hide header
     header_logo.style.display = 'none';
     header_menu.style.display = 'none';
     header_btn_entry.style.display = 'none';
+
 });
 
 

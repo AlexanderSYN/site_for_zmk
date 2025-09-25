@@ -34,6 +34,10 @@ header {
   z-index: 100;
   position: relative;
   width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 header .btn_show_menu, header .btn_close_menu {
   position: absolute;
@@ -74,7 +78,18 @@ header .header_menu_item {
       -ms-flex-pack: center;
           justify-content: center;
 }
+header .header_menu_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 header .header_menu_link {
+  border: none;
+  background: inherit;
   text-decoration: none;
   font-weight: bold;
   font-size: clamp(16px, 3vw, 32px);
@@ -145,7 +160,33 @@ main {
   margin-top: 3rem;
   padding: 0 22px;
 }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .main_cards .cards_vov, .main_cards .cards_svo, .main_cards .cards_mp {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  opacity: 1;
   background: #D9D9D9;
   -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
@@ -262,7 +303,7 @@ footer .text_footer .footer_menu_link:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 847px) {
   header {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -272,11 +313,11 @@ footer .text_footer .footer_menu_link:hover {
     padding: 15px;
     background-color: #2C2C2C;
   }
-  header .header_menu_item {
-    gap: 15px;
+  header .header_actions .btn_entry_head {
+    background-color: #0c0b0b;
   }
-  header .header_menu_link {
-    font-size: 16px;
+  header .header_actions .btn_entry_head:hover {
+    background-color: #302d2d;
   }
   .video__bg {
     margin-top: 0rem;
@@ -297,6 +338,25 @@ footer .text_footer .footer_menu_link:hover {
   }
   footer .footer_menu_item {
     gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .header_menu_item {
+    gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header_menu_form {
+    gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header_menu_link {
+    font-size: 16px;
   }
 }
 @media (max-width: 600px) {
