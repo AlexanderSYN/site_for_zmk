@@ -278,7 +278,6 @@ footer .text_footer .footer_menu_list {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0;
 }
 footer .text_footer .footer_menu_item {
   display: -webkit-box;
@@ -291,8 +290,19 @@ footer .text_footer .footer_menu_item {
       -ms-flex-pack: center;
           justify-content: center;
 }
+footer .text_footer .footer_menu_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 footer .text_footer .footer_menu_link {
   text-decoration: none;
+  border: none;
+  background: inherit;
   font-weight: bold;
   font-size: clamp(16px, 3vw, 32px);
   color: #000000;
@@ -337,6 +347,9 @@ footer .text_footer .footer_menu_link:hover {
     padding: 30px 15px;
   }
   footer .footer_menu_item {
+    gap: 15px;
+  }
+  footer .footer_menu_form {
     gap: 15px;
   }
 }
@@ -385,20 +398,39 @@ footer .text_footer .footer_menu_link:hover {
     margin-top: 1rem;
   }
 }
-@media (max-width: 480px) {
-  header .header_menu_item {
+@media (max-width: 445px) {
+  .footer_menu_list {
+    margin-right: 2rem;
+  }
+  .footer_menu_item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
-  .h1_main {
-    font-size: 36px;
-    margin: 20px 0;
+  .footer_menu_link {
+    gap: 15px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-  .main_cards {
-    margin-top: 1rem;
+  .footer_menu_form {
+    gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 @media (max-width: 370px) {

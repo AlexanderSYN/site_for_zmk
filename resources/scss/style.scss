@@ -289,7 +289,6 @@ footer {
         .footer_menu_list {
             display: flex;
             justify-content: center;
-            margin: 0;
         }
 
         // footer menu item
@@ -299,10 +298,17 @@ footer {
             flex-wrap: wrap;
             justify-content: center;
         }
-
+        // footer menu form
+        .footer_menu_form {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
         // footer menu link
         .footer_menu_link {
             text-decoration: none;
+            border: none;
+            background: inherit;
             font-weight: bold;
             font-size: clamp(16px, 3vw, $font-size-header-text);
             color: $black;
@@ -356,6 +362,9 @@ footer {
         .footer_menu_item {
             gap: 15px;
         }
+        .footer_menu_form {
+            gap: 15px;
+        }
     }
 }
 
@@ -373,6 +382,8 @@ footer {
     .header_menu_link {
         font-size: 16px;
     }
+
+    
 }
 
 @media (max-width: 600px) {
@@ -408,22 +419,26 @@ footer {
     }
 }
 
+@media (max-width: 445px) {
+    // footer
+    .footer_menu_list {
+        margin-right: 2rem;
+    }
 
-@media (max-width: 480px) {
-    header {
-        .header_menu_item {
-            flex-direction: column;
-            gap: 10px;
-        }
+    .footer_menu_item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
-    
-    .h1_main {
-        font-size: 36px;
-        margin: 20px 0;
+    .footer_menu_link {
+        gap: 15px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
     }
-    
-    .main_cards {
-        margin-top: 1rem;
+    .footer_menu_form {
+        gap: 15px;
+        flex-direction: column;
     }
 }
 
@@ -440,4 +455,5 @@ footer {
             margin: 0 auto;
         }
     }
+
 }
