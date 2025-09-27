@@ -9,7 +9,7 @@
     <link rel="icon" href="../../image/icon/favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    <link href="../../css/accounts_entry.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/accounts/accounts_entry.css" rel="stylesheet" type="text/css" />
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -26,7 +26,7 @@
             <a href="/">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
-                    alt="стрелка назад" width="15%"
+                    alt="стрелка назад" width="7%"
                 />
             </a>
         </header>
