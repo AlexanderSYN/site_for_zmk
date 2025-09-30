@@ -39,7 +39,7 @@
                     <h1>РЕГИСТРАЦИЯ</h1>
                     
                     <div class="wrapper_input">
-                        <form method="post" action="/">
+                        <form method="post" action="register_accounts/register_acc_db.php">
                             
                             <input type="text" name="name" 
                                 class="name_wrapper" 

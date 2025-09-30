@@ -23,7 +23,7 @@ return new class extends Migration
             
             $table->boolean('isBan')->default(true);
             $table->boolean('isAdmin')->default(false);
-            $table->rememberToken();
+    
         });
     }
 
