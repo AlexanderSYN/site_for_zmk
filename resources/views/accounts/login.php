@@ -9,7 +9,7 @@
     <link rel="icon" href="../../image/icon/favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    <link href="../../css/accounts/accounts_entry.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/accounts/accounts.css" rel="stylesheet" type="text/css" />
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -35,7 +35,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1" >
            <center>
-                <div class="wrapper">
+                <div class="wrapper_register">
                     <h1>ВХОД</h1>
                     
                     <div class="wrapper_input">
@@ -56,7 +56,7 @@
                             </button>
                         </form>
 
-                        <a href="/" class="btn_register">
+                        <a href="register.php" class="btn_register">
                             ЗАРЕГЕСТРИРОВАТЬСЯ
                         </a>
                     </div>

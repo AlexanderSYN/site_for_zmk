@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ВХОД</title>
+    <title>РЕГИСТРАЦИЯ</title>
 
     <!-- ICON -->
     <link rel="icon" href="../../image/icon/favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    <link href="../../css/accounts/accounts_entry.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/accounts/accounts.css" rel="stylesheet" type="text/css" />
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -35,29 +35,40 @@
         <!-- MAIN -->
         <main class="flex-grow-1" >
            <center>
-                <div class="wrapper">
-                    <h1>ВХОД</h1>
+                <div class="wrapper_register">
+                    <h1>РЕГИСТРАЦИЯ</h1>
                     
                     <div class="wrapper_input">
                         <form method="post" action="/">
                             
+                            <input type="text" name="name" 
+                                class="name_wrapper" 
+                                placeholder="Имя" 
+                            />
+
+                            <input type="text" name="email" 
+                                class="email_wrapper" 
+                                placeholder="Почта" 
+                            />
+
+
                             <input type="text" name="login" 
                                 class="login_wrapper" 
                                 placeholder="Логин" 
                             />
 
                             <input type="password" name="password" 
-                                class="pass_wrapper" 
+                                class="password_wrapper" 
                                 placeholder="Пароль" 
                             />
 
                             <button class="btn_entry">
-                                ВОЙТИ
+                                ЗАРЕГЕСТРИРОВАТЬСЯ
                             </button>
                         </form>
 
-                        <a href="/" class="btn_register">
-                            ЗАРЕГЕСТРИРОВАТЬСЯ
+                        <a href="entry.php" class="btn_register">
+                            ВОЙТИ
                         </a>
                     </div>
                 </div>
