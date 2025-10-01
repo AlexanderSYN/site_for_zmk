@@ -32,7 +32,7 @@ $exists_name = DB::table('users')->where('login', $login)->exists();
 
 if ($exists_email || $exists_name) {
     // Handle duplicate account - redirect with error message
-    $msg->setMessage('error', 'email or name already exists!');
+    $msg->setMessage('error', 'the email or name already exists!');
     $helper->redirect("../register");
 }
 
@@ -54,7 +54,7 @@ try {
         'isAdmin' => false
     ]);
     
-    $msg->setMessage('success', 'accounts successfully created!');
+    $msg->setMessage('success', 'account has been created successfully!');
     $helper->redirect("../register");
     exit;
     
