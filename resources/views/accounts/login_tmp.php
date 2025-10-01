@@ -2,8 +2,9 @@
 
 require "../helpers/helpers.php";
 
+$helper = new helpers();
 
 // just plug
-redirect("login");
+$helper->redirect("login");
 
 ?>

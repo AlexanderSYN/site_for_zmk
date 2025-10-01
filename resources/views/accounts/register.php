@@ -1,3 +1,10 @@
+<?php 
+    require '../helpers/helpers.php';
+    
+    $msg = new messages();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +30,10 @@
         <!-- HEADER -->
         <header id="up">
 
-            <a href="/">
+            <a href="login">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
-                    alt="стрелка назад" width="7%"
+                    alt="стрелка назад" width="130px"
                 />
             </a>
         </header>
@@ -41,25 +48,43 @@
                     <div class="wrapper_input">
                         <form method="post" action="register_accounts/register_acc_db.php">
                             
+                            <!-- notifications -->
+                            <?php if ($msg->hasMessage('error')) : ?>
+                                <div class="notice error">
+                                    <?php echo $msg->getMessage('error'); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($msg->hasMessage('success')) : ?>
+                                <div class="notice success">
+                                    <?php echo $msg->getMessage('success'); ?>
+                                </div>
+                                <?php endif; ?>
+
+
                             <input type="text" name="name" 
                                 class="name_wrapper" 
                                 placeholder="Имя" 
+                                required
                             />
 
-                            <input type="text" name="email" 
+                            <input type="email" name="email" 
                                 class="email_wrapper" 
                                 placeholder="Почта" 
+                                required
                             />
 
 
                             <input type="text" name="login" 
                                 class="login_wrapper" 
                                 placeholder="Логин" 
+                                required
                             />
 
                             <input type="password" name="password" 
                                 class="password_wrapper" 
                                 placeholder="Пароль" 
+                                required
                             />
 
                             <button class="btn_entry">
@@ -67,7 +92,7 @@
                             </button>
                         </form>
 
-                        <a href="entry.php" class="btn_register">
+                        <a href="login" class="btn_register">
                             ВОЙТИ
                         </a>
                     </div>

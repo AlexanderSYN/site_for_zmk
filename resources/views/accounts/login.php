@@ -26,7 +26,7 @@
             <a href="/">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
-                    alt="стрелка назад" width="7%"
+                    alt="стрелка назад" width="130px"
                 />
             </a>
         </header>
@@ -35,7 +35,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1" >
            <center>
-                <div class="wrapper_register">
+                <div class="wrapper">
                     <h1>ВХОД</h1>
                     
                     <div class="wrapper_input">
@@ -56,7 +56,7 @@
                             </button>
                         </form>
 
-                        <a href="register.php" class="btn_register">
+                        <a href="register" class="btn_register">
                             ЗАРЕГЕСТРИРОВАТЬСЯ
                         </a>
                     </div>

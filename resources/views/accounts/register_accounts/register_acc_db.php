@@ -2,17 +2,20 @@
 
 require __DIR__ . '/../../../../vendor/autoload.php';
 
+require '../../helpers/helpers.php';
+
 $app = require_once __DIR__ . '/../../../../bootstrap/app.php';
 
 $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
 use Illuminate\Support\Facades\DB;
 
-// for date
-date_default_timezone_set('UTC');
 
-$created_at = date(DATE_RFC2822);
-$updated_at = date(DATE_RFC2822);
+//-------------------
+// helper
+//-------------------
+$msg = new messages();
+$helper = new helpers();
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -29,19 +32,20 @@ $exists_name = DB::table('users')->where('login', $login)->exists();
 
 if ($exists_email || $exists_name) {
     // Handle duplicate account - redirect with error message
-    echo "NO";
+    $msg->setMessage('error', 'email or name already exists!');
+    $helper->redirect("../register");
 }
 
 // Hash the password for security
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-//--------------------
+//-----------------------------
 //set the data in the database
-//--------------------
+//-----------------------------
 try {
     DB::table('users')->insert([
-        'created_at' => $created_at,
-        'updated_at' => $updated_at,
+        'created_at' => now(),
+        'updated_at' => now(),
         'name' => $name,
         'email' => $email,
         'login' => $login,
@@ -50,15 +54,14 @@ try {
         'isAdmin' => false
     ]);
     
-    header("Location: ../register.php?success=1");
+    $msg->setMessage('success', 'accounts successfully created!');
+    $helper->redirect("../register");
     exit;
     
 } catch (Exception $e) {
     // Handle database errors
-    header("Location: ../register.php?error=database");
-    //echo $e;
+    $helper->redirect("../register");
     exit;
 }
 
-// try to changed the created_at and updated_at in the timestamps
 ?>
