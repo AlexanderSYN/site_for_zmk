@@ -1,0 +1,294 @@
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.notice {
+  margin: 20px 0px;
+  border-radius: 18px;
+  padding: 10px;
+}
+.notice.error {
+  border: 2px solid #f3d3d3;
+  color: #762c2c;
+  background: #f3d3d3;
+}
+.notice.success {
+  background: #e1fee3;
+  border: 2px solid #2c742b;
+  color: #2c742b;
+}
+
+.wrapper {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  width: 525px;
+  height: 494px;
+  background: #D9D9D9;
+  -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  padding: 12px;
+  margin-top: 7rem;
+}
+.wrapper h1 {
+  color: black;
+  font-size: 60px;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  line-height: 56px;
+  word-wrap: break-word;
+  margin-bottom: 32px;
+  margin-top: 3rem;
+}
+.wrapper input[type=text], .wrapper input[type=password] {
+  width: 85%;
+  outline: none;
+  border: none;
+  padding: 16px 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.wrapper .btn_entry {
+  width: 434px;
+  height: 56px;
+  padding: 12px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  background: #2C2C2C;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.wrapper .btn_register {
+  width: 437px;
+  height: 52px;
+  padding: 12px;
+  text-decoration: none;
+  background: var(--Background-Danger-Default, #EC221F);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Danger-Secondary, #C00F0C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.wrapper_register {
+  opacity: 0;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  width: 525px;
+  height: 644px;
+  background: #D9D9D9;
+  -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  padding: 12px;
+  margin-top: 7rem;
+}
+.wrapper_register h1 {
+  color: black;
+  font-size: 60px;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+  line-height: 56px;
+  word-wrap: break-word;
+  margin-bottom: 13px;
+  margin-top: 3rem;
+}
+.wrapper_register input[type=text], .wrapper_register input[type=password], .wrapper_register input[type=email] {
+  width: 85%;
+  outline: none;
+  border: none;
+  padding: 16px 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.wrapper_register .btn_entry {
+  width: 434px;
+  height: 56px;
+  padding: 12px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  background: #2C2C2C;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.wrapper_register .btn_register {
+  width: 437px;
+  height: 52px;
+  padding: 12px;
+  text-decoration: none;
+  background: var(--Background-Danger-Default, #EC221F);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Danger-Secondary, #C00F0C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@media (max-width: 566px) {
+  .wrapper {
+    width: 525px;
+    height: 494px;
+  }
+  .wrapper h1 {
+    font-size: 50px;
+  }
+  .wrapper .btn_entry {
+    width: 360px;
+    height: 56px;
+  }
+  .wrapper .btn_register {
+    width: 360px;
+    height: 52px;
+  }
+  .wrapper_register {
+    width: 458px;
+    height: 618px;
+  }
+  .wrapper_register h1 {
+    font-size: 50px;
+  }
+  .wrapper_register .btn_entry {
+    width: 360px;
+    height: 56px;
+  }
+  .wrapper_register .btn_register {
+    width: 360px;
+    height: 52px;
+  }
+}
+@media (max-width: 462px) {
+  .wrapper {
+    width: 525px;
+    height: 494px;
+  }
+  .wrapper h1 {
+    font-size: 50px;
+  }
+  .wrapper .btn_entry {
+    width: 360px;
+    height: 56px;
+  }
+  .wrapper .btn_register {
+    width: 360px;
+    height: 52px;
+  }
+  .wrapper_register {
+    width: 400px;
+    height: 618px;
+  }
+  .wrapper_register h1 {
+    font-size: 50px;
+  }
+  .wrapper_register .btn_entry {
+    width: 360px;
+    height: 56px;
+  }
+  .wrapper_register .btn_register {
+    width: 360px;
+    height: 52px;
+  }
+}
+@media (max-width: 412px) {
+  .wrapper {
+    width: 349px;
+    height: 616px;
+    margin-top: 0rem;
+  }
+  .wrapper h1 {
+    font-size: 35px;
+  }
+  .wrapper .btn_entry {
+    width: 287px;
+    height: 56px;
+  }
+  .wrapper .btn_register {
+    width: 287px;
+    height: 52px;
+  }
+  .wrapper_register {
+    width: 349px;
+    height: 616px;
+    margin-top: 0rem;
+  }
+  .wrapper_register h1 {
+    font-size: 35px;
+  }
+  .wrapper_register .btn_entry {
+    width: 287px;
+    height: 56px;
+  }
+  .wrapper_register .btn_register {
+    width: 287px;
+    height: 52px;
+  }
+}
