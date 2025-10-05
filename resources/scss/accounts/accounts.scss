@@ -108,6 +108,19 @@ $font-family_for_entry:"Roboto Mono";
         display: inline-flex
     }
 
+    // for show and show password
+    .password_control {
+        position: absolute;
+        top: 11px;
+        right: 6px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: url(image/icon/eye-on.svg) 0 0 no-repeat;
+    }
+    .password_control.view {
+        background: url(image/icon/eye-off.svg) 0 0 no-repeat;
+    }
     
 }
 
@@ -146,9 +159,11 @@ $font-family_for_entry:"Roboto Mono";
         border: none;
     
         padding: 16px 14px;
+        padding-right: 40px;
         margin-bottom: 20px;
         border-radius: 10px;
     }
+
 
     .btn_entry {
         width: 434px; 
@@ -182,6 +197,23 @@ $font-family_for_entry:"Roboto Mono";
         align-items: center; 
         gap: 8px; 
         display: inline-flex
+    }
+
+    // for show and show password
+    .password_control {
+        position: absolute;
+        top: 37rem;
+        right: 38rem;
+        display: inline-block;
+        width: 27px;
+        height: 38px;
+        background: url('../../../public/image/icon/eye-off.svg') center/contain no-repeat;
+        color: transparent;
+        font-size: 0;
+    }
+
+    .password_control.view {
+        background: url('../../../public/image/icon/eye-on.svg') center/contain no-repeat;
     }
 
 }

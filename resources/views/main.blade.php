@@ -30,7 +30,7 @@
                 <button class="btn_show_menu" id="btn_show_menu">
                     <img 
                         class="header_btn_show_menu"
-                        src="../resources/image/up_arrow.png"
+                        src="image/up_arrow.png"
                         alt="показать меню"
                         loading="lazy"
                     />
@@ -41,7 +41,7 @@
                 <button class="btn_close_menu" id="btn_close_menu">
                     <img 
                         class="header_btn_close_menu"
-                        src="../resources/image/down_arrow.png"
+                        src="image/down_arrow.png"
                         alt="скрыть меню"
                         loading="lazy"
                     />
@@ -53,7 +53,7 @@
             <a href="/" class="header_logo" id="header_logo">
                 <img
                     class="header_logo_image"
-                    src="../resources/image/main-zmc.png"
+                    src="image/main-zmc.png"
                     alt="лого ЗМК"
                     loading="lazy"
                 />
@@ -65,7 +65,7 @@
                     <li class="header_menu_item">
 
 
-                        <a href="/" class="header_menu_link">
+                        <a href="/" class="header_menu_link" style="color:#FFFFFF">
                             Главная
                         </a>
                         
@@ -97,11 +97,7 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- why is there a button instead of a link, just in case -->
-                <!-- (too lazy to redo the styles for the link) -->
-                <form method="POST" action="../resources/views/accounts/login_tmp.php">
-                    <button class="btn_entry_head" id="header_actions">ВОЙТИ</button>
-                </form>
+                <a href="{{ route('profile') }}" class="btn_entry_head" id="header_actions">ВОЙТИ</a>
             </div>
             
         </header>
@@ -112,7 +108,7 @@
         <main class="flex-grow-1">
             <!-- Video -->
             <div class="video__bg">
-                <video id="myVideo" src="../resources/video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
+                <video id="myVideo" src="video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
                 playsinline="" webkit-playsinline="" preload="metadata" muted="" loop="" 
                 autoplay=""></video>
             </div>
@@ -134,7 +130,7 @@
                     </h3>
 
 
-                    <img src="../resources/image/img_index/image_vov.png" alt="картинка ВОВ" />
+                    <img src="image/img_index/image_vov.png" alt="картинка ВОВ" />
                 </div>
 
 
@@ -150,7 +146,7 @@
                     </h3>
 
 
-                    <img src="../resources/image/img_index/image_svo.png" alt="картинка СВО" />
+                    <img src="image/img_index/image_svo.png" alt="картинка СВО" />
                 </div>
 
 
@@ -166,7 +162,7 @@
                     </h3>
 
 
-                    <img src="../resources/image/img_index/image_mp.png" alt="картинка Памятные Места" />
+                    <img src="image/img_index/image_mp.png" alt="картинка Памятные Места" />
                 </div>
              </div>
             
@@ -185,7 +181,7 @@
                     <a href="#up" class="header_logo">
                         <img
                             class="header_logo_image"
-                            src="../resources/image/main-zmc.png"
+                            src="image/main-zmc.png"
                             alt="лого ЗМК"
         
                             loading="lazy"

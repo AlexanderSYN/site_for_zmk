@@ -94,33 +94,40 @@ header .header_menu_link {
   text-decoration: none;
   font-weight: bold;
   font-size: clamp(16px, 3vw, 32px);
-  color: #FFFFFF;
+  color: #D9D9D9;
   letter-spacing: 1.2px;
   white-space: nowrap;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 header .header_menu_link:hover {
-  opacity: 0.8;
+  color: #FFFFFF;
 }
 header .header_actions {
   margin: 0;
 }
 header .header_actions .btn_entry_head {
+  width: 170px;
   height: 41px;
-  width: clamp(120px, 15vw, 170px);
-  background: #2C2C2C;
-  background-color: #2C2C2C;
-  color: #FFFFFF;
+  text-decoration: none;
   padding: 12px;
+  background: var(--Background-Brand-Default, #2C2C2C);
+  color: #FFFFFF;
+  overflow: hidden;
   border-radius: 8px;
-  border: 1px solid #2C2C2C;
-  font-size: clamp(14px, 2vw, 16px);
-  font-weight: 400;
-  font-family: "Kadwa", serif;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   cursor: pointer;
-  -webkit-transition: background 0.3s;
-  transition: background 0.3s;
 }
 header .header_actions .btn_entry_head:hover {
   background: #404040;

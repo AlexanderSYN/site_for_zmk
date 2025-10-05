@@ -111,6 +111,18 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
+.wrapper .password_control {
+  position: absolute;
+  top: 11px;
+  right: 6px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(image/icon/eye-on.svg) 0 0 no-repeat;
+}
+.wrapper .password_control.view {
+  background: url(image/icon/eye-off.svg) 0 0 no-repeat;
+}
 
 .wrapper_register {
   opacity: 0;
@@ -146,6 +158,7 @@
   outline: none;
   border: none;
   padding: 16px 14px;
+  padding-right: 40px;
   margin-bottom: 20px;
   border-radius: 10px;
 }
@@ -192,6 +205,20 @@
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+.wrapper_register .password_control {
+  position: absolute;
+  top: 37rem;
+  right: 38rem;
+  display: inline-block;
+  width: 27px;
+  height: 38px;
+  background: url("../../../public/image/icon/eye-off.svg") center/contain no-repeat;
+  color: transparent;
+  font-size: 0;
+}
+.wrapper_register .password_control.view {
+  background: url("../../../public/image/icon/eye-on.svg") center/contain no-repeat;
 }
 
 @media (max-width: 566px) {
