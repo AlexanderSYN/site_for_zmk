@@ -45,13 +45,12 @@ $font-family_for_entry:"Roboto Mono";
     animation-delay: 0.2s;
     animation-fill-mode: forwards;
     width: 525px;
-    height: 494px;
+    height: 532px;
     background: #D9D9D9; 
     box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
     border-radius: 18px;
     padding: 12px;
     margin-top: 7rem;
- 
 
     h1 {
         color: black;
@@ -109,17 +108,25 @@ $font-family_for_entry:"Roboto Mono";
     }
 
     // for show and show password
-    .password_control {
-        position: absolute;
-        top: 11px;
-        right: 6px;
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background: url(image/icon/eye-on.svg) 0 0 no-repeat;
+    .password_wrapper {
+        margin-right: -2rem;
     }
+    .password_control {
+        position: static; /* или absolute в зависимости от контекста */
+        top: 50%; /* Центрирование по вертикали */
+        left: 50%; /* Центрирование по горизонтали */
+        transform: translate(-10px, 10px);/* Смещение от центра */
+        display: inline-block;
+        width: 27px;
+        height: 38px;
+        background: url('../../../public/image/icon/eye-on.svg') center/contain no-repeat;
+        color: transparent;
+        font-size: 0;
+        z-index: 1000;
+    }
+
     .password_control.view {
-        background: url(image/icon/eye-off.svg) 0 0 no-repeat;
+        background: url('../../../public/image/icon/eye-off.svg') center/contain no-repeat;
     }
     
 }
@@ -204,17 +211,13 @@ $font-family_for_entry:"Roboto Mono";
         margin-right: -2rem;
     }
     .password_control {
-        position: static; /* или absolute в зависимости от контекста */
-        top: 50%; /* Центрирование по вертикали */
-        left: 50%; /* Центрирование по горизонтали */
-        transform: translate(-10px, 10px);/* Смещение от центра */
+        position: static;
+        transform: translate(-10px, 10px);
         display: inline-block;
         width: 27px;
         height: 38px;
         background: url('../../../public/image/icon/eye-on.svg') center/contain no-repeat;
         color: transparent;
-        font-size: 0;
-        z-index: 1000;
     }
 
     .password_control.view {
@@ -229,7 +232,7 @@ $font-family_for_entry:"Roboto Mono";
     // for the login and register page
     //-----------------------
     .wrapper {
-        width: 525px;
+        width: 436px;
         height: 494px;
 
         h1 {
@@ -245,7 +248,6 @@ $font-family_for_entry:"Roboto Mono";
             width: 360px; 
             height: 52px; 
         }
-
     }
 
     //-----------------------
@@ -253,7 +255,7 @@ $font-family_for_entry:"Roboto Mono";
     //-----------------------
     .wrapper_register {
         width: 458px;
-        height: 618px;
+        height: 528px;
  
         h1 {
             font-size: 50px;
@@ -277,7 +279,7 @@ $font-family_for_entry:"Roboto Mono";
     // for the login and register page
     //-----------------------
     .wrapper {
-        width: 525px;
+        width: 406px;
         height: 494px;
 
         h1 {
@@ -325,8 +327,8 @@ $font-family_for_entry:"Roboto Mono";
     // for the login and register page
     //-----------------------
     .wrapper {
-        width: 349px;
-        height: 616px;
+        width: 314px;
+        height: 555px;
         margin-top: 0rem;
 
         h1 {
@@ -334,12 +336,12 @@ $font-family_for_entry:"Roboto Mono";
         }
 
         .btn_entry {
-            width: 287px; 
+            width: 244px;
             height: 56px; 
         }
 
         .btn_register {
-            width: 287px; 
+            width: 244px; 
             height: 52px; 
         }
 

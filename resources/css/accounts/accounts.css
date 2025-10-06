@@ -42,7 +42,7 @@
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   width: 525px;
-  height: 494px;
+  height: 532px;
   background: #D9D9D9;
   -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
@@ -112,17 +112,25 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
+.wrapper .password_wrapper {
+  margin-right: -2rem;
+}
 .wrapper .password_control {
-  position: absolute;
-  top: 11px;
-  right: 6px;
+  position: static; /* или absolute в зависимости от контекста */
+  top: 50%; /* Центрирование по вертикали */
+  left: 50%; /* Центрирование по горизонтали */
+  -webkit-transform: translate(-10px, 10px);
+          transform: translate(-10px, 10px); /* Смещение от центра */
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: url(image/icon/eye-on.svg) 0 0 no-repeat;
+  width: 27px;
+  height: 38px;
+  background: url("../../../public/image/icon/eye-on.svg") center/contain no-repeat;
+  color: transparent;
+  font-size: 0;
+  z-index: 1000;
 }
 .wrapper .password_control.view {
-  background: url(image/icon/eye-off.svg) 0 0 no-repeat;
+  background: url("../../../public/image/icon/eye-off.svg") center/contain no-repeat;
 }
 
 .wrapper_register {
@@ -212,18 +220,14 @@
   margin-right: -2rem;
 }
 .wrapper_register .password_control {
-  position: static; /* или absolute в зависимости от контекста */
-  top: 50%; /* Центрирование по вертикали */
-  left: 50%; /* Центрирование по горизонтали */
+  position: static;
   -webkit-transform: translate(-10px, 10px);
-          transform: translate(-10px, 10px); /* Смещение от центра */
+          transform: translate(-10px, 10px);
   display: inline-block;
   width: 27px;
   height: 38px;
   background: url("../../../public/image/icon/eye-on.svg") center/contain no-repeat;
   color: transparent;
-  font-size: 0;
-  z-index: 1000;
 }
 .wrapper_register .password_control.view {
   background: url("../../../public/image/icon/eye-off.svg") center/contain no-repeat;
@@ -231,7 +235,7 @@
 
 @media (max-width: 566px) {
   .wrapper {
-    width: 525px;
+    width: 436px;
     height: 494px;
   }
   .wrapper h1 {
@@ -247,7 +251,7 @@
   }
   .wrapper_register {
     width: 458px;
-    height: 618px;
+    height: 528px;
   }
   .wrapper_register h1 {
     font-size: 50px;
@@ -263,7 +267,7 @@
 }
 @media (max-width: 462px) {
   .wrapper {
-    width: 525px;
+    width: 406px;
     height: 494px;
   }
   .wrapper h1 {
@@ -295,19 +299,19 @@
 }
 @media (max-width: 412px) {
   .wrapper {
-    width: 349px;
-    height: 616px;
+    width: 314px;
+    height: 555px;
     margin-top: 0rem;
   }
   .wrapper h1 {
     font-size: 35px;
   }
   .wrapper .btn_entry {
-    width: 287px;
+    width: 244px;
     height: 56px;
   }
   .wrapper .btn_register {
-    width: 287px;
+    width: 244px;
     height: 52px;
   }
   .wrapper_register {

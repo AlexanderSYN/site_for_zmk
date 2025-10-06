@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -12,7 +13,8 @@ Route::view('/', 'main');
 //--------------------------------------------
 // for login
 //--------------------------------------------
-Route::view('/login', 'accounts.login')->middleware('guest')->name('login');
+Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
 
 //--------------------------------------------
 // for register

@@ -39,17 +39,38 @@
                     <h1>ВХОД</h1>
                     
                     <div class="wrapper_input">
-                        <form method="post" action="/">
+                        <form method="post" action="{{ route('login') }}">
+                            @csrf
                             
+                            <!-- notifications -->
+                            <ul>
+                                @foreach ($errors->all() as $message)
+                                    <div class="notice error">
+                                       
+                                        {{ $message }}
+                                    
+                                    </div>
+                                @endforeach
+                            </ul>
+
                             <input type="text" name="login" 
                                 class="login_wrapper" 
-                                placeholder="Логин" 
+                                placeholder="Логин"
+                                value="{{ old('login') }}"
+                                autofocus 
+                                required
                             />
 
-                            <input type="password" name="password" 
-                                class="pass_wrapper" 
-                                placeholder="Пароль" 
+                            <input type="password" id="password" name="password" 
+                                class="password_wrapper" 
+                                placeholder="Пароль"
+                                value="{{ old('password') }}" 
+                                required
                             />
+                            <!-- for show and hide password -->
+                            <a href="#" class="password_control" data-target="password">
+                                
+                            </a>
 
                             <button class="btn_entry">
                                 ВОЙТИ
@@ -72,7 +93,9 @@
         
     </div>
 
-   
+    <!-- JS -->
+    @vite('resources/js/for_register/show_hide_password.js')
+
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

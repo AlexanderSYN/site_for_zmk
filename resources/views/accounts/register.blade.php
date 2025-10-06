@@ -50,6 +50,8 @@
                                             {{ "Электронная почта уже ЗАРЕГЕСТРИРОВАНА!" }}
                                         @elseif ($message == "The login has already been taken.")
                                             {{ "Логин уже ЗАРЕГЕСТРИРОВАН!" }}
+                                        @elseif ($message == "The password field must be at least 8 characters.")
+                                            {{ "Пароль должен содержать минимум 8 символов!" }}
                                         @else
                                             {{ $message }}
                                         @endif
