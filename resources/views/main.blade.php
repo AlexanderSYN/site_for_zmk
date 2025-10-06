@@ -83,7 +83,7 @@
                                 name="heroes_svo" value="Герои СВО"
                             />
 
-
+                            
                             <!-- Памятные Места -->
                             <input 
                                 class="header_menu_link" type="submit" 

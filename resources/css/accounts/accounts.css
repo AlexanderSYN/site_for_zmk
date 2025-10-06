@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -206,19 +207,25 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
+.wrapper_register input[type=password] {
+  margin-right: -2rem;
+}
 .wrapper_register .password_control {
-  position: absolute;
-  top: 37rem;
-  right: 38rem;
+  position: static; /* или absolute в зависимости от контекста */
+  top: 50%; /* Центрирование по вертикали */
+  left: 50%; /* Центрирование по горизонтали */
+  -webkit-transform: translate(-10px, 10px);
+          transform: translate(-10px, 10px); /* Смещение от центра */
   display: inline-block;
   width: 27px;
   height: 38px;
-  background: url("../../../public/image/icon/eye-off.svg") center/contain no-repeat;
+  background: url("../../../public/image/icon/eye-on.svg") center/contain no-repeat;
   color: transparent;
   font-size: 0;
+  z-index: 1000;
 }
 .wrapper_register .password_control.view {
-  background: url("../../../public/image/icon/eye-on.svg") center/contain no-repeat;
+  background: url("../../../public/image/icon/eye-off.svg") center/contain no-repeat;
 }
 
 @media (max-width: 566px) {

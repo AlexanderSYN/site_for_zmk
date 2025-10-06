@@ -200,20 +200,25 @@ $font-family_for_entry:"Roboto Mono";
     }
 
     // for show and show password
+    input[type="password"] {
+        margin-right: -2rem;
+    }
     .password_control {
-        position: absolute;
-        top: 37rem;
-        right: 38rem;
+        position: static; /* или absolute в зависимости от контекста */
+        top: 50%; /* Центрирование по вертикали */
+        left: 50%; /* Центрирование по горизонтали */
+        transform: translate(-10px, 10px);/* Смещение от центра */
         display: inline-block;
         width: 27px;
         height: 38px;
-        background: url('../../../public/image/icon/eye-off.svg') center/contain no-repeat;
+        background: url('../../../public/image/icon/eye-on.svg') center/contain no-repeat;
         color: transparent;
         font-size: 0;
+        z-index: 1000;
     }
 
     .password_control.view {
-        background: url('../../../public/image/icon/eye-on.svg') center/contain no-repeat;
+        background: url('../../../public/image/icon/eye-off.svg') center/contain no-repeat;
     }
 
 }

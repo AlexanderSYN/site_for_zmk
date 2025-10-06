@@ -1,10 +1,3 @@
-<?php 
-    require '../resources/views/helpers/helpers.php';
-    
-    $msg = new messages();
-
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -48,18 +41,15 @@
                     <div class="wrapper_input">
                         <form method="post" action="{{ route('register') }}">
                             @csrf
+                            
                             <!-- notifications -->
-                            <?php if ($msg->hasMessage('error')) : ?>
-                                <div class="notice error">
-                                    <?php echo $msg->getMessage('error'); ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ($msg->hasMessage('success')) : ?>
-                                <div class="notice success">
-                                    <?php echo $msg->getMessage('success'); ?>
-                                </div>
-                                <?php endif; ?>
+                            <ul>
+                                @foreach ($errors->all() as $message)
+                                    <div class="notice error">
+                                        {{ $message }}
+                                    </div>
+                                @endforeach
+                            </ul>
 
 
                             <input type="text" name="name" 
@@ -81,6 +71,7 @@
                                 required
                             />
 
+        
                             <input type="password" name="password" id="password" 
                                 class="password_wrapper" 
                                 placeholder="Пароль" 
