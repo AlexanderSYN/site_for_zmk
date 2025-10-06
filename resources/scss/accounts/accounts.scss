@@ -140,7 +140,7 @@ $font-family_for_entry:"Roboto Mono";
     border-radius: 18px;
     padding: 12px;
     margin-top: 7rem;
- 
+    display: table-cell;
 
     h1 {
         color: black;
@@ -200,7 +200,7 @@ $font-family_for_entry:"Roboto Mono";
     }
 
     // for show and show password
-    input[type="password"] {
+    .password_wrapper {
         margin-right: -2rem;
     }
     .password_control {

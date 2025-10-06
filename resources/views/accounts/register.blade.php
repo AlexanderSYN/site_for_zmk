@@ -46,7 +46,13 @@
                             <ul>
                                 @foreach ($errors->all() as $message)
                                     <div class="notice error">
-                                        {{ $message }}
+                                        @if ($message == "The email has already been taken.")
+                                            {{ "Электронная почта уже ЗАРЕГЕСТРИРОВАНА!" }}
+                                        @elseif ($message == "The login has already been taken.")
+                                            {{ "Логин уже ЗАРЕГЕСТРИРОВАН!" }}
+                                        @else
+                                            {{ $message }}
+                                        @endif
                                     </div>
                                 @endforeach
                             </ul>

@@ -143,6 +143,7 @@
   border-radius: 18px;
   padding: 12px;
   margin-top: 7rem;
+  display: table-cell;
 }
 .wrapper_register h1 {
   color: black;
@@ -207,7 +208,7 @@
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
-.wrapper_register input[type=password] {
+.wrapper_register .password_wrapper {
   margin-right: -2rem;
 }
 .wrapper_register .password_control {
