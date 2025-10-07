@@ -65,8 +65,8 @@
                     <li class="header_menu_item">
 
 
-                        <a href="/" class="header_menu_link">
-                            Главная
+                        <a href="{{ route('profile') }}" style="color: #413939" class="header_menu_link">
+                            Профиль
                         </a>
                         
                         <form method="POST" action="/" class="header_menu_form">
@@ -97,7 +97,13 @@
 
 
             <div class="header_actions" id="header_actions">
-                <a href="{{ route('logout') }}" class="btn_entry_head" id="header_actions">
+                <!-- btn add heroes -->
+                <a href="{{ route('add_heroe') }}" class="btn_add_heroe_head" id="header_actions">
+                    ДОБАВИТЬ ГЕРОЯ
+                </a>
+                
+                <!-- btn logout -->
+                <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
                     ВЫЙТИ
                 </a>
             </div>

@@ -33,3 +33,11 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::view('/profile', 'profile.profile_main')->middleware('auth')->name('profile');
 
 
+//--------------------------------------------
+// for add heroes and memory places
+//--------------------------------------------
+
+//--------------------------------------------
+// add heroe
+//--------------------------------------------
+Route::get('/add_heroe', [])->middleware('auth')->name('add_heroe');
