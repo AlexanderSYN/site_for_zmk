@@ -1,20 +1,25 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LogoutController;
 
 //--------------------------------------------
 // for main page
 //--------------------------------------------
-Route::view('/', 'main');
+Route::view('/', 'main')->name('main');
 
 //--------------------------------------------
 // for login
+// and logout
 //--------------------------------------------
 Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+
+Route::get('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
 //--------------------------------------------
 // for register

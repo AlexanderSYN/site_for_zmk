@@ -1,0 +1,144 @@
+// settings
+
+
+// variables
+$white: #FFFFFF;
+$black: #000000;
+$font-size-header-text: 32px;
+$font-family: 'Kadwa', serif;
+$color-bg-btn-up: #2C2C2C;
+$color-btn-up: #F5F5F5;
+
+// settings
+// set background
+body {
+    background-image: url('../../../public/image/bg/old-paper-bg.png');
+}
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-family;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style-type: none;
+}
+
+// header
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+    background-color: rgba(255, 252, 252, 0.5);
+
+    // show and close button 
+    .btn_show_menu, .btn_close_menu  {
+        position: absolute;
+        margin-top: -1rem;
+        color: inherit;
+        background: none;
+        border: none;
+        padding: 0;
+        right: 0;
+
+        & img {
+            width: 40%;
+        }
+    }
+
+    // logo
+    .header_logo img {
+        opacity: 0.6;
+        width: 120px;
+        height: auto;
+        min-width: 100%;
+    }
+
+    // haeder manu list
+    .header_menu_list {
+        display: flex;
+        gap: 50px;
+        margin-left: -2rem;
+    }
+
+    // header menu item
+    .header_menu_item {
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    // header menu form
+    .header_menu_form {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    // header menu link
+    .header_menu_link {
+        border: none;
+        background: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: clamp(16px, 3vw, $font-size-header-text);
+        color: #aea6a6;
+        letter-spacing: 1.2px;
+        white-space: nowrap;
+        transition: opacity 0.3s;
+
+        &:hover {
+            color: #413939;
+        }
+        
+    }
+
+    
+
+    // header actions 
+    .header_actions {
+        margin: 0;
+
+        // button in header
+        .btn_entry_head {
+            width: 170px; 
+            height: 41px;
+            text-decoration: none; 
+            padding: 12px; 
+            background: var(--Background-Brand-Default, #2C2C2C); 
+            color: $white;
+            overflow: hidden; 
+            border-radius: 8px; 
+            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+            outline-offset: -1px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+            display: inline-flex;
+            cursor: pointer;
+           
+    
+            &:hover {
+                background: #404040;
+            }
+        }
+    }
+}
