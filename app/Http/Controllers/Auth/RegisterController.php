@@ -28,7 +28,15 @@ class RegisterController extends Controller
     //--------------------------------------------
     public function store(Request $request)
     {
-        
+
+        $name = $request->input('name');
+
+        //--------------------------------------------
+        // get first, last name and patronymic
+        //--------------------------------------------
+        $get_full_name = explode(" ", $name);
+
+            
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
@@ -36,15 +44,25 @@ class RegisterController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'login' => $validated['login'],
-            'password' => Hash::make($validated['password'])
-        ]);
+        try {
+            $user = User::create([
+                'first_name' => $get_full_name[0],
+                'last_name' => $get_full_name[1],
+                'patronymic' => $get_full_name[2],
+                'email' => $validated['email'],
+                'login' => $validated['login'],
+                'password' => Hash::make($validated['password'])
+            ]);
+        } catch (Exception $e) {
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'error' => 'ВЫ ВВЕЛИ НЕПОЛНЫЕ ДАННЫЕ!'
+                ]);
+        }
 
         Auth::login($user);
-
+       
         return redirect()->route('profile');
     } 
 }

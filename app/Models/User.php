@@ -18,10 +18,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'patronymic',
         'email',
         'login',
         'password',
+        'isBan',
+        'isAdmin'
     ];
 
     /**
@@ -44,6 +48,23 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'isBan' => 'boolean',
+            'isAdmin' => 'boolean'
         ];
+    }
+
+
+    //
+    // to check if the user is blocked or whether he is an administrator
+    //
+
+    //check ban
+    public function isBanned() : bool {
+        return $this->isBan === true;
+    }
+
+    //check admin
+    public function isAdmin() : bool {
+        return $this->isAdmin() === true;
     }
 }

@@ -3,9 +3,9 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\BannedController;
+use App\Http\Controllers\Auth\ProfileController;
 
 //--------------------------------------------
 // for main page
@@ -13,25 +13,37 @@ use App\Http\Controllers\Auth\LogoutController;
 Route::view('/', 'main')->name('main');
 
 //--------------------------------------------
-// for login
-// and logout
+// Routes for guests
 //--------------------------------------------
-Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
-Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+Route::middleware('guest')->group(function () {
+    //--------------------------------------------
+    // for login and logout
+    //--------------------------------------------
+    Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+    
+    //--------------------------------------------
+    // for register
+    //--------------------------------------------
+    Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
+});
 
 Route::get('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');
 
-//--------------------------------------------
-// for register
-//--------------------------------------------
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+//----------------------------------------------------
+// Routes for authorized users with ban verification
+//----------------------------------------------------
+Route::middleware(['auth'])->group(function() {
+   Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+});
 
-//--------------------------------------------
-// for profile
-//--------------------------------------------
-Route::view('/profile', 'profile.profile_main')->middleware('auth')->name('profile');
-
+//----------------------------------------------------
+// Route for banned users (available even if banned)
+//----------------------------------------------------
+Route::get('/profile/banned', [BannedController::class, 'show'])
+    ->middleware('auth')
+    ->name('profile_banned');
 
 //--------------------------------------------
 // for add heroes and memory places

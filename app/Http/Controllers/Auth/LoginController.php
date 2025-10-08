@@ -40,6 +40,14 @@ class LoginController extends Controller
                 ]);
         }
 
+        
+        $user = Auth::user();
+
+        if ($user->isBan) {
+            return redirect()->route('profile_banned');
+        }
+       
+
         return redirect()->route('profile');
     }
     

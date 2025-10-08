@@ -62,7 +62,7 @@
 
                             <input type="text" name="name" 
                                 class="name_wrapper" 
-                                placeholder="Имя" 
+                                placeholder="ФИО" 
                                 required
                             />
 

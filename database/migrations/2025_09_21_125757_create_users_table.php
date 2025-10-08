@@ -15,13 +15,16 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name')->default('none');
+            $table->string('patronymic')->default('none');
+
             $table->string('email')->unique();
             
             $table->string('login')->unique();
             $table->string('password');
             
-            $table->boolean('isBan')->default(true);
+            $table->boolean('isBan')->default(false);
             $table->boolean('isAdmin')->default(false);
     
         });

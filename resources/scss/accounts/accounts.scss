@@ -55,8 +55,9 @@ $font-family_for_entry:"Roboto Mono";
     h1 {
         color: black;
         font-size: 60px;
-        font-family: $font-family_for_entry;
-        font-weight: 400;
+        font-family: inherit;
+        font-weight: 600;
+        font-weight: 600;
         line-height: 56px;
         word-wrap: break-word;
         margin-bottom: 32px;
@@ -149,15 +150,16 @@ $font-family_for_entry:"Roboto Mono";
     margin-top: 7rem;
     display: table-cell;
 
+
     h1 {
         color: black;
         font-size: 60px;
-        font-family: $font-family_for_entry;
-        font-weight: 400;
+        font-family: inherit;
+        font-weight: 600;
         line-height: 56px;
         word-wrap: break-word;
-        margin-bottom: 13px;
-        margin-top: 3rem;
+        margin-bottom: 34px;
+        margin-top: 2rem;
     } 
 
     input[type="text"], input[type="password"], input[type="email"] {

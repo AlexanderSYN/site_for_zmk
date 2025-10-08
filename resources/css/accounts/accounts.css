@@ -53,8 +53,9 @@
 .wrapper h1 {
   color: black;
   font-size: 60px;
-  font-family: "Roboto Mono";
-  font-weight: 400;
+  font-family: inherit;
+  font-weight: 600;
+  font-weight: 600;
   line-height: 56px;
   word-wrap: break-word;
   margin-bottom: 32px;
@@ -156,12 +157,12 @@
 .wrapper_register h1 {
   color: black;
   font-size: 60px;
-  font-family: "Roboto Mono";
-  font-weight: 400;
+  font-family: inherit;
+  font-weight: 600;
   line-height: 56px;
   word-wrap: break-word;
-  margin-bottom: 13px;
-  margin-top: 3rem;
+  margin-bottom: 34px;
+  margin-top: 2rem;
 }
 .wrapper_register input[type=text], .wrapper_register input[type=password], .wrapper_register input[type=email] {
   width: 85%;
