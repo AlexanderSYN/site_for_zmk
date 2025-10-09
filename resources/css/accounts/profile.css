@@ -218,7 +218,9 @@ header .header_actions .btn_add_heroe_head:hover {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  cursor: pointer;
   color: black;
+  text-decoration: none;
   font-size: 16px;
   font-family: inherit;
   font-weight: 400;
@@ -231,32 +233,6 @@ header .header_actions .btn_add_heroe_head:hover {
   margin-top: 1rem;
   padding: 12px;
   background: gray;
-  overflow: hidden;
-  border-radius: 8px;
-  outline-offset: -1px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 8px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  color: black;
-  font-size: 16px;
-  font-family: inherit;
-  font-weight: 400;
-  line-height: 16px;
-  word-wrap: break-word;
-}
-.wrapper_for_profile_info .btn_done.show {
-  width: 661.49px;
-  height: 54.06px;
-  margin-top: 1rem;
-  padding: 12px;
-  background: #34C759;
   overflow: hidden;
   border-radius: 8px;
   outline-offset: -1px;

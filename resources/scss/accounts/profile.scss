@@ -214,7 +214,8 @@ header {
     }
 
     // buttons
-    .btn_edit {
+    // btn edit
+    .btn_edit{
         width: 661.49px;
         height: 54.06px;
         margin-top: 1rem;
@@ -227,9 +228,11 @@ header {
         align-items: center;
         gap: 8px;
         display: inline-flex;
+        cursor: pointer;
 
         // text btn
         color: black; 
+        text-decoration: none;
         font-size: 16px; 
         font-family: inherit; 
         font-weight: 400; 
@@ -237,36 +240,13 @@ header {
         word-wrap: break-word
     }
 
-    // btn done disabled
+    // btn done 
     .btn_done {
         width: 661.49px;
         height: 54.06px;
         margin-top: 1rem;
         padding: 12px;
         background: gray;
-        overflow: hidden;
-        border-radius: 8px;
-        outline-offset: -1px;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        display: inline-flex;
-
-        // text btn
-        color: black; 
-        font-size: 16px; 
-        font-family: inherit; 
-        font-weight: 400; 
-        line-height: 16px; 
-        word-wrap: break-word
-    }
-    // btn done enable
-    .btn_done.show {
-        width: 661.49px;
-        height: 54.06px;
-        margin-top: 1rem;
-        padding: 12px;
-        background: #34C759;
         overflow: hidden;
         border-radius: 8px;
         outline-offset: -1px;

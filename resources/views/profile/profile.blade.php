@@ -116,41 +116,49 @@
         <main class="flex-grow-1">
             <center>
                 <div class="wrapper_for_profile_info">
-                    <h1>ВАШ ПРОФИЛЬ</h1>
+                    <form action="{{ route('change_data') }}" method="post">
+                        @csrf
+                        <h1>ВАШ ПРОФИЛЬ</h1>
                 
-                    <label class="profile_name">ИМЯ: </label>
-                    <input type="text" class="profile_name_input"
-                        value="{{ $user->first_name }}"
-                        disabled /> 
+                        <label class="profile_name">ИМЯ: </label>
+                        <input type="text" class="profile_name_input"
+                            id="profile_name" 
+                            value="{{ $user->first_name }}"
+                            disabled /> 
  
-                    <label class="profile_last_name">ФАМИЛИЯ: </label>
-                    <input type="text" class="profile_last_name_input" 
-                        value="{{ $user->last_name }}"
-                        disabled /> 
+                        <label class="profile_last_name">ФАМИЛИЯ: </label>
+                        <input type="text" class="profile_last_name_input" 
+                            id="profile_last_name" 
+                            value="{{ $user->last_name }}"
+                            disabled /> 
                     
-                    <label class="profile_patronymic">ОТЧЕСТВО: </label>
-                    <input type="text" class="profile_patronymic_input" 
-                        value="{{ $user->patronymic }}"
-                        disabled /> 
+                        <label class="profile_patronymic">ОТЧЕСТВО: </label>
+                        <input type="text" class="profile_patronymic_input" 
+                            id="profile_patronymic" 
+                            value="{{ $user->patronymic }}"
+                            disabled /> 
  
-                    <label class="profile_login">ЛОГИН: </label>
-                    <input type="text" class="profile_login_input" 
-                        value="{{ $user->login }}"
-                        disabled /> 
+                        <label class="profile_login">ЛОГИН: </label>
+                        <input type="text" class="profile_login_input" 
+                            id="profile_login" 
+                            value="{{ $user->login }}"
+                            disabled /> 
                     
-                    <label class="profile_email">ПОЧТА: </label>
-                    <input type="text" class="profile_email_input" 
-                        value="{{ $user->email }}"
-                        disabled /> 
+                        <label class="profile_email">ПОЧТА: </label>
+                        <input type="text" class="profile_email_input" 
+                            id="profile_email"
+                            value="{{ $user->email }}"
+                            disabled /> 
                     
+                        <a class="btn_edit" 
+                            id="btn_edit">
+                                ИЗМЕНИТЬ
+                        </a> 
 
-                    <form action="/" method="post">
-                        <button class="btn_edit" type="submit">
-                            ИЗМЕНИТЬ
-                        </button>                    
-                    
-                        <button class="btn_done" type="submit" disabled>
-                            ГОТОВО
+                        <button class="btn_done"
+                            id="btn_done"
+                            type="submit" disabled>
+                                ГОТОВО
                         </button>  
                     </form>
                 </div>
@@ -165,8 +173,8 @@
 
 
     <!-- JS -->
-   @vite('resources/js/for_adaptive/adaptive_menu.js')
-
+    @vite('resources/js/for_adaptive/adaptive_menu.js')
+    @vite('resources/js/for_change_data_profile/helper_change_data_profile.js');
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
