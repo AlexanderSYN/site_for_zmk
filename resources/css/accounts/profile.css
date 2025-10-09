@@ -161,3 +161,119 @@ header .header_actions .btn_add_heroe_head {
 header .header_actions .btn_add_heroe_head:hover {
   background: #797878;
 }
+
+.wrapper_for_profile_info {
+  width: 699px;
+  height: 700px;
+  background: #F8F4EC;
+  -webkit-box-shadow: 0px 4px 4px 26px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 26px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  margin-top: 2rem;
+}
+.wrapper_for_profile_info h1 {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 60px;
+  margin-bottom: 2rem;
+}
+.wrapper_for_profile_info label {
+  font-weight: 600;
+  font-size: 45px;
+  margin-bottom: 1rem;
+}
+.wrapper_for_profile_info input {
+  font-size: 35px;
+  width: 27rem;
+  border-radius: 18px;
+}
+.wrapper_for_profile_info .profile_name_input {
+  margin-left: 8rem;
+}
+.wrapper_for_profile_info .profile_patronymic_input {
+  margin-left: 0.5rem;
+}
+.wrapper_for_profile_info .profile_login_input {
+  margin-left: 5rem;
+}
+.wrapper_for_profile_info .profile_email_input {
+  margin-left: 5.2rem;
+}
+.wrapper_for_profile_info .btn_edit {
+  width: 661.49px;
+  height: 54.06px;
+  margin-top: 1rem;
+  padding: 12px;
+  background: #0088FF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: black;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+.wrapper_for_profile_info .btn_done {
+  width: 661.49px;
+  height: 54.06px;
+  margin-top: 1rem;
+  padding: 12px;
+  background: gray;
+  overflow: hidden;
+  border-radius: 8px;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: black;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}
+.wrapper_for_profile_info .btn_done.show {
+  width: 661.49px;
+  height: 54.06px;
+  margin-top: 1rem;
+  padding: 12px;
+  background: #34C759;
+  overflow: hidden;
+  border-radius: 8px;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  color: black;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 16px;
+  word-wrap: break-word;
+}

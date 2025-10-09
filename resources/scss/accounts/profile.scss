@@ -1,5 +1,7 @@
 // settings
-
+// set background
+// header
+// main
 
 // variables
 $white: #FFFFFF;
@@ -164,5 +166,121 @@ header {
                 background: #797878;
             }
         }
+    }
+}
+
+// main
+.wrapper_for_profile_info {
+    width: 699px;
+    height: 700px;
+    background: #F8F4EC;
+    box-shadow: 0px 4px 4px 26px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    margin-top: 2rem;
+
+    h1 {
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 60px;
+        margin-bottom: 2rem;
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 45px;
+        margin-bottom: 1rem;
+    }
+
+    input {
+        font-size: 35px;
+        width: 27rem;
+        border-radius: 18px;
+    }
+
+    .profile_name_input {
+        margin-left: 8rem;
+    }
+
+    .profile_patronymic_input {
+        margin-left: 0.5rem;
+    }
+
+    .profile_login_input {
+        margin-left: 5rem;
+    }
+
+    .profile_email_input {
+        margin-left: 5.2rem;
+    }
+
+    // buttons
+    .btn_edit {
+        width: 661.49px;
+        height: 54.06px;
+        margin-top: 1rem;
+        padding: 12px;
+        background: #0088FF;
+        overflow: hidden;
+        border-radius: 8px;
+        outline-offset: -1px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        display: inline-flex;
+
+        // text btn
+        color: black; 
+        font-size: 16px; 
+        font-family: inherit; 
+        font-weight: 400; 
+        line-height: 16px; 
+        word-wrap: break-word
+    }
+
+    // btn done disabled
+    .btn_done {
+        width: 661.49px;
+        height: 54.06px;
+        margin-top: 1rem;
+        padding: 12px;
+        background: gray;
+        overflow: hidden;
+        border-radius: 8px;
+        outline-offset: -1px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        display: inline-flex;
+
+        // text btn
+        color: black; 
+        font-size: 16px; 
+        font-family: inherit; 
+        font-weight: 400; 
+        line-height: 16px; 
+        word-wrap: break-word
+    }
+    // btn done enable
+    .btn_done.show {
+        width: 661.49px;
+        height: 54.06px;
+        margin-top: 1rem;
+        padding: 12px;
+        background: #34C759;
+        overflow: hidden;
+        border-radius: 8px;
+        outline-offset: -1px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        display: inline-flex;
+
+        // text btn
+        color: black; 
+        font-size: 16px; 
+        font-family: inherit; 
+        font-weight: 400; 
+        line-height: 16px; 
+        word-wrap: break-word
     }
 }

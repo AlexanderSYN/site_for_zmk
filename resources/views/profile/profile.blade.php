@@ -97,10 +97,10 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- btn add heroes -->
+                {{-- <!-- btn add heroes -->
                 <a href="{{ route('add_heroe') }}" class="btn_add_heroe_head" id="header_actions">
                     ДОБАВИТЬ ГЕРОЯ
-                </a>
+                </a> --}}
                 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
@@ -114,7 +114,47 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            
+            <center>
+                <div class="wrapper_for_profile_info">
+                    <h1>ВАШ ПРОФИЛЬ</h1>
+                
+                    <label class="profile_name">ИМЯ: </label>
+                    <input type="text" class="profile_name_input"
+                        value="{{ $user->first_name }}"
+                        disabled /> 
+ 
+                    <label class="profile_last_name">ФАМИЛИЯ: </label>
+                    <input type="text" class="profile_last_name_input" 
+                        value="{{ $user->last_name }}"
+                        disabled /> 
+                    
+                    <label class="profile_patronymic">ОТЧЕСТВО: </label>
+                    <input type="text" class="profile_patronymic_input" 
+                        value="{{ $user->patronymic }}"
+                        disabled /> 
+ 
+                    <label class="profile_login">ЛОГИН: </label>
+                    <input type="text" class="profile_login_input" 
+                        value="{{ $user->login }}"
+                        disabled /> 
+                    
+                    <label class="profile_email">ПОЧТА: </label>
+                    <input type="text" class="profile_email_input" 
+                        value="{{ $user->email }}"
+                        disabled /> 
+                    
+
+                    <form action="/" method="post">
+                        <button class="btn_edit" type="submit">
+                            ИЗМЕНИТЬ
+                        </button>                    
+                    
+                        <button class="btn_done" type="submit" disabled>
+                            ГОТОВО
+                        </button>  
+                    </form>
+                </div>
+            </center>
         </main>
 
 

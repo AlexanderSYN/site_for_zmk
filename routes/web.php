@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\UserController;
 
 //--------------------------------------------
 // for main page
@@ -35,7 +36,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])->middleware('auth')->
 // Routes for authorized users with ban verification
 //----------------------------------------------------
 Route::middleware(['auth'])->group(function() {
-   Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+        
 });
 
 //----------------------------------------------------

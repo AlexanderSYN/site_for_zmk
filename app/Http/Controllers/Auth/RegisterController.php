@@ -54,11 +54,19 @@ class RegisterController extends Controller
                 'password' => Hash::make($validated['password'])
             ]);
         } catch (Exception $e) {
+            if ($e->getMessage() == "Undefined array key 1" ||
+                $e->getMessage() == "Undefined array key 2") {
+                   return back()
+                        ->withInput()
+                        ->withErrors([
+                        'error' => 'ВЫ ВВЕЛИ НЕПОЛНЫЕ ДАННЫЕ (В ПОЛЕ ФИО)!'
+                ]);   
+            }
             return back()
                 ->withInput()
                 ->withErrors([
-                    'error' => 'ВЫ ВВЕЛИ НЕПОЛНЫЕ ДАННЫЕ!'
-                ]);
+                'error' => 'НЕИЗВЕСТНАЯ ОШИБКА!'
+            ]);
         }
 
         Auth::login($user);
