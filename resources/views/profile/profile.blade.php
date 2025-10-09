@@ -116,18 +116,21 @@
         <main class="flex-grow-1">
             <center>
                 <div class="wrapper_for_profile_info">
-                    <form action="{{ route('change_data') }}" method="post">
+                    <form action="{{ route('change_data') }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <h1>ВАШ ПРОФИЛЬ</h1>
                 
                         <label class="profile_name">ИМЯ: </label>
                         <input type="text" class="profile_name_input"
+                            name="first_name"
                             id="profile_name" 
                             value="{{ $user->first_name }}"
                             disabled /> 
  
                         <label class="profile_last_name">ФАМИЛИЯ: </label>
-                        <input type="text" class="profile_last_name_input" 
+                        <input type="text" class="profile_last_name_input"
+                            name="last_name"
                             id="profile_last_name" 
                             value="{{ $user->last_name }}"
                             disabled /> 
@@ -135,18 +138,21 @@
                         <label class="profile_patronymic">ОТЧЕСТВО: </label>
                         <input type="text" class="profile_patronymic_input" 
                             id="profile_patronymic" 
+                            name="patronymic"
                             value="{{ $user->patronymic }}"
                             disabled /> 
  
                         <label class="profile_login">ЛОГИН: </label>
                         <input type="text" class="profile_login_input" 
                             id="profile_login" 
+                            name="login"
                             value="{{ $user->login }}"
                             disabled /> 
                     
                         <label class="profile_email">ПОЧТА: </label>
                         <input type="text" class="profile_email_input" 
                             id="profile_email"
+                            name="email"
                             value="{{ $user->email }}"
                             disabled /> 
                     

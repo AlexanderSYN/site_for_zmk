@@ -50,8 +50,10 @@ Route::get('/profile/banned', [BannedController::class, 'show'])
 //----------------------------------------------------
 // change data profiles
 //----------------------------------------------------
-Route::post('/profile/changed_data', [ProfileController::class, 'change_data'])->middleware('auth')->name('change_data');
-
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile/change-data', [ProfileController::class, 'change_data'])->name('change_data');
+});
 
 //--------------------------------------------
 // for add heroes and memory places
