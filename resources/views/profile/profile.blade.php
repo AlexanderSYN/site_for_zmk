@@ -64,12 +64,12 @@
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
 
-
                         <a href="{{ route('profile') }}" style="color: #413939" class="header_menu_link">
                             Профиль
                         </a>
                         
                         <form method="POST" action="/" class="header_menu_form">
+                            @csrf
                             <!-- Герои ВОВ -->
                             <input 
                                 class="header_menu_link" type="submit" 

@@ -58,7 +58,4 @@ Route::middleware('auth')->group(function () {
 //--------------------------------------------
 // for add heroes and memory places
 //--------------------------------------------
-//--------------------------------------------
-// add heroe
-//--------------------------------------------
-Route::get('/add_heroe', [])->middleware('auth')->name('add_heroe');
+Route::post('/profile/heroes_vov', [HeroesVovController::class, 'show'])->middleware('auth')->name('hereos_vov');

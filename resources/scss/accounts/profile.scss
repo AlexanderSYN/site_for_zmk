@@ -264,3 +264,101 @@ header {
         word-wrap: break-word
     }
 }
+
+@media (max-width: 846px) {
+    //header
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        background-color: $color-bg-btn-up;
+
+        .header_actions .btn_entry_head {
+            background-color: #6d6969;
+            &:hover {
+                background-color: #a09d9d;
+            }
+        }
+    }
+}
+
+@media (max-width: 702px) {
+    //header 
+    .header_menu_item {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .header_menu_form {
+        gap: 15px;
+        flex-direction: column;
+    }
+        
+    .header_menu_link {
+        font-size: 16px;
+    }
+
+    // main
+    .wrapper_for_profile_info {
+        width: 540px;
+        height: 935px;
+
+        h1 {
+            margin-bottom: 0rem;
+        }
+        .profile_name_input {
+            margin-left: 0rem;
+        }
+        .profile_login_input {
+            margin-left: 0rem;
+        }
+        .profile_email_input {
+            margin-left: 0rem;
+        }
+
+        .btn_edit {
+            width: 439.49px;    
+        }
+
+        .btn_done {
+            width: 439.49px;    
+        }
+    }
+}
+
+@media (max-width: 538px) {
+    //main
+    .wrapper_for_profile_info {
+        width: 492px;
+        height: 931px;
+    }
+}
+
+@media (max-width: 494px) {
+    //main
+    .wrapper_for_profile_info {
+        width: 450px;
+        height: 931px;
+    }
+}
+
+@media (max-width: 454px) {
+    // main
+    .wrapper_for_profile_info {
+        width: 364px;
+        height: 1007px;
+    }
+
+    .wrapper_for_profile_info input {
+        font-size: 35px;
+        width: 19rem;
+        border-radius: 18px;
+    }
+
+    //btns
+    .wrapper_for_profile_info .btn_edit {
+        width: 325.49px;
+    }
+    .wrapper_for_profile_info .btn_done {
+        width: 329.49px;
+    }
+}
