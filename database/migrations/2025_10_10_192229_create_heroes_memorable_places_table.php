@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('heroes__memorable_places', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();
             $table->timestamps();
 
             $table->string('city');
+            $table->string('added_id_user')->primary();
+            $table->string('added_user')->primary();
         });
     }
 

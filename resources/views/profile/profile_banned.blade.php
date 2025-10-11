@@ -7,7 +7,7 @@
 
 
     <!-- ICON -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -22,7 +22,7 @@
         <main class="flex-grow-1" style="margin-top: 26rem;">
             <center>
                 <div class="banned-container">
-                    <h1 style="color: #e81b2fff">🚫 Аккаунт заблокирован 🚫</h1>
+                    <h1 style="color: #e81b2fff">🚫 Аккаунт был заблокирован 🚫</h1>
                     <h3 style="color: #e81b2fff">Ваш аккаунт был заблокирован администратором.</h3>
                     <h3 style="color: #e81b2fff; margin-bottom: 2rem;">Для получения дополнительной информации обратитесь в поддержку.</h3>
         

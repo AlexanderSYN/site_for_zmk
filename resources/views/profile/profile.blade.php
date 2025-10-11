@@ -68,28 +68,20 @@
                             Профиль
                         </a>
                         
-                        <form method="POST" action="/" class="header_menu_form">
-                            @csrf
-                            <!-- Герои ВОВ -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_vov" value="Герои ВОВ"
-                            />
+                        <!-- Герои ВОВ -->
+                        <a href="{{ route('heroes_vov_profile')}}" class="header_menu_link">
+                            Герои ВОВ
+                        </a>
 
+                        <!-- Герои СВО -->
+                        <a href="/" class="header_menu_link">
+                            Герои СВО
+                        </a>
 
-                            <!-- Герои СВО -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_svo" value="Герои СВО"
-                            />
-
-                            
-                            <!-- Памятные Места -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_svo" value="Памятные Места"
-                            />
-                        </form>
+                        <!-- Памятные Места -->
+                        <a href="/" class="header_menu_link">
+                            Памятные Места
+                        </a>    
                     
                     </li>
                 </ul>

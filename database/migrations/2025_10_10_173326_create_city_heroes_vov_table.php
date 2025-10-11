@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('heroes_svo', function (Blueprint $table) {
-            $table->id();
+        Schema::create('city_heroes_vov', function (Blueprint $table) {
+            $table->id()->primary();
             $table->timestamps();
 
             $table->string('city');
+            $table->string('added_id_user')->primary();
+            $table->string('added_user')->primary();
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('heroes_svo');
+        Schema::dropIfExists('city_heroes_vov');
     }
 };

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\HeroesVovController;
+
 use App\Http\Controllers\UserController;
 
 //--------------------------------------------
@@ -58,4 +60,6 @@ Route::middleware('auth')->group(function () {
 //--------------------------------------------
 // for add heroes and memory places
 //--------------------------------------------
-Route::post('/profile/heroes_vov', [HeroesVovController::class, 'show'])->middleware('auth')->name('hereos_vov');
+Route::middleware('auth')->group(function() {
+    Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->middleware('auth')->name('heroes_vov_profile');
+});

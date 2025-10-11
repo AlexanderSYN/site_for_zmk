@@ -63,34 +63,24 @@
             <nav class="header_menu show" id="header_menu">
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
-
-
                         <a href="/" class="header_menu_link" style="color:#FFFFFF">
                             Главная
                         </a>
                         
-                        <form method="POST" action="/" class="header_menu_form">
-                            <!-- Герои ВОВ -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_vov" value="Герои ВОВ"
-                            />
+                        <!-- Герои ВОВ -->
+                        <a href="/" class="header_menu_link">
+                            Герои ВОВ
+                        </a>
 
+                        <!-- Герои СВО -->
+                        <a href="/" class="header_menu_link">
+                            Герои СВО
+                        </a>
 
-                            <!-- Герои СВО -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_svo" value="Герои СВО"
-                            />
-
-                            
-                            <!-- Памятные Места -->
-                            <input 
-                                class="header_menu_link" type="submit" 
-                                name="heroes_svo" value="Памятные Места"
-                            />
-                        </form>
-                    
+                        <!-- Памятные Места -->
+                        <a href="/" class="header_menu_link">
+                            Памятные Места
+                        </a>              
                     </li>
                 </ul>
             </nav>
@@ -196,33 +186,24 @@
                         <ul class="footer_menu_list">
                             <li class="footer_menu_item">
 
-
                                 <a href="#up" class="footer_menu_link">
                                     Главная
                                 </a>
 
+                                <!-- Герои ВОВ -->
+                                <a href="/" class="footer_menu_link">
+                                    Герои ВОВ
+                                </a>
 
-                                <form method="POST" action="/" class="footer_menu_form">
-                                    <!-- Герои ВОВ -->
-                                    <input 
-                                        class="footer_menu_link" type="submit" 
-                                        name="heroes_vov" value="Герои ВОВ"
-                                    />
+                                <!-- Герои СВО -->
+                                <a href="/" class="footer_menu_link">
+                                    Герои СВО
+                                </a>
 
-
-                                    <!-- Герои СВО -->
-                                    <input 
-                                        class="footer_menu_link" type="submit" 
-                                        name="heroes_svo" value="Герои СВО"
-                                    />
-
-
-                                    <!-- Памятные Места -->
-                                    <input 
-                                        class="footer_menu_link" type="submit" 
-                                        name="heroes_svo" value="Памятные Места"
-                                    />
-                                </form>
+                                <!-- Памятные Места -->
+                                <a href="/" class="footer_menu_link">
+                                    Памятные Места
+                                </a>    
                             
                             </li>
                         </ul>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,16 +40,15 @@ class ProfileController extends Controller
                 ->withErrors($validator);
         }  
 
-        DB::table('users')
-            ->where('id', $user->id)
-            ->update([
+        User::where('id', $user->id)
+            ->update(array(
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'patronymic' => $request->patronymic,
                 'login' => $request->login,
-                'email' => $request->email,
-                'updated_at' => now()
-            ]);
+                'email' => $request->email
+            ));
+            
 
         return redirect()->route('profile')
             ->with('success', 'Данные профиля успешно обновлены!');

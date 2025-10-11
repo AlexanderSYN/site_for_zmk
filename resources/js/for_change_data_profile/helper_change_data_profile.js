@@ -1,4 +1,13 @@
 //----------------------------------------------
+// here you get all the input and button from the
+// profile page, when you click on the edit button,
+// the button color changed to gray, you can change
+// the data in the input and the done button glowed
+// green so that you can click on it
+//----------------------------------------------
+
+
+//----------------------------------------------
 // getting all inputs
 //----------------------------------------------
 const input_profile_name = document.getElementById('profile_name');
