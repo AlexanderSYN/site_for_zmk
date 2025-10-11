@@ -16,8 +16,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('city');
-            $table->string('added_id_user')->primary();
-            $table->string('added_user')->primary();
+            $table->string('added_user_id')
+                ->consntrained('users') // refers to the users table
+                ->onDelete('cascade'); // when a user is deleted, his records are deleted
         });
     }
 

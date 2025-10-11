@@ -101,7 +101,40 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            
+            <h1 style="
+            text-align: center; 
+            font-family: inherit; 
+            font-weight: 600;
+            font-size: 60px;">Герои ВОВ (Добавления героя)</h1>
+
+            @if($heroesVov->count() > 0)
+                @foreach ($heroesVov as $heroVov)
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Город: {{ $heroVov->city }}</h5>
+                            <p class="card-text">
+                                <!-- Теперь получаем имя пользователя через связь -->
+                                Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
+                                <br>
+                                <small class="text-muted">
+                                    ID пользователя: {{ $heroVov->user_id }} | 
+                                    Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
+                                </small>
+                            </p>
+                            <form action="/" method="post">
+                            
+                                <input type="hidden" name="city" value="{{ $heroVov->city }}" />
+
+                                <button type="button" class="btn btn-primary">Перейти</button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="alert alert-info">
+                    Нет данных для отображения
+                </div>
+            @endif
         </main>
 
 
