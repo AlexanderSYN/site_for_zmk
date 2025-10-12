@@ -143,8 +143,31 @@ header {
             }
         }
 
-        // btn add heroe
+        // btn add heroe / city
         .btn_add_heroe_head {
+            width: 166px; 
+            height: 41px;
+            text-decoration: none; 
+            padding: 12px; 
+            background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+            color: $white;
+            overflow: hidden; 
+            border-radius: 8px; 
+            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+            outline-offset: -1px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+            display: inline-flex;
+            cursor: pointer;
+           
+    
+            &:hover {
+                background: #797878;
+            }
+        }
+
+        .btn_add_city_head {
             width: 166px; 
             height: 41px;
             text-decoration: none; 

@@ -161,6 +161,32 @@ header .header_actions .btn_add_heroe_head {
 header .header_actions .btn_add_heroe_head:hover {
   background: #797878;
 }
+header .header_actions .btn_add_city_head {
+  width: 166px;
+  height: 41px;
+  text-decoration: none;
+  padding: 12px;
+  background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+header .header_actions .btn_add_city_head:hover {
+  background: #797878;
+}
 
 .wrapper_for_profile_info {
   width: 699px;

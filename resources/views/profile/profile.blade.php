@@ -89,11 +89,6 @@
 
 
             <div class="header_actions" id="header_actions">
-                {{-- <!-- btn add heroes -->
-                <a href="{{ route('add_heroe') }}" class="btn_add_heroe_head" id="header_actions">
-                    ДОБАВИТЬ ГЕРОЯ
-                </a> --}}
-                
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
                     ВЫЙТИ

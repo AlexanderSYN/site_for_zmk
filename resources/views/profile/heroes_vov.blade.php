@@ -89,6 +89,10 @@
 
 
             <div class="header_actions" id="header_actions">
+                <!-- btn add_city -->
+                <a href="{{ route('add_city') }}" class="btn_add_city_head" id="header_actions">
+                    ДОБАВИТЬ ГОРОД
+                </a> 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
                     ВЫЙТИ
@@ -111,9 +115,10 @@
                 @foreach ($heroesVov as $heroVov)
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Город: {{ $heroVov->city }}</h5>
+                            <h5 class="card-title" style="font-weight: 600;
+                                                    font-size: 30px;">Город: {{ $heroVov->city }}</h5>
                             <p class="card-text">
-                                <!-- Теперь получаем имя пользователя через связь -->
+                                <!-- we get the user's name through the link -->
                                 Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
                                 <br>
                                 <small class="text-muted">
@@ -123,9 +128,12 @@
                             </p>
                             <form action="/" method="post">
                             
-                                <input type="hidden" name="city" value="{{ $heroVov->city }}" />
+                                <input type="hidden" name="city" 
+                                value="{{ $heroVov->city }}" />
 
-                                <button type="button" class="btn btn-primary">Перейти</button>
+                                <button type="button" class="btn btn-primary">
+                                    Перейти
+                                </button>
                             </form>
                         </div>
                     </div>

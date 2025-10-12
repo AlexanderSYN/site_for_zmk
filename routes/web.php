@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,5 +62,8 @@ Route::middleware('auth')->group(function () {
 // for add heroes and memory places
 //--------------------------------------------
 Route::middleware('auth')->group(function() {
+    // add city
+    Route::get('/profile/add_city', [AddCityController::class, 'show'])->middleware('auth')->name('add_city');
+
     Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->middleware('auth')->name('heroes_vov_profile');
 });
