@@ -90,9 +90,15 @@
 
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
-                <a href="{{ route('add_city') }}" class="btn_add_city_head" id="header_actions">
-                    ДОБАВИТЬ ГОРОД
-                </a> 
+                <form action="{{ route('add_city') }}" method="post">                    
+                    @csrf
+                    <input type="hidden" name="name_hero" value="ВОВ" />
+
+                    <button type="submit" class="btn_add_city_head">
+                          ДОБАВИТЬ ГОРОД
+                    </button>
+                </form>
+
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
                     ВЫЙТИ
@@ -105,11 +111,12 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            <h1 style="
+            <center>
+                <h1 style="
             text-align: center; 
             font-family: inherit; 
             font-weight: 600;
-            font-size: 60px;">Герои ВОВ (Добавления героя)</h1>
+            font-size: 60px;">Герои ВОВ (Добавления Героя)</h1>
 
             @if($heroesVov->count() > 0)
                 @foreach ($heroesVov as $heroVov)
@@ -143,6 +150,7 @@
                     Нет данных для отображения
                 </div>
             @endif
+            </center>
         </main>
 
 

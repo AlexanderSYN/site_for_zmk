@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class AddCityController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
         $user = Auth::user();
+        $city = $request->input('name_hero');
 
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
 
-        return view('profile.add_hero_and_city.add_city', ['user' => $user]);
+        return view('profile.add_hero_and_city.add_city', ['user' => $user, 'city' => $city]);
     }
 
     

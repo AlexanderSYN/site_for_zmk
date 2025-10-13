@@ -16,7 +16,8 @@
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
-<body style="background:#EFEFEF">
+<!-- style="background:#EFEFEF" -->
+<body style=" background-image: url('/image/bg/old-paper-bg.png')">
     
     <div class="d-flex flex-column justify-content-between min-vh-100">
         
@@ -39,25 +40,30 @@
                     <h1>ДОБАВЛЕНИЯ ГОРОДА</h1>
                     
                     <div class="wrapper_input">
-                        <input type="hidden" name="id"
-                            value="{{ $user->id }}" />
+                        <form action="{{  route('login') }}" method="post">
+                            <input type="hidden" name="id"
+                                value="{{ $user->id }}" />
 
-                        <input type="hidden" name="first_name"
-                            value="{{ $user->first_name }}" />
+                            <input type="hidden" name="first_name"
+                                value="{{ $user->first_name }}" />
 
-                        <input type="hidden" name="first_name"
-                            value="{{ $user->last_name }}" />
+                            <input type="hidden" name="first_name"
+                                value="{{ $user->last_name }}" />
 
-                        <input type="hidden" name="first_name"
-                            value="{{ $user->patronymic }}" />
+                            <input type="hidden" name="first_name"
+                                value="{{ $user->patronymic }}" />
 
-                        <input type="text" name="city"
-                            placeholder="Введите город" />
+                            <input type="text" name="heroes"
+                                value="{{ $city }}" disabled />
+
+                            <input type="text" name="city"
+                                placeholder="Введите город" />
 
 
-                        <a href="{{ route('login') }}" class="btn_entry">
-                            ДОБАВИТЬ
-                        </a>
+                            <button class="btn_entry">
+                                ДОБАВИТЬ
+                            </button>
+                        </form>
                     </div>
                 </div>
            </center>
