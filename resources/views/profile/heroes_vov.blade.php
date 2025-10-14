@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Герои ВОВ</title>
+    <title>Выбор Города</title>
 
 
     <!-- ICON -->
@@ -113,7 +113,7 @@
         <main class="flex-grow-1">
             <center>
                 <h1 style="
-            ">Герои ВОВ (Добавления Героя)</h1>
+            ">Герои ВОВ (Выберите Город)</h1>
 
             @if($heroesVov->count() > 0)
                 @foreach ($heroesVov as $heroVov)

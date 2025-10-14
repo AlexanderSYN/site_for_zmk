@@ -20,7 +20,7 @@ main h1 {
   overflow-wrap: break-word;
   white-space: normal;
 }
-main h2, main p {
+main h2, main h3, main p {
   max-width: 1160px;
   width: 100%;
   text-align: left;

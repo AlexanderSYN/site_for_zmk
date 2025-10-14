@@ -20,6 +20,15 @@ class AddCityController extends Controller
 
         return view('profile.add_hero_and_city.add_city', ['user' => $user, 'city' => $city]);
     }
-    
+
+    public function store(Request $request)
+    {
+        // $user = Auth::user();
+        // // get vov or svo or memorable places
+        // $user_selected_content = $request->input('content');
+
+        
+    }
+
     
 }

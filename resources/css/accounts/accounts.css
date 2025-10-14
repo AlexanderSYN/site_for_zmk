@@ -192,6 +192,12 @@
   margin-bottom: 20px;
   border-radius: 10px;
 }
+.wrapper_register .description_city {
+  width: 27rem;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
 .wrapper_register .btn_entry {
   width: 434px;
   height: 56px;

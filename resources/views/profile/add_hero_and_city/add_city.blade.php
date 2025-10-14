@@ -41,23 +41,15 @@
                     
                     <div class="wrapper_input">
                         <form action="{{  route('login') }}" method="post">
-                            <input type="hidden" name="id"
-                                value="{{ $user->id }}" />
 
-                            <input type="hidden" name="first_name"
-                                value="{{ $user->first_name }}" />
-
-                            <input type="hidden" name="first_name"
-                                value="{{ $user->last_name }}" />
-
-                            <input type="hidden" name="first_name"
-                                value="{{ $user->patronymic }}" />
-
-                            <input type="text" name="heroes"
+                            <input type="text" name="content"
                                 value="{{ $city }}" disabled />
 
                             <input type="text" name="city"
                                 placeholder="Введите город" />
+
+                            <textarea name="description" class="description_city"
+                            placeholder="Введите Описание Города"></textarea>
 
 
                             <button class="btn_entry">
