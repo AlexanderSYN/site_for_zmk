@@ -1,4 +1,22 @@
 @charset "UTF-8";
+.privacy_policy {
+  text-decoration: none;
+}
+.privacy_policy:hover {
+  text-decoration: underline;
+}
+
+.wrap_politic_policy p {
+  margin-top: -2rem;
+  font-size: 17px;
+  margin-left: 2rem;
+}
+.wrap_politic_policy input[type=checkbox] {
+  margin-left: -28rem;
+  width: 2rem;
+  height: 1.5rem;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -7,6 +25,7 @@
     opacity: 1;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -42,7 +61,7 @@
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   width: 525px;
-  height: 532px;
+  height: auto;
   background: #D9D9D9;
   -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
@@ -145,7 +164,7 @@
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   width: 525px;
-  height: 644px;
+  height: auto;
   background: #D9D9D9;
   -webkit-box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25);
@@ -265,6 +284,9 @@
     width: 360px;
     height: 52px;
   }
+  .wrap_politic_policy input[type=checkbox] {
+    margin-left: -25rem;
+  }
 }
 @media (max-width: 462px) {
   .wrapper {
@@ -296,6 +318,9 @@
   .wrapper_register .btn_register {
     width: 360px;
     height: 52px;
+  }
+  .wrap_politic_policy input[type=checkbox] {
+    margin-left: -14rem;
   }
 }
 @media (max-width: 412px) {

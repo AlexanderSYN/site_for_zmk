@@ -6,6 +6,28 @@ $color-wrapper: #D9D9D9;
 $color-input: #dfe9f5;
 $font-family_for_entry:"Roboto Mono";
 
+.privacy_policy {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.wrap_politic_policy {
+    p {
+        margin-top: -2rem;
+        font-size: 17px;
+        margin-left: 2rem;
+    }
+
+    input[type="checkbox"] {
+        margin-left: -28rem;
+        width: 2rem;
+        height: 1.5rem;
+    }
+}
+
 //-----------------------
 // animation
 //-----------------------
@@ -45,7 +67,7 @@ $font-family_for_entry:"Roboto Mono";
     animation-delay: 0.2s;
     animation-fill-mode: forwards;
     width: 525px;
-    height: 532px;
+    height: auto;
     background: #D9D9D9; 
     box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
     border-radius: 18px;
@@ -142,7 +164,7 @@ $font-family_for_entry:"Roboto Mono";
     animation-delay: 0.2s;
     animation-fill-mode: forwards;
     width: 525px;
-    height: 644px;
+    height: auto;
     background: #D9D9D9; 
     box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
     border-radius: 18px;
@@ -274,6 +296,13 @@ $font-family_for_entry:"Roboto Mono";
         }
 
     }
+
+    // checkbox
+    .wrap_politic_policy {
+        input[type="checkbox"] {
+            margin-left: -25rem;
+        }
+    }
 }
 
 @media (max-width: 462px) {
@@ -321,6 +350,13 @@ $font-family_for_entry:"Roboto Mono";
             height: 52px; 
         }
 
+    }
+
+    // checkbox
+    .wrap_politic_policy {
+        input[type="checkbox"] {
+            margin-left: -14rem;
+        }
     }
 }
 

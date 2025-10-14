@@ -52,6 +52,8 @@
                                             {{ "Логин уже ЗАРЕГЕСТРИРОВАН!" }}
                                         @elseif ($message == "The password field must be at least 8 characters.")
                                             {{ "Пароль должен содержать минимум 8 символов!" }}
+                                        @elseif ($message = "validation.unique")
+                                            {{ "Логин или Почта уже ЗАРЕГЕСТРИРОВАНЫ!" }}
                                         @else
                                             {{ $message }}
                                         @endif
@@ -89,8 +91,23 @@
                             <a href="#" class="password_control" data-target="password">
                                 
                             </a>
+
+                            <div class="wrap_politic_policy">
+                                <input type="checkbox" name="check_privacy_policy"
+                                    id="check_privacy_policy" checked />
+                                <p>я соглашаюсь c 
+                                    <a href="{{ route('politic_policy') }}" class="privacy_policy">
+                                        политикой конфиденциальности
+                                    </a> 
+                                    и даю согласие на 
+                                    <a href="{{ route('politic_policy') }}" class="privacy_policy">
+                                     обработку персональных данных
+                                    </a>
+                                </p>
+                            </div>
  
-                            <button type="submit" class="btn_entry">
+                            <button type="submit" class="btn_entry" 
+                            id="btn_register">
                                 ЗАРЕГЕСТРИРОВАТЬСЯ
                             </button>
                         </form>
@@ -113,6 +130,7 @@
 
     <!-- JS -->
     @vite('resources/js/for_register/show_hide_password.js')
+    @vite('resources/js/for_register/active_disabled_btn_register.js')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

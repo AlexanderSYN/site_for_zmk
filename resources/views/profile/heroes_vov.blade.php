@@ -10,7 +10,7 @@
     <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('resources/css/accounts/profile.css')
+    @vite('resources/css/accounts/heroes.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -113,18 +113,13 @@
         <main class="flex-grow-1">
             <center>
                 <h1 style="
-            text-align: center; 
-            font-family: inherit; 
-            font-weight: 600;
-            font-size: 60px;">Герои ВОВ (Добавления Героя)</h1>
+            ">Герои ВОВ (Добавления Героя)</h1>
 
             @if($heroesVov->count() > 0)
                 @foreach ($heroesVov as $heroVov)
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title" style="font-weight: 600;
-                                                    font-size: 30px;">Город: {{ $heroVov->city }}</h5>
-                            <p class="card-text">
+                    <div class="card_body">
+                            <h5 class="card_title">Город: {{ $heroVov->city }}</h5>
+                            <p class="card_text">
                                 <!-- we get the user's name through the link -->
                                 Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
                                 <br>
@@ -138,12 +133,11 @@
                                 <input type="hidden" name="city" 
                                 value="{{ $heroVov->city }}" />
 
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn_go">
                                     Перейти
                                 </button>
                             </form>
                         </div>
-                    </div>
                 @endforeach
             @else
                 <div class="alert alert-info">

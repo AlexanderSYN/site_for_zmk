@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\HeroesVovController;
-
+use App\Http\Controllers\PoliticPolicyController;
 use App\Http\Controllers\UserController;
 
 //--------------------------------------------
@@ -31,6 +31,11 @@ Route::middleware('guest')->group(function () {
     //--------------------------------------------
     Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
+
+    //
+    // politic policy
+    //
+    Route::get('/politic_policy',[PoliticPolicyController::class, 'show'])->name('politic_policy');
 });
 
 Route::get('/logout', [LoginController::class, 'destroy'])->middleware('auth')->name('logout');

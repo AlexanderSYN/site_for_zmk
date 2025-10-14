@@ -20,6 +20,6 @@ class AddCityController extends Controller
 
         return view('profile.add_hero_and_city.add_city', ['user' => $user, 'city' => $city]);
     }
-
+    
     
 }
