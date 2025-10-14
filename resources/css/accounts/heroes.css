@@ -1,0 +1,282 @@
+body {
+  background-image: url("../../../public/image/bg/old-paper-bg.png");
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Kadwa", serif;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 100;
+  position: relative;
+  width: 100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  background-color: rgba(255, 252, 252, 0.5);
+}
+header .btn_show_menu, header .btn_close_menu {
+  position: absolute;
+  margin-top: -1rem;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  right: 0;
+}
+header .btn_show_menu img, header .btn_close_menu img {
+  width: 40%;
+}
+header .header_logo img {
+  opacity: 0.6;
+  width: 120px;
+  height: auto;
+  min-width: 100%;
+}
+header .header_menu_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+  margin-left: -2rem;
+}
+header .header_menu_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+header .header_menu_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .header_menu_link {
+  border: none;
+  background: inherit;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(16px, 3vw, 32px);
+  color: #aea6a6;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+header .header_menu_link:hover {
+  color: #413939;
+}
+header .header_actions {
+  margin: 0;
+}
+header .header_actions .btn_logout_head {
+  width: 166px;
+  height: 41px;
+  text-decoration: none;
+  padding: 12px;
+  background: var(--Background-Brand-Default, #2C2C2C);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+header .header_actions .btn_logout_head:hover {
+  background: #636262;
+}
+header .header_actions .btn_add_heroe_head {
+  width: 166px;
+  height: 41px;
+  text-decoration: none;
+  padding: 12px;
+  background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+header .header_actions .btn_add_heroe_head:hover {
+  background: #797878;
+}
+header .header_actions .btn_add_city_head {
+  width: 166px;
+  height: 41px;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  padding: 12px;
+  background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+  color: #FFFFFF;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+header .header_actions .btn_add_city_head:hover {
+  background: #797878;
+}
+
+main h1 {
+  text-align: center;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 60px;
+}
+main .card_body {
+  width: 54rem;
+  height: 10rem;
+  background-color: #FFFFFF;
+  border-radius: 18px;
+  -webkit-box-shadow: 0px 7px 0px 11px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 7px 0px 11px rgba(0, 0, 0, 0.16);
+}
+main .card_body .card_title {
+  font-weight: 600;
+  font-size: 30px;
+}
+main .card_body .btn_go {
+  width: 18rem;
+  height: 2.5rem;
+  background: #0d6efd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #FFFFFF;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+main .card_body .btn_go:hover {
+  background: #2658a2;
+}
+
+@media (max-width: 872px) {
+  main .card_body {
+    width: 43rem;
+  }
+}
+@media (max-width: 846px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+    background-color: #2C2C2C;
+  }
+  header .header_actions .btn_entry_head {
+    background-color: #6d6969;
+  }
+  header .header_actions .btn_entry_head:hover {
+    background-color: #a09d9d;
+  }
+}
+@media (max-width: 702px) {
+  .header_menu_item {
+    gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header_menu_form {
+    gap: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .header_menu_link {
+    font-size: 16px;
+  }
+}
+@media (max-width: 694px) {
+  main h1 {
+    font-size: 45px;
+  }
+  main .card_body {
+    width: 37rem;
+  }
+}
+@media (max-width: 606px) {
+  main .card_body {
+    width: 26rem;
+  }
+}
+@media (max-width: 426px) {
+  main .card_body {
+    width: 20rem;
+  }
+}

@@ -1,0 +1,307 @@
+// settings
+// set background
+// header
+// main
+
+// variables
+$white: #FFFFFF;
+$black: #000000;
+$font-size-header-text: 32px;
+$font-family: 'Kadwa', serif;
+$color-bg-btn-up: #2C2C2C;
+$color-btn-up: #F5F5F5;
+
+// settings
+// set background
+body {
+    background-image: url('../../../public/image/bg/old-paper-bg.png');
+}
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-family;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style-type: none;
+}
+
+// header
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+    background-color: rgba(255, 252, 252, 0.5);
+
+    // show and close button 
+    .btn_show_menu, .btn_close_menu  {
+        position: absolute;
+        margin-top: -1rem;
+        color: inherit;
+        background: none;
+        border: none;
+        padding: 0;
+        right: 0;
+
+        & img {
+            width: 40%;
+        }
+    }
+
+    // logo
+    .header_logo img {
+        opacity: 0.6;
+        width: 120px;
+        height: auto;
+        min-width: 100%;
+    }
+
+    // haeder manu list
+    .header_menu_list {
+        display: flex;
+        gap: 50px;
+        margin-left: -2rem;
+    }
+
+    // header menu item
+    .header_menu_item {
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    // header menu form
+    .header_menu_form {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    // header menu link
+    .header_menu_link {
+        border: none;
+        background: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: clamp(16px, 3vw, $font-size-header-text);
+        color: #aea6a6;
+        letter-spacing: 1.2px;
+        white-space: nowrap;
+        transition: opacity 0.3s;
+
+        &:hover {
+            color: #413939;
+        }
+        
+    }
+
+    
+
+    // header actions 
+    .header_actions {
+        margin: 0;
+
+        // button exit from profile
+        .btn_logout_head {
+            width: 166px; 
+            height: 41px;
+            text-decoration: none; 
+            padding: 12px; 
+            background: var(--Background-Brand-Default, #2C2C2C); 
+            color: $white;
+            overflow: hidden; 
+            border-radius: 8px; 
+            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+            outline-offset: -1px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+            display: inline-flex;
+            cursor: pointer;
+           
+    
+            &:hover {
+                background: #636262;
+            }
+        }
+
+        // btn add heroe / city
+        .btn_add_heroe_head {
+            width: 166px; 
+            height: 41px;
+            text-decoration: none; 
+            padding: 12px; 
+            background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+            color: $white;
+            overflow: hidden; 
+            border-radius: 8px; 
+            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+            outline-offset: -1px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+            display: inline-flex;
+            cursor: pointer;
+           
+    
+            &:hover {
+                background: #797878;
+            }
+        }
+
+        .btn_add_city_head {
+            width: 166px; 
+            height: 41px;
+            margin-bottom: 0.5rem;
+            text-decoration: none; 
+            padding: 12px; 
+            background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
+            color: $white;
+            overflow: hidden; 
+            border-radius: 8px; 
+            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+            outline-offset: -1px; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 8px; 
+            display: inline-flex;
+            cursor: pointer;
+           
+    
+            &:hover {
+                background: #797878;
+            }
+        }
+    }
+}
+
+// main
+main {
+    h1 {
+        text-align: center; 
+        font-family: inherit; 
+        font-weight: 600;
+        font-size: 60px;
+    }
+
+    // card for select of heroes
+    .card_body {
+        width: 54rem;
+        height: 10rem;
+        background-color: $white;
+        border-radius: 18px;
+        box-shadow: 0px 7px 0px 11px rgba(0, 0, 0, 0.16);
+
+        .card_title {
+            font-weight: 600;
+            font-size: 30px;
+        }
+
+        .btn_go {
+            width: 18rem;
+            height: 2.5rem;
+            background: #0d6efd;
+            border-radius: 8px;
+            text-decoration: none;
+            color: $white;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                        0 1px 1px rgba(0, 0, 0, 0.075);
+
+            &:hover {
+                background: #2658a2;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 872px) {
+    main {
+        // card body
+        .card_body {
+            width: 43rem;
+        }
+    }
+}
+
+@media (max-width: 846px) {
+    //header
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        background-color: $color-bg-btn-up;
+
+        .header_actions .btn_entry_head {
+            background-color: #6d6969;
+            &:hover {
+                background-color: #a09d9d;
+            }
+        }
+    }
+}
+
+@media (max-width: 702px) {
+    //header 
+    .header_menu_item {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .header_menu_form {
+        gap: 15px;
+        flex-direction: column;
+    }
+        
+    .header_menu_link {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 694px) {
+    main {
+        h1 {
+            font-size: 45px;
+        }
+        // card body
+        .card_body {
+            width: 37rem;
+        }
+    }   
+}
+
+@media (max-width: 606px) {
+    main {
+        // card body
+        .card_body {
+            width: 26rem;
+        }
+    }   
+}
+
+@media (max-width: 426px) {
+    main {
+        // card body
+        .card_body {
+            width: 20rem;
+        }
+    }   
+}
+

@@ -1,0 +1,29 @@
+/* System */
+/* header */
+/* main */
+/* footer */
+/* another devices */
+/* System */
+html, body {
+  background-image: url("../../../public/image/bg/old-paper-bg.png");
+  color: #555;
+  font-size: 20px;
+  scroll-behavior: smooth;
+}
+
+/* main */
+/* text */
+main h1 {
+  max-width: 1160px;
+  width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+main h2, main p {
+  max-width: 1160px;
+  width: 100%;
+  text-align: left;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
