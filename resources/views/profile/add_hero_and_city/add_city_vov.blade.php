@@ -24,7 +24,7 @@
         <!-- HEADER -->
         <header id="up">
 
-            <a href="{{ route('heroes_vov_profile') }}">
+            <a href="{{ route('heroes_vov_profile_city') }}">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
                     alt="стрелка назад" width="130px"
@@ -40,16 +40,28 @@
                     <h1>ДОБАВЛЕНИЯ ГОРОДА</h1>
                     
                     <div class="wrapper_input">
-                        <form action="{{  route('login') }}" method="post">
+                        <form action="{{ route('add_city_in_BD') }}" method="post">
+                            @csrf
 
-                            <input type="text" name="content"
-                                value="{{ $city }}" disabled />
+                            <!-- notifications -->
+                            <ul>
+                                @foreach ($errors->all() as $message)
+
+                                    <div class="notice error">
+                                        {{ $message }}
+                                    </div>
+                                @endforeach
+                                 
+                            </ul>
+
+                            <input type="hidden" name="content"
+                                value="ВОВ" />
 
                             <input type="text" name="city"
-                                placeholder="Введите город" />
+                                placeholder="Введите город" required/>
 
                             <textarea name="description" class="description_city"
-                            placeholder="Введите Описание Города"></textarea>
+                            placeholder="Введите Описание Города" required></textarea>
 
 
                             <button class="btn_entry">

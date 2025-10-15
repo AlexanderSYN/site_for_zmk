@@ -69,7 +69,7 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile')}}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 

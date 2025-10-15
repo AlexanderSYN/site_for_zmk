@@ -69,7 +69,7 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile')}}" style="color: #413939" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" style="color: #413939" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
@@ -112,8 +112,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1 style="
-            ">Герои ВОВ (Выберите Город)</h1>
+                <h1>Герои ВОВ (Выберите Город)</h1>
 
             @if($heroesVov->count() > 0)
                 @foreach ($heroesVov as $heroVov)
@@ -124,7 +123,7 @@
                                 Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
                                 <br>
                                 <small class="text-muted">
-                                    ID пользователя: {{ $heroVov->user_id }} | 
+                                    ID пользователя: {{ $heroVov->user->id }} | 
                                     Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>

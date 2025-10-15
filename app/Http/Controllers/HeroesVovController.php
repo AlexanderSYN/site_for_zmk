@@ -8,7 +8,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\city_heroes_vov;
+use App\Models\city_heroes;
 
 
 class HeroesVovController extends Controller
@@ -21,26 +21,9 @@ class HeroesVovController extends Controller
             return redirect()->route('profile_banned');
         }
         
-        $heroesVov = city_heroes_vov::with('user')->get();
+        $heroesVov = city_heroes::with('user')->get();
         
         return view('profile.heroes_vov',  compact('heroesVov'));
-    }
-
-    public function store(Request $request)
-    {
-        $user = Auth::user();
-
-        $request->validate([
-            'city' => 'required|string|max:255'
-        ]);
-
-        city_heroes_vov::create([
-            'city' => $request->city,
-            'user_added' => $user->first_name,
-            'user_added_id' => $user->id
-        ]);
-
-        return redirect()->route('heroes_vov_profile');
     }
     
 }

@@ -68,8 +68,12 @@ Route::middleware('auth')->group(function () {
 //--------------------------------------------
 Route::middleware('auth')->group(function() {
     // add city
-    Route::get('/profile/add_city', [AddCityController::class, 'show'])->middleware('auth')->name('add_city');
-    Route::post('/profile/add_city', [AddCityController::class, 'show'])->middleware('auth')->name('add_city');
+    Route::get('/profile/add_city', [AddCityController::class, 'show'])->name('add_city');
+    Route::post('/profile/add_city', [AddCityController::class, 'show'])->name('add_city');
 
-    Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->middleware('auth')->name('heroes_vov_profile');
+    Route::get('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
+    Route::post('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
+
+    Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->name('heroes_vov_profile_city');
+
 });
