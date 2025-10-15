@@ -21,7 +21,7 @@ class HeroesVovController extends Controller
             return redirect()->route('profile_banned');
         }
         
-        $heroesVov = city_heroes::with('user')->get();
+        $heroesVov = city_heroes::with('user')->get()->where('type', 'ВОВ');
         
         return view('profile.heroes_vov',  compact('heroesVov'));
     }

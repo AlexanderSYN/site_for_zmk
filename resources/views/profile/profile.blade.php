@@ -74,7 +74,7 @@
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_profile_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 

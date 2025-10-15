@@ -74,7 +74,7 @@
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_profile_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
@@ -117,7 +117,7 @@
             @if($heroesVov->count() > 0)
                 @foreach ($heroesVov as $heroVov)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroVov->city }}</h5>
+                            <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                                 Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}

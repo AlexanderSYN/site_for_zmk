@@ -21,7 +21,14 @@ class AddCityController extends Controller
             return redirect()->route('profile_banned');
         }
 
-        return view('profile.add_hero_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
+        if ($city == "ВОВ") {
+            return view('profile.add_hero_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
+        } 
+        else if ($city == "СВО") {
+            return view('profile.add_hero_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
+        }
+
+        return view('profile.profile', ['user' => $user]);
     }
 
     public function store(Request $request)
@@ -60,13 +67,23 @@ class AddCityController extends Controller
                 'added_user_name' => $user->first_name
             ]);
 
-
-            return redirect()->route('heroes_vov_profile_city');
+            if ($user_selected_content == "ВОВ")
+            {
+                return redirect()->route('heroes_vov_profile_city');
+            }
+            else if ($user_selected_content == "СВО")
+            {
+                return redirect()->route('heroes_vov_profile_city');
+            }
+            else 
+            {
+                return redirect()->route('profile');
+            }
             
 
         } catch (Exception $e) {
              return redirect()->back()
-                    ->withErrors($e->getMessage())
+                    ->withErrors("Неизвестная Ошибка!")
                     ->withInput();
         
         }
