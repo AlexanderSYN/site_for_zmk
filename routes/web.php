@@ -36,9 +36,9 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 
-    //
+    //--------------------------------------------
     // politic policy
-    //
+    //--------------------------------------------
     Route::get('/politic_policy',[PoliticPolicyController::class, 'show'])->name('politic_policy');
 });
 
@@ -71,7 +71,9 @@ Route::middleware('auth')->group(function () {
 // for add heroes and memory places
 //--------------------------------------------
 Route::middleware('auth')->group(function() {
+    //--------------------------------------------
     // add city
+    //--------------------------------------------
     Route::get('/profile/add_city', [AddCityController::class, 'show'])->name('add_city');
     Route::post('/profile/add_city', [AddCityController::class, 'show'])->name('add_city');
     Route::get('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
@@ -84,4 +86,6 @@ Route::middleware('auth')->group(function() {
     // redirect to added heroes page
     //--------------------------------------------
     Route::get('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page');
+    Route::post('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page');
+
 });

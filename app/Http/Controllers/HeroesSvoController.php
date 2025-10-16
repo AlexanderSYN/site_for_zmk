@@ -16,8 +16,8 @@ class HeroesSvoController extends Controller
             return redirect()->route('profile_banned');
         }
 
-        $heroesSvo = city_heroes::with('user')->get()->where('type', 'СВО');
+        $heroesSvoCity = city_heroes::with('user')->get()->where('type', 'СВО');
 
-        return view('profile.heroes_svo',  ['user' => $user, 'heroesSvo' => $heroesSvo]);
+        return view('profile.heroes_svo_city',  ['user' => $user, 'heroesSvo' => $heroesSvoCity]);
     }
 }

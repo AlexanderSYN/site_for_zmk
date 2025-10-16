@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->string('name_hero')->default('none');
             $table->string('description_hero')->default('none');
+            $table->string('city')->default('none');
             $table->string('type')->default('none');
             $table->string('image_hero')->default('none');
             $table->string('image_qr')->default('none');

@@ -69,12 +69,12 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" style="color: #413939" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="{{ route('heroes_svo_profile_city') }}" style="color: #413939" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_profile_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
@@ -92,13 +92,12 @@
                 <!-- btn add_city -->
                 <form action="{{ route('add_city') }}" method="post">                    
                     @csrf
-                    <input type="hidden" name="name_hero" value="СВО" />
+                    <input type="hidden" name="name_hero" value="ВОВ" />
 
                     <button type="submit" class="btn_add_city_head">
                           ДОБАВИТЬ ГОРОД
                     </button>
                 </form>
-
 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
@@ -113,28 +112,30 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои СВО (Выберите Город)</h1>
+                <h1>Герои ВОВ (Выберите Город)</h1>
 
-            @if($heroesSvo->count() > 0)
-                @foreach ($heroesSvo as $heroSvo)
+            @if($heroesVov->count() > 0)
+                @foreach ($heroesVov as $heroVov)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroSvo->city }} ({{ $heroSvo->type }})</h5>
+                            <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                               Добавил(-и): {{ $heroSvo->user->first_name == $user->first_name ? "Вы" : $heroSvo->user->first_name}} 
-                                            {{ $heroSvo->user->last_name == $user->last_name ? ' ' : $heroSvo->user->last_name }}
+                                Добавил(-и): {{ $heroVov->user->first_name == $user->first_name ? "Вы" : $heroVov->user->first_name}} 
+                                            {{ $heroVov->user->last_name == $user->last_name ? ' ' : $heroVov->user->last_name }}
                                 <br>
                                 <small class="text-muted">
-                                    ID пользователя: {{ $heroSvo->user->id }} | 
-                                    Создано: {{ $heroSvo->created_at->format('d.m.Y H:i') }}
+                                    Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="/" method="post">
-                            
+                            <form action="{{ route('added_heroes_page') }}" method="post">
+                                @csrf
                                 <input type="hidden" name="city" 
-                                value="{{ $heroSvo->city }}" />
+                                    value="{{ $heroVov->city }}" />
+                                
+                                <input type="hidden" name="content" 
+                                    value="{{ $heroVov->type }}" />
 
-                                <button type="button" class="btn_go">
+                                <button type="submit" class="btn_go">
                                     Перейти
                                 </button>
                             </form>

@@ -7,7 +7,7 @@
 
 
     <!-- ICON -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
     @vite('resources/css/accounts/heroes.css')
@@ -53,7 +53,7 @@
             <a href="/" class="header_logo" id="header_logo">
                 <img
                     class="header_logo_image"
-                    src="../image/main-zmc.png"
+                    src="../../image/main-zmc.png"
                     alt="лого ЗМК"
                     loading="lazy"
                 />
@@ -95,7 +95,7 @@
                     <input type="hidden" name="name_hero" value="ВОВ" />
 
                     <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ГОРОД
+                          ДОБАВИТЬ ГЕРОЯ
                     </button>
                 </form>
 
@@ -112,37 +112,17 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои ВОВ (Выберите Город)</h1>
+                <h1>Герои {{ $type_hero }}  (Ваши Добавленные Герои)</h1>
 
-            @if($heroesVov->count() > 0)
-                @foreach ($heroesVov as $heroVov)
-                    <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
-                            <p class="card_text">
-                                <!-- we get the user's name through the link -->
-                                Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
-                                <br>
-                                <small class="text-muted">
-                                    ID пользователя: {{ $heroVov->user->id }} | 
-                                    Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
-                                </small>
-                            </p>
-                            <form action="added_heroes_vov_by_user" method="post">
-                            
-                                <input type="hidden" name="city" 
-                                value="{{ $heroVov->city }}" />
-
-                                <button type="button" class="btn_go">
-                                    Перейти
-                                </button>
-                            </form>
-                        </div>
-                @endforeach
-            @else
-                <div class="alert alert-info">
-                    Нет данных для отображения
-                </div>
-            @endif
+                @if ($heroes->count() > 0) 
+                    @foreach ($heroes as $hero)
+                        {{ $hero->name_hero }}
+                    @endforeach
+                @else
+                    <div class="alert alert-info">
+                        Нет данных для отображения
+                    </div>
+                @endif
             </center>
         </main>
 
