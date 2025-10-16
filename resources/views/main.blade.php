@@ -232,4 +232,4 @@
 <!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg-->
 <!-- the video was taken from the website (видео взято у сайта): https://may9.ru/ -->
 <!-- the icon of arrow was taken from the figma (иконки стрелок взяты у figma): https://figma.com -->
-<!-- Иконка взята из карточки маркетплейса yandexmarket-->
+<!-- Иконка взята из карточки маркетплейса yandexmarket -->
