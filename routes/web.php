@@ -9,6 +9,9 @@ use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\HeroesVovController;
 use App\Http\Controllers\HeroesSvoController;
+
+use App\Http\Controllers\HeroesAddedController;
+
 use App\Http\Controllers\PoliticPolicyController;
 use App\Http\Controllers\UserController;
 
@@ -74,7 +77,11 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
     Route::post('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
 
-
     Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->name('heroes_vov_profile_city');
-    Route::get('profile/heroes_svo', [HeroesSvoController::class, 'show'])->name('heroes_svo_profile_city');
+    Route::get('/profile/heroes_svo', [HeroesSvoController::class, 'show'])->name('heroes_svo_profile_city');
+
+    //--------------------------------------------
+    // redirect to added heroes page
+    //--------------------------------------------
+    Route::get('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page');
 });

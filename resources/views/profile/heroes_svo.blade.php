@@ -121,7 +121,8 @@
                             <h5 class="card_title">Город: {{ $heroSvo->city }} ({{ $heroSvo->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                                Добавил: {{ $heroSvo->user->first_name }} {{ $heroSvo->user->last_name }}
+                               Добавил(-и): {{ $heroSvo->user->first_name == $user->first_name ? "Вы" : $heroSvo->user->first_name}} 
+                                            {{ $heroSvo->user->last_name == $user->last_name ? ' ' : $heroSvo->user->last_name }}
                                 <br>
                                 <small class="text-muted">
                                     ID пользователя: {{ $heroSvo->user->id }} | 

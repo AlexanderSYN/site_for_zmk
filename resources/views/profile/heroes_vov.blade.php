@@ -120,14 +120,15 @@
                             <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                                Добавил: {{ $heroVov->user->first_name }} {{ $heroVov->user->last_name }}
+                                Добавил(-и): {{ $heroVov->user->first_name == $user->first_name ? "Вы" : $heroVov->user->first_name}} 
+                                            {{ $heroVov->user->last_name == $user->last_name ? ' ' : $heroVov->user->last_name }}
                                 <br>
                                 <small class="text-muted">
                                     ID пользователя: {{ $heroVov->user->id }} | 
                                     Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="/" method="post">
+                            <form action="added_heroes_vov_by_user" method="post">
                             
                                 <input type="hidden" name="city" 
                                 value="{{ $heroVov->city }}" />

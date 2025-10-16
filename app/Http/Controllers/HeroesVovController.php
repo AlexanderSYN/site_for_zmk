@@ -23,7 +23,7 @@ class HeroesVovController extends Controller
         
         $heroesVov = city_heroes::with('user')->get()->where('type', 'ВОВ');
         
-        return view('profile.heroes_vov',  compact('heroesVov'));
+        return view('profile.heroes_vov',  ['user' => $user, 'heroesVov' => $heroesVov]);
     }
     
 }

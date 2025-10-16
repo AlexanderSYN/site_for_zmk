@@ -18,6 +18,6 @@ class HeroesSvoController extends Controller
 
         $heroesSvo = city_heroes::with('user')->get()->where('type', 'СВО');
 
-        return view('profile.heroes_svo', compact('heroesSvo'));
+        return view('profile.heroes_svo',  ['user' => $user, 'heroesSvo' => $heroesSvo]);
     }
 }
