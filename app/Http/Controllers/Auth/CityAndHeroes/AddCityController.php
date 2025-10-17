@@ -28,7 +28,7 @@ class AddCityController extends Controller
             return view('profile.add_hero_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
         }
 
-        return view('profile.profile', ['user' => $user]);
+        return view(route('main'), ['user' => $user]);
     }
 
     public function store(Request $request)

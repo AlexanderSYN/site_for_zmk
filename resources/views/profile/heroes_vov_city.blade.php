@@ -64,6 +64,10 @@
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
 
+                        <a href="{{ route('main') }}" class="header_menu_link">
+                            Главная
+                        </a>
+
                         <a href="{{ route('profile') }}" class="header_menu_link">
                             Профиль
                         </a>
@@ -120,8 +124,8 @@
                             <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                                Добавил(-и): {{ $heroVov->user->first_name == $user->first_name ? "Вы" : $heroVov->user->first_name}} 
-                                            {{ $heroVov->user->last_name == $user->last_name ? ' ' : $heroVov->user->last_name }}
+                                {{ $heroVov->user->first_name == $user->first_name ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVov->user->first_name}} 
+                                {{ $heroVov->user->last_name == $user->last_name ? ' ' :  $heroVov->user->last_name }}
                                 <br>
                                 <small class="text-muted">
                                     Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}

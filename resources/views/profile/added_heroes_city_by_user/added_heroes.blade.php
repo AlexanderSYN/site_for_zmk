@@ -64,6 +64,10 @@
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
 
+                        <a href="{{ route('main') }}" class="header_menu_link">
+                            Главная
+                        </a>
+
                         <a href="{{ route('profile') }}" class="header_menu_link">
                             Профиль
                         </a>
@@ -112,7 +116,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои {{ $type_hero }}  (Ваши Добавленные Герои)</h1>
+                <h1>Герои {{ $type_hero }} ({{ $city }}) (Ваши Добавленные Герои)</h1>
 
                 @if ($heroes->count() > 0) 
                     @foreach ($heroes as $hero)

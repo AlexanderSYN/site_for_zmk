@@ -64,6 +64,10 @@
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
 
+                        <a href="{{ route('main') }}" class="header_menu_link">
+                            Главная
+                        </a>
+
                         <a href="{{ route('profile') }}" style="color: #413939" class="header_menu_link">
                             Профиль
                         </a>

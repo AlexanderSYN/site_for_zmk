@@ -21,6 +21,6 @@ class HeroesAddedController extends Controller
 
         $heroes = show_heroes_added_by_user::with('user')->get()->where(['type' => $content, 'city' => $city]);
         
-        return view('profile.added_heroes_city_by_user.added_heroes', ['user' => $user, 'heroes' => $heroes, 'type_hero' => $content]);
+        return view('profile.added_heroes_city_by_user.added_heroes', ['user' => $user, 'heroes' => $heroes, 'type_hero' => $content, 'city' => $city]);
     }
 }

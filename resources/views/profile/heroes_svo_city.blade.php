@@ -64,6 +64,10 @@
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
 
+                        <a href="{{ route('main') }}" class="header_menu_link">
+                            Главная
+                        </a>
+
                         <a href="{{ route('profile') }}" class="header_menu_link">
                             Профиль
                         </a>
@@ -116,13 +120,14 @@
                 <h1>Герои СВО (Выберите Город)</h1>
 
             @if($heroesSvo->count() > 0)
-                @foreach ($heroesSvoCity as $heroSvo)
+                @foreach ($heroesSvo as $heroSvo)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $heroSvo->city }} ({{ $heroSvo->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                               Добавил(-и): {{ $heroSvo->user->first_name == $user->first_name ? "Вы" : $heroSvo->user->first_name}} 
-                                            {{ $heroSvo->user->last_name == $user->last_name ? ' ' : $heroSvo->user->last_name }}
+                        
+                                {{ $heroSvo->user->first_name == $user->first_name ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvo->user->first_name}} 
+                                {{ $heroSvo->user->last_name == $user->last_name ? ' ' : $heroSvo->user->last_name }}
                                 <br>
                                 <small class="text-muted">
                                     Создано: {{ $heroSvo->created_at->format('d.m.Y H:i') }}

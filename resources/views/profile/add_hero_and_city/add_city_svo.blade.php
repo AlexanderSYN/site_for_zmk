@@ -24,7 +24,7 @@
         <!-- HEADER -->
         <header id="up">
 
-            <a href="{{ route('heroes_vov_profile_city') }}">
+            <a href="{{ route('heroes_svo_profile_city') }}">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
                     alt="стрелка назад" width="130px"

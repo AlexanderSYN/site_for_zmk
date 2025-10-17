@@ -16,8 +16,7 @@ class show_heroes_added_by_user extends Model
         'type',
         'image_hero',
         'image_qr',
-        'added_user_id',
-        'added_user_name'
+        'added_user_id'
     ];
 
     /**

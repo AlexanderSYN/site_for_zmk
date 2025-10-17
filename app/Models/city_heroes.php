@@ -13,8 +13,7 @@ class city_heroes extends Model
         'city',
         'description',
         'type',
-        'added_user_id',
-        'added_user_name'
+        'added_user_id'
     ];
 
     /**
