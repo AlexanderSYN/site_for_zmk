@@ -154,9 +154,9 @@ $font-family_for_entry:"Roboto Mono";
     
 }
 
-//-----------------------
-// for the register page
-//-----------------------
+//-------------------------------------------
+// for the register, add city and hero pages
+//-------------------------------------------
 .wrapper_register {
     opacity: 0;
     animation-name: fadeIn;
@@ -195,7 +195,7 @@ $font-family_for_entry:"Roboto Mono";
         border-radius: 10px;
     }
 
-    .description_city {
+    textarea {
         width: 27rem;
         height: auto;
         margin-bottom: 1rem;

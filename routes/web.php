@@ -1,16 +1,17 @@
 <?php
 
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
+use App\Http\Controllers\Auth\HeroesAdd\HeroesAddedController;
+
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
+use App\Http\Controllers\Auth\HeroesAdd\HeroesAddController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\HeroesVovController;
 use App\Http\Controllers\HeroesSvoController;
-
-use App\Http\Controllers\HeroesAddedController;
 
 use App\Http\Controllers\PoliticPolicyController;
 use App\Http\Controllers\UserController;
@@ -85,7 +86,20 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     // redirect to added heroes page
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page');
-    Route::post('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page');
+    Route::get('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_vov');
+    Route::post('/profile/heroes_vov/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_vov');
+
+     Route::get('/profile/heroes_svo/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_svo');
+    Route::post('/profile/heroes_svo/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_svo');
+
+    //--------------------------------------------
+    // redirect to add heroes page
+    //--------------------------------------------
+    Route::get('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
+    Route::post('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
+
+    Route::get('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
+    Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
+
 
 });

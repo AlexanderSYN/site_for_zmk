@@ -73,7 +73,7 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile_city')}}" style="color: #413939" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
@@ -94,10 +94,12 @@
 
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
-                <form action="{{ route('add_city') }}" method="post">                    
+                <form action="{{ $type == 'ВОВ' ? route('add_heroes_page_vov') 
+                                                : route('add_heroes_page_svo') }}" method="post">                    
                     @csrf
-                    <input type="hidden" name="name_hero" value="ВОВ" />
-
+                    <input type="hidden" name="type" value="{{ $type }}" />
+                    <input type="hidden" name="city" value="{{ $city }}" />
+                    
                     <button type="submit" class="btn_add_city_head">
                           ДОБАВИТЬ ГЕРОЯ
                     </button>
@@ -116,7 +118,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои {{ $type_hero }} ({{ $city }}) (Ваши Добавленные Герои)</h1>
+                <h1>Герои {{ $type }} ({{ $city }}) (Ваши Добавленные Герои)</h1>
 
                 @if ($heroes->count() > 0) 
                     @foreach ($heroes as $hero)

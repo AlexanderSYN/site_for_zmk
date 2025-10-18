@@ -133,12 +133,16 @@
                                     Создано: {{ $heroSvo->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="/" method="post">
-                            
+                            <form action="{{  $heroSvo->type == 'СВО' ? route('added_heroes_page_svo') 
+                                                : route('added_heroes_page_vov') }}" method="post">
+                                @csrf
                                 <input type="hidden" name="city" 
-                                value="{{ $heroSvo->city }}" />
+                                    value="{{ $heroSvo->city }}" />
 
-                                <button type="button" class="btn_go">
+                                <input type="hidden" name="type" 
+                                    value="{{ $heroSvo->type }}" />
+
+                                <button type="submit" class="btn_go">
                                     Перейти
                                 </button>
                             </form>
