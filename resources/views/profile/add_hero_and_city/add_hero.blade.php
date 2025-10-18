@@ -9,7 +9,7 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('.../../resources/css/accounts/accounts.css')
+    @vite('.../../resources/css/accounts/hero/add_hero.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -37,7 +37,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1" >
            <center>
-                <div class="wrapper_register">
+                <div class="wrapper">
                     <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type }})</h1>
                     
                     <div class="wrapper_input">
@@ -61,14 +61,29 @@
                             <input type="hidden" name="city"
                                 value="{{ $city }}" />
 
+                            <label class="input-file">
+                                <input type="file" name="image_hero" required />
+                                <span class="input-file-btn">Выбрать Картинку Героя</span>
+                                <span class="input-file-text">Максимум 10мб</span>
+                            </label>
+
+                            <label class="input-file">
+                                <input type="file" name="image_hero_qr" required />
+                                <span class="input-file-btn_2">Выбрать Картинку QR</span>
+                                <span class="input-file-text">Максимум 10мб</span>
+                            </label>
+
                             <input type="text" name="name_hero"
                                 placeholder="Введите ФИО или Имя Героя" required/>
+
+                            <input type="text" name="hero_link"
+                                placeholder="Введите Ссылку На Источник" />
 
                             <textarea name="description" class="description_hero"
                                 placeholder="Введите Описание Героя" required></textarea>
 
 
-                            <button class="btn_entry">
+                            <button class="btn_add">
                                 ДОБАВИТЬ
                             </button>
                         </form>

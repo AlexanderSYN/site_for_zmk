@@ -1,0 +1,270 @@
+//-----------------------
+// variables
+//-----------------------
+$white: #FFFFFF;
+$color-wrapper: #D9D9D9;
+$color-input: #dfe9f5;
+$font-family_for_entry:"Roboto Mono";
+
+//-----------------------
+// animation
+//-----------------------
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+//-----------------------
+// for messages
+//-----------------------
+.notice {
+    margin: 20px 0px;
+    border-radius: 18px;
+    padding: 10px;
+
+    &.error {
+        border: 2px solid #f3d3d3;
+        color: #762c2c;
+        background: #f3d3d3;
+
+    }
+    &.success {
+        background: #e1fee3;
+        border: 2px solid #2c742b;
+        color: #2c742b;
+    }
+}
+
+//-----------------------
+// for the login and register page
+//-----------------------
+.wrapper {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    width: 525px;
+    height: auto;
+    background: #D9D9D9; 
+    box-shadow: 0px 4px 4px 11px rgba(0, 0, 0, 0.25); 
+    border-radius: 18px;
+    padding: 12px;
+    margin-top: 7rem;
+
+    h1 {
+        color: black;
+        font-size: 60px;
+        font-family: inherit;
+        font-weight: 600;
+        font-weight: 600;
+        line-height: 56px;
+        word-wrap: break-word;
+        margin-bottom: 32px;
+        margin-top: 3rem;
+    } 
+
+    input[type="text"] {
+        width: 85%;
+        outline: none;
+        border: none;
+    
+        padding: 16px 14px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    // for input file
+    .input-file {
+        position: relative;
+        display: inline-block;
+    }
+    .input-file-btn {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	    outline: none;
+	    text-decoration: none;
+	    font-size: 14px;
+	    vertical-align: middle;
+	    color: rgb(255 255 255);
+	    text-align: center;
+	    border-radius: 4px;
+	    background-color: #419152;
+	    line-height: 22px;
+	    height: 40px;
+	    padding: 10px 20px;
+	    box-sizing: border-box;
+	    border: none;
+	    margin: 0;
+	    transition: background-color 0.2s;
+        margin-bottom: 10px;
+    }
+    .input-file-btn_2 {
+	    position: relative;
+	    display: inline-block;
+	    cursor: pointer;
+	    outline: none;
+	    text-decoration: none;
+	    font-size: 14px;
+	    vertical-align: middle;
+	    color: rgb(255 255 255);
+	    text-align: center;
+	    border-radius: 4px;
+	    background-color: #419152;
+	    line-height: 22px;
+	    height: 40px;
+	    padding: 10px 28px;
+	    box-sizing: border-box;
+	    border: none;
+	    margin: 0;
+	    transition: background-color 0.2s;
+        margin-bottom: 10px;
+    }
+    
+
+    .input-file-text {
+	    padding: 0 10px;
+	    line-height: 40px;
+	    display: inline-block;
+    }
+
+    .input-file input[type=file] {
+	    position: absolute;
+	    z-index: -1;
+	    opacity: 0;
+	    display: block;
+	    width: 0;
+	    height: 0;
+    }
+    /* Focus */
+    .input-file input[type=file]:focus + .input-file-btn {
+	    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+ 
+
+    /* Hover/active */
+    .input-file:hover .input-file-btn {
+	    background-color: #59be6e;
+    }
+
+    .input-file:active .input-file-btn {
+	    background-color: #2E703A;
+    }
+
+ 
+
+    /* Disabled */
+    .input-file input[type=file]:disabled + .input-file-btn {
+	    background-color: #eee;
+    }
+
+    textarea {
+        width: 27rem;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+    }
+
+
+    .btn_add {
+       width: 434px; 
+        height: 56px; 
+        padding: 12px; 
+        margin-bottom: 20px;
+        color: $white;
+        background: #2C2C2C; 
+        overflow: hidden; 
+        border-radius: 8px; 
+        outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
+        outline-offset: -1px; 
+        justify-content: center;
+        align-items: center; 
+        gap: 8px; 
+        display: inline-flex;
+    }
+    
+}
+
+
+
+
+@media (max-width: 566px) {
+    //-----------------------
+    // for the login and register page
+    //-----------------------
+    .wrapper {
+        margin-top: 1rem;
+        width: 436px;
+        height: auto;
+
+        h1 {
+            font-size: 50px;
+        }
+
+        textarea {
+            width: 22rem;
+        }
+
+        .btn_add {
+            width: 360px; 
+            height: 56px; 
+        }
+
+    }
+
+}
+
+@media (max-width: 462px) {
+    //-----------------------
+    // for the login and register page
+    //-----------------------
+    .wrapper {
+        width: 406px;
+        height: auto;
+
+        h1 {
+            font-size: 50px;
+        }
+
+        textarea {
+            width: 20.5rem;
+        }
+
+        .btn_add {
+            width: 330px; 
+            height: 56px; 
+        }
+
+    }
+
+}
+
+@media (max-width: 412px) {
+    //-----------------------
+    // for the login and register page
+    //-----------------------
+    .wrapper {
+        width: 314px;
+        height: auto;
+        margin-top: 0rem;
+
+        h1 {
+            font-size: 35px;
+        }
+
+        textarea {
+            width: 15.5rem;
+        }
+
+        .btn_add {
+            width: 244px;
+            height: 56px; 
+        }
+
+
+    }
+
+}
+

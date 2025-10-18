@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->string('name_hero')->default('none');
             $table->string('description_hero')->default('none');
+            $table->string('hero_link')->default('none');
             $table->string('city')->default('none');
             $table->string('type')->default('none');
             $table->string('image_hero')->default('none');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('added_user_id')
                     ->consntrained('users') // refers to the users table
                     ->onDelete('cascade'); // when a user is deleted, his records are deleted
+            $table->boolean('isCheck')->default(false);
         });
     }
 
