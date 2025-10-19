@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Helpers\Messages;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -49,7 +50,7 @@ class RegisterController extends Controller
                 'first_name' => $get_full_name[0],
                 'last_name' => $get_full_name[1],
                 'patronymic' => $get_full_name[2],
-                'email' => $validated['email'],
+                'email' => Crypt::encrypt($validated['email']),
                 'login' => $validated['login'],
                 'password' => Hash::make($validated['password'])
             ]);

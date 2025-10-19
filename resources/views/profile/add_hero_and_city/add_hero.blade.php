@@ -15,6 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+
+
 </head>
 <!-- style="background:#EFEFEF" -->
 <body style=" background-image: url('/image/bg/old-paper-bg.png')">
@@ -62,15 +64,15 @@
                                 value="{{ $city }}" />
 
                             <label class="input-file">
-                                <input type="file" name="image_hero" required />
+                                <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
                                 <span class="input-file-btn">Выбрать Картинку Героя</span>
-                                <span class="input-file-text">Максимум 10мб</span>
+                                <span class="input-file-text" id="name_image_hero">Максимум 10мб</span>
                             </label>
 
                             <label class="input-file">
-                                <input type="file" name="image_hero_qr" required />
+                                <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" required />
                                 <span class="input-file-btn_2">Выбрать Картинку QR</span>
-                                <span class="input-file-text">Максимум 10мб</span>
+                                <span class="input-file-text_2" id="name_image_hero_qr">Максимум 10мб</span>
                             </label>
 
                             <input type="text" name="name_hero"
@@ -101,7 +103,7 @@
     </div>
 
     <!-- JS -->
-    @vite('../../resources/js/for_register/show_hide_password.js')
+    @vite('../../resources/js/add_heroes_city/add_heroes_and_city')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
