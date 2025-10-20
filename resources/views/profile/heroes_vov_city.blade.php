@@ -118,15 +118,25 @@
             <center>
                 <h1>Герои ВОВ (Выберите Город)</h1>
 
-            @if($heroesVov->count() > 0)
-                @foreach ($heroesVov as $heroVov)
+            @if($heroesVovCity->count() > 0)
+                @foreach ($heroesVovCity as $heroVov)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                                {{ $heroVov->user->first_name == $user->first_name ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVov->user->first_name}} 
-                                {{ $heroVov->user->last_name == $user->last_name ? ' ' :  $heroVov->user->last_name }}
-                                <br>
+                                <?php
+                                    try {
+                                        echo $heroVov->user->first_name == $user->first_name 
+                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVov->user->first_name . ' '; 
+                                        
+                                        echo $heroVov->user->last_name == $user->last_name 
+                                        ? ' ' :  $heroVov->user->last_name;
+                                    } catch (Exception $e) {
+                                        echo"Пользователь не найден или был удален!"; 
+                                    }
+                                ?>
+                    
+                                <br> 
                                 <small class="text-muted">
                                     Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
                                 </small>

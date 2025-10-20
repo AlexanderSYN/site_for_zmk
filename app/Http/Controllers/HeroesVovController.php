@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
-
 class HeroesVovController extends Controller
 {
     public function show(Request $request)
@@ -22,8 +21,8 @@ class HeroesVovController extends Controller
         }
         
         $heroesVovCity = city_heroes::with('user')->get()->where('type', 'ВОВ');
-        
-        return view('profile.heroes_vov_city',  ['user' => $user, 'heroesVov' => $heroesVovCity]);
+
+        return view('profile.heroes_vov_city',  ['user' => $user, 'heroesVovCity' => $heroesVovCity]);
     }
     
 }

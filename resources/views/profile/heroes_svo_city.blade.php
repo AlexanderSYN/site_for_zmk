@@ -126,8 +126,18 @@
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                         
-                                {{ $heroSvo->user->first_name == $user->first_name ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvo->user->first_name}} 
-                                {{ $heroSvo->user->last_name == $user->last_name ? ' ' : $heroSvo->user->last_name }}
+                                <?php
+                                    try {
+                                        echo $heroSvo->user->first_name == $user->first_name 
+                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvo->user->first_name . ' '; 
+                                        
+                                        echo $heroSvo->user->last_name == $user->last_name 
+                                        ? ' ' :  $heroSvo->user->last_name;
+                                    } catch (Exception $e) {
+                                        echo"Пользователь не найден или был удален!"; 
+                                    }
+                                ?>
+
                                 <br>
                                 <small class="text-muted">
                                     Создано: {{ $heroSvo->created_at->format('d.m.Y H:i') }}

@@ -61,7 +61,7 @@
                                 placeholder="Введите город" required/>
 
                             <textarea name="description" class="description_city"
-                            placeholder="Введите Описание Города" required></textarea>
+                                placeholder="Введите Описание Города" required></textarea>
 
 
                             <button class="btn_entry">

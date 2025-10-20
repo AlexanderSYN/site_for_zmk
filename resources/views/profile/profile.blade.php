@@ -144,7 +144,7 @@
                         <input type="text" class="profile_email_input" 
                             id="profile_email"
                             name="email"
-                            value="{{ $user->email }}"
+                            value="{{ $email }}"
                             disabled /> 
                     
                         <a class="btn_edit" 
