@@ -67,19 +67,19 @@ class AddCityController extends Controller
                 'added_user_name' => $user->first_name
             ]);
 
-            if ($user_selected_content == "ВОВ")
-            {
-                return redirect()->route('heroes_vov_profile_city');
-            }
-            else if ($user_selected_content == "СВО")
-            {
-                return redirect()->route('heroes_vov_profile_city');
-            }
-            else 
-            {
-                return redirect()->route('profile');
-            }
-            
+            // if ($user_selected_content == "ВОВ")
+            // {
+            //     return redirect()->route('heroes_vov_profile_city');
+            // }
+            // else if ($user_selected_content == "СВО")
+            // {
+            //     return redirect()->route('heroes_vov_profile_city');
+            // }
+            // else 
+            // {
+            //     return redirect()->route('profile');
+            // }
+            return redirect()->back()->withInput();
 
         } catch (Exception $e) {
              return redirect()->back()

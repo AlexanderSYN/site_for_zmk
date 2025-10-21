@@ -5,18 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class show_heroes_added_by_user extends Model
+class heroes_added_by_user extends Model
 {
     protected $table = 'heroes';
 
     protected $fillable = [
         'name_hero',
         'description_hero',
+        'hero_link',
         'city',
         'type',
         'image_hero',
         'image_qr',
-        'added_user_id'
+        'added_user_id',
+        'isCheck'
     ];
 
     /**

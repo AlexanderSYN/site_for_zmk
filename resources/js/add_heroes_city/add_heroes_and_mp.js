@@ -5,6 +5,8 @@ const name_image_hero = document.getElementById('name_image_hero');
 const image_hero_qr = document.getElementById('get_image_hero_qr');
 const name_image_hero_qr = document.getElementById('name_image_hero_qr');
 
+// добавить проверку на 10мб
+
 image_hero.addEventListener('change', function() {
     name_image_hero.innerHTML = this.files[0].name;
 });

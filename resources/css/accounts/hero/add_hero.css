@@ -227,4 +227,7 @@
     width: 244px;
     height: 56px;
   }
+  .wrapper .input-file-btn_2 {
+    margin-left: 1rem;
+  }
 }

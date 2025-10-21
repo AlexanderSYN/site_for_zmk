@@ -121,6 +121,7 @@ $font-family_for_entry:"Roboto Mono";
 	    margin: 0;
 	    transition: background-color 0.2s;
         margin-bottom: 10px;
+
         margin-right: 1rem;
     }
     
@@ -265,7 +266,9 @@ $font-family_for_entry:"Roboto Mono";
             height: 56px; 
         }
 
-
+        .input-file-btn_2 {
+            margin-left: 1rem;
+        }
     }
 
 }

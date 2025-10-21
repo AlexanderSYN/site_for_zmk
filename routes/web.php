@@ -97,6 +97,8 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     Route::get('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
     Route::post('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
+    Route::get('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroesAddController::class, 'store'])->name('add_heroes_in_BD');
+    Route::post('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroesAddController::class, 'store'])->name('add_heroes_in_BD');
 
     Route::get('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
     Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');

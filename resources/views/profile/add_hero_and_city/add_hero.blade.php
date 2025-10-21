@@ -40,14 +40,19 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
-                    <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type }})</h1>
+                    <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type == null ? old('type') : $type }})</h1>
                     
                     <div class="wrapper_input">
-                        <form action="{{ route('add_city_in_BD') }}" method="post">
+                        <form action="{{ route('add_heroes_in_BD') }}" method="post">
                             @csrf
 
                             <!-- notifications -->
                             <ul>
+                                @if ($errors->all() <= 0)
+                                    <div class="notice success">
+                                        {{ "Герой успешно добавлен" }}
+                                    </div>
+                                @endif
                                 @foreach ($errors->all() as $message)
 
                                     <div class="notice error">
@@ -58,10 +63,10 @@
                             </ul>
 
                             <input type="hidden" name="type"
-                                value="{{ $type }}" />
+                                value="{{ $type == null ? old('type') : $type  }}" />
 
                             <input type="hidden" name="city"
-                                value="{{ $city }}" />
+                                value="{{ $city == null ? old('city') : $city  }}" />
 
                             <label class="input-file">
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
@@ -103,7 +108,7 @@
     </div>
 
     <!-- JS -->
-    @vite('../../resources/js/add_heroes_city/add_heroes_and_city')
+    @vite('../../resources/js/add_heroes_city/add_heroes_and_mp')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
