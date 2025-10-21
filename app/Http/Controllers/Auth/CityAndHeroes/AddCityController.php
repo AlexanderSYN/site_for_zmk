@@ -60,26 +60,27 @@ class AddCityController extends Controller
             }
 
             $data = city_heroes::create([
-                'city' => $request->city,
-                'description' => $request->description,
+                'city' => $city,
+                'description' => $description,
                 'type' => $user_selected_content,
                 'added_user_id' => $user->id,
                 'added_user_name' => $user->first_name
             ]);
 
-            // if ($user_selected_content == "ВОВ")
-            // {
-            //     return redirect()->route('heroes_vov_profile_city');
-            // }
-            // else if ($user_selected_content == "СВО")
-            // {
-            //     return redirect()->route('heroes_vov_profile_city');
-            // }
-            // else 
-            // {
-            //     return redirect()->route('profile');
-            // }
-            return redirect()->back()->withInput();
+            if ($user_selected_content == "ВОВ")
+            {
+                return redirect()->route('heroes_vov_profile_city');
+            }
+            else if ($user_selected_content == "СВО")
+            {
+                return redirect()->route('heroes_vov_profile_city');
+            }
+            else 
+            {
+                return redirect()->route('profile');
+            }
+
+            //return redirect()->back()->withInput(); // maybe add?
 
         } catch (Exception $e) {
              return redirect()->back()
