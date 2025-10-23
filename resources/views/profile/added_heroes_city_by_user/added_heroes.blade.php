@@ -73,12 +73,14 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" 
+                        style="{{ $type == "ВОВ" ? "color: #413939" : "" }}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="{{ route('heroes_svo_profile_city') }}" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_profile_city') }}" 
+                        style="{{ $type == "СВО" ? "color: #413939" : "" }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
@@ -118,7 +120,8 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои {{ $type }} ({{ $city }}) (Ваши Добавленные Герои)</h1>
+                <h1>Герои {{ $type != null ? $type : old('type') }} 
+                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1>
 
                 @if ($heroes->count() > 0) 
                     @foreach ($heroes as $hero)

@@ -65,27 +65,45 @@ class HeroesAddController extends Controller
             $existingHero = heroes_added_by_user::where('name_hero', $name_hero)->exists();
             
             if ($existingHero) {
-                return redirect()->back()
-                    ->withErrors('Такой герой уже есть на сайте!')
-                    ->withInput();
+                switch ($type) {
+                        case "ВОВ":
+                            return redirect()->route('add_heroes_page_vov', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Такой герой уже есть на сайте!');
+                            break;
+                        case "СВО":
+                            return redirect()->route('add_heroes_page_svo', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Такой герой уже есть на сайте!');
+                            break;
+                }
             }
 
             // Generate unique folder name for this hero
-            $folderName = $user->id . "_" . $user->first_name;
+            $folderName = $user->id;
             
             // Store files based on type
             if ($type == "ВОВ") {
                 $pathForSave = $request->file('image_hero')->store("VOV/heroes/{$folderName}", 'public');
-                $pathForSave_QR = $request->file('image_qr')->store("VOV/heroes/{$folderName}/QR", 'public');
+                $pathForSave_QR = $request->file('image_hero_qr')->store("VOV/heroes/{$folderName}/QR", 'public');
             } 
             else if ($type == "СВО") {
                 $pathForSave = $request->file('image_hero')->store("SVO/heroes/{$folderName}", 'public');
                 $pathForSave_QR = $request->file('image_hero_qr')->store("SVO/heroes/{$folderName}/QR", 'public');
             }
             else {
-                return redirect()->back()
-                    ->withErrors('Неверный тип героя!')
-                    ->withInput();
+                switch ($type) {
+                    case "ВОВ":
+                        return redirect()->route('add_heroes_page_vov', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Неверный тип героя!');
+                        break;
+                    case "СВО":
+                        return redirect()->route('add_heroes_page_svo', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Неверный тип героя!');
+                        break;
+                }
             }
 
             // Create hero record
@@ -101,14 +119,36 @@ class HeroesAddController extends Controller
                 'isCheck' => false
             ]);
 
-            return redirect()->back()->with('success', 'Герой успешно добавлен!');
+            switch ($type) {
+                case "ВОВ":
+                    return redirect()->route('add_heroes_page_vov', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                            ->with('success', 'Герой успешно добавлен!');
+                    break;
+                case "СВО":
+                    return redirect()->route('add_heroes_page_svo', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->with('success', 'Герой успешно добавлен!');
+                    break;
+            }
+
 
         } catch (Exception $e) {
-            return redirect()->back()
-                ->withErrors('Ошибка при добавлении героя: ' . $e->getMessage())
-                ->withInput();
+            switch ($type) {
+                case "ВОВ":
+                    return redirect()->route('add_heroes_page_vov', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Неизвестная ошибка!');
+                    break;
+                case "СВО":
+                    return redirect()->route('add_heroes_page_svo', ['user' => $user, 
+                                'city' => $city, 'type' => $type])
+                                ->withErrors('Неизвестная ошибка!');
+                    break;
+            }
         }
 
-
     }
+
+
 }

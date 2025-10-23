@@ -20,8 +20,14 @@ class HeroesAddedController extends Controller
             return redirect()->route('profile_banned');
         }
 
-        $heroes = heroes_added_by_user::with('user')->get()->where(['type' => $type, 'city' => $city]);
-        
+        $heroes = heroes_added_by_user::where('city', $city)
+                ->where('type', $type)
+                ->where('city', $city)
+                ->where('added_user_id', $user->id)
+                ->with('user')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+     
         return view('profile.added_heroes_city_by_user.added_heroes', 
         ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
     }

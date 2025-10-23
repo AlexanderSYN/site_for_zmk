@@ -26,13 +26,23 @@
         <!-- HEADER -->
         <header id="up">
 
-            <a href="{{ $type == "ВОВ" ? route('heroes_vov_profile_city')
-                                        : route('heroes_svo_profile_city') }}">
-               <img 
-                    class="back_arrow" src="../../../image/back_black_arrow.png" 
-                    alt="стрелка назад" width="130px"
-                />
-            </a>
+            <form action="{{ $type == "ВОВ" ? route('added_heroes_page_vov')
+                                        : route('added_heroes_page_svo') }}" method="post">
+
+                @csrf     
+                <button style="background: none; border: none;">
+                    <img 
+                        class="back_arrow" src="../../../image/back_black_arrow.png" 
+                        alt="стрелка назад" width="130px"
+                    />
+
+                     <input type="hidden" name="type"
+                                value="{{ $type == null ? session()->get('type') : $type  }}" />
+
+                            <input type="hidden" name="city"
+                                value="{{ $city == null ? session()->get('city') : $city  }}" />
+                </button>
+            </form>
         </header>
 
 
@@ -40,7 +50,7 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
-                    <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type == null ? old('type') : $type }})</h1>
+                    <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type == null ? session()->get('type') : $type }})</h1>
                     
                     <div class="wrapper_input">
                         <form action="{{ route('add_heroes_in_BD') }}" method="post" enctype="multipart/form-data">
@@ -48,25 +58,26 @@
 
                             <!-- notifications -->
                             <ul>
-                                @if ($errors->all() <= 0)
-                                    <div class="notice success">
-                                        {{ "Герой успешно добавлен" }}
-                                    </div>
-                                @endif
+                       
                                 @foreach ($errors->all() as $message)
-
                                     <div class="notice error">
                                         {{ $message }}
                                     </div>
                                 @endforeach
+
+                                @if (session()->has('success'))
+                                   <div class="notice success">
+                                        {{ session()->get('success') }}
+                                    </div>
+                                @endif
                                  
                             </ul>
 
                             <input type="hidden" name="type"
-                                value="{{ $type == null ? old('type') : $type  }}" />
+                                value="{{ $type == null ? session()->get('type') : $type  }}" />
 
                             <input type="hidden" name="city"
-                                value="{{ $city == null ? old('city') : $city  }}" />
+                                value="{{ $city == null ? session()->get('city') : $city  }}" />
 
                             <label class="input-file">
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
