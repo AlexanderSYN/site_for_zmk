@@ -232,6 +232,18 @@ main {
         }
     }
 
+    .wrapper_for_hero {
+        width: 1458px; 
+        height: 205px; 
+        background: white; 
+        border-radius: 18px;
+
+        .img_hero {
+            width: 123px; 
+            height: 162px
+        }
+    }
+
 }
 
 @media (max-width: 872px) {

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\HeroesAdd\HeroesAddedController;
 
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
@@ -104,4 +105,37 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
 
 
+});
+
+//--------------------------------------------
+// debug for storage folder
+//--------------------------------------------
+Route::get('/debug-storage_hassh_code_QWERSNBGRBNV11010012040123FND', function () {
+    $check = [];
+    
+    // Проверяем базовые пути
+    $check['storage_app_public'] = storage_path('app/public');
+    $check['public_storage'] = public_path('storage');
+    $check['storage_link_exists'] = file_exists(public_path('storage'));
+    $check['is_link'] = is_link(public_path('storage'));
+    
+    if ($check['is_link']) {
+        $check['link_target'] = readlink(public_path('storage'));
+    }
+    
+    // Проверяем права доступа
+    $check['storage_permissions'] = substr(sprintf('%o', fileperms(storage_path())), -4);
+    $check['public_permissions'] = substr(sprintf('%o', fileperms(public_path())), -4);
+    
+    // Пробуем создать тестовый файл
+    Storage::disk('public')->put('debug_test.txt', 'Test content ' . now());
+    $check['test_file_created'] = Storage::disk('public')->exists('debug_test.txt');
+    $check['test_file_path'] = storage_path('app/public/debug_test.txt');
+    $check['test_file_public_path'] = public_path('storage/debug_test.txt');
+    $check['test_file_public_exists'] = file_exists(public_path('storage/debug_test.txt'));
+    
+    // URL для теста
+    $check['test_url'] = asset('storage/debug_test.txt');
+    
+    return $check;
 });

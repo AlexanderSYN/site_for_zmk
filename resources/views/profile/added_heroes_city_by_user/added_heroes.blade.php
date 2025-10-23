@@ -30,7 +30,7 @@
                 <button class="btn_show_menu" id="btn_show_menu">
                     <img 
                         class="header_btn_show_menu"
-                        src="../image/up_arrow.png"
+                        src="../../image/up_arrow.png"
                         alt="показать меню"
                         loading="lazy"
                     />
@@ -41,7 +41,7 @@
                 <button class="btn_close_menu" id="btn_close_menu">
                     <img 
                         class="header_btn_close_menu"
-                        src="../image/down_arrow.png"
+                        src="../../image/down_arrow.png"
                         alt="скрыть меню"
                         loading="lazy"
                     />
@@ -122,16 +122,36 @@
             <center>
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1>
-
+                <img src="../../image" />   
                 @if ($heroes->count() > 0) 
-                    @foreach ($heroes as $hero)
-                        {{ $hero->name_hero }}
-                    @endforeach
-                @else
-                    <div class="alert alert-info">
-                        Нет данных для отображения
-                    </div>
-                @endif
+    @foreach ($heroes as $hero)
+        <div class="wrapper_for_hero">
+            <h3>{{ $hero->name_hero }}</h3>
+            <p>{{ $hero->description_hero }}</p>
+            
+            @if($hero->image_exists)
+                <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }}" />
+            @else
+                <div class="alert alert-warning">
+                    Изображение героя не найдено: {{ $hero->image_hero }}
+                </div>
+            @endif
+            
+            @if($hero->qr_exists)
+                <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
+            @else
+                <div class="alert alert-warning">
+                    QR код не найден
+                </div>
+            @endif
+        </div>
+    @endforeach
+@else
+    <div class="alert alert-info">
+        Нет данных для отображения
+    </div>
+@endif
+               
             </center>
         </main>
 
