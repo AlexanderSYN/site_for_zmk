@@ -47,8 +47,8 @@ class RegisterController extends Controller
 
         try {
             $user = User::create([
-                'first_name' => $get_full_name[0],
-                'last_name' => $get_full_name[1],
+                'first_name' => $get_full_name[1],
+                'last_name' => $get_full_name[0],
                 'patronymic' => $get_full_name[2],
                 'email' => Crypt::encrypt($validated['email']),
                 'login' => $validated['login'],
