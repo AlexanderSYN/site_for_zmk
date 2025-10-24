@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function() {
 //--------------------------------------------
 // debug for storage folder
 //--------------------------------------------
-Route::get('/debug-storage_hassh_code_QWERSNBGRBNV11010012040123FND', function () {
+Route::get('/debug_storage_hash_code-QWERSNBGRBNV11010012040123F1ND14', function () {
     $check = [];
     
     // Проверяем базовые пути

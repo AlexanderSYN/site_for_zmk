@@ -94,16 +94,17 @@
                             </label>
 
                             <input type="text" name="name_hero"
-                                placeholder="Введите ФИО или Имя Героя" required/>
+                                placeholder="Введите ФИО или Имя Героя" value="{{ old('name_hero') }}" required/>
 
                             <input type="text" name="hero_link"
-                                placeholder="Введите Ссылку На Источник" />
+                                placeholder="Введите Ссылку На Источник" value="{{ old('hero_link') }}" />
 
-                            <textarea name="description" class="description_hero"
-                                placeholder="Введите Описание Героя" required></textarea>
+                            <textarea id="description" name="description" class="description_hero"
+                                placeholder="Введите Описание Героя" value="{{ old('description') }}" required></textarea>
+                            <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
 
-                            <button class="btn_add">
+                            <button class="btn_add" id="btn_add">
                                 ДОБАВИТЬ
                             </button>
                         </form>

@@ -155,6 +155,10 @@
   margin-bottom: 1rem;
   border-radius: 8px;
 }
+.wrapper .max_symbols {
+  margin-top: -1rem;
+  margin-left: 19rem;
+}
 .wrapper .btn_add {
   width: 434px;
   height: 56px;
@@ -190,6 +194,9 @@
   .wrapper textarea {
     width: 22rem;
   }
+  .wrapper .max_symbols {
+    margin-left: 14rem;
+  }
   .wrapper .btn_add {
     width: 360px;
     height: 56px;
@@ -205,6 +212,9 @@
   }
   .wrapper textarea {
     width: 20.5rem;
+  }
+  .wrapper .max_symbols {
+    margin-left: 12rem;
   }
   .wrapper .btn_add {
     width: 330px;
@@ -222,6 +232,9 @@
   }
   .wrapper textarea {
     width: 15.5rem;
+  }
+  .wrapper .max_symbols {
+    margin-left: 7rem;
   }
   .wrapper .btn_add {
     width: 244px;

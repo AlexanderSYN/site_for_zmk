@@ -170,6 +170,11 @@ $font-family_for_entry:"Roboto Mono";
         border-radius: 8px;
     }
 
+    .max_symbols {
+        margin-top: -1rem;
+        margin-left: 19rem;
+    }
+
 
     .btn_add {
        width: 434px; 
@@ -210,6 +215,11 @@ $font-family_for_entry:"Roboto Mono";
             width: 22rem;
         }
 
+        .max_symbols {
+            margin-left: 14rem;
+        }
+
+
         .btn_add {
             width: 360px; 
             height: 56px; 
@@ -233,6 +243,10 @@ $font-family_for_entry:"Roboto Mono";
 
         textarea {
             width: 20.5rem;
+        }
+
+        .max_symbols {
+            margin-left: 12rem;
         }
 
         .btn_add {
@@ -261,6 +275,10 @@ $font-family_for_entry:"Roboto Mono";
             width: 15.5rem;
         }
 
+        .max_symbols {
+            margin-left: 7rem;
+        }
+
         .btn_add {
             width: 244px;
             height: 56px; 
@@ -272,4 +290,3 @@ $font-family_for_entry:"Roboto Mono";
     }
 
 }
-

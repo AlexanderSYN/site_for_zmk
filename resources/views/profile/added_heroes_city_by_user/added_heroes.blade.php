@@ -121,36 +121,23 @@
         <main class="flex-grow-1">
             <center>
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
-                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1>
-                <img src="../../image" />   
+                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
                 @if ($heroes->count() > 0) 
-    @foreach ($heroes as $hero)
-        <div class="wrapper_for_hero">
-            <h3>{{ $hero->name_hero }}</h3>
-            <p>{{ $hero->description_hero }}</p>
+                    @foreach ($heroes as $hero)
+                        <div class="wrapper_for_hero">
+                            <h2>{{ $hero->name_hero }}</h2>
+                            <h4>{{ $hero->description_hero }}</h4>
             
-            @if($hero->image_exists)
-                <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }}" />
-            @else
-                <div class="alert alert-warning">
-                    Изображение героя не найдено: {{ $hero->image_hero }}
-                </div>
-            @endif
+                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }}" />
             
-            @if($hero->qr_exists)
-                <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
-            @else
-                <div class="alert alert-warning">
-                    QR код не найден
-                </div>
-            @endif
-        </div>
-    @endforeach
-@else
-    <div class="alert alert-info">
-        Нет данных для отображения
-    </div>
-@endif
+                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
+                        </div>
+                    @endforeach
+                @else
+                    <div class="alert alert-info">
+                        Нет данных для отображения
+                    </div>
+                @endif
                
             </center>
         </main>

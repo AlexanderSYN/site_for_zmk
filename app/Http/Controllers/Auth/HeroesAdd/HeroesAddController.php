@@ -69,11 +69,13 @@ class HeroesAddController extends Controller
                         case "ВОВ":
                             return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                                ->withInput()
                                 ->withErrors('Такой герой уже есть на сайте!');
                             break;
                         case "СВО":
                             return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                                ->withInput()
                                 ->withErrors('Такой герой уже есть на сайте!');
                             break;
                 }
@@ -96,11 +98,13 @@ class HeroesAddController extends Controller
                     case "ВОВ":
                         return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                                ->withInput()
                                 ->withErrors('Неверный тип героя!');
                         break;
                     case "СВО":
                         return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                                ->withInput()
                                 ->withErrors('Неверный тип героя!');
                         break;
                 }
@@ -123,11 +127,13 @@ class HeroesAddController extends Controller
                 case "ВОВ":
                     return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                            ->withInput()
                             ->with('success', 'Герой успешно добавлен!');
                     break;
                 case "СВО":
                     return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
+                                ->withInput()
                                 ->with('success', 'Герой успешно добавлен!');
                     break;
             }
@@ -138,12 +144,13 @@ class HeroesAddController extends Controller
                 case "ВОВ":
                     return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
-                                ->withErrors('Неизвестная ошибка!');
+                                ->withErrors('Неизвестная ошибка!' . $e);
                     break;
                 case "СВО":
                     return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
-                                ->withErrors('Неизвестная ошибка!');
+                                ->withInput()
+                                ->withErrors('Неизвестная ошибка!' . $e);
                     break;
             }
         }
