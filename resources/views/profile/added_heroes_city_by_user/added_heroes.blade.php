@@ -125,12 +125,53 @@
                 @if ($heroes->count() > 0) 
                     @foreach ($heroes as $hero)
                         <div class="wrapper_for_hero">
+                            @if ($hero->isCheck == 0 )
+                                <div class="alert alert-warning">
+                                    ⏳Герой на проверке⏳
+                                </div>
+                            @else
+                                <div class="alert alert-success">
+                                    ✅Герой проверен и выложен✅
+                                </div>
+                            @endif
+
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>
             
                             <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }}" />
             
                             <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
+
+                            <form action="{{ route('edit_hero_user') }}" method="post" >
+                                @csrf
+                                <input type="hidden" name="name_hero" 
+                                    value="{{ $hero->name_hero }}" />
+                                <input type="hidden" name="description_hero" 
+                                    value="{{ $hero->description_hero}}" />
+                                <input type="hidden" name="hero_link" 
+                                    value="{{ $hero->hero_link}}" />
+
+                                <input type="hidden" name="city" 
+                                    value="{{ $hero->city }}" />
+                                <input type="hidden" name="type" 
+                                    value="{{ $hero->type }}" />
+
+                                <input type="hidden" name="image_hero" 
+                                    value="{{ $hero->image_hero }}" />
+                                <input type="hidden" name="image_hero_qr" 
+                                    value="{{ $hero->image_qr }}" />
+
+                                <button type="submit" class="edit_hero">
+                                    ИЗМЕНИТЬ
+                                </button>
+                            </form>
+                            
+                            
+                            <form action="/" method="post" >
+                                <button type="submit" class="delete_hero">
+                                    УДАЛИТЬ
+                                </button>
+                            </form>
                         </div>
                     @endforeach
                 @else

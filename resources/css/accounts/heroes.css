@@ -226,11 +226,58 @@ main .wrapper_for_hero {
   height: auto;
   background: white;
   border-radius: 18px;
+  margin-bottom: 1.5rem;
 }
 main .wrapper_for_hero .img_hero {
   width: 123px;
   height: auto;
   margin-bottom: 1rem;
+}
+main .edit_hero {
+  width: 314px;
+  height: 39px;
+  padding: 12px;
+  margin-bottom: 0.5rem;
+  background: var(--Background-Brand-Default, #0088FF);
+  overflow: hidden;
+  border-radius: 8px;
+  color: #FFFFFF;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
+}
+main .delete_hero {
+  width: 314px;
+  height: 39px;
+  padding: 12px;
+  margin-bottom: 1rem;
+  background: var(--Background-Brand-Default, red);
+  overflow: hidden;
+  border-radius: 8px;
+  color: #FFFFFF;
+  outline: 1px var(--Border-Brand-Default, #2C2C2C) solid;
+  outline-offset: -1px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  cursor: pointer;
 }
 
 @media (max-width: 872px) {

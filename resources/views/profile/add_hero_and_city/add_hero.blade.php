@@ -82,14 +82,14 @@
                             <label class="input-file">
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
                                 <span class="input-file-btn">Выбрать Картинку Героя</span>
-                                <span class="input-file-text" id="name_image_hero">Максимум 10мб</span>
+                                <span class="input-file-text" id="name_image_hero">Максимум 10МБ</span>
                                 <input type="hidden" name="image_hero" id="img_hero_input" value="" />
                             </label>
 
                             <label class="input-file">
                                 <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" required />
                                 <span class="input-file-btn_2">Выбрать Картинку QR</span>
-                                <span class="input-file-text_2" id="name_image_hero_qr">Максимум 10мб</span>
+                                <span class="input-file-text_2" id="name_image_hero_qr">Максимум 10МБ</span>
                                 <input type="hidden" name="image_hero_qr" id="img_hero_qr_input" value="" />
                             </label>
 

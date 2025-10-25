@@ -94,6 +94,13 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/heroes_svo/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_svo');
 
     //--------------------------------------------
+    // redirect to edit hero page
+    //--------------------------------------------
+    //Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
+    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
+
+
+    //--------------------------------------------
     // redirect to add heroes page
     //--------------------------------------------
     Route::get('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
