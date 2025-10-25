@@ -142,24 +142,10 @@
             
                             <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
 
-                            <form action="{{ route('edit_hero_user') }}" method="post" >
+                            <form action="{{ route('edit_hero_user_page') }}" method="post" >
                                 @csrf
-                                <input type="hidden" name="name_hero" 
-                                    value="{{ $hero->name_hero }}" />
-                                <input type="hidden" name="description_hero" 
-                                    value="{{ $hero->description_hero}}" />
-                                <input type="hidden" name="hero_link" 
-                                    value="{{ $hero->hero_link}}" />
-
-                                <input type="hidden" name="city" 
-                                    value="{{ $hero->city }}" />
-                                <input type="hidden" name="type" 
-                                    value="{{ $hero->type }}" />
-
-                                <input type="hidden" name="image_hero" 
-                                    value="{{ $hero->image_hero }}" />
-                                <input type="hidden" name="image_hero_qr" 
-                                    value="{{ $hero->image_qr }}" />
+                                <input type="hidden" name="id_hero"
+                                    value="{{ $hero->id }}" />
 
                                 <button type="submit" class="edit_hero">
                                     ИЗМЕНИТЬ
@@ -168,6 +154,10 @@
                             
                             
                             <form action="/" method="post" >
+                                 @csrf
+                                <input type="hidden" name="id_hero"
+                                    value="{{ $hero->id }}" />
+
                                 <button type="submit" class="delete_hero">
                                     УДАЛИТЬ
                                 </button>

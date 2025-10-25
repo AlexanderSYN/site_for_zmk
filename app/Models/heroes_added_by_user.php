@@ -10,6 +10,7 @@ class heroes_added_by_user extends Model
     protected $table = 'heroes';
 
     protected $fillable = [
+        'id',
         'name_hero',
         'description_hero',
         'hero_link',

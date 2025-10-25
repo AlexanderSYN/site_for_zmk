@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth\HeroesAdd;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\heroes_added_by_user;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HeroesAddedController extends Controller
 {
@@ -29,7 +31,24 @@ class HeroesAddedController extends Controller
                 ->paginate(10);
      
         return view('profile.added_heroes_city_by_user.added_heroes', 
-        ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
+            ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
+    }
+
+    public function edit_hero_user_page(Request $request)
+    {
+        $user = Auth::user();
+
+        $id = $request->input('id_hero');
+
+        if ($user->isBan) {
+            return redirect()->route('profile_banned');
+        }
+
+        $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
+
+        return view('profile.added_heroes_city_by_user.edit_heroes', 
+                ['user' => $user, 'hero' => $hero ]);
+
     }
 
     public function edit_hero_user(Request $request)
@@ -40,19 +59,29 @@ class HeroesAddedController extends Controller
             return redirect()->route('profile_banned');
         }
 
+        $id = $request->input('id_hero');
+
         $name_hero = $request->input('name_hero');
-        $description_hero = $request->input('description_hero');
+        $description_hero = $request->input('description');
+        
         $hero_link = $request->input('hero_link');
-        $city = $request->input('city');
-        $type = $request->input('type');
         $image_hero = $request->input('image_hero');
         $image_hero_qr = $request->input('image_hero_qr');
 
-        return view('profile.added_heroes_city_by_user.edit_heroes', 
-            ['user' => $user, 'name_hero' => $name_hero,
-                'description_hero' => $description_hero, 'hero_link' => $hero_link,
-                'image_hero' => $image_hero, 'image_hero_qr' => $image_hero_qr,
-                'type' => $type, 'city' => $city]);
+        $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
 
+        heroes_added_by_user::where('id', $id)
+            ->update(array(
+                'name_hero' => $name_hero,
+                'description_hero' => $description_hero,
+                'hero_link' => $hero_link,
+                'image_hero' => $image_hero,
+                'image_qr' => $image_hero_qr,
+                'isCheck' => false
+            ));
+
+        return view('profile.added_heroes_city_by_user.edit_heroes', 
+                ['user' => $user, 'hero' => $hero ])
+            ->with('success', 'Данные героя успешно обновлены!');
     }
 }

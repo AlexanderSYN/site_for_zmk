@@ -280,6 +280,26 @@ main .delete_hero {
   cursor: pointer;
 }
 
+@media (max-width: 1464px) {
+  main .wrapper_for_hero {
+    width: 1317px;
+  }
+}
+@media (max-width: 1326px) {
+  main .wrapper_for_hero {
+    width: 1148px;
+  }
+}
+@media (max-width: 1174px) {
+  main .wrapper_for_hero {
+    width: 943px;
+  }
+}
+@media (max-width: 970px) {
+  main .wrapper_for_hero {
+    width: 652px;
+  }
+}
 @media (max-width: 872px) {
   main .card_body {
     width: 43rem;
@@ -329,13 +349,28 @@ main .delete_hero {
     width: 37rem;
   }
 }
+@media (max-width: 678px) {
+  main .wrapper_for_hero {
+    width: 498px;
+  }
+}
 @media (max-width: 606px) {
   main .card_body {
     width: 26rem;
   }
 }
+@media (max-width: 530px) {
+  main .wrapper_for_hero {
+    width: 374px;
+  }
+}
 @media (max-width: 426px) {
   main .card_body {
     width: 20rem;
+  }
+}
+@media (max-width: 390px) {
+  main .wrapper_for_hero {
+    width: 316px;
   }
 }

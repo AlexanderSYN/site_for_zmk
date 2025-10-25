@@ -96,8 +96,13 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     // redirect to edit hero page
     //--------------------------------------------
-    //Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
-    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
+    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+    //--------------------------------------------
+    // data changes in the database
+    //--------------------------------------------
+    Route::get('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+    Route::post('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+
 
 
     //--------------------------------------------
