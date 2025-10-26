@@ -51,37 +51,4 @@ class HeroesAddedController extends Controller
 
     }
 
-    public function edit_hero_user(Request $request)
-    {
-        $user = Auth::user();
-
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
-        }
-
-        $id = $request->input('id_hero');
-
-        $name_hero = $request->input('name_hero');
-        $description_hero = $request->input('description');
-        
-        $hero_link = $request->input('hero_link');
-        $image_hero = $request->input('image_hero');
-        $image_hero_qr = $request->input('image_hero_qr');
-
-        $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
-
-        heroes_added_by_user::where('id', $id)
-            ->update(array(
-                'name_hero' => $name_hero,
-                'description_hero' => $description_hero,
-                'hero_link' => $hero_link,
-                'image_hero' => $image_hero,
-                'image_qr' => $image_hero_qr,
-                'isCheck' => false
-            ));
-
-        return view('profile.added_heroes_city_by_user.edit_heroes', 
-                ['user' => $user, 'hero' => $hero ])
-            ->with('success', 'Данные героя успешно обновлены!');
-    }
 }

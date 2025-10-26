@@ -97,7 +97,7 @@
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
                 <form action="{{ $type == 'ВОВ' ? route('add_heroes_page_vov') 
-                                                : route('add_heroes_page_svo') }}" method="post">                    
+                              : route('add_heroes_page_svo') }}" method="post">                    
                     @csrf
                     <input type="hidden" name="type" value="{{ $type }}" />
                     <input type="hidden" name="city" value="{{ $city }}" />
@@ -138,9 +138,9 @@
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>
             
-                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }}" />
+                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }} (картинка не найден) | " />
             
-                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }}" />
+                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }} (картинка не найден)" />
 
                             <form action="{{ route('edit_hero_user_page') }}" method="post" >
                                 @csrf

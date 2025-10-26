@@ -26,8 +26,13 @@
         <!-- HEADER -->
         <header id="up">
 
-            <form action="{{ $hero->type == "ВОВ" ? route('added_heroes_page_vov')
-                                        : route('added_heroes_page_svo') }}" method="post">
+            <form action="
+                @if($hero && $hero->type == "ВОВ")
+                    {{ route('added_heroes_page_vov') }}
+                @else
+                    {{ route('added_heroes_page_svo') }}
+                @endif
+          " method="post">
 
                 @csrf     
                 <button style="background: none; border: none;">
@@ -37,7 +42,7 @@
                     />
 
                      <input type="hidden" name="type"
-                                value="{{ $hero->type }}" />
+                                value="{{ $hero->type}}" />
 
                             <input type="hidden" name="city"
                                 value="{{ $hero->city }}" />
@@ -86,14 +91,15 @@
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" />
                                 <span class="input-file-btn">Выбрать Картинку Героя</span>
                                 <span class="input-file-text" id="name_image_hero">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero" id="img_hero_input" value="{{ $hero->image_hero }}" />
+                                <input type="text" name="image_hero" id="img_hero_input" value="{{ $hero->image_hero }}" />
+                                <input type="hidden" name="old_image_hero" value="{{ $hero->image_hero }}" /> 
                             </label>
 
                             <label class="input-file">
                                 <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" />
                                 <span class="input-file-btn_2">Выбрать Картинку QR</span>
                                 <span class="input-file-text_2" id="name_image_hero_qr">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero_qr" id="img_hero_qr_input" value="{{ $hero->image_qr }}" />
+                                <input type="text" name="image_hero_qr" id="img_hero_qr_input" value="{{ $hero->image_qr }}" />
                             </label>
 
                             <input type="text" name="name_hero"

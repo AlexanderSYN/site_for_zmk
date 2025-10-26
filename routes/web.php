@@ -97,11 +97,12 @@ Route::middleware('auth')->group(function() {
     // redirect to edit hero page
     //--------------------------------------------
     Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+    Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
     //--------------------------------------------
     // data changes in the database
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
-    Route::post('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+    Route::get('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+    Route::post('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
 
 
 
@@ -125,7 +126,7 @@ Route::middleware('auth')->group(function() {
 Route::get('/debug_storage_hash_code-QWERSNBGRBNV11010012040123F1ND14', function () {
     $check = [];
     
-    // Проверяем базовые пути
+    // checking the base path
     $check['storage_app_public'] = storage_path('app/public');
     $check['public_storage'] = public_path('storage');
     $check['storage_link_exists'] = file_exists(public_path('storage'));
@@ -135,18 +136,18 @@ Route::get('/debug_storage_hash_code-QWERSNBGRBNV11010012040123F1ND14', function
         $check['link_target'] = readlink(public_path('storage'));
     }
     
-    // Проверяем права доступа
+    // checking access
     $check['storage_permissions'] = substr(sprintf('%o', fileperms(storage_path())), -4);
     $check['public_permissions'] = substr(sprintf('%o', fileperms(public_path())), -4);
     
-    // Пробуем создать тестовый файл
+    // trying to create a txt file
     Storage::disk('public')->put('debug_test.txt', 'Test content ' . now());
     $check['test_file_created'] = Storage::disk('public')->exists('debug_test.txt');
     $check['test_file_path'] = storage_path('app/public/debug_test.txt');
     $check['test_file_public_path'] = public_path('storage/debug_test.txt');
     $check['test_file_public_exists'] = file_exists(public_path('storage/debug_test.txt'));
     
-    // URL для теста
+    // URL for text
     $check['test_url'] = asset('storage/debug_test.txt');
     
     return $check;
