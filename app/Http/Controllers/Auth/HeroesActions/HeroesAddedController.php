@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\HeroesAdd;
+namespace App\Http\Controllers\Auth\HeroesActions;
 
 use App\Http\Controllers\Controller;
 use App\Models\heroes_added_by_user;
@@ -39,12 +39,13 @@ class HeroesAddedController extends Controller
         $user = Auth::user();
 
         $id = $request->input('id_hero');
+         $hero = heroes_added_by_user::where('id', $id)
+                                ->where('added_user_id', $user->id) // Защита: только свои герои
+                                ->first();
 
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
-
-        $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
 
         return view('profile.added_heroes_city_by_user.edit_heroes', 
                 ['user' => $user, 'hero' => $hero ]);

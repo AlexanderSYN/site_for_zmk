@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
-use App\Http\Controllers\Auth\HeroesAdd\HeroesAddedController;
+use App\Http\Controllers\Auth\HeroesActions\HeroesAddedController;
+use App\Http\Controllers\Auth\HeroesActions\HeroActionsController;
 
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
-use App\Http\Controllers\Auth\HeroesAdd\HeroesAddController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\HeroesVovController;
 use App\Http\Controllers\HeroesSvoController;
@@ -96,26 +96,24 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     // redirect to edit hero page
     //--------------------------------------------
-    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
-    Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+    Route::get('/profile/heroes_vov/added_heroes/edit/{id}', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+    Route::post('/profile/heroes_vov/added_heroes/edit/{id}', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
     //--------------------------------------------
     // data changes in the database
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
-    Route::post('/profile/heroes_vov/added_heroes/edit/edit_in_bd', [HeroesAddController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
-
-
+    Route::get('/profile/heroes_vov/added_heroes/edit/update', [HeroActionsController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+    Route::post('/profile/heroes_vov/added_heroes/edit/update', [HeroActionsController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
 
     //--------------------------------------------
     // redirect to add heroes page
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
-    Route::post('/profile/heroes_vov/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_vov');
-    Route::get('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroesAddController::class, 'store'])->name('add_heroes_in_BD');
-    Route::post('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroesAddController::class, 'store'])->name('add_heroes_in_BD');
+    Route::get('/profile/heroes_vov/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_vov');
+    Route::post('/profile/heroes_vov/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_vov');
+    Route::get('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroActionsController::class, 'store'])->name('add_heroes_in_BD');
+    Route::post('/profile/heroes_vov/added_heroes/add_heroes/add_heroes_in_BD', [HeroActionsController::class, 'store'])->name('add_heroes_in_BD');
 
-    Route::get('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
-    Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroesAddController::class, 'show'])->name('add_heroes_page_svo');
+    Route::get('/profile/heroes_svo/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_svo');
+    Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_svo');
 
 
 });
