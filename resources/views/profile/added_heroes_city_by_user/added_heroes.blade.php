@@ -121,10 +121,16 @@
         <main class="flex-grow-1">
             <center>
                  @foreach ($errors->all() as $message)
-                            <div class="notice error">
-                                {{ $message }}
-                            </div>
+                    <div class="notice error">
+                        {{ $message }}
+                    </div>
                 @endforeach
+                @if (session()->has('success'))
+                    <div class="notice success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
                 @if ($heroes->count() > 0) 

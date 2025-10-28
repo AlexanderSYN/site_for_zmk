@@ -69,23 +69,12 @@
                                         {{ $message }}
                                     </div>
                                 @endforeach
-
-                                @if (session()->has('success'))
-                                   <div class="notice success">
-                                        {{ session()->get('success') }}
-                                    </div>
-                                @endif
                                  
                             </ul>
                             
                             <input type="hidden" name="id_hero"
                                 value="{{ $hero->id }}" />
 
-                            <input type="hidden" name="type"
-                                value="{{ $hero->type == null ? $type : $hero->type }}" />
-
-                            <input type="hidden" name="city"
-                                value="{{ $hero->city }}" />
 
                             <label class="input-file">
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" />
