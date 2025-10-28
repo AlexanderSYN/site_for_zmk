@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 use Exception;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
 
 class HeroActionsController extends Controller
 {
@@ -157,110 +158,111 @@ class HeroActionsController extends Controller
     }
 
     //=======================
-    // edit user data
+    // edit hero data
     //=======================
     public function edit_hero_user(Request $request)
-{
-    try {
-        $user = Auth::user();
+    {
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
-        }
+        try {
+            $user = Auth::user();
 
-        $id = $request->input('id_hero');
-        $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
-
-        if (!$hero) {
-            return redirect()->route('added_heroes_page_vov')->withErrors('Герой не найден!');
-        }
-
-        $name_hero = $request->input('name_hero');
-        $description_hero = $request->input('description');
-        $type = $hero->type; // Берем тип из существующего героя
-        $city = $hero->city; // Берем город из существующего героя
-    
-        $hero_link = $request->input('hero_link');
-        $image_hero = $request->file('image_hero');
-        $image_hero_qr = $request->file('image_hero_qr');
-
-        // Валидация
-        $validator = Validator::make($request->all(), [
-            'name_hero' => 'required|string|max:255',
-            'hero_link' => 'nullable|string|max:255',
-            'description' => 'required|string|max:500',
-            'image_hero' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
-            'image_hero_qr' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10048'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        //==============================================================
-        // if the old file has changed, then delete the old file from
-        // the folder and add a new one
-        //==============================================================
-        $old_path_image = $hero->image_hero;
-        $old_path_image_qr = $hero->image_qr;
-
-        $folderName = $user->id;
-
-        if ($image_hero != null) {
-            // Удаляем старый файл
-            if ($old_path_image && Storage::disk('public')->exists($old_path_image)) {
-                Storage::disk('public')->delete($old_path_image);
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
             }
 
-            // Сохраняем новый файл
-            if ($type == "ВОВ") {
-                $pathForSave = $image_hero->store("VOV/heroes/{$folderName}", 'public');
-            } else if ($type == "СВО") {
-                $pathForSave = $image_hero->store("SVO/heroes/{$folderName}", 'public');
+            $id = $request->input('id_hero');
+            $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
+            
+            $hero_image = $request->file('image_hero');
+            $hero_image_qr = $request->file('image_hero_qr');
+
+            $old_path_hero_image = $hero->image_hero;
+            $old_path_hero_image_qr = $hero->image_qr;
+
+            //==============================================================
+            // if the old file has changed, then delete the old file from
+            // the folder and add a new one
+            //==============================================================
+            // check image hero
+            if ($hero_image == null) {
+                $full_path_to_image_hero = public_path('storage/', $old_path_hero_image);
+                if (file_exists($full_path_to_image_hero)) {
+                    unlink($full_path_to_image_hero);
+                }
             }
-        } else {
-            $pathForSave = $old_path_image;
+            
+            dd($hero_image, $hero_image_qr);
+        } catch (Exception $e) {
+            return redirect()->route('edit_hero_user_page')
+                ->withErrors('ERROR' . $e->getMessage());
         }
 
-        // Обработка QR кода
-        if ($image_hero_qr != null) {
-            // Удаляем старый QR файл
-            if ($old_path_image_qr && Storage::disk('public')->exists($old_path_image_qr)) {
-                Storage::disk('public')->delete($old_path_image_qr);
-            }
-
-            // Сохраняем новый QR файл
-            if ($type == "ВОВ") {
-                $pathForSave_QR = $image_hero_qr->store("VOV/heroes/{$folderName}/QR", 'public');
-            } else if ($type == "СВО") {
-                $pathForSave_QR = $image_hero_qr->store("SVO/heroes/{$folderName}/QR", 'public');
-            }
-        } else {
-            $pathForSave_QR = $old_path_image_qr;
-        }
-
-        // Обновляем данные героя
-        $hero->update([
-            'name_hero' => $name_hero,
-            'description_hero' => $description_hero,
-            'hero_link' => $hero_link,
-            'image_hero' => $pathForSave,
-            'image_qr' => $pathForSave_QR,
-            'isCheck' => false
-        ]);
-
-        // Перенаправляем обратно на страницу редактирования с успешным сообщением
-        return redirect()->route('edit_hero_user_page', ['id' => $id])
-                ->with('success', 'Данные героя успешно изменены');
-
-    } catch (Exception $e) {
-        return redirect()->back()
-                ->withInput()
-                ->withErrors('Неизвестная ошибка: ' . $e->getMessage());
     }
-}
 
-    
+    //=======================
+    // delete hero
+    //=======================
+    public function delete_hero(Request $request) {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id = $request->input('id_hero');
+            $hero = heroes_added_by_user::where('id', $id)->with('user')->first();
+
+            $type = $hero->type;
+            $city = $hero->city;
+
+            $path_image_hero = $hero->image_hero;
+            $path_image_hero_qr = $hero->image_qr;
+            
+            $heroes = heroes_added_by_user::where('city', $city)
+                ->where('type', $type)
+                ->where('city', $city)
+                ->where('added_user_id', $user->id)
+                ->with('user')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+
+            $data = heroes_added_by_user::find($id);
+
+
+            Storage::disk('public')->delete($path_image_hero);
+            Storage::disk('public')->delete($path_image_hero_qr);
+
+
+            $hero->delete();
+
+            if ($type == "СВО") {
+                return redirect()->route('added_heroes_page_svo', 
+                    ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
+            }
+            else if ($type == "ВОВ") {
+                return redirect()->route('added_heroes_page_vov', 
+                    ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
+            }
+            else {
+                return redirect()->route('profile');
+            }
+
+
+        } catch (Exception $e) {
+            if ($type == "СВО") {
+                return redirect()->route('added_heroes_page_svo', 
+                    ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city])
+                    ->withErrors('Неизвестная ошибка!'.$e);;
+            }
+            else if ($type == "ВОВ") {
+                return redirect()->route('added_heroes_page_vov', 
+                    ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city])
+                    ->withErrors('Неизвестная ошибка!'.$e);
+            }
+            return redirect()->route('profile');
+                
+        }
+    }
+ 
 }

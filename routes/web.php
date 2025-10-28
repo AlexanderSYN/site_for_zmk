@@ -96,13 +96,23 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     // redirect to edit hero page
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes/edit/{id}', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
-    Route::post('/profile/heroes_vov/added_heroes/edit/{id}', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+
+    Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
+    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
+
+    Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+    Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user_page'])->name('edit_hero_user_page');
+
     //--------------------------------------------
     // data changes in the database
     //--------------------------------------------
     Route::get('/profile/heroes_vov/added_heroes/edit/update', [HeroActionsController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
     Route::post('/profile/heroes_vov/added_heroes/edit/update', [HeroActionsController::class, 'edit_hero_user'])->name('edit_hero_user_in_bd');
+
+    //--------------------------------------------
+    // delete hero
+    //--------------------------------------------
+    Route::post('/profile/heroes_vov/added_heroes/deleting',[HeroActionsController::class, 'delete_hero'])->name('delete_hero');
 
     //--------------------------------------------
     // redirect to add heroes page

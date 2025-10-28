@@ -120,6 +120,11 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
+                 @foreach ($errors->all() as $message)
+                            <div class="notice error">
+                                {{ $message }}
+                            </div>
+                @endforeach
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
                 @if ($heroes->count() > 0) 
@@ -153,7 +158,7 @@
                             </form>
                             
                             
-                            <form action="/" method="post" >
+                            <form action="{{ route('delete_hero') }}" method="post" >
                                  @csrf
                                 <input type="hidden" name="id_hero"
                                     value="{{ $hero->id }}" />
