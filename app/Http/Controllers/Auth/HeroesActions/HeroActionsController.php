@@ -186,21 +186,43 @@ class HeroActionsController extends Controller
             // paths to send on the base date
             $path_image_hero = "none"; 
             $path_image_hero_qr = "none";
+            $folder_name = $user->id;
 
             //==============================================================
             // if the old file has changed, then delete the old file from
             // the folder and add a new one
             //==============================================================
             // if the image of hero changed then delete image from disk
-            if ($hero_image != null) {
-                Storage::disk('public')->delete($old_path_hero_image);
-                $path_image_hero = $hero_image;
-            } else $path_image_hero = $old_path_hero_image;
+            switch ($hero->type) {
+                case "ВОВ":
+                    if ($hero_image != null) {
+                        Storage::disk('public')->delete($old_path_hero_image);
+                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$folder_name}", 'public');
+                    } else $path_image_hero = $old_path_hero_image;
 
-            if ($hero_image_qr != null) {
-                Storage::disk('public')->delete($old_path_hero_image_qr);
-                $path_image_hero_qr = $hero_image_qr;
-            } else $path_image_hero_qr = $old_path_hero_image_qr;
+                    if ($hero_image_qr != null) {
+                        Storage::disk('public')->delete($old_path_hero_image_qr);
+                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$folder_name}", 'public');;
+                    } else $path_image_hero_qr = $old_path_hero_image_qr;
+                    break;
+
+                case "СВО":
+                    if ($hero_image != null) {
+                        Storage::disk('public')->delete($old_path_hero_image);
+                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$folder_name}", 'public');
+                    } else $path_image_hero = $old_path_hero_image;
+
+                    if ($hero_image_qr != null) {
+                        Storage::disk('public')->delete($old_path_hero_image_qr);
+                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$folder_name}", 'public');;
+                    } else $path_image_hero_qr = $old_path_hero_image_qr;
+                    break;
+
+                default:
+                    $path_image_hero = $old_path_hero_image;
+                    $path_image_hero_qr = $old_path_hero_image_qr;
+                    break;
+            }
 
             // Create hero record
              $hero->update([
@@ -220,12 +242,12 @@ class HeroActionsController extends Controller
                 case "ВОВ":
                     return redirect()->route('added_heroes_page_vov'
                     , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
-                    ->with('success', 'Данные успешно героя ' . $name_hero . " изменены!");
+                    ->with('success', 'Данные героя: "' . $name_hero . '" успешно изменены!');
                     break;
                 case "СВО":
                     return redirect()->route('added_heroes_page_svo'
                     , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
-                    ->with('success', 'Данные успешно героя ' . $name_hero . " изменены!");
+                    ->with('success', 'Данные героя: "' . $name_hero . '" успешно изменены!');
                     break;
             }
 
@@ -276,12 +298,12 @@ class HeroActionsController extends Controller
             if ($type == "СВО") {
                 return redirect()->route('added_heroes_page_svo', 
                     ['user' => $user, 'heroes' => $hero,'type' => $type, 'city' => $city])
-                    ->with('success', 'Герой ' . $hero->name_hero . " успешно удален!");
+                    ->with('success', 'Герой: "' . $hero->name_hero . '" успешно удален!');
             }
             else if ($type == "ВОВ") {
                 return redirect()->route('added_heroes_page_vov', 
                     ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city])
-                    ->with('success', 'Герой ' . $hero->name_hero . " успешно удален!");
+                    ->with('success',  'Герой: "' . $hero->name_hero . '" успешно удален!');
             }
             else {
                 return redirect()->route('profile');
