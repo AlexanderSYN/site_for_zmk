@@ -142,7 +142,10 @@
 
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
+
                 @if ($heroes->count() > 0) 
+        
+
                     @foreach ($heroes as $hero)
                         <div class="wrapper_for_hero">
                             @if ($hero->isCheck == 0 )
@@ -182,6 +185,7 @@
                                 </button>
                             </form>
 
+                            <!-- confirmation button for deleting a hero -->
                             <script>
                                 document.getElementById('delete_form').addEventListener('submit', function (e) {
                                     // Canceling the standard form submission
@@ -198,6 +202,18 @@
                             
                         </div>
                     @endforeach
+
+                    <!-- pagination -->
+                    @if ($heroes->hasPages())
+                        <div style="background: papayawhip; padding: 10px; margin: 20px 0;">
+                            Всего страниц: {{ $heroes->lastPage() }}, 
+                            Текущая: {{ $heroes->currentPage() }}
+                        </div>
+                        <div class="pagination-simple">
+                            {{ $heroes->links() }}
+                        </div>
+                    @endif
+
                 @else
                     <div class="alert alert-info">
                         Нет данных для отображения

@@ -300,7 +300,10 @@ main {
         display: inline-flex;
         cursor: pointer;
     }
-
+}
+.pagination-simple {
+    margin-left: 2rem;
+    
 }
 
 @media (max-width: 1464px) {

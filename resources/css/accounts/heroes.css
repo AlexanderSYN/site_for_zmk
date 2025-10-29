@@ -296,6 +296,10 @@ main .delete_hero {
   cursor: pointer;
 }
 
+.pagination-simple {
+  margin-left: 2rem;
+}
+
 @media (max-width: 1464px) {
   main .wrapper_for_hero {
     width: 1317px;
