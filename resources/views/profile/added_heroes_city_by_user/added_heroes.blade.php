@@ -120,6 +120,15 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
+                @if ($type == null || $city == null)
+                    <div class="alert alert-danger">
+                        <h4>
+                        ❌ERROR: Тип героя или город не найден, пожалуйста нажмите 
+                        "профиль" и перейдите обратно на эту страницу (используя навигационные ссылки) 
+                        или перезайдите на сайт❌
+                        </h4>
+                    </div>
+                @endif
                  @foreach ($errors->all() as $message)
                     <div class="notice error">
                         {{ $message }}
@@ -163,16 +172,30 @@
                                 </button>
                             </form>
                             
-                            
-                            <form action="{{ route('delete_hero') }}" method="post" >
+                            <form action="{{ route('delete_hero') }}" method="post" id="delete_form">
                                  @csrf
                                 <input type="hidden" name="id_hero"
                                     value="{{ $hero->id }}" />
 
-                                <button type="submit" class="delete_hero">
+                                <button type="submit" id="btn_delete" class="delete_hero">
                                     УДАЛИТЬ
                                 </button>
                             </form>
+
+                            <script>
+                                document.getElementById('delete_form').addEventListener('submit', function (e) {
+                                    // Canceling the standard form submission
+                                    e.preventDefault();
+
+                                    if (window.confirm('Подтвердите удаление')) {
+                                        this.submit();
+                                    } else {
+                                        alert('Отменено!');
+                                    }
+                                });
+                            </script>
+
+                            
                         </div>
                     @endforeach
                 @else

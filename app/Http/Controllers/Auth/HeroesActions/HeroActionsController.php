@@ -253,7 +253,7 @@ class HeroActionsController extends Controller
 
         } catch (Exception $e) {
             return redirect()->route('edit_hero_user_page')
-                ->withErrors('ERROR' . $e->getMessage());
+                ->withErrors('Неизвестная ошибка!');
         }
 
     }
@@ -314,12 +314,12 @@ class HeroActionsController extends Controller
             if ($type == "СВО") {
                 return redirect()->route('added_heroes_page_svo', 
                     ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city])
-                    ->withErrors('Неизвестная ошибка!'.$e);;
+                    ->withErrors('Неизвестная ошибка!');;
             }
             else if ($type == "ВОВ") {
                 return redirect()->route('added_heroes_page_vov', 
                     ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city])
-                    ->withErrors('Неизвестная ошибка!'.$e);
+                    ->withErrors('Неизвестная ошибка!');
             }
             return redirect()->route('profile');
                 
