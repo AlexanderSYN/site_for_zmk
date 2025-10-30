@@ -73,19 +73,17 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile_city')}}" 
-                        style="{{ $type == "ВОВ" ? "color: #413939" : "" }}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="{{ route('heroes_svo_profile_city') }}" 
-                        style="{{ $type == "СВО" ? "color: #413939" : "" }}" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_profile_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
                         <!-- Памятные Места -->
-                        <a href="{{ route('mp_profile_city') }}" class="header_menu_link">
+                        <a href="{{ route('mp_profile_city') }}" style="color: #413939" class="header_menu_link">
                             Памятные Места
                         </a>    
                     
@@ -93,15 +91,17 @@
                 </ul>
             </nav>
 
+
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
-                <form action="{{ route('add_heroes_page_svo') }}" method="post">                    
+                <form action="{{ $type == 'ВОВ' ? route('add_heroes_page_vov') 
+                              : route('add_heroes_page_svo') }}" method="post">                    
                     @csrf
                     <input type="hidden" name="type" value="{{ $type }}" />
                     <input type="hidden" name="city" value="{{ $city }}" />
                     
                     <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ГЕРОЯ
+                          ДОБАВИТЬ ПМ
                     </button>
                 </form>
 
@@ -113,13 +113,15 @@
             
         </header>
 
+
+
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
                 @if ($type == null || $city == null)
                     <div class="alert alert-danger">
                         <h4>
-                        ❌ERROR: Тип героя или город не найден, пожалуйста нажмите 
+                        ❌ERROR: Тип памятного места или город не найден, пожалуйста нажмите 
                         "профиль" и перейдите обратно на эту страницу (используя навигационные ссылки) 
                         или перезайдите на сайт❌
                         </h4>
@@ -137,40 +139,40 @@
                 @endif
 
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
-                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
+                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Памятные Места)</h1> 
 
                 <div style="background-color: rgba(255, 252, 252, 0.5); 
                     margin-bottom: 0.5rem;
                     font-size: 1.5rem;
                     font-family: inherit;
                     color: #aea6a6;">
-                        ВСЕГО {{ $heroes->total() }} ГЕРОЕВ
+                        ВСЕГО {{ $memorable_places->total() }} ПАМЯТНЫХ МЕСТ    
                 </div>
 
-                @if ($heroes->count() > 0) 
-                    @foreach ($heroes as $hero)
+                @if ($memorable_places->count() > 0) 
+                    @foreach ($memorable_places as $mp)
                         <div class="wrapper_for_hero">
-                            @if ($hero->isCheck == 0 )
+                            @if ($mp->isCheck == 0 )
                                 <div class="alert alert-warning">
-                                    ⏳Герой на проверке⏳
+                                    ⏳Памятное на проверке⏳
                                 </div>
                             @else
                                 <div class="alert alert-success">
-                                    ✅Герой проверен и выложен✅
+                                    ✅Памятное место проверено и выложено✅
                                 </div>
                             @endif
 
-                            <h2>{{ $hero->name_hero }}</h2>
-                            <h4>{{ $hero->description_hero }}</h4>
+                            <h2>{{ $mp->name_hero }}</h2>
+                            <h4>{{ $mp->description_hero }}</h4>
             
-                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }} (картинка не найден) | " />
+                            <img class="img_hero" src="{{ asset('storage/' . $mp->image_hero) }}" alt="{{ $mp->name_hero }} (картинка не найден) | " />
             
-                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }} (картинка не найден)" />
+                            <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name_hero }} (картинка не найден)" />
 
                             <form action="{{ route('edit_hero_user_page') }}" method="post" >
                                 @csrf
                                 <input type="hidden" name="id_hero"
-                                    value="{{ $hero->id }}" />
+                                    value="{{ $mp->id }}" />
 
                                 <button type="submit" class="edit_hero">
                                     ИЗМЕНИТЬ
@@ -180,7 +182,7 @@
                             <form action="{{ route('delete_hero') }}" method="post" id="delete_form">
                                  @csrf
                                 <input type="hidden" name="id_hero"
-                                    value="{{ $hero->id }}" />
+                                    value="{{ $mp->id }}" />
 
                                 <button type="submit" id="btn_delete" class="delete_hero">
                                     УДАЛИТЬ
@@ -208,16 +210,17 @@
                     <!-- pagination -->
                    
                     <div>
-                        <div style=" background-color: rgba(255, 252, 252, 0.5); 
+                        <div style="
+                            background-color: rgba(255, 252, 252, 0.5); 
                             margin-bottom: 0.5rem;
                             font-size: 1.5rem;
                             font-family: inherit;
                             color: #aea6a6;">
-                                ВСЕГО {{ $heroes->total() }} ГЕРОЕВ
+                                ВСЕГО {{ $memorable_places->total() }} ПАМЯТНЫХ МЕСТ    
                         </div>
 
                         <div style="display: grid;justify-content: center;">
-                            {!! $heroes->links('vendor.pagination.bootstrap-4') !!}
+                            {!! $mp->links('vendor.pagination.bootstrap-4') !!}
 
                         </div>
                     </div>

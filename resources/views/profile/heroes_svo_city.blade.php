@@ -83,7 +83,7 @@
                         </a>
 
                         <!-- Памятные Места -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('mp_profile_city') }}" class="header_menu_link">
                             Памятные Места
                         </a>    
                     

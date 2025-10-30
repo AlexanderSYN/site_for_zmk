@@ -13,9 +13,13 @@ use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\HeroesVovController;
 use App\Http\Controllers\HeroesSvoController;
+use App\Http\Controllers\MemorablePlacesController;
+
+use App\Http\Controllers\Auth\HeroesActions\MPAddedController;
 
 use App\Http\Controllers\PoliticPolicyController;
 use App\Http\Controllers\UserController;
+use App\Models\MPController;
 
 //--------------------------------------------
 // for main page
@@ -96,7 +100,6 @@ Route::middleware('auth')->group(function() {
     //--------------------------------------------
     // redirect to edit hero page
     //--------------------------------------------
-
     Route::get('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
     Route::post('/profile/heroes_vov/added_heroes/edit', [HeroesAddedController::class, 'edit_hero_user'])->name('edit_hero_user');
 
@@ -125,7 +128,18 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/heroes_svo/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_svo');
     Route::post('/profile/heroes_svo/added_heroes/add_heroes', [HeroActionsController::class, 'show'])->name('add_heroes_page_svo');
 
+    //=========================================
+    // memorable places 
+    //========================================
+    Route::get('/profile/memorable_places', [MemorablePlacesController::class, 'show'])->name('mp_profile_city');
+    Route::post('/profile/memorable_places', [MemorablePlacesController::class, 'show'])->name('mp_profile_city');
 
+    //=========================================
+    // redirect to added memorable places page
+    //========================================
+    Route::get('/profile/memorable_places/added_mp', [MPAddedController::class, 'show'])->name('added_mp_page');
+    Route::post('/profile/memorable_places/added_mp', [MPAddedController::class, 'show'])->name('added_mp_page');
+    
 });
 
 //--------------------------------------------

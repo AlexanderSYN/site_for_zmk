@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 use Exception;
+use Termwind\Components\BreakLine;
 
 class AddCityController extends Controller
 {
@@ -21,12 +22,23 @@ class AddCityController extends Controller
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
+        
+        switch ($city) {
+            case "ВОВ":
+                return view('profile.add_hero_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
+                break;
+            
+            case "СВО":
+                return view('profile.add_hero_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
+                break;
 
-        if ($city == "ВОВ") {
-            return view('profile.add_hero_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
-        } 
-        else if ($city == "СВО") {
-            return view('profile.add_hero_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
+            case "ПМ":
+                return view('profile.add_hero_and_city.add_city_mp', ['user' => $user, 'city' => $city]);
+                break;
+
+            default: 
+                return redirect()->route('profile');
+                break;
         }
 
         return view(route('main'), ['user' => $user]);
@@ -68,20 +80,23 @@ class AddCityController extends Controller
                 'added_user_name' => $user->first_name
             ]);
 
-            if ($user_selected_content == "ВОВ")
-            {
-                return redirect()->route('heroes_vov_profile_city');
-            }
-            else if ($user_selected_content == "СВО")
-            {
-                return redirect()->route('heroes_vov_profile_city');
-            }
-            else 
-            {
-                return redirect()->route('profile');
-            }
+            switch ($user_selected_content) {
+                case "ВОВ": 
+                    return redirect()->route('heroes_vov_profile_city');
+                    break;
 
-            //return redirect()->back()->withInput(); // maybe add?
+                case "СВО": 
+                    return redirect()->route('heroes_svo_profile_city');
+                    break;
+
+                case "ПМ":
+                    return redirect()->route('mp_profile_city');
+                    break;
+                    
+                default:
+                    return redirect()->route('profile');
+                    break;
+            }
 
         } catch (Exception $e) {
              return redirect()->back()

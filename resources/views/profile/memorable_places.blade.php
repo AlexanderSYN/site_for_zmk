@@ -73,7 +73,7 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_profile_city')}}" style="color: #413939" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_profile_city')}}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
@@ -83,7 +83,7 @@
                         </a>
 
                         <!-- Памятные Места -->
-                        <a href="{{ route('mp_profile_city') }}" class="header_menu_link">
+                        <a href="{{ route('mp_profile_city') }}"style="color: #413939" class="header_menu_link">
                             Памятные Места
                         </a>    
                     
@@ -94,14 +94,15 @@
 
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
-                <form action="{{ route('add_city') }}" method="post">                    
+                <form action="{{ route('added_mp_page') }}" method="post">                    
                     @csrf
-                    <input type="hidden" name="name_hero" value="ВОВ" />
+                    <input type="hidden" name="name_hero" value="ПМ" />
 
                     <button type="submit" class="btn_add_city_head">
                           ДОБАВИТЬ ГОРОД
                     </button>
                 </form>
+
 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
@@ -116,39 +117,39 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои ВОВ (Выберите Город)</h1>
+                <h1>Памятные Места (Выберите Город)</h1>
 
-            @if($heroesVovCity->count() > 0)
-                @foreach ($heroesVovCity as $heroVov)
+            @if($memorable_places->count() > 0)
+                @foreach ($memorable_places as $mp)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
+                            <h5 class="card_title">Город: {{ $mp->city }} ({{ $mp->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
+                        
                                 <?php
                                     try {
-                                        echo $heroVov->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVov->user->first_name . ' '; 
+                                        echo $mp->user->first_name == $user->first_name 
+                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $mp->user->first_name . ' '; 
                                         
-                                        echo $heroVov->user->last_name == $user->last_name 
-                                        ? ' ' :  $heroVov->user->last_name;
+                                        echo $mp->user->last_name == $user->last_name 
+                                        ? ' ' :  $mp->user->last_name;
                                     } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
                                     }
                                 ?>
-                    
-                                <br> 
+
+                                <br>
                                 <small class="text-muted">
-                                    Создано: {{ $heroVov->created_at->format('d.m.Y H:i') }}
+                                    Создано: {{ $mp->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="{{  $heroVov->type == 'ВОВ' ? route('added_heroes_page_vov') 
-                                                : route('added_heroes_page_svo') }}" method="post">
+                            <form action="{{ route('added_mp_page') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
-                                    value="{{ $heroVov->city }}" />
-                                
+                                    value="{{ $mp->city }}" />
+
                                 <input type="hidden" name="type" 
-                                    value="{{ $heroVov->type }}" />
+                                    value="{{ $mp->type }}" />
 
                                 <button type="submit" class="btn_go">
                                     Перейти
