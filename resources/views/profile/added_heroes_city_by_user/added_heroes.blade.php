@@ -143,9 +143,12 @@
                 <h1>Герои {{ $type != null ? $type : old('type') }} 
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1> 
 
-                @if ($heroes->count() > 0) 
-        
+                <div style="background: aliceblue; 
+                margin-bottom: 0.5rem;
+                font-size: 1.5rem;
+                font-family: inherit;">всего {{ $heroes->total() }} героев</div>
 
+                @if ($heroes->count() > 0) 
                     @foreach ($heroes as $hero)
                         <div class="wrapper_for_hero">
                             @if ($hero->isCheck == 0 )
@@ -204,15 +207,13 @@
                     @endforeach
 
                     <!-- pagination -->
-                    @if ($heroes->hasPages())
-                        <div style="background: papayawhip; padding: 10px; margin: 20px 0;">
-                            Всего страниц: {{ $heroes->lastPage() }}, 
-                            Текущая: {{ $heroes->currentPage() }}
-                        </div>
-                        <div class="pagination-simple">
-                            {{ $heroes->links() }}
-                        </div>
-                    @endif
+                    <div style="background: aliceblue;
+                    margin-bottom: 0.5rem; 
+                    font-size: 1.5rem;
+                    font-family: inherit;">всего {{ $heroes->total() }} героев</div>
+                    <div style="display: grid;justify-content: center;">
+                        {!! $heroes->links('vendor.pagination.bootstrap-4') !!}
+                    </div>
 
                 @else
                     <div class="alert alert-info">

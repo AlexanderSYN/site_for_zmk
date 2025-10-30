@@ -29,6 +29,7 @@ class HeroesAddedController extends Controller
                 ->with('user')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
+        $heroes->appends(['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city]);
      
         return view('profile.added_heroes_city_by_user.added_heroes', 
             ['user' => $user, 'heroes' => $heroes,'type' => $type, 'city' => $city]);
