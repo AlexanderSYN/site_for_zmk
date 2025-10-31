@@ -1,28 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Auth\HeroesActions;
+namespace App\Http\Controllers\Auth\HeroesMPActions;
 
 // my helper
-use App\Http\Controllers\Auth\HeroesActions\helper\Helper_hero;
+use App\Http\Controllers\Auth\HeroesMPActions\helper\Helper_hero;
 
 // laravel and etc
 use App\Http\Controllers\Controller;
 use App\Models\heroes_added_by_user;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 use Exception;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
+
 
 class HeroActionsController extends Controller
 {
     //============================
-    // redirect to the added page 
+    // redirect to the add hero page 
     //============================
     public function show(Request $request)
     {
@@ -35,7 +33,7 @@ class HeroActionsController extends Controller
             return redirect()->route('profile_banned');
         }
 
-        return view('profile.add_hero_and_city.add_hero', ['user' => $user, 
+        return view('profile.add_hero_mp_and_city.add_hero', ['user' => $user, 
                                             'city' => $city, 'type' => $type]);
     }
 
@@ -98,12 +96,12 @@ class HeroActionsController extends Controller
             
             // Store files based on type
             if ($type == "ВОВ") {
-                $pathForSave = $request->file('image_hero')->store("VOV/heroes/{$folderName}", 'public');
-                $pathForSave_QR = $request->file('image_hero_qr')->store("VOV/heroes/{$folderName}/QR", 'public');
+                $pathForSave = $request->file('image_hero')->store("VOV/heroes/{$city}/{$folderName}", 'public');
+                $pathForSave_QR = $request->file('image_hero_qr')->store("VOV/heroes/{$city}/{$folderName}/QR", 'public');
             } 
             else if ($type == "СВО") {
-                $pathForSave = $request->file('image_hero')->store("SVO/heroes/{$folderName}", 'public');
-                $pathForSave_QR = $request->file('image_hero_qr')->store("SVO/heroes/{$folderName}/QR", 'public');
+                $pathForSave = $request->file('image_hero')->store("SVO/heroes/{$city}{$folderName}", 'public');
+                $pathForSave_QR = $request->file('image_hero_qr')->store("SVO/heroes/{$city}{$folderName}/QR", 'public');
             }
             else {
                 return redirect()->route('profile', ['user' => $user, 
@@ -197,24 +195,24 @@ class HeroActionsController extends Controller
                 case "ВОВ":
                     if ($hero_image != null) {
                         Storage::disk('public')->delete($old_path_hero_image);
-                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$folder_name}", 'public');
+                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$hero->city}/{$folder_name}", 'public');
                     } else $path_image_hero = $old_path_hero_image;
 
                     if ($hero_image_qr != null) {
                         Storage::disk('public')->delete($old_path_hero_image_qr);
-                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$folder_name}", 'public');;
+                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$hero->city}/{$folder_name}", 'public');;
                     } else $path_image_hero_qr = $old_path_hero_image_qr;
                     break;
 
                 case "СВО":
                     if ($hero_image != null) {
                         Storage::disk('public')->delete($old_path_hero_image);
-                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$folder_name}", 'public');
+                        $path_image_hero = $request->file('image_hero')->store("VOV/heroes/{$hero->city}/{$folder_name}", 'public');
                     } else $path_image_hero = $old_path_hero_image;
 
                     if ($hero_image_qr != null) {
                         Storage::disk('public')->delete($old_path_hero_image_qr);
-                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$folder_name}", 'public');;
+                        $path_image_hero_qr = $request->file('image_hero_qr')->store("SVO/heroes/{$hero->city}/{$folder_name}", 'public');;
                     } else $path_image_hero_qr = $old_path_hero_image_qr;
                     break;
 
@@ -289,8 +287,12 @@ class HeroActionsController extends Controller
             $data = heroes_added_by_user::find($id);
             
             // deleting file
-            Storage::disk('public')->delete($path_image_hero);
-            Storage::disk('public')->delete($path_image_hero_qr);
+            if ($path_image_hero != null) {
+                Storage::disk('public')->delete($path_image_hero);
+            }
+            if ($path_image_hero_qr != null) {
+                Storage::disk('public')->delete($path_image_hero_qr);
+            }
 
 
             $hero->delete();

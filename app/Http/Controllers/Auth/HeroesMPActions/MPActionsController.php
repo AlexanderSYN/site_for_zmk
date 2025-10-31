@@ -1,0 +1,253 @@
+<?php
+
+namespace App\Http\Controllers\Auth\HeroesMPActions;
+
+use App\Http\Controllers\Controller;
+use App\Models\mp_added_by_user;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+use Exception;
+
+//========================
+// -------hint------------
+// mp => memorable places
+//========================
+
+class MPActionsController extends Controller
+{
+    //===============================
+    // redirect to the add mp page 
+    //===============================
+    public function show(Request $request)
+    {
+        $user = Auth::user();
+
+        $city = $request->input('city');
+
+        if ($user->isBan) {
+            return redirect()->route('profile_banned');
+        }
+
+        return view('profile.add_hero_mp_and_city.add_mp', ['user' => $user, 
+                                            'city' => $city]);
+    }
+
+    //=======================
+    // save user data
+    //=======================
+    public function store(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $validator = Validator::make($request->all(), [
+                'name' => 'string|max:255',
+                'mp_link' => 'string|max:255',
+                'description' => 'string|max:255',
+                'image_mp' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
+                'image_qr' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048'
+            ]);
+
+            // Check if validation fails
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $city = $request->input('city');
+            $name_mp = $request->input('name_mp');
+            $mp_link = $request->input('mp_link');
+            $description = $request->input('description');
+
+
+            // Check if memorable places already exists
+            $existingMP = mp_added_by_user::where('name', $name_mp)->exists();
+            
+            if ($existingMP) {
+                return redirect()->route('add_mp_page', ['user' => $user, 
+                            'city' => $city])
+                            ->withInput()
+                            ->withErrors('Такое Памятное Место уже есть на сайте!');
+            }
+
+            // Generate unique folder name for this mp
+            $folderName = $user->id;
+            
+            // Store files based on type
+            if ($request->file('image_mp') == null) {
+                return redirect()->route('add_mp_page', ['user' => $user, 
+                        'city' => $city])
+                        ->withInput()
+                        ->withErrors('Вы не выбрали картинку для Памятного Места!');
+            }
+
+            if ($request->file('image_mp_qr') == null) {
+                return redirect()->route('add_mp_page', ['user' => $user, 
+                        'city' => $city])
+                        ->withInput()
+                        ->withErrors('Вы не выбрали картинку для Памятного Места!');
+            }
+
+            $pathForSave = $request->file('image_mp')->store("MP/{$city}/{$folderName}", 'public');
+            $pathForSave_QR = $request->file('image_mp_qr')->store("MP/{$city}/{$folderName}/QR", 'public');
+
+            // Create mp record
+            $data = mp_added_by_user::create([
+                'name' => $name_mp,
+                'description' => $description,
+                'mp_link' => $mp_link,
+                'city' => $city,
+                'image_mp' => $pathForSave,  // Store the actual file path
+                'image_qr' => $pathForSave_QR, // Store the actual file path
+                'added_user_id' => $user->id,
+                'isCheck' => false
+            ]);
+
+            return redirect()->route('add_mp_page', ['user' => $user, 
+                        'city' => $city])
+                        ->withInput()
+                        ->with('success', 'Памятное Место успешно добавлено!');
+
+
+        } catch (Exception $e) {
+            return redirect()->route('add_mp_page', ['user' => $user, 
+                        'city' => $city])
+                        ->withInput()
+                        ->withErrors('Неизвестная ошибка!');
+        }
+
+    }
+
+    //===========================
+    // edit memorable place data
+    //===========================
+    public function edit_mp_user(Request $request)
+    {
+
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id = $request->input('id_mp');
+            $name_mp = $request->input('name_mp');
+            $description = $request->input('description');
+            $mp_link = $request->input('mp_link');
+
+            $mp = mp_added_by_user::where('id', $id)->with('user')->first();
+            
+            $mp_image = $request->file('image_mp');
+            $mp_image_qr = $request->file('image_mp_qr');
+
+            $old_path_mp_image = $mp->image_mp;
+            $old_path_mp_image_qr = $mp->image_qr;
+
+            // paths to send on the base date
+            $path_image_mp = "none"; 
+            $path_image_mp_qr = "none";
+            $folder_name = $user->id;
+
+            //==============================================================
+            // if the old file has changed, then delete the old file from
+            // the folder and add a new one
+            //==============================================================
+            // if the image of hero changed then delete image from disk
+            if ($mp_image != null) {
+                Storage::disk('public')->delete($old_path_mp_image);
+                $path_image_mp = $request->file('image_mp')->store("MP/{$mp->city}/{$folder_name}", 'public');
+            } else $path_image_mp = $old_path_mp_image;
+
+            if ($mp_image_qr != null) {
+                Storage::disk('public')->delete($old_path_mp_image_qr);
+                $path_image_mp_qr = $request->file('image_mp_qr')->store("MP/{$mp->city}/{$folder_name}/QR", 'public');;
+            } else $path_image_mp_qr = $old_path_mp_image_qr;
+
+            // Create hero record
+            $mp->update([
+                'updated-at' => now(),
+                'name' => $name_mp,
+                'description' => $description,
+                'mp_link' => $mp_link,
+                'city' => $mp->city,
+                'image_mp' => $path_image_mp,  // Store the actual file path
+                'image_qr' => $path_image_mp_qr, // Store the actual file path
+                'added_user_id' => $user->id,
+                'isCheck' => false
+            ]);
+            
+           return redirect()->route('added_mp_page'
+                    , ['user' => $user, 'memorable_places' => $mp,'city' => $mp->city])
+                    ->with('success', 'Данные героя: "' . $name_mp . '" успешно изменены!');
+
+
+        } catch (Exception $e) {
+            return redirect()->route('edit_mp_user_page', ['user' => $user, 'mp' => $mp])
+                ->withErrors('Неизвестная ошибка!');
+        }
+
+    }
+
+    //==========================
+    // delete memorable place
+    //==========================
+    public function delete_mp(Request $request) {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id = $request->input('id_mp');
+            $mp = mp_added_by_user::where('id', $id)->with('user')->first();
+
+            $type = $mp->type;
+            $city = $mp->city;
+
+            $path_image_mp = $mp->image_mp;
+            $path_image_mp_qr = $mp->image_qr;
+            
+            $memorable_places = mp_added_by_user::where('city', $city)
+                ->where('added_user_id', $user->id)
+                ->with('user')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+
+            $data = mp_added_by_user::find($id);
+            
+            // deleting file
+            if ($path_image_mp != null) {
+                Storage::disk('public')->delete($path_image_mp);
+            }
+            if ($path_image_mp_qr != null) {
+                Storage::disk('public')->delete($path_image_mp_qr);
+            }
+           
+
+
+            $mp->delete();
+
+            return redirect()->route('added_mp_page', 
+                    ['user' => $user, 'memorable_places' => $mp, 'city' => $city])
+                    ->with('success', 'Памятное Место: "' . $mp->name_mp . '" успешно удалено!');
+
+
+        } catch (Exception $e) {
+            return redirect()->route('added_mp_page', 
+                    ['user' => $user, 'memorable_places' => $mp, 'city' => $city])
+                    ->withErros("Неизвестная ошибка!");
+                
+        }
+    }
+}

@@ -15,7 +15,6 @@ class mp_added_by_user extends Model
         'description',
         'mp_link',
         'city',
-        'type',
         'image_mp',
         'image_qr',
         'added_user_id',

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавленные Герои</title>
+    <title>Добавленные Памятные Места</title>
 
 
     <!-- ICON -->
@@ -94,10 +94,8 @@
 
             <div class="header_actions" id="header_actions">
                 <!-- btn add_city -->
-                <form action="{{ $type == 'ВОВ' ? route('add_heroes_page_vov') 
-                              : route('add_heroes_page_svo') }}" method="post">                    
+                <form action="{{ route('add_mp_page') }}" method="post">                    
                     @csrf
-                    <input type="hidden" name="type" value="{{ $type }}" />
                     <input type="hidden" name="city" value="{{ $city }}" />
                     
                     <button type="submit" class="btn_add_city_head">
@@ -118,7 +116,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                @if ($type == null || $city == null)
+                @if ($city == null)
                     <div class="alert alert-danger">
                         <h4>
                         ❌ERROR: Тип памятного места или город не найден, пожалуйста нажмите 
@@ -138,7 +136,7 @@
                     </div>
                 @endif
 
-                <h1>Герои {{ $type != null ? $type : old('type') }} 
+                <h1> Памятные Места
                     ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Памятные Места)</h1> 
 
                 <div style="background-color: rgba(255, 252, 252, 0.5); 
@@ -154,7 +152,7 @@
                         <div class="wrapper_for_hero">
                             @if ($mp->isCheck == 0 )
                                 <div class="alert alert-warning">
-                                    ⏳Памятное на проверке⏳
+                                    ⏳Памятное место на проверке⏳
                                 </div>
                             @else
                                 <div class="alert alert-success">
@@ -162,16 +160,16 @@
                                 </div>
                             @endif
 
-                            <h2>{{ $mp->name_hero }}</h2>
-                            <h4>{{ $mp->description_hero }}</h4>
+                            <h2>{{ $mp->name }}</h2>
+                            <h4>{{ $mp->description}}</h4>
             
-                            <img class="img_hero" src="{{ asset('storage/' . $mp->image_hero) }}" alt="{{ $mp->name_hero }} (картинка не найден) | " />
+                            <img class="img_hero" src="{{ asset('storage/' . $mp->image_mp) }}" alt="{{ $mp->name_mp }} (картинка не найден) | " />
             
-                            <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name_hero }} (картинка не найден)" />
+                            <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name_mp }} (картинка не найден)" />
 
-                            <form action="{{ route('edit_hero_user_page') }}" method="post" >
+                            <form action="{{ route('edit_mp_user_page') }}" method="post" >
                                 @csrf
-                                <input type="hidden" name="id_hero"
+                                <input type="hidden" name="id_mp"
                                     value="{{ $mp->id }}" />
 
                                 <button type="submit" class="edit_hero">
@@ -179,9 +177,9 @@
                                 </button>
                             </form>
                             
-                            <form action="{{ route('delete_hero') }}" method="post" id="delete_form">
+                            <form action="{{ route('delete_mp') }}" method="post" id="delete_form">
                                  @csrf
-                                <input type="hidden" name="id_hero"
+                                <input type="hidden" name="id_mp"
                                     value="{{ $mp->id }}" />
 
                                 <button type="submit" id="btn_delete" class="delete_hero">
@@ -220,7 +218,7 @@
                         </div>
 
                         <div style="display: grid;justify-content: center;">
-                            {!! $mp->links('vendor.pagination.bootstrap-4') !!}
+                            {!! $memorable_places->links('vendor.pagination.bootstrap-4') !!}
 
                         </div>
                     </div>

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('description')->default('none');
             $table->string('mp_link')->default('none');
             $table->string('city')->default('none');
-            $table->string('type')->default('none');
             $table->string('image_mp')->default('none');
             $table->string('image_qr')->default('none');
             $table->string('added_user_id')

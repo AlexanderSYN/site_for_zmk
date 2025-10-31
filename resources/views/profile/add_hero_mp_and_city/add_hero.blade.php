@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Изменения данных героя</title>
+    <title>Добавления Героя</title>
 
     <!-- ICON -->
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon"> 
@@ -26,13 +26,8 @@
         <!-- HEADER -->
         <header id="up">
 
-            <form action="
-                @if($hero && $hero->type == "ВОВ")
-                    {{ route('added_heroes_page_vov') }}
-                @else
-                    {{ route('added_heroes_page_svo') }}
-                @endif
-          " method="post">
+            <form action="{{ $type == "ВОВ" ? route('added_heroes_page_vov')
+                                        : route('added_heroes_page_svo') }}" method="post">
 
                 @csrf     
                 <button style="background: none; border: none;">
@@ -42,10 +37,10 @@
                     />
 
                      <input type="hidden" name="type"
-                                value="{{ $hero->type }}" />
+                                value="{{ $type == null ? session()->get('type') : $type  }}" />
 
-                    <input type="hidden" name="city"
-                            value="{{ $hero->city }}" />
+                            <input type="hidden" name="city"
+                                value="{{ $city == null ? session()->get('city') : $city  }}" />
                 </button>
             </form>
         </header>
@@ -55,10 +50,10 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
-                    <h1>ИЗМЕНЕНИЯ ИНФОРМАЦИИ О ГЕРОЯ ({{ $hero->type }})</h1>
+                    <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type == null ? session()->get('type') : $type }})</h1>
                     
                     <div class="wrapper_input">
-                        <form action="{{ route('edit_hero_user_in_bd') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('add_heroes_in_BD') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <!-- notifications -->
@@ -69,41 +64,48 @@
                                         {{ $message }}
                                     </div>
                                 @endforeach
+
+                                @if (session()->has('success'))
+                                   <div class="notice success">
+                                        {{ session()->get('success') }}
+                                    </div>
+                                @endif
                                  
                             </ul>
-                            
-                            <input type="hidden" name="id_hero"
-                                value="{{ $hero->id }}" />
 
+                            <input type="hidden" name="type"
+                                value="{{ $type == null ? session()->get('type') : $type  }}" />
+
+                            <input type="hidden" name="city"
+                                value="{{ $city == null ? session()->get('city') : $city  }}" />
 
                             <label class="input-file">
-                                <input type="file" name="image_hero" id="get_image_hero" accept="image/*" />
+                                <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
                                 <span class="input-file-btn">Выбрать Картинку Героя</span>
-                                <span class="input-file-text" id="name_image_hero">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero" id="img_hero_input" value="{{ $hero->image_hero }}" />
+                                <span class="input-file-text" id="name_image_hero">Максимум 10МБ</span>
+                                <input type="hidden" name="image_hero" id="img_hero_input" value="" />
                             </label>
 
                             <label class="input-file">
-                                <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" />
+                                <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" required />
                                 <span class="input-file-btn_2">Выбрать Картинку QR</span>
-                                <span class="input-file-text_2" id="name_image_hero_qr">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero_qr" id="img_hero_qr_input" value="{{ $hero->image_qr }}" />
+                                <span class="input-file-text_2" id="name_image_hero_qr">Максимум 10МБ</span>
+                                <input type="hidden" name="image_hero_qr" id="img_hero_qr_input" value="" />
                             </label>
 
                             <input type="text" name="name_hero"
-                                placeholder="Введите ФИО или Имя Героя" value="{{ $hero->name_hero }}" required/>
+                                placeholder="Введите ФИО или Имя Героя" value="{{ old('name_hero') }}" required/>
 
                             <input type="text" name="hero_link"
-                                placeholder="Введите Ссылку На Источник" value="{{ $hero->hero_link }}" />
+                                placeholder="Введите Ссылку На Источник" value="{{ old('hero_link') }}" />
 
                             <textarea id="description" name="description" class="description_hero"
-                                placeholder="Введите Описание Героя" required>{{ $hero->description_hero }}</textarea>
-                                
+                                placeholder="Введите Описание Героя" value="{{ old('description') }}" required></textarea>
                             <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
 
-                            <button class="edit_hero" id="btn_add">
-                                ИЗМЕНИТЬ
+                            <button class="btn_add" id="btn_add">
+                                ДОБАВИТЬ
                             </button>
                         </form>
                     </div>
@@ -129,4 +131,4 @@
 </body>
 </html>
 
-<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg-->
+<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg -->

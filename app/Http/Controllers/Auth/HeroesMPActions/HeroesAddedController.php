@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\HeroesActions;
+namespace App\Http\Controllers\Auth\HeroesMPActions;
 
 use App\Http\Controllers\Controller;
 use App\Models\heroes_added_by_user;
@@ -41,7 +41,7 @@ class HeroesAddedController extends Controller
 
         $id = $request->input('id_hero');
          $hero = heroes_added_by_user::where('id', $id)
-                                ->where('added_user_id', $user->id) // Защита: только свои герои
+                                ->where('added_user_id', $user->id)
                                 ->first();
 
         if ($user->isBan) {

@@ -1,9 +1,26 @@
 <?php
 
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
-use App\Http\Controllers\Auth\HeroesActions\HeroesAddedController;
-use App\Http\Controllers\Auth\HeroesActions\HeroActionsController;
 
+//=================================================
+// use => heroes and memorable places in profile
+//=================================================
+// added => heroes and memorable places
+use App\Http\Controllers\Auth\HeroesMPActions\HeroesAddedController;
+use App\Http\Controllers\Auth\HeroesMPActions\MPAddedController;
+
+// actions => heroes and memorable places
+use App\Http\Controllers\Auth\HeroesMPActions\HeroActionsController;
+use App\Http\Controllers\Auth\HeroesMPActions\MPActionsController;
+
+use App\Http\Controllers\HeroesVovController;
+use App\Http\Controllers\HeroesSvoController;
+use App\Http\Controllers\MemorablePlacesController;
+
+//=================================================
+// use => different function for profile 
+//=================================================
+// accounts
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -11,15 +28,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\BannedController;
 use App\Http\Controllers\Auth\ProfileController;
-use App\Http\Controllers\HeroesVovController;
-use App\Http\Controllers\HeroesSvoController;
-use App\Http\Controllers\MemorablePlacesController;
-
-use App\Http\Controllers\Auth\HeroesActions\MPAddedController;
 
 use App\Http\Controllers\PoliticPolicyController;
-use App\Http\Controllers\UserController;
-use App\Models\MPController;
 
 //--------------------------------------------
 // for main page
@@ -136,10 +146,37 @@ Route::middleware('auth')->group(function() {
 
     //=========================================
     // redirect to added memorable places page
-    //========================================
+    //=========================================
     Route::get('/profile/memorable_places/added_mp', [MPAddedController::class, 'show'])->name('added_mp_page');
     Route::post('/profile/memorable_places/added_mp', [MPAddedController::class, 'show'])->name('added_mp_page');
     
+    //=========================================
+    // redirect to add memorable place page
+    //=========================================
+    Route::get('/profile/added_mp/add_mp', [MPActionsController::class, 'show'])->name('add_mp_page');
+    Route::post('/profile/added_mp/add_mp', [MPActionsController::class, 'show'])->name('add_mp_page');
+    Route::get('/profile/added_mp/add_mp/add_mp_in_BD', [MPActionsController::class, 'store'])->name('add_mp_in_BD');
+    Route::post('/profile/added_mp/add_mp/add_mp_in_BD', [MPActionsController::class, 'store'])->name('add_mp_in_BD');
+
+    //=========================================
+    // redirect to edit memorable place page
+    //=========================================
+    Route::get('/profile/memorable_places/added_mp/edit', [MPActionsController::class, 'edit_mp_user'])->name('edit_mp_user');
+    Route::post('/profile/memorable_places/added_mp/edit', [MPActionsController::class, 'edit_mp_user'])->name('edit_mp_user');
+
+    Route::get('/profile/memorable_places/added_mp/edit', [MPAddedController::class, 'edit_mp_user_page'])->name('edit_mp_user_page');
+    Route::post('/profile/memorable_places/added_mp/edit', [MPAddedController::class, 'edit_mp_user_page'])->name('edit_mp_user_page');
+
+    //=========================================
+    // data changes in the database
+    //=========================================
+    Route::get('/profile/memorable_places/added_mp/edit/update', [MPActionsController::class, 'edit_mp_user'])->name('edit_mp_user_in_bd');
+    Route::post('/profile/memorable_places/added_mp/edit/update', [MPActionsController::class, 'edit_mp_user'])->name('edit_mp_user_in_bd');
+
+    //=========================================
+    // delete memorable place
+    //=========================================
+    Route::post('/profile/memorable_places/added_mp/deleting',[MPActionsController::class, 'delete_mp'])->name('delete_mp');
 });
 
 //--------------------------------------------

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Изменения данных героя</title>
+    <title>Ихменения данных памятного места</title>
 
     <!-- ICON -->
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon"> 
@@ -26,13 +26,7 @@
         <!-- HEADER -->
         <header id="up">
 
-            <form action="
-                @if($hero && $hero->type == "ВОВ")
-                    {{ route('added_heroes_page_vov') }}
-                @else
-                    {{ route('added_heroes_page_svo') }}
-                @endif
-          " method="post">
+            <form action="{{ route('added_mp_page') }}" method="post">
 
                 @csrf     
                 <button style="background: none; border: none;">
@@ -41,11 +35,8 @@
                         alt="стрелка назад" width="130px"
                     />
 
-                     <input type="hidden" name="type"
-                                value="{{ $hero->type }}" />
-
                     <input type="hidden" name="city"
-                            value="{{ $hero->city }}" />
+                            value="{{ $mp->city }}" />
                 </button>
             </form>
         </header>
@@ -55,10 +46,10 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
-                    <h1>ИЗМЕНЕНИЯ ИНФОРМАЦИИ О ГЕРОЯ ({{ $hero->type }})</h1>
+                    <h1>ИЗМЕНЕНИЯ ИНФОРМАЦИИ О ПАМЯТНОМ МЕСТЕ ({{ $mp->city }})</h1>
                     
                     <div class="wrapper_input">
-                        <form action="{{ route('edit_hero_user_in_bd') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('edit_mp_user_in_bd') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <!-- notifications -->
@@ -72,33 +63,31 @@
                                  
                             </ul>
                             
-                            <input type="hidden" name="id_hero"
-                                value="{{ $hero->id }}" />
-
+                            <input type="hidden" name="id_mp"
+                                value="{{ $mp->id }}" />
 
                             <label class="input-file">
-                                <input type="file" name="image_hero" id="get_image_hero" accept="image/*" />
-                                <span class="input-file-btn">Выбрать Картинку Героя</span>
+                                <input type="file" name="image_mp" id="get_image_hero" accept="image/*"/>
+                                <span class="input-file-btn">Выбрать Картинку ПМ</span>
                                 <span class="input-file-text" id="name_image_hero">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero" id="img_hero_input" value="{{ $hero->image_hero }}" />
+                                <input type="hidden" name="image_mp" id="img_hero_input" value="{{ $mp->image_mp }}" />
                             </label>
 
                             <label class="input-file">
-                                <input type="file" name="image_hero_qr" id="get_image_hero_qr" accept="image/*" />
+                                <input type="file" name="image_mp_qr" id="get_image_hero_qr" accept="image/*" />
                                 <span class="input-file-btn_2">Выбрать Картинку QR</span>
                                 <span class="input-file-text_2" id="name_image_hero_qr">картинка выбрана, но вы можете её изменить (Максимум 10МБ)</span>
-                                <input type="hidden" name="image_hero_qr" id="img_hero_qr_input" value="{{ $hero->image_qr }}" />
+                                <input type="hidden" name="image_mp_qr" id="img_hero_qr_input" value="{{ $mp->image_qr }}" />
                             </label>
 
-                            <input type="text" name="name_hero"
-                                placeholder="Введите ФИО или Имя Героя" value="{{ $hero->name_hero }}" required/>
+                            <input type="text" name="name_mp"
+                                placeholder="Введите Название Памятного Места" value="{{ $mp->name }}" required/>
 
-                            <input type="text" name="hero_link"
-                                placeholder="Введите Ссылку На Источник" value="{{ $hero->hero_link }}" />
+                            <input type="text" name="mp_link"
+                                placeholder="Введите Ссылку На Источник" value="{{ $mp->mp_link }}" />
 
-                            <textarea id="description" name="description" class="description_hero"
-                                placeholder="Введите Описание Героя" required>{{ $hero->description_hero }}</textarea>
-                                
+                            <textarea id="description" name="description" class="description_mp"
+                                placeholder="Введите Описание Памятного Места" value="{{ $mp->description }}" required>{{ $mp->description }}</textarea>
                             <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
 
