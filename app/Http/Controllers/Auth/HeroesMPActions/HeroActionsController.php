@@ -19,9 +19,11 @@ use Exception;
 
 class HeroActionsController extends Controller
 {
-    //============================
+    //================================
     // redirect to the add hero page 
-    //============================
+    // (перекидывание на страницу 
+    // добавления героя)
+    //================================
     public function show(Request $request)
     {
         $user = Auth::user();
@@ -37,9 +39,11 @@ class HeroActionsController extends Controller
                                             'city' => $city, 'type' => $type]);
     }
 
-    //=======================
-    // save user data
-    //=======================
+    //=================================
+    // save data about the hero in the 
+    // database
+    // (сохранить данные о герое в бд)
+    //=================================
     public function store(Request $request)
     {
         try {
@@ -59,6 +63,7 @@ class HeroActionsController extends Controller
             ]);
 
             // Check if validation fails
+            // (проверка на ошибки валидации)
             if ($validator->fails()) {
                 return redirect()->back()
                     ->withErrors($validator)
@@ -72,6 +77,7 @@ class HeroActionsController extends Controller
             $description = $request->input('description');
 
             // Check if hero already exists
+            // (проверка - существует ли герой с таким именем или нет)
             $existingHero = heroes_added_by_user::where('name_hero', $name_hero)->exists();
             
             if ($existingHero) {
@@ -91,10 +97,13 @@ class HeroActionsController extends Controller
                 }
             }
 
-            // Generate unique folder name for this hero
+            // the folder name is taken from the user id
+            // (название папки берётся из id пользователя)
             $folderName = $user->id;
             
-            // Store files based on type
+            // save the image to the VOV or SVO folder (depends on which page you went to)
+            // (сохраняем изображение в папку VOV или SVO (зависит с какой страницы
+            // ты перешёл))
             if ($type == "ВОВ") {
                 $pathForSave = $request->file('image_hero')->store("VOV/heroes/{$city}/{$folderName}", 'public');
                 $pathForSave_QR = $request->file('image_hero_qr')->store("VOV/heroes/{$city}/{$folderName}/QR", 'public');
@@ -108,7 +117,8 @@ class HeroActionsController extends Controller
                             'city' => $city, 'type' => $type]);
             }
 
-            // Create hero record
+            // add a hero to the database
+            // добавить героя в бд
             $data = heroes_added_by_user::create([
                 'name_hero' => $name_hero,
                 'description_hero' => $description,
@@ -155,9 +165,10 @@ class HeroActionsController extends Controller
 
     }
 
-    //=======================
+    //===========================
     // edit hero data
-    //=======================
+    // (изменить данные о герое)
+    //===========================
     public function edit_hero_user(Request $request)
     {
 
@@ -181,7 +192,8 @@ class HeroActionsController extends Controller
             $old_path_hero_image = $hero->image_hero;
             $old_path_hero_image_qr = $hero->image_qr;
 
-            // paths to send on the base date
+            // paths to the image to be sent to the database
+            // (пути к изображению для отправки в бд)
             $path_image_hero = "none"; 
             $path_image_hero_qr = "none";
             $folder_name = $user->id;
@@ -189,8 +201,9 @@ class HeroActionsController extends Controller
             //==============================================================
             // if the old file has changed, then delete the old file from
             // the folder and add a new one
+            // (если изменили фотку, тогда удаляем старую из папки и 
+            // добавляем измененную фотку)
             //==============================================================
-            // if the image of hero changed then delete image from disk
             switch ($hero->type) {
                 case "ВОВ":
                     if ($hero_image != null) {
@@ -222,16 +235,17 @@ class HeroActionsController extends Controller
                     break;
             }
 
-            // Create hero record
-             $hero->update([
+            // update data about hero
+            // обновить данные о героя
+            $hero->update([
                 'updated-at' => now(),
                 'name_hero' => $name_hero,
                 'description_hero' => $description,
                 'hero_link' => $hero_link,
                 'city' => $hero->city,
                 'type' => $hero->type,
-                'image_hero' => $path_image_hero,  // Store the actual file path
-                'image_qr' => $path_image_hero_qr, // Store the actual file path
+                'image_hero' => $path_image_hero,  // update to the current image path 
+                'image_qr' => $path_image_hero_qr, // (обновить на актуальный путь к изображению)
                 'added_user_id' => $user->id,
                 'isCheck' => false
             ]);
@@ -258,6 +272,7 @@ class HeroActionsController extends Controller
 
     //=======================
     // delete hero
+    // (удалить героя)
     //=======================
     public function delete_hero(Request $request) {
         try {
@@ -287,6 +302,7 @@ class HeroActionsController extends Controller
             $data = heroes_added_by_user::find($id);
             
             // deleting file
+            // удаление файлов
             if ($path_image_hero != null) {
                 Storage::disk('public')->delete($path_image_hero);
             }

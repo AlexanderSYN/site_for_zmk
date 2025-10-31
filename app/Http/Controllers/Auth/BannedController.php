@@ -11,6 +11,8 @@ class BannedController extends Controller
     public function show()
     {
         // if the user has not been banned, redirect to the profile
+        // (если пользователь был не забанен, перекидываем на страницу
+        // профиля)
         if (Auth::check() && !Auth::user()->isBan) {
             return redirect()->route('profile');
         }

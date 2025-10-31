@@ -15,18 +15,21 @@ use Exception;
 
 class RegisterController extends Controller
 {
-    //--------------------------------------------
-    //returns the page with the registration form
-    //--------------------------------------------
+    //-----------------------------------------------
+    // returns the page with the registration form
+    // (возвращает страницу с формой регистрации)
+    //-----------------------------------------------
     public function create()
     {
         return view('accounts.register');
     }
 
-    //--------------------------------------------
+    //----------------------------------------------
     // Processing a new user, validating and saving
     // in a database
-    //--------------------------------------------
+    // (Обработка нового пользователя, проверка 
+    // подлинности и сохранение в базе данных)
+    //---------------------------------------------
     public function store(Request $request)
     {
 
@@ -34,6 +37,7 @@ class RegisterController extends Controller
 
         //--------------------------------------------
         // get first, last name and patronymic
+        // (получение имени, фамилии и отчества)
         //--------------------------------------------
         $get_full_name = explode(" ", $name);
 

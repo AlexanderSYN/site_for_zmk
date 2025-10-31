@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     //--------------------------------------------
-    //returns the page with the login form
+    // returns the page with the login form
+    // (возвращаем страницу входы в аккаунт)
     //--------------------------------------------
     public function create()
     {
@@ -23,6 +24,8 @@ class LoginController extends Controller
     //--------------------------------------------
     // Processing a new user, validating and saving
     // in a database
+    // (Обработка нового пользователя, проверка 
+    // подлинности и сохранение в базе данных)
     //--------------------------------------------
     public function store(Request $request)
     {
@@ -52,7 +55,8 @@ class LoginController extends Controller
     }
     
     //
-    //
+    // logout from accounts
+    // (выход из аккаунта)
     //
     public function destroy(Request $request)
     {

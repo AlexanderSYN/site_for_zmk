@@ -39,12 +39,15 @@ class ProfileController extends Controller
             //-----------------------------------------------------------
             // First we deserialize the string, then we try to decrypt
             // Checking whether the string is serialized
+            // (Сначала мы десериализуем строку, затем пытаемся 
+            // расшифровать Проверяем, сериализована ли строка)
             //-----------------------------------------------------------
 
             $decryptedEmail = Crypt::decryptString($user->email);
 
             if ($this->isSerialized($decryptedEmail)) {
                 // Now we are trying to decipher
+                // (Сейчас мы пытаемся расшифровать)
                 $decryptedEmail = unserialize($decryptedEmail);
             }
 
