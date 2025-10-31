@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
 
+//======================================
+// use => heroes vov, svo and mp (main)
+//======================================
+use App\Http\Controllers\Main\HeroesVovMainController;
+
 //=================================================
 // use => heroes and memorable places in profile
 //=================================================
@@ -35,6 +40,11 @@ use App\Http\Controllers\PoliticPolicyController;
 // for main page
 //--------------------------------------------
 Route::view('/', 'main')->name('main');
+
+//----------------------------------
+// Route for heroes vov, svo and mp
+//----------------------------------
+Route::get('/heroes_vov', [HeroesVovController::class, 'show'])->middleware('guest')->name('heroes_vov_choice_city');
 
 //--------------------------------------------
 // Routes for guests

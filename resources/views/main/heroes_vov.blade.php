@@ -63,12 +63,12 @@
             <nav class="header_menu show" id="header_menu">
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
-                        <a href="/" class="header_menu_link" style="color:#FFFFFF">
+                        <a href="{{ route('main') }}" class="header_menu_link" style="color:#FFFFFF">
                             Главная
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_choice_city') }}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
@@ -96,70 +96,7 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            <!-- Video -->
-            <div class="video__bg">
-                <video id="myVideo" src="video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
-                playsinline="" webkit-playsinline="" preload="metadata" muted="" loop="" 
-                autoplay=""></video>
-            </div>
-
-
-            <!-- cards -->
-             <div class="main_cards">
-                <!-- main part -->
-                <h1 class="h1_main">Главные События</h1>
-                
-                <!-- cards one -->
-                <div class="cards_vov">
-                    <h1>ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА</h1>
-
-
-                    <h3>«Победа! Это величайшее счастье для солдата — сознание того, 
-                        что ты помог своему народу победить врага, отстоять свободу 
-                        Родины, вернуть ей мир» (К. К. Рокоссовский)
-                    </h3>
-
-
-                    <img src="image/img_index/image_vov.png" alt="картинка ВОВ" />
-                </div>
-
-
-                <!-- cards two -->
-                <div class="cards_svo">
-                    <h1>СПЕЦИАЛЬНАЯ ВОЕННАЯ ОПЕРАЦИЯ (СВО)</h1>
-
-
-                    <h3>Кто бы ни пытался помешать нам, а тем более создать угрозы для
-                        нашей страны, должны знать, что ответ России будет незамедлителен.
-                        И приведет вас к таким последствиям, с которыми вы в своей истории
-                        еще никогда не сталкивались. (Владимир Владимирович Путин)
-                    </h3>
-
-
-                    <img src="image/img_index/image_svo.png" alt="картинка СВО" />
-                </div>
-
-
-                <!-- cards three -->
-                <div class="cards_mp">
-                    <h1>ПАМЯТНЫЕ МЕСТА</h1>
-
-
-                    <h3>«Никто не забыт и ничто не забыто» — цитата из стихотворения
-                        Ольги Берггольц, написанного в <time>1959</time> году для мемориальной стелы
-                        на Пискарёвском кладбище в Ленинграде, где похоронены многие жертвы
-                        Ленинградской блокады.
-                    </h3>
-
-
-                    <img src="image/img_index/image_mp.png" alt="картинка Памятные Места" />
-                </div>
-             </div>
             
-            <!-- UP -->
-            <a href="#up" class="text_up">
-                НАВЕРХ
-            </a>
         </main>
 
 
