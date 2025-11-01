@@ -20,7 +20,10 @@ class MemorablePlacesController extends Controller
             return redirect()->route('profile_banned');
         }
 
-        $memorable_places = city_heroes::with('user')->get()->where('type', 'ПМ'); // ПМ - Памятные Места (Memorable places)
+        $memorable_places = city_heroes::with('user')
+                                    ->where('type', 'ПМ')
+                                    ->orderBy('city', 'desc')
+                                    ->paginate(10); // ПМ - Памятные Места (Memorable places)
 
         return view('profile.memorable_places',  ['user' => $user, 'memorable_places' => $memorable_places]);
     }

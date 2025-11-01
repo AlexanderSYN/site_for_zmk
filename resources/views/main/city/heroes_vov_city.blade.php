@@ -10,11 +10,16 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('resources/css/style.css')
+    @vite('resources/css/main/heroes_main_city.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Russo+One&display=swap" rel="stylesheet">
 
 
 </head>
@@ -63,12 +68,12 @@
             <nav class="header_menu show" id="header_menu">
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
-                        <a href="{{ route('main') }}" class="header_menu_link" style="color:#FFFFFF">
+                        <a href="{{ route('main') }}" class="header_menu_link">
                             Главная
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_choice_city') }}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_choice_city') }}" class="header_menu_link" style="color: #404040;">
                             Герои ВОВ
                         </a>
 
@@ -96,7 +101,35 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            
+            <center>
+                <h1>Герои ВОВ (выберите город)</h1>
+
+                @if ($heroesVovCity->count() > 0)
+                    @foreach ($heroesVovCity as $city)
+
+                        <div class="wrapper_city">
+                            <div class="city_text">{{ $city->city }}</div>
+                            
+                            <form action="/" method="post">
+                                <input type="hidden" name="type_hero" value="ВОВ" />
+                                <input type="hidden" name="city" value="{{ $city->city }}" />
+                                <button type="submit" class="btn">ПЕРЕЙТИ</button>
+                            </form>
+                        </div>
+                    @endforeach
+
+                    <!-- pagination -->
+                    <div>
+                        <div style="display: grid;justify-content: center;">
+                            {!! $heroesVovCity->links('vendor.pagination.bootstrap-4') !!}
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-info">
+                        Нет данных для отображения
+                    </div>
+                @endif
+            </center>
         </main>
 
 
@@ -128,7 +161,7 @@
                                 </a>
 
                                 <!-- Герои ВОВ -->
-                                <a href="/" class="footer_menu_link">
+                                <a href="{{ route('heroes_vov_choice_city') }}" class="footer_menu_link">
                                     Герои ВОВ
                                 </a>
 

@@ -156,6 +156,13 @@
                             </form>
                         </div>
                 @endforeach
+
+                <!-- pagination -->
+                <div>
+                    <div style="display: grid;justify-content: center;">
+                        {!! $heroesVovCity->links('vendor.pagination.bootstrap-4') !!}
+                    </div>
+                </div>
             @else
                 <div class="alert alert-info">
                     Нет данных для отображения

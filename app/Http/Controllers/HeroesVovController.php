@@ -20,7 +20,10 @@ class HeroesVovController extends Controller
             return redirect()->route('profile_banned');
         }
         
-        $heroesVovCity = city_heroes::with('user')->get()->where('type', 'ВОВ');
+        $heroesVovCity = city_heroes::with('user')
+                                    ->where('type', 'ВОВ')
+                                    ->orderBy('city', 'desc')
+                                    ->paginate(10);
 
         return view('profile.heroes_vov_city',  ['user' => $user, 'heroesVovCity' => $heroesVovCity]);
     }

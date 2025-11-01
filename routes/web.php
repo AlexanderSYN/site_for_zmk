@@ -44,7 +44,9 @@ Route::view('/', 'main')->name('main');
 //----------------------------------
 // Route for heroes vov, svo and mp
 //----------------------------------
-Route::get('/heroes_vov', [HeroesVovController::class, 'show'])->middleware('guest')->name('heroes_vov_choice_city');
+Route::get('/heroes_vov_choice_city', [HeroesVovMainController::class, 'show_city_heroes_vov'])->name('heroes_vov_choice_city');
+
+
 
 //--------------------------------------------
 // Routes for guests

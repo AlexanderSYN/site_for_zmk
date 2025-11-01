@@ -166,7 +166,7 @@ header {
 main {
     text-align: center;
     position: relative;
-    background: $white;
+    background: #D0C8C8;
 }
 
 .h1_main {
@@ -255,7 +255,7 @@ main {
 
     &:hover {
         background: $black;
-        color: $white;
+        color: $white
     }
 }
 
@@ -263,7 +263,6 @@ main {
 footer {
     background: #D9D9D9;
     padding: 40px 20px;
-    margin-top: 40px;
 
     // container
     .container {

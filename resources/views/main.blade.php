@@ -68,7 +68,7 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_choice_city') }}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
@@ -191,7 +191,7 @@
                                 </a>
 
                                 <!-- Герои ВОВ -->
-                                <a href="/" class="footer_menu_link">
+                                <a href="{{ route('heroes_vov_choice_city') }}" class="footer_menu_link">
                                     Герои ВОВ
                                 </a>
 

@@ -152,7 +152,7 @@ header .header_actions .btn_entry_head:hover {
 main {
   text-align: center;
   position: relative;
-  background: #FFFFFF;
+  background: #D0C8C8;
 }
 
 .h1_main {
@@ -253,7 +253,6 @@ main {
 footer {
   background: #D9D9D9;
   padding: 40px 20px;
-  margin-top: 40px;
 }
 footer .container {
   max-width: 1200px;

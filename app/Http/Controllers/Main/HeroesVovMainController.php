@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\city_heroes;
 
 //=========================================
 // A controller for showing all the 
@@ -18,8 +19,14 @@ use App\Http\Controllers\Controller;
 
 class HeroesVovMainController extends Controller
 {
-    public function show()
+    // redirect to the choice a city page
+    // (перекинуть на страницу выбора города)
+    public function show_city_heroes_vov()
     {
-        //
+        $heroesVovCity = city_heroes::where('type', 'ВОВ')
+                        ->orderBy('city', 'desc')
+                        ->paginate(10);
+
+        return view('main.city.heroes_vov_city', ['heroesVovCity' => $heroesVovCity]);
     }
 }

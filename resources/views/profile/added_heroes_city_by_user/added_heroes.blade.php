@@ -206,7 +206,6 @@
                     @endforeach
 
                     <!-- pagination -->
-                   
                     <div>
                         <div style=" background-color: rgba(255, 252, 252, 0.5); 
                             margin-bottom: 0.5rem;
