@@ -45,11 +45,16 @@ Route::view('/', 'main')->name('main');
 // Route for heroes vov, svo and mp
 //----------------------------------
 Route::get('/heroes_vov_choosing_city', [HeroesAndMPMainController::class, 'show_city_heroes_vov'])->name('heroes_vov_choosing_city');
+Route::get('/heroes_svo_choosing_city', [HeroesAndMPMainController::class, 'show_city_heroes_svo'])->name('heroes_svo_choosing_city');
 
+//-------------------------------------------------------------
 // show heroes vov, svo and mp (показать героев ВОВ, СВО и ПМ)
+//-------------------------------------------------------------
 Route::get('/heroes_vov_choosing_city/heroes_vov', [HeroesAndMPMainController::class, 'show_heroes_vov'])->name('heros_vov_main');
 Route::post('/heroes_vov_choosing_city/heroes_vov', [HeroesAndMPMainController::class, 'show_heroes_vov'])->name('heros_vov_main');
 
+Route::get('/heroes_svo_choosing_city/heroes_svo', [HeroesAndMPMainController::class, 'show_heroes_svo'])->name('heros_svo_main');
+Route::post('/heroes_svo_choosing_city/heroes_svo', [HeroesAndMPMainController::class, 'show_heroes_svo'])->name('heros_svo_main');
 
 
 //--------------------------------------------

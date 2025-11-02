@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Защитники Отечества на карте Татарстана</title>
+    <title>Выбор Города</title>
 
 
     <!-- ICON -->
@@ -78,7 +78,7 @@
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
@@ -166,7 +166,7 @@
                                 </a>
 
                                 <!-- Герои СВО -->
-                                <a href="/" class="footer_menu_link">
+                                <a href="{{ route('heroes_svo_choosing_city') }}" class="footer_menu_link">
                                     Герои СВО
                                 </a>
 

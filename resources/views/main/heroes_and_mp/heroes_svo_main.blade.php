@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Герои ВОВ</title>
+    <title>Герои СВО</title>
 
 
     <!-- ICON -->
@@ -73,12 +73,12 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link" style="color: #404040;">
+                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link" style="color: #404040;">
                             Герои СВО
                         </a>
 
@@ -102,10 +102,10 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои ВОВ ({{ $city }})</h1>
+                <h1>Герои СВО ({{ $city }})</h1>
 
-                @if ($heroes_vov->count() > 0)
-                    @foreach ($heroes_vov as $hero)
+                @if ($heroes_svo->count() > 0)
+                    @foreach ($heroes_svo as $hero)
                         <div class="wrapper_for_hero">
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>
@@ -119,7 +119,7 @@
                     <!-- pagination -->
                     <div>
                         <div style="display: grid;justify-content: center;">
-                            {!! $heroes_vov->links('vendor.pagination.bootstrap-4') !!}
+                            {!! $heroes_svo->links('vendor.pagination.bootstrap-4') !!}
                         </div>
                     </div>
                 @else

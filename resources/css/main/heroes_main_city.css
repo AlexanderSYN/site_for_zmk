@@ -343,6 +343,9 @@ footer .text_footer .footer_menu_link:hover {
   main .wrapper_city {
     width: 400px;
   }
+  main .wrapper_city .city_text {
+    font-size: 37px;
+  }
 }
 @media (max-width: 480px) {
   header .header_menu_item {
@@ -386,5 +389,17 @@ footer .text_footer .footer_menu_link:hover {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+}
+@media (max-width: 416px) {
+  main h1 {
+    font-size: 30px;
+  }
+  main .wrapper_city {
+    width: 322px;
+  }
+  main .wrapper_city .city_text {
+    width: 326px;
+    font-size: 35px;
   }
 }

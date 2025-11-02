@@ -73,7 +73,7 @@
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link">
                             Герои СВО
                         </a>
 
@@ -196,7 +196,7 @@
                                 </a>
 
                                 <!-- Герои СВО -->
-                                <a href="/" class="footer_menu_link">
+                                <a href="{{ route('heroes_svo_choosing_city') }}" class="footer_menu_link">
                                     Герои СВО
                                 </a>
 

@@ -377,10 +377,13 @@ footer {
 
         .wrapper_city {
             width: 400px;
+
+            .city_text {
+                font-size: 37px;
+            }
         }
     }
 }
-
 
 
 @media (max-width: 480px) {
@@ -390,8 +393,6 @@ footer {
             gap: 10px;
         }
     }
-    
-   
 }
 
 @media (max-width: 445px) {
@@ -417,3 +418,20 @@ footer {
     }
 }
 
+@media (max-width: 416px) {
+    //main
+    main {
+        h1 {
+            font-size: 30px;    
+        }
+
+        .wrapper_city {
+            width: 322px;
+            
+            .city_text {
+                width: 326px;
+                font-size: 35px;
+            }
+        }
+    }
+}

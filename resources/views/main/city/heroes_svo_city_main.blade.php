@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Герои ВОВ</title>
+    <title>Выбор Города</title>
 
 
     <!-- ICON -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('resources/css/main/heroes_main.css')
+    @vite('resources/css/main/heroes_main_city.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -35,7 +35,7 @@
                 <button class="btn_show_menu" id="btn_show_menu">
                     <img 
                         class="header_btn_show_menu"
-                        src="../../image/up_arrow.png"
+                        src="image/up_arrow.png"
                         alt="показать меню"
                         loading="lazy"
                     />
@@ -46,7 +46,7 @@
                 <button class="btn_close_menu" id="btn_close_menu">
                     <img 
                         class="header_btn_close_menu"
-                        src="../../image/down_arrow.png"
+                        src="image/down_arrow.png"
                         alt="скрыть меню"
                         loading="lazy"
                     />
@@ -58,7 +58,7 @@
             <a href="/" class="header_logo" id="header_logo">
                 <img
                     class="header_logo_image"
-                    src="../image/main-zmc.png"
+                    src="image/main-zmc.png"
                     alt="лого ЗМК"
                     loading="lazy"
                 />
@@ -73,12 +73,12 @@
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link" style="color: #404040;">
+                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link">
                             Герои ВОВ
                         </a>
 
                         <!-- Герои СВО -->
-                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link">
+                        <a href="{{ route('heroes_svo_choosing_city') }}" class="header_menu_link" style="color: #404040;">
                             Герои СВО
                         </a>
 
@@ -102,24 +102,26 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
-                <h1>Герои ВОВ ({{ $city }})</h1>
+                <h1>Герои СВО (выберите город)</h1>
+                <!-- choosing city (выбор города) -->
+                @if ($heroesSvoCity->count() > 0)
+                    @foreach ($heroesSvoCity as $city)
 
-                @if ($heroes_vov->count() > 0)
-                    @foreach ($heroes_vov as $hero)
-                        <div class="wrapper_for_hero">
-                            <h2>{{ $hero->name_hero }}</h2>
-                            <h4>{{ $hero->description_hero }}</h4>
-            
-                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }} (картинка не найден) | " />
-            
-                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }} (картинка не найден)" />
+                        <div class="wrapper_city">
+                            <div class="city_text">{{ $city->city }}</div>
+                            
+                            <form action="{{ route('heros_svo_main') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="city" value="{{ $city->city }}" />
+                                <button type="submit" class="btn">ПЕРЕЙТИ</button>
+                            </form>
                         </div>
                     @endforeach
 
                     <!-- pagination -->
                     <div>
                         <div style="display: grid;justify-content: center;">
-                            {!! $heroes_vov->links('vendor.pagination.bootstrap-4') !!}
+                            {!! $heroesSvoCity->links('vendor.pagination.bootstrap-4') !!}
                         </div>
                     </div>
                 @else
@@ -139,7 +141,7 @@
                     <a href="#up" class="header_logo">
                         <img
                             class="header_logo_image"
-                            src="../../image/main-zmc.png"
+                            src="image/main-zmc.png"
                             alt="лого ЗМК"
         
                             loading="lazy"
@@ -197,7 +199,7 @@
 </html>
 
 
-<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg, Vladimir Batalov  -->
+<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg, Vladimir Batalov -->
 <!-- the video was taken from the website (видео взято у сайта): https://may9.ru/ -->
 <!-- the icon of arrow was taken from the figma (иконки стрелок взяты у figma): https://figma.com -->
 <!-- Иконка взята из карточки маркетплейса yandexmarket -->
