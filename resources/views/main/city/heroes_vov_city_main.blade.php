@@ -10,11 +10,16 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('resources/css/style.css')
+    @vite('resources/css/main/heroes_main_city.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Russo+One&display=swap" rel="stylesheet">
 
 
 </head>
@@ -63,12 +68,12 @@
             <nav class="header_menu show" id="header_menu">
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
-                        <a href="/" class="header_menu_link" style="color:#FFFFFF">
+                        <a href="{{ route('main') }}" class="header_menu_link">
                             Главная
                         </a>
                         
                         <!-- Герои ВОВ -->
-                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link">
+                        <a href="{{ route('heroes_vov_choosing_city') }}" class="header_menu_link" style="color: #404040;">
                             Герои ВОВ
                         </a>
 
@@ -96,70 +101,35 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            <!-- Video -->
-            <div class="video__bg">
-                <video id="myVideo" src="video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
-                playsinline="" webkit-playsinline="" preload="metadata" muted="" loop="" 
-                autoplay=""></video>
-            </div>
+            <center>
+                <h1>Герои ВОВ (выберите город)</h1>
+                <!-- choosing city (выбор города) -->
+                @if ($heroesVovCity->count() > 0)
+                    @foreach ($heroesVovCity as $city)
 
+                        <div class="wrapper_city">
+                            <div class="city_text">{{ $city->city }}</div>
+                            
+                            <form action="{{ route('heros_vov_main') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="city" value="{{ $city->city }}" />
+                                <button type="submit" class="btn">ПЕРЕЙТИ</button>
+                            </form>
+                        </div>
+                    @endforeach
 
-            <!-- cards -->
-             <div class="main_cards">
-                <!-- main part -->
-                <h1 class="h1_main">Главные События</h1>
-                
-                <!-- cards one -->
-                <div class="cards_vov">
-                    <h1>ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА</h1>
-
-
-                    <h3>«Победа! Это величайшее счастье для солдата — сознание того, 
-                        что ты помог своему народу победить врага, отстоять свободу 
-                        Родины, вернуть ей мир» (К. К. Рокоссовский)
-                    </h3>
-
-
-                    <img src="image/img_index/image_vov.png" alt="картинка ВОВ" />
-                </div>
-
-
-                <!-- cards two -->
-                <div class="cards_svo">
-                    <h1>СПЕЦИАЛЬНАЯ ВОЕННАЯ ОПЕРАЦИЯ (СВО)</h1>
-
-
-                    <h3>Кто бы ни пытался помешать нам, а тем более создать угрозы для
-                        нашей страны, должны знать, что ответ России будет незамедлителен.
-                        И приведет вас к таким последствиям, с которыми вы в своей истории
-                        еще никогда не сталкивались. (Владимир Владимирович Путин)
-                    </h3>
-
-
-                    <img src="image/img_index/image_svo.png" alt="картинка СВО" />
-                </div>
-
-
-                <!-- cards three -->
-                <div class="cards_mp">
-                    <h1>ПАМЯТНЫЕ МЕСТА</h1>
-
-
-                    <h3>«Никто не забыт и ничто не забыто» — цитата из стихотворения
-                        Ольги Берггольц, написанного в <time>1959</time> году для мемориальной стелы
-                        на Пискарёвском кладбище в Ленинграде, где похоронены многие жертвы
-                        Ленинградской блокады.
-                    </h3>
-
-
-                    <img src="image/img_index/image_mp.png" alt="картинка Памятные Места" />
-                </div>
-             </div>
-            
-            <!-- UP -->
-            <a href="#up" class="text_up">
-                НАВЕРХ
-            </a>
+                    <!-- pagination -->
+                    <div>
+                        <div style="display: grid;justify-content: center;">
+                            {!! $heroesVovCity->links('vendor.pagination.bootstrap-4') !!}
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-info">
+                        Нет данных для отображения
+                    </div>
+                @endif
+            </center>
         </main>
 
 

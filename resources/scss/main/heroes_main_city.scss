@@ -274,3 +274,146 @@ footer {
         }
     }
 }
+
+@media (max-width: 1176px) {
+    //main
+    main {
+        .wrapper_city {
+            width: 931px;
+        }
+    }
+}
+
+@media (max-width: 944px) {
+    //main
+    main {
+        h1 {
+            font-size: 55px;    
+        }
+
+        .wrapper_city {
+            width: 800px;
+        }
+    }
+}
+
+@media (max-width: 847px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        background-color: $color-bg-btn-up;
+
+        .header_actions .btn_entry_head {
+            background-color: #0c0b0b;
+            &:hover {
+                background-color: #302d2d;
+            }
+        }
+    }
+
+    
+    footer {
+        padding: 30px 15px;
+        
+        .footer_menu_item {
+            gap: 15px;
+        }
+        .footer_menu_form {
+            gap: 15px;
+        }
+    }
+}
+
+@media (max-width: 804px) {
+    //main
+    main {
+        h1 {
+            font-size: 45px;    
+        }
+
+        .wrapper_city {
+            width: 700px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    //header 
+    .header_menu_item {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .header_menu_form {
+        gap: 15px;
+        flex-direction: column;
+    }
+        
+    .header_menu_link {
+        font-size: 16px;
+    }
+  
+}
+
+@media (max-width: 700px) {
+    //main
+    main {
+        h1 {
+            font-size: 35px;    
+        }
+
+        .wrapper_city {
+            width: 500px;
+        }
+    }
+}
+
+@media (max-width: 512px) {
+    //main
+    main {
+        h1 {
+            font-size: 30px;    
+        }
+
+        .wrapper_city {
+            width: 400px;
+        }
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    header {
+        .header_menu_item {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+    
+   
+}
+
+@media (max-width: 445px) {
+    // footer
+    .footer_menu_list {
+        margin-right: 2rem;
+    }
+
+    .footer_menu_item {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .footer_menu_link {
+        gap: 15px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer_menu_form {
+        gap: 15px;
+        flex-direction: column;
+    }
+}
+

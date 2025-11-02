@@ -249,6 +249,11 @@ main .wrapper_for_hero .img_hero {
   height: auto;
   margin-bottom: 1rem;
 }
+main .wrapper_for_hero .img_qr {
+  width: 180px;
+  height: auto;
+  margin-bottom: 1rem;
+}
 main .edit_hero {
   width: 314px;
   height: 39px;

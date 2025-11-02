@@ -24,6 +24,8 @@ class MemorablePlacesController extends Controller
                                     ->where('type', 'ПМ')
                                     ->orderBy('city', 'desc')
                                     ->paginate(10); // ПМ - Памятные Места (Memorable places)
+        // transferring data for the following pages to paginate
+        $memorable_places->appends(['user' => $user, 'memorable_places' => $memorable_places]);
 
         return view('profile.memorable_places',  ['user' => $user, 'memorable_places' => $memorable_places]);
     }

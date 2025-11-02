@@ -24,6 +24,8 @@ class HeroesVovController extends Controller
                                     ->where('type', 'ВОВ')
                                     ->orderBy('city', 'desc')
                                     ->paginate(10);
+        // transferring data for the following pages to paginate
+        $heroesVovCity->appends(['user' => $user, 'heroesVovCity' => $heroesVovCity]);
 
         return view('profile.heroes_vov_city',  ['user' => $user, 'heroesVovCity' => $heroesVovCity]);
     }

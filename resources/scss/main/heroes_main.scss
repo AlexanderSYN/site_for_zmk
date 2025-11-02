@@ -136,13 +136,13 @@ header {
 
     
 
-    // header actions 
+   // header actions 
     .header_actions {
         margin: 0;
 
-        // button exit from profile
-        .btn_logout_head {
-            width: 166px; 
+        // button in header
+        .btn_entry_head {
+            width: 170px; 
             height: 41px;
             text-decoration: none; 
             padding: 12px; 
@@ -158,57 +158,8 @@ header {
             display: inline-flex;
             cursor: pointer;
            
-    
             &:hover {
-                background: #636262;
-            }
-        }
-
-        // btn add heroe / city
-        .btn_add_heroe_head {
-            width: 166px; 
-            height: 41px;
-            text-decoration: none; 
-            padding: 12px; 
-            background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
-            color: $white;
-            overflow: hidden; 
-            border-radius: 8px; 
-            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
-            outline-offset: -1px; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 8px; 
-            display: inline-flex;
-            cursor: pointer;
-           
-    
-            &:hover {
-                background: #797878;
-            }
-        }
-
-        .btn_add_city_head {
-            width: 166px; 
-            height: 41px;
-            margin-bottom: 0.5rem;
-            text-decoration: none; 
-            padding: 12px; 
-            background: var(--Background-Neutral-Secondary-Hover, #B2B2B2);
-            color: $white;
-            overflow: hidden; 
-            border-radius: 8px; 
-            outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
-            outline-offset: -1px; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 8px; 
-            display: inline-flex;
-            cursor: pointer;
-           
-    
-            &:hover {
-                background: #797878;
+                background: #404040;
             }
         }
     }
@@ -223,36 +174,7 @@ main {
         font-size: 60px;
     }
 
-    // card for select of heroes
-    .card_body {
-        width: 54rem;
-        height: 10rem;
-        background-color: $white;
-        border-radius: 18px;
-        box-shadow: 0px 7px 0px 11px rgba(0, 0, 0, 0.16);
-        margin-bottom: 1.5rem;
-
-        .card_title {
-            font-weight: 600;
-            font-size: 30px;
-        }
-
-        .btn_go {
-            width: 18rem;
-            height: 2.5rem;
-            background: #0d6efd;
-            border-radius: 8px;
-            text-decoration: none;
-            color: $white;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-                        0 1px 1px rgba(0, 0, 0, 0.075);
-
-            &:hover {
-                background: #2658a2;
-            }
-        }
-    }
-
+    // wrapper for hero
     .wrapper_for_hero {
         width: 1458px; 
         height: auto; 
@@ -265,52 +187,79 @@ main {
             height: auto;
             margin-bottom: 1rem;
         }
-
         .img_qr {
             width: 180px;
             height: auto;
             margin-bottom: 1rem;
         }
     }
+}
 
-    .edit_hero {
-        width: 314px;
-        height: 39px;
-        padding: 12px;
-        margin-bottom: 0.5rem;
-        background: var(--Background-Brand-Default, #0088FF); 
-        overflow: hidden; border-radius: 8px; 
-        color: $white;
-        outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
-        outline-offset: -1px; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 8px; 
-        display: inline-flex;
-        cursor: pointer;
+// footer 
+footer {
+    background-color: rgba(255, 252, 252, 0.5);
+    padding: 40px 20px;
+    margin-top: 40px;
+
+    // container
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
     }
 
-    .delete_hero {
-        width: 314px;
-        height: 39px;
-        padding: 12px;
-        margin-bottom: 1rem;
-        background: var(--Background-Brand-Default, red); 
-        overflow: hidden; border-radius: 8px; 
-        color: $white;
-        outline: 1px var(--Border-Brand-Default, #2C2C2C) solid; 
-        outline-offset: -1px; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 8px; 
-        display: inline-flex;
-        cursor: pointer;
+    // logo
+    .logo img {
+        width: 150px;
+        height: auto;
+        opacity: 0.6;
+        margin: 0;
+    }
+
+    // text
+    .text_footer {
+        width: 100%;
+
+        // footer manu list
+        .footer_menu_list {
+            display: flex;
+            justify-content: center;
+        }
+
+        // footer menu item
+        .footer_menu_item {
+            display: flex;
+            gap: clamp(20px, 5vw, 50px);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        // footer menu form
+        .footer_menu_form {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        // footer menu link
+        .footer_menu_link {
+            text-decoration: none;
+            border: none;
+            background: inherit;
+            font-weight: bold;
+            font-size: clamp(16px, 3vw, $font-size-header-text);
+            color: $black;
+            letter-spacing: 1.2px;
+            white-space: nowrap;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 }
-.pagination-simple {
-    margin-left: 2rem;
-    
-}
+
 
 @media (max-width: 1464px) {
     main {

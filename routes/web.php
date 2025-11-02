@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
 //======================================
 // use => heroes vov, svo and mp (main)
 //======================================
-use App\Http\Controllers\Main\HeroesVovMainController;
+use App\Http\Controllers\Main\HeroesAndMPMainController;
 
 //=================================================
 // use => heroes and memorable places in profile
@@ -44,7 +44,11 @@ Route::view('/', 'main')->name('main');
 //----------------------------------
 // Route for heroes vov, svo and mp
 //----------------------------------
-Route::get('/heroes_vov_choice_city', [HeroesVovMainController::class, 'show_city_heroes_vov'])->name('heroes_vov_choice_city');
+Route::get('/heroes_vov_choosing_city', [HeroesAndMPMainController::class, 'show_city_heroes_vov'])->name('heroes_vov_choosing_city');
+
+// show heroes vov, svo and mp (показать героев ВОВ, СВО и ПМ)
+Route::get('/heroes_vov_choosing_city/heroes_vov', [HeroesAndMPMainController::class, 'show_heroes_vov'])->name('heros_vov_main');
+Route::post('/heroes_vov_choosing_city/heroes_vov', [HeroesAndMPMainController::class, 'show_heroes_vov'])->name('heros_vov_main');
 
 
 
