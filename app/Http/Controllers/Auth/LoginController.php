@@ -49,6 +49,17 @@ class LoginController extends Controller
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
+
+        switch ($user->role) {
+            case "moder":
+                // redirect to moder
+                break;
+            case "admin":
+                // redirect to admin
+                break;
+            default:
+                return redirect()->route('profile');
+        }
        
 
         return redirect()->route('profile');

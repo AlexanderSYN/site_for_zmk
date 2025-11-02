@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Защитники Отечества на карте Татарстана</title>
+    <title>Памятные Места</title>
 
 
     <!-- ICON -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('resources/css/style.css')
+    @vite('resources/css/main/heroes_main.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Russo+One&display=swap" rel="stylesheet">
 
 
 </head>
@@ -30,7 +35,7 @@
                 <button class="btn_show_menu" id="btn_show_menu">
                     <img 
                         class="header_btn_show_menu"
-                        src="image/up_arrow.png"
+                        src="../../image/up_arrow.png"
                         alt="показать меню"
                         loading="lazy"
                     />
@@ -41,7 +46,7 @@
                 <button class="btn_close_menu" id="btn_close_menu">
                     <img 
                         class="header_btn_close_menu"
-                        src="image/down_arrow.png"
+                        src="../../image/down_arrow.png"
                         alt="скрыть меню"
                         loading="lazy"
                     />
@@ -53,7 +58,7 @@
             <a href="/" class="header_logo" id="header_logo">
                 <img
                     class="header_logo_image"
-                    src="image/main-zmc.png"
+                    src="../image/main-zmc.png"
                     alt="лого ЗМК"
                     loading="lazy"
                 />
@@ -63,7 +68,7 @@
             <nav class="header_menu show" id="header_menu">
                 <ul class="header_menu_list">
                     <li class="header_menu_item">
-                        <a href="/" class="header_menu_link" style="color:#FFFFFF">
+                        <a href="{{ route('main') }}" class="header_menu_link">
                             Главная
                         </a>
                         
@@ -78,7 +83,7 @@
                         </a>
 
                         <!-- Памятные Места -->
-                        <a href="{{ route('memorable_places_city') }}" class="header_menu_link">
+                        <a href="{{ route('memorable_places_city') }}" class="header_menu_link" style="color: #404040;">
                             Памятные Места
                         </a>              
                     </li>
@@ -96,70 +101,33 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            <!-- Video -->
-            <div class="video__bg">
-                <video id="myVideo" src="video/video_bg_main.mp4" data-dsrc="../video/video_bg_main.mp4" 
-                playsinline="" webkit-playsinline="" preload="metadata" muted="" loop="" 
-                autoplay=""></video>
-            </div>
+            <center>
+                <h1>Памятные Места ({{ $city }})</h1>
 
-
-            <!-- cards -->
-             <div class="main_cards">
-                <!-- main part -->
-                <h1 class="h1_main">Главные События</h1>
-                
-                <!-- cards one -->
-                <div class="cards_vov">
-                    <h1>ВЕЛИКАЯ ОТЕЧЕСТВЕННАЯ ВОЙНА</h1>
-
-
-                    <h3>«Победа! Это величайшее счастье для солдата — сознание того, 
-                        что ты помог своему народу победить врага, отстоять свободу 
-                        Родины, вернуть ей мир» (К. К. Рокоссовский)
-                    </h3>
-
-
-                    <img src="image/img_index/image_vov.png" alt="картинка ВОВ" />
-                </div>
-
-
-                <!-- cards two -->
-                <div class="cards_svo">
-                    <h1>СПЕЦИАЛЬНАЯ ВОЕННАЯ ОПЕРАЦИЯ (СВО)</h1>
-
-
-                    <h3>Кто бы ни пытался помешать нам, а тем более создать угрозы для
-                        нашей страны, должны знать, что ответ России будет незамедлителен.
-                        И приведет вас к таким последствиям, с которыми вы в своей истории
-                        еще никогда не сталкивались. (Владимир Владимирович Путин)
-                    </h3>
-
-
-                    <img src="image/img_index/image_svo.png" alt="картинка СВО" />
-                </div>
-
-
-                <!-- cards three -->
-                <div class="cards_mp">
-                    <h1>ПАМЯТНЫЕ МЕСТА</h1>
-
-
-                    <h3>«Никто не забыт и ничто не забыто» — цитата из стихотворения
-                        Ольги Берггольц, написанного в <time>1959</time> году для мемориальной стелы
-                        на Пискарёвском кладбище в Ленинграде, где похоронены многие жертвы
-                        Ленинградской блокады.
-                    </h3>
-
-
-                    <img src="image/img_index/image_mp.png" alt="картинка Памятные Места" />
-                </div>
-             </div>
+                @if ($memorable_places->count() > 0)
+                    @foreach ($memorable_places as $mp)
+                        <div class="wrapper_for_hero">
+                            <h2>{{ $mp->name }}</h2>
+                            <h4>{{ $mp->description }}</h4>
             
-            <!-- UP -->
-            <a href="#up" class="text_up">
-                НАВЕРХ
-            </a>
+                            <img class="img_hero" src="{{ asset('storage/' . $mp->image_mp) }}" alt="{{ $mp->name }} (картинка не найден) | " />
+            
+                            <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name }} (картинка не найден)" />
+                        </div>
+                    @endforeach
+
+                    <!-- pagination -->
+                    <div>
+                        <div style="display: grid;justify-content: center;">
+                            {!! $memorable_places->links('vendor.pagination.bootstrap-4') !!}
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-info">
+                        Нет данных для отображения
+                    </div>
+                @endif
+            </center>
         </main>
 
 
@@ -171,7 +139,7 @@
                     <a href="#up" class="header_logo">
                         <img
                             class="header_logo_image"
-                            src="image/main-zmc.png"
+                            src="../../image/main-zmc.png"
                             alt="лого ЗМК"
         
                             loading="lazy"
@@ -229,7 +197,7 @@
 </html>
 
 
-<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg, Vladimir Batalov -->
+<!-- AUTHORS (АВТОРЫ): Katin Alexander, Kostrin Artem, Skopin Oleg, Vladimir Batalov  -->
 <!-- the video was taken from the website (видео взято у сайта): https://may9.ru/ -->
 <!-- the icon of arrow was taken from the figma (иконки стрелок взяты у figma): https://figma.com -->
 <!-- Иконка взята из карточки маркетплейса yandexmarket -->

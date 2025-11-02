@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('password');
             
             $table->boolean('isBan')->default(false);
-            $table->boolean('isAdmin')->default(false);
+            $table->string('role')->default('user');
     
         });
     }

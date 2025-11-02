@@ -83,7 +83,7 @@
                         </a>
 
                         <!-- Памятные Места -->
-                        <a href="/" class="header_menu_link">
+                        <a href="{{ route('memorable_places_city') }}" class="header_menu_link">
                             Памятные Места
                         </a>              
                     </li>
@@ -169,7 +169,7 @@
                                 </a>
 
                                 <!-- Памятные Места -->
-                                <a href="/" class="footer_menu_link">
+                                <a href="{{ route('memorable_places_city') }}" class="footer_menu_link">
                                     Памятные Места
                                 </a>    
                             

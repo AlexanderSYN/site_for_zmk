@@ -46,6 +46,7 @@ Route::view('/', 'main')->name('main');
 //----------------------------------
 Route::get('/heroes_vov_choosing_city', [HeroesAndMPMainController::class, 'show_city_heroes_vov'])->name('heroes_vov_choosing_city');
 Route::get('/heroes_svo_choosing_city', [HeroesAndMPMainController::class, 'show_city_heroes_svo'])->name('heroes_svo_choosing_city');
+Route::get('/memorable_places_choosing_city', [HeroesAndMPMainController::class, 'show_city_mp'])->name('memorable_places_city');
 
 //-------------------------------------------------------------
 // show heroes vov, svo and mp (показать героев ВОВ, СВО и ПМ)
@@ -55,6 +56,9 @@ Route::post('/heroes_vov_choosing_city/heroes_vov', [HeroesAndMPMainController::
 
 Route::get('/heroes_svo_choosing_city/heroes_svo', [HeroesAndMPMainController::class, 'show_heroes_svo'])->name('heros_svo_main');
 Route::post('/heroes_svo_choosing_city/heroes_svo', [HeroesAndMPMainController::class, 'show_heroes_svo'])->name('heros_svo_main');
+
+Route::get('/heroes_svo_choosing_city/memorable_places', [HeroesAndMPMainController::class, 'show_mp'])->name('memorable_places_main');
+Route::post('/heroes_svo_choosing_city/memorable_places', [HeroesAndMPMainController::class, 'show_mp'])->name('memorable_places_main');
 
 
 //--------------------------------------------
