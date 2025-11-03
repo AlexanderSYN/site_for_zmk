@@ -23,6 +23,9 @@ class HeroesSvoController extends Controller
         // transferring data for the following pages to paginate
         $heroesSvoCity->appends(['user' => $user, 'heroesSvo' => $heroesSvoCity]);
 
-        return view('profile.heroes_svo_city',  ['user' => $user, 'heroesSvo' => $heroesSvoCity]);
+        $city_bd = city_heroes::where('type', 'СВО')->first();
+
+        return view('profile.heroes_svo_city',  ['user' => $user, 
+        'heroesSvo' => $heroesSvoCity, 'description_city' => $city_bd->description]);
     }
 }

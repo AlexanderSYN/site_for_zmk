@@ -27,7 +27,10 @@ class HeroesVovController extends Controller
         // transferring data for the following pages to paginate
         $heroesVovCity->appends(['user' => $user, 'heroesVovCity' => $heroesVovCity]);
 
-        return view('profile.heroes_vov_city',  ['user' => $user, 'heroesVovCity' => $heroesVovCity]);
+        $city_bd = city_heroes::where('type', 'ВОВ')->first();
+
+        return view('profile.heroes_vov_city',  ['user' => $user, 
+        'heroesVovCity' => $heroesVovCity, 'description_city' => $city_bd->description]);
     }
     
 }

@@ -59,6 +59,7 @@ class LoginController extends Controller
                 break;
             default:
                 return redirect()->route('profile');
+                break;
         }
        
 

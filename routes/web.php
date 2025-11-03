@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //--------------------------------------------
+// USER
 // for add heroes and memory places
 //--------------------------------------------
 Route::middleware('auth')->group(function() {
@@ -131,6 +132,26 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/profile/heroes_svo/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_svo');
     Route::post('/profile/heroes_svo/added_heroes', [HeroesAddedController::class, 'show'])->name('added_heroes_page_svo');
+
+    //--------------------------------------------
+    // for upload hero
+    // для выкладывания героя
+    //--------------------------------------------
+    Route::get('/profile/heroes_vov/added_heroes/upload', [HeroActionsController::class, 'upload_hero'])->name('upload_hero');
+    Route::post('/profile/heroes_vov/added_heroes/upload', [HeroActionsController::class, 'upload_hero'])->name('upload_hero');
+    
+    Route::get('/profile/heroes_svo/added_heroes/upload', [HeroActionsController::class, 'upload_hero'])->name('upload_hero');
+    Route::post('/profile/heroes_svo/added_heroes/upload', [HeroActionsController::class, 'upload_hero'])->name('upload_hero');
+
+    //--------------------------------------------
+    // to return to the hero check (for_verifacations)
+    // для возврата на проверку героя
+    //--------------------------------------------
+     Route::get('/profile/heroes_vov/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
+    Route::post('/profile/heroes_vov/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
+    
+    Route::get('/profile/heroes_svo/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
+    Route::post('/profile/heroes_svo/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
 
     //--------------------------------------------
     // redirect to edit hero page

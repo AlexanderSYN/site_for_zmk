@@ -165,6 +165,100 @@ class HeroActionsController extends Controller
 
     }
 
+    //================
+    // выложить героя
+    // upload hero
+    //================
+    public function upload_hero(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            $id = $request->input('id_hero');
+            $type = $request->input('type');
+
+            $hero = heroes_added_by_user::where('id', $id)->first();
+            $hero->update([
+                'updated_at' => now(),
+                'isCheck' => true
+            ]);
+
+            switch ($type) {
+                case "ВОВ":
+                    return redirect()->route('added_heroes_page_vov'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->with('success', 'Герой: "' . $hero->name_hero . '" успешно выложен!');
+                    break;
+                case "СВО":
+                    return redirect()->route('added_heroes_page_svo'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->with('success', 'Герой: "' . $hero->name_hero . '" успешно выложен!');
+                    break;
+            }
+        } catch (Exception $e) {
+             switch ($hero->type) {
+                case "ВОВ":
+                    return redirect()->route('added_heroes_page_vov'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->withErrors('Неизвестная ошибка!');
+                    break;
+                case "СВО":
+                    return redirect()->route('added_heroes_page_svo'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                     ->withErrors('Неизвестная ошибка!');
+                    break;
+            }
+        }
+    }
+
+    //=======================================================
+    //
+    // to return to the hero check (for_verifacations)
+    // для возврата на проверку героя
+    //
+    //=======================================================
+    public function for_verification(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            $id = $request->input('id_hero');
+            $type = $request->input('type');
+
+            $hero = heroes_added_by_user::where('id', $id)->first();
+            $hero->update([
+                'updated_at' => now(),
+                'isCheck' => false
+            ]);
+
+            switch ($type) {
+                case "ВОВ":
+                    return redirect()->route('added_heroes_page_vov'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->with('success', 'Герой: "' . $hero->name_hero . '" успешно перемещен на проверке!');
+                    break;
+                case "СВО":
+                    return redirect()->route('added_heroes_page_svo'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->with('success', 'Герой: "' . $hero->name_hero . '" успешно перемещен на проверке!');
+                    break;
+            }
+        } catch (Exception $e) {
+             switch ($hero->type) {
+                case "ВОВ":
+                    return redirect()->route('added_heroes_page_vov'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                    ->withErrors('Неизвестная ошибка!');
+                    break;
+                case "СВО":
+                    return redirect()->route('added_heroes_page_svo'
+                    , ['user' => $user, 'heroes' => $hero,'type' => $hero->type, 'city' => $hero->city])
+                     ->withErrors('Неизвестная ошибка!');
+                    break;
+            }
+        }
+    }
+
     //===========================
     // edit hero data
     // (изменить данные о герое)

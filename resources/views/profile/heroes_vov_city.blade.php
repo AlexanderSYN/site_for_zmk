@@ -122,6 +122,7 @@
                 @foreach ($heroesVovCity as $heroVov)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $heroVov->city }} ({{ $heroVov->type }})</h5>
+                            <h3>Описание: {{ $description_city }}</h3>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                                 <?php

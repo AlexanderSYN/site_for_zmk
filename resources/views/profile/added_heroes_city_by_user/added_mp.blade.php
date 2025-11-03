@@ -93,15 +93,17 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- btn add_city -->
-                <form action="{{ route('add_mp_page') }}" method="post">                    
-                    @csrf
-                    <input type="hidden" name="city" value="{{ $city }}" />
-                    
-                    <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ПМ
-                    </button>
-                </form>
+                @if ($role != 'moder')
+                    <!-- btn add_city -->
+                    <form action="{{ route('add_mp_page') }}" method="post">                    
+                        @csrf
+                        <input type="hidden" name="city" value="{{ $city }}" />
+
+                        <button type="submit" class="btn_add_city_head">
+                              ДОБАВИТЬ ПМ
+                        </button>
+                    </form>
+                @endif
 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
@@ -177,7 +179,8 @@
                                 </button>
                             </form>
                             
-                            <form action="{{ route('delete_mp') }}" method="post" id="delete_form">
+                           <form action="{{ route('delete_mp') }}" method="post" 
+                            onsubmit="return confirm('Вы уверены, что хотите удалить это Памятное Место?')">
                                  @csrf
                                 <input type="hidden" name="id_mp"
                                     value="{{ $mp->id }}" />
@@ -186,20 +189,6 @@
                                     УДАЛИТЬ
                                 </button>
                             </form>
-
-                            <!-- confirmation button for deleting a hero -->
-                            <script>
-                                document.getElementById('delete_form').addEventListener('submit', function (e) {
-                                    // Canceling the standard form submission
-                                    e.preventDefault();
-
-                                    if (window.confirm('Подтвердите удаление')) {
-                                        this.submit();
-                                    } else {
-                                        alert('Отменено!');
-                                    }
-                                });
-                            </script>
 
                             
                         </div>

@@ -104,6 +104,8 @@
             <center>
                 <h1>Герои ВОВ ({{ $city }})</h1>
 
+                <h3>{{ $description_city }}</h3>
+
                 @if ($heroes_vov->count() > 0)
                     @foreach ($heroes_vov as $hero)
                         <div class="wrapper_for_hero">

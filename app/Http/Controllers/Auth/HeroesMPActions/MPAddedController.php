@@ -28,10 +28,13 @@ class MPAddedController extends Controller
                 ->with('user')
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
-        $memorable_places->appends(['user' => $user, 'memorable_places' => $memorable_places, 'type' => $type, 'city' => $city]);
+        $memorable_places->appends(['user' => $user, 
+        'memorable_places' => $memorable_places, 'type' => $type, 
+        'city' => $city, 'role' => $user->role]);
      
         return view('profile.added_heroes_city_by_user.added_mp', 
-            ['user' => $user, 'memorable_places' => $memorable_places,'type' => $type, 'city' => $city]);
+            ['user' => $user, 'memorable_places' => $memorable_places,'type' => $type,
+             'city' => $city, 'role' => $user->role]);
     }
 
     public function edit_mp_user_page(Request $request)

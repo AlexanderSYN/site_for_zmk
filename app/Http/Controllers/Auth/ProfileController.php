@@ -56,8 +56,27 @@ class ProfileController extends Controller
         } catch (Exception $e) {
             $decryptedEmail = "Не Удалось Вывести Email";
         }
-    
-        return view('profile.profile', ['user' => $user, 'email' => $decryptedEmail]);
+        
+        //===================================================================
+        //
+        // checking who is trying to log in: user, moderator or admin
+        // проверка того, кто пытается войти: пользователь, модер или админ
+        //
+        //===================================================================
+        switch ($user->role) {
+            case 'user':
+                return view('profile.profile', ['user' => $user, 'email' => $decryptedEmail]);
+                break;
+            case 'moder':
+                return view('moder.profile_moder', ['user' => $user, 'email' => $decryptedEmail]);
+                break;
+            case 'admin':
+                return view('admin.profile_admin', ['user' => $user, 'email' => $decryptedEmail]);
+                break;
+            default: 
+                return view('main');
+                break;
+        }
     }
 
     public function change_data(Request $request)

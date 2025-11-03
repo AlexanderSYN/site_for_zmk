@@ -25,15 +25,15 @@ class AddCityController extends Controller
         
         switch ($city) {
             case "ВОВ":
-                return view('profile.add_hero_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
+                return view('profile.add_hero_mp_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
                 break;
             
             case "СВО":
-                return view('profile.add_hero_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
+                return view('profile.add_hero_mp_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
                 break;
 
             case "ПМ":
-                return view('profile.add_hero_and_city.add_city_mp', ['user' => $user, 'city' => $city]);
+                return view('profile.add_hero_mp_and_city.add_city_mp', ['user' => $user, 'city' => $city]);
                 break;
 
             default: 
