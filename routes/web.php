@@ -18,9 +18,9 @@ use App\Http\Controllers\Auth\HeroesMPActions\MPAddedController;
 use App\Http\Controllers\Auth\HeroesMPActions\HeroActionsController;
 use App\Http\Controllers\Auth\HeroesMPActions\MPActionsController;
 
-use App\Http\Controllers\HeroesVovController;
-use App\Http\Controllers\HeroesSvoController;
-use App\Http\Controllers\MemorablePlacesController;
+use App\Http\Controllers\HeroesVovCityController;
+use App\Http\Controllers\HeroesSvoCityController;
+use App\Http\Controllers\MemorablePlacesCityController;
 
 //=================================================
 // use => different function for profile 
@@ -121,8 +121,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
     Route::post('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
 
-    Route::get('/profile/heroes_vov', [HeroesVovController::class, 'show'])->name('heroes_vov_profile_city');
-    Route::get('/profile/heroes_svo', [HeroesSvoController::class, 'show'])->name('heroes_svo_profile_city');
+    Route::get('/profile/heroes_vov', [HeroesVovCityController::class, 'show'])->name('heroes_vov_profile_city');
+    Route::get('/profile/heroes_svo', [HeroesSvoCityController::class, 'show'])->name('heroes_svo_profile_city');
 
     //--------------------------------------------
     // redirect to added heroes page
@@ -187,8 +187,8 @@ Route::middleware('auth')->group(function() {
     //=========================================
     // memorable places 
     //========================================
-    Route::get('/profile/memorable_places', [MemorablePlacesController::class, 'show'])->name('mp_profile_city');
-    Route::post('/profile/memorable_places', [MemorablePlacesController::class, 'show'])->name('mp_profile_city');
+    Route::get('/profile/memorable_places', [MemorablePlacesCityController::class, 'show'])->name('mp_profile_city');
+    Route::post('/profile/memorable_places', [MemorablePlacesCityController::class, 'show'])->name('mp_profile_city');
 
     //=========================================
     // redirect to added memorable places page

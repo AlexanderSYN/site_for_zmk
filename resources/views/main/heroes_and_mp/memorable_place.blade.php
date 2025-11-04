@@ -110,9 +110,13 @@
                             <h2>{{ $mp->name }}</h2>
                             <h4>{{ $mp->description }}</h4>
             
-                            <img class="img_hero" src="{{ asset('storage/' . $mp->image_mp) }}" alt="{{ $mp->name }} (картинка не найден) | " />
-            
-                            <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name }} (картинка не найден)" />
+                            <a href="{{ asset('storage/' . $mp->image_mp) }}">
+                                <img class="img_hero" src="{{ asset('storage/' . $mp->image_mp) }}" alt="{{ $mp->name }} (картинка не найден) | " />
+                            </a>
+                            
+                            <a href="{{ $mp->mp_link }}" target="_blank">
+                                <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name }} (картинка не найден)" />   
+                            </a>
                         </div>
                     @endforeach
 
@@ -154,7 +158,7 @@
                         <ul class="footer_menu_list">
                             <li class="footer_menu_item">
 
-                                <a href="#up" class="footer_menu_link">
+                                <a href="{{ route('main') }}" class="footer_menu_link">
                                     Главная
                                 </a>
 

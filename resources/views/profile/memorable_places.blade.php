@@ -120,19 +120,19 @@
                 <h1>Памятные Места (Выберите Город)</h1>
 
             @if($memorable_places->count() > 0)
-                @foreach ($memorable_places as $mp)
+                @foreach ($memorable_places as $mp_city)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $mp->city }} ({{ $mp->type }})</h5>
+                            <h5 class="card_title">Город: {{ $mp_city->city }} ({{ $mp_city->type }})</h5>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                         
                                 <?php
                                     try {
-                                        echo $mp->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $mp->user->first_name . ' '; 
+                                        echo $mp_city->user->first_name == $user->first_name 
+                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $mp_city->user->first_name . ' '; 
                                         
-                                        echo $mp->user->last_name == $user->last_name 
-                                        ? ' ' :  $mp->user->last_name;
+                                        echo $mp_city->user->last_name == $user->last_name 
+                                        ? ' ' :  $mp_city->user->last_name;
                                     } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
                                     }
@@ -140,16 +140,16 @@
 
                                 <br>
                                 <small class="text-muted">
-                                    Создано: {{ $mp->created_at->format('d.m.Y H:i') }}
+                                    Создано: {{ $mp_city->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
                             <form action="{{ route('added_mp_page') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
-                                    value="{{ $mp->city }}" />
+                                    value="{{ $mp_city->id }}" />
 
                                 <input type="hidden" name="type" 
-                                    value="{{ $mp->type }}" />
+                                    value="{{ $mp_city->type }}" />
 
                                 <button type="submit" class="btn_go">
                                     Перейти

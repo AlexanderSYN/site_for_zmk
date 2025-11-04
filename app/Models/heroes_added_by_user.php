@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+//================================================
+// Communicate with the base date heroes
+// Связь с базой данных heroes
+//================================================
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -35,11 +40,21 @@ class heroes_added_by_user extends Model
         ];
     }
 
-    //-----------------------------
-    // Communication with the user
-    //-----------------------------
+    //--------------------------------
+    // Communication with bd the user
+    // связь с бд user
+    //--------------------------------
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class, 'added_user_id');
+    }
+
+    //--------------------------------
+    // Communication with bd the city
+    // связь с бд city
+    //--------------------------------
+    public function city_relation() : BelongsTo
+    {
+        return $this->belongsTo(city_heroes::class, 'city');
     }
 }

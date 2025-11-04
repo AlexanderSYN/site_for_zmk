@@ -1,8 +1,9 @@
 <?php
 
-//-------------------------------------------------
-// The Controller for displaying the heroes of VOV
-//-------------------------------------------------
+//-------------------------------------------------------
+// The Controller for displaying the city of heroes VOV
+// Контроллер для вывода городов, в котором Герои ВОВ
+//-------------------------------------------------------
 
 namespace App\Http\Controllers;
 
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
-class HeroesVovController extends Controller
+class HeroesVovCityController extends Controller
 {
     public function show(Request $request)
     {

@@ -44,6 +44,14 @@
                                 </div>
                             @endif
 
+                            @if ($role == "admin" || $role == "moder")
+                                <h3>
+                                    Отправил : {{ $hero->user->first_name }} {{ $hero->user->last_name }}
+                                    | id: {{ $hero->user->id }}
+                                </h3>
+                            @endif
+
+
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>
 
@@ -109,7 +117,7 @@
                                 <!-- delete hero -->
                                 <form action="{{ route('delete_hero') }}" method="post"
                                 onsubmit="return confirm('Вы уверены, что хотите удалить этого героя?')">
-                                     @csrf
+                                    @csrf
                                     <input type="hidden" name="id_hero"
                                         value="{{ $hero->id }}" />
 

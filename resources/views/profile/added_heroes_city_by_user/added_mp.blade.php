@@ -162,6 +162,13 @@
                                 </div>
                             @endif
 
+                            @if ($role == "admin" || $role == "moder")
+                                <h3>
+                                    Отправил : {{ $mp->user->first_name }} {{ $mp->user->last_name }}
+                                    | id: {{ $mp->user->id }}
+                                </h3>
+                            @endif
+
                             <h2>{{ $mp->name }}</h2>
                             <h4>{{ $mp->description}}</h4>
             

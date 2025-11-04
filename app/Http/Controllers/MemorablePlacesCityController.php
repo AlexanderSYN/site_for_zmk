@@ -1,8 +1,9 @@
 <?php
 
-//-----------------------------------------------------
+//----------------------------------------------------------
 // The Controller for displaying the Memorable Places
-//-----------------------------------------------------
+// Контроллер для вывода городов, в котором Памятные Места
+//----------------------------------------------------------
 
 namespace App\Http\Controllers;
 
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
-class MemorablePlacesController extends Controller
+class MemorablePlacesCityController extends Controller
 {
     public function show()
     {

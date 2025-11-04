@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\HeroesMPActions\helper\Helper_hero;
 // laravel and etc
 use App\Http\Controllers\Controller;
 use App\Models\heroes_added_by_user;
+use App\Models\city_heroes;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -40,6 +41,9 @@ class HeroActionsController extends Controller
     }
 
     //=================================
+    //
+    // add_hero_in_bd
+    //
     // save data about the hero in the 
     // database
     // (сохранить данные о герое в бд)
@@ -71,7 +75,12 @@ class HeroActionsController extends Controller
             }
 
             $type = $request->input('type');
+
             $city = $request->input('city');
+            $city_for_bd = city_heroes::where('city', $request->input('city'))
+                    ->where('type', $type)
+                    ->first();
+                    
             $name_hero = $request->input('name_hero');
             $hero_link = $request->input('hero_link');
             $description = $request->input('description');
@@ -114,7 +123,7 @@ class HeroActionsController extends Controller
             }
             else {
                 return redirect()->route('profile', ['user' => $user, 
-                            'city' => $city, 'type' => $type]);
+                            'city' => $city->id, 'type' => $type]);
             }
 
             // add a hero to the database
@@ -123,7 +132,7 @@ class HeroActionsController extends Controller
                 'name_hero' => $name_hero,
                 'description_hero' => $description,
                 'hero_link' => $hero_link,
-                'city' => $city,
+                'city' => $city_for_bd->id,
                 'type' => $type,
                 'image_hero' => $pathForSave,  // Store the actual file path
                 'image_qr' => $pathForSave_QR, // Store the actual file path
@@ -152,7 +161,7 @@ class HeroActionsController extends Controller
                 case "ВОВ":
                     return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
-                                ->withErrors('Неизвестная ошибка!');
+                                ->withErrors('Неизвестная ошибка!' . $e);
                     break;
                 case "СВО":
                     return redirect()->route('add_heroes_page_svo', ['user' => $user, 

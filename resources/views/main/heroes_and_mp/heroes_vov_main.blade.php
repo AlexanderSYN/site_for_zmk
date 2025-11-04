@@ -112,9 +112,13 @@
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>
             
-                            <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }} (картинка не найден) | " />
+                            <a href="{{ asset('storage/' . $hero->image_hero) }}">
+                                <img class="img_hero" src="{{ asset('storage/' . $hero->image_hero) }}" alt="{{ $hero->name_hero }} (картинка не найден) | " />
+                            </a>
             
-                            <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }} (картинка не найден)" />
+                            <a href="{{ $hero->hero_link }}" target="_blank">
+                                <img class="img_qr" src="{{ asset('storage/' . $hero->image_qr) }}" alt="QR код {{ $hero->name_hero }} (картинка не найден)" />
+                            </a>
                         </div>
                     @endforeach
 
@@ -156,7 +160,7 @@
                         <ul class="footer_menu_list">
                             <li class="footer_menu_item">
 
-                                <a href="#up" class="footer_menu_link">
+                                <a href="{{ route('main') }}" class="footer_menu_link">
                                     Главная
                                 </a>
 

@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+//========================================
+// Communicate with the base date user
+// Связь с базой данных user
+//========================================
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

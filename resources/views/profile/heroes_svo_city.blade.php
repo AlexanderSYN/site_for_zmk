@@ -120,20 +120,20 @@
                 <h1>Герои СВО (Выберите Город)</h1>
 
             @if($heroesSvo->count() > 0)
-                @foreach ($heroesSvo as $heroSvo)
+                @foreach ($heroesSvo as $heroSvoCity)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroSvo->city }} ({{ $heroSvo->type }})</h5>
+                            <h5 class="card_title">Город: {{ $heroSvoCity->city }} ({{ $heroSvoCity->type }})</h5>
                             <h3>Описание: {{ $description_city }}</h3>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                         
                                 <?php
                                     try {
-                                        echo $heroSvo->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvo->user->first_name . ' '; 
+                                        echo $heroSvoCity->user->first_name == $user->first_name 
+                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvoCity->user->first_name . ' '; 
                                         
-                                        echo $heroSvo->user->last_name == $user->last_name 
-                                        ? ' ' :  $heroSvo->user->last_name;
+                                        echo $heroSvoCity->user->last_name == $user->last_name 
+                                        ? ' ' :  $heroSvoCity->user->last_name;
                                     } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
                                     }
@@ -141,17 +141,17 @@
 
                                 <br>
                                 <small class="text-muted">
-                                    Создано: {{ $heroSvo->created_at->format('d.m.Y H:i') }}
+                                    Создано: {{ $heroSvoCity->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="{{  $heroSvo->type == 'СВО' ? route('added_heroes_page_svo') 
+                            <form action="{{  $heroSvoCity->type == 'СВО' ? route('added_heroes_page_svo') 
                                                 : route('added_heroes_page_vov') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
-                                    value="{{ $heroSvo->city }}" />
+                                    value="{{ $heroSvoCity->id }}" />
 
                                 <input type="hidden" name="type" 
-                                    value="{{ $heroSvo->type }}" />
+                                    value="{{ $heroSvoCity->type }}" />
 
                                 <button type="submit" class="btn_go">
                                     Перейти

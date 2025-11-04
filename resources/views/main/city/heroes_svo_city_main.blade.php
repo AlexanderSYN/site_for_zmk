@@ -156,7 +156,7 @@
                         <ul class="footer_menu_list">
                             <li class="footer_menu_item">
 
-                                <a href="#up" class="footer_menu_link">
+                                <a href="{{ route('main') }}" class="footer_menu_link">
                                     Главная
                                 </a>
 

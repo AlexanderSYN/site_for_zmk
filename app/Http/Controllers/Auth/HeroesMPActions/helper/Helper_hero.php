@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\HeroesMPActions\helper;
 
 use App\Models\heroes_added_by_user;
+use App\Models\city_heroes;
 
 class Helper_hero {
     //=========================================================================
@@ -26,45 +27,46 @@ class Helper_hero {
     // and do the same as I wrote above. at the end, we get a query for sql
     //
     // для страницы добавленных героев!
-    // получаем: роль пользователя, тип, город героя. Eсли роль = user, тогда 
+    // получаем: роль пользователя, тип и город героя. Eсли роль = user, тогда 
     // перекидываем на страницу с героями, которых он сам добавил, если admin
     // или moder тогда показать всех героев, иначе считать, что перешел user 
     // и сделать также, как я писал выше. в конце получаем запрос для sql
     //==========================================================================================
-    public static function get_current_url_for_added_heroes($role, $city, $type, $id)
+    public static function get_current_url_for_added_heroes($role, $city, $type, $user_id)
     {
+        // to get the city where the hero is located
+        // для получения города, в котором находится герой
+        $city_from_bd = city_heroes::where('id', $city->id)
+                                    ->where('type', $type)
+                                    ->first();
         switch ($role) {
             case 'user':
-                $heroes = heroes_added_by_user::where('city', $city)
+                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
                     ->where('type', $type)
-                    ->where('city', $city)
-                    ->where('added_user_id', $id)
-                    ->with('user')
+                    ->where('added_user_id', $user_id)
+                    ->with('user', 'city_relation')
                     ->orderBy('name_hero', 'desc')
                     ->paginate(10);
                 break;
             case 'moder':
-                $heroes = heroes_added_by_user::where('city', $city)
+                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
                     ->where('type', $type)
-                    ->where('city', $city)
-                    ->with('user')
+                    ->with('user', 'city_relation')
                     ->orderBy('name_hero', 'desc')
                     ->paginate(10);
                 break;
             case 'admin':
-                $heroes = heroes_added_by_user::where('city', $city)
+                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
                     ->where('type', $type)
-                    ->where('city', $city)
-                    ->with('user')
+                    ->with('user', 'city_relation')
                     ->orderBy('name_hero', 'desc')
                     ->paginate(10);
                 break;
             default:
-                $heroes = heroes_added_by_user::where('city', $city)
+                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
                     ->where('type', $type)
-                    ->where('city', $city)
-                    ->where('added_user_id', $id)
-                    ->with('user')
+                    ->where('added_user_id', $user_id)
+                    ->with('user', 'city_relation')
                     ->orderBy('name_hero', 'desc')
                     ->paginate(10);
                 break;

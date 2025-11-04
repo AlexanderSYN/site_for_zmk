@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\city_heroes;
 use App\Models\heroes_added_by_user;
 use App\Models\mp_added_by_user;
@@ -51,7 +52,8 @@ class HeroesAndMPMainController extends Controller
 
     public function show_city_mp()
     {
-        $memorablePlaces = mp_added_by_user::orderBy('city', 'desc')
+        $memorablePlaces = city_heroes::where('type', 'ПМ')
+                        ->orderBy('city', 'desc')
                         ->paginate(10);
         // transferring data for the following pages to paginate
         // передача данных для пагинации страниц в paginate
@@ -66,55 +68,55 @@ class HeroesAndMPMainController extends Controller
     //==============================================
     public function show_heroes_vov(Request $request)
     {
-        $city = $request->input('city');
+        $city = city_heroes::where('city', $request->input('city'))
+                            ->where('type', 'ВОВ')
+                            ->with('city_relation')
+                            ->first();
 
         $heroesVov = heroes_added_by_user::where('type', 'ВОВ')
-                                        ->where('city', $city)
+                                        ->where('city', $city->id)
                                         ->where('isCheck', 1)
                                         ->paginate(10);
-        $city_bd = city_heroes::where('city', $city)
-                                ->where('type', 'ВОВ')
-                                ->first();
 
         $heroesVov->appends(['heroes_vov' => $heroesVov, 'type' => 'ВОВ', 'city' => $city]);
 
         return view('main.heroes_and_mp.heroes_vov_main', ['heroes_vov' => $heroesVov, 
-        'type' => 'ВОВ', 'city' => $city, 'description_city' => $city_bd->description]);
+        'type' => 'ВОВ', 'city' => $city->city, 'description_city' => $city->description]);
     }
 
     public function show_heroes_svo(Request $request)
     {
-        $city = $request->input('city');
+        $city = city_heroes::where('city', $request->input('city'))
+                            ->where('type', 'СВО')
+                            ->with('city_relation')
+                            ->first();
 
         $heroesSvo = heroes_added_by_user::where('type', 'СВО')
-                                        ->where('city', $city)
+                                        ->where('city', $city->id)
                                         ->where('isCheck', 1)
                                         ->paginate(10);
-        $city_bd = city_heroes::where('city', $city)
-                                ->where('type', 'СВО')
-                                ->first();
 
         $heroesSvo->appends(['heroes_svo' => $heroesSvo, 'type' => 'СВО', 'city' => $city]);
 
         return view('main.heroes_and_mp.heroes_svo_main', ['heroes_svo' => $heroesSvo, 
-        'type' => 'СВО', 'city' => $city, 'description_city' => $city_bd->description]);
+        'type' => 'СВО', 'city' => $city->city, 'description_city' => $city->description]);
     }
 
     public function show_mp(Request $request)
     {
-        $city = $request->input('city');
+        $city = city_heroes::where('city', $request->input('city'))
+                            ->where('type', 'ПМ')
+                            ->with('city_relation')
+                            ->first();
 
-        $memorablePlaces = mp_added_by_user::where('city', $city)
+        $memorablePlaces = mp_added_by_user::where('city', $city->id)
                                         ->where('isCheck', 1)
                                         ->paginate(10);
-        $city_bd = city_heroes::where('city', $city)
-                                ->where('type', 'ПМ')
-                                ->first();
 
         $memorablePlaces->appends(['memorable_places' => $memorablePlaces, 'city' => $city]);
 
         return view('main.heroes_and_mp.memorable_place', 
-        ['memorable_places' => $memorablePlaces, 'city' => $city, 
-        'description_city' => $city_bd->description]);
+        ['memorable_places' => $memorablePlaces, 'city' => $city->city, 
+        'description_city' => $city->description]);
     }
 }

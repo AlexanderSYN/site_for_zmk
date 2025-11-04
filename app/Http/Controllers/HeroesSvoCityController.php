@@ -1,12 +1,17 @@
 <?php
 
+//-------------------------------------------------------
+// The Controller for displaying the city of heroes SVO
+// Контроллер для вывода городов, в котором Герои СВО
+//-------------------------------------------------------
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
-class HeroesSvoController extends Controller
+class HeroesSvoCityController extends Controller
 {
     public function show(Request $request)
     {
