@@ -93,15 +93,17 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- btn add_city -->
-                <form action="{{ route('add_city') }}" method="post">                    
-                    @csrf
-                    <input type="hidden" name="name_hero" value="СВО" />
+                @if ($user->role == "user" || $user->role == "admin")
+                    <!-- btn add_city -->
+                    <form action="{{ route('add_city') }}" method="post">                    
+                        @csrf
+                        <input type="hidden" name="name_hero" value="СВО" />
 
-                    <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ГОРОД
-                    </button>
-                </form>
+                        <button type="submit" class="btn_add_city_head">
+                              ДОБАВИТЬ ГОРОД
+                        </button>
+                    </form>
+                @endif
 
 
                 <!-- btn logout -->
@@ -117,13 +119,23 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
+                @foreach ($errors->all() as $message)
+                    <div class="notice error">
+                        {{ $message }}
+                    </div>
+                @endforeach
+                @if (session()->has('success'))
+                    <div class="notice success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <h1>Герои СВО (Выберите Город)</h1>
 
             @if($heroesSvo->count() > 0)
                 @foreach ($heroesSvo as $heroSvoCity)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $heroSvoCity->city }} ({{ $heroSvoCity->type }})</h5>
-                            <h3>Описание: {{ $description_city }}</h3>
+                            <h3>Описание: {{ $heroSvoCity->description }}</h3>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                         
@@ -144,12 +156,12 @@
                                     Создано: {{ $heroSvoCity->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="{{  $heroSvoCity->type == 'СВО' ? route('added_heroes_page_svo') 
-                                                : route('added_heroes_page_vov') }}" method="post">
+
+                            <form action="{{  route('added_heroes_page_svo') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
                                     value="{{ $heroSvoCity->id }}" />
-
+                                
                                 <input type="hidden" name="type" 
                                     value="{{ $heroSvoCity->type }}" />
 
@@ -157,6 +169,18 @@
                                     Перейти
                                 </button>
                             </form>
+
+                            @if ($user->role == "user" || $user->role == "admin")
+                                <form action="{{ route('edit_city_svo') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_city"
+                                        value="{{ $heroSvoCity->id }}" />
+                                
+                                    <button type="submit" class="btn_edit">
+                                        ИЗМЕНИТЬ
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                 @endforeach
 

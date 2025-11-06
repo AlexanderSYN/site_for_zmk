@@ -103,6 +103,7 @@
         <main class="flex-grow-1">
             <center>
                 <h1>Герои СВО ({{ $city }})</h1>
+                <h3>{{ $description_city }}</h3>
 
                 @if ($heroes_svo->count() > 0)
                     @foreach ($heroes_svo as $hero)

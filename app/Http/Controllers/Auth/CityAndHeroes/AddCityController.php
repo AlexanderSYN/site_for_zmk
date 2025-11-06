@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 use Exception;
-use Termwind\Components\BreakLine;
 
 class AddCityController extends Controller
 {
+    //=============================================
+    // redirect to the add_city page
+    // перекидывание на страницу добавления героя
+    //=============================================
     public function show(Request $request)
     {
         $user = Auth::user();

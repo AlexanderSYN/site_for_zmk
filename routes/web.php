@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
+use App\Http\Controllers\Auth\CityAndHeroes\CityActions;
 
 //======================================
 // use => heroes vov, svo and mp (main)
@@ -90,7 +91,6 @@ Route::get('/logout', [LoginController::class, 'destroy'])->middleware('auth')->
 //----------------------------------------------------
 Route::middleware(['auth'])->group(function() {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-
 });
 
 //----------------------------------------------------
@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function () {
 
 //--------------------------------------------
 // USER
-// for add heroes and memory places
+// for Actions heroes and memory places
 //--------------------------------------------
 Route::middleware('auth')->group(function() {
     //--------------------------------------------
@@ -123,6 +123,24 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/profile/heroes_vov', [HeroesVovCityController::class, 'show'])->name('heroes_vov_profile_city');
     Route::get('/profile/heroes_svo', [HeroesSvoCityController::class, 'show'])->name('heroes_svo_profile_city');
+
+    //---------------------
+    // for edit data city
+    //---------------------
+    Route::get('/profile/heroes_vov/edit_city/', [CityActions::class, 'show'])->name('edit_city_vov');
+    Route::post('/profile/heroes_vov/edit_city/', [CityActions::class, 'show'])->name('edit_city_vov');
+    
+    Route::get('/profile/heroes_svo/edit_city/', [CityActions::class, 'show'])->name('edit_city_svo');
+    Route::post('/profile/heroes_svo/edit_city/', [CityActions::class, 'show'])->name('edit_city_svo');
+    
+    Route::get('/profile/memorable_places/edit_city/', [CityActions::class, 'show'])->name('edit_city_mp');
+    Route::post('/profile/memorable_places/edit_city/', [CityActions::class, 'show'])->name('edit_city_mp');
+
+    //--------------------
+    // updating city data
+    //--------------------
+    Route::get('/profile/edit_city/updating', [CityActions::class, 'edit_city_user'])->name('edit_city_data_in_bd');
+    Route::post('/profile/edit_city/updating', [CityActions::class, 'edit_city_user'])->name('edit_city_data_in_bd');
 
     //--------------------------------------------
     // redirect to added heroes page

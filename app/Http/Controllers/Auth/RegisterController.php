@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Controllers\Auth\HeroesMPActions\helper\Helper_register;
+
 use App\Helpers\Messages;
 
 use Illuminate\Http\Request;
@@ -41,6 +43,10 @@ class RegisterController extends Controller
         //--------------------------------------------
         $get_full_name = explode(" ", $name);
 
+        $first_name = Helper_register::get_current_first_name($get_full_name);
+        $last_name = $get_full_name[0];
+        $patronymic = Helper_register::get_current_patronymic($get_full_name);
+
             
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -51,9 +57,9 @@ class RegisterController extends Controller
 
         try {
             $user = User::create([
-                'first_name' => $get_full_name[1],
-                'last_name' => $get_full_name[0],
-                'patronymic' => $get_full_name[2],
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'patronymic' => $patronymic,
                 'email' => Crypt::encrypt($validated['email']),
                 'login' => $validated['login'],
                 'password' => Hash::make($validated['password'])

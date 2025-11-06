@@ -13,6 +13,14 @@ use App\Models\city_heroes;
 
 class HeroesSvoCityController extends Controller
 {
+    /**
+     * redirect to the heroes_svo page, where they show the cities where 
+     * SVO heroes have been added
+     * (перенаправить на страницу heroes_svo, где показывают города, в 
+     * которых добавлены герои СВО)
+     * 
+     * @return profile/hereos_svo_city
+     */
     public function show(Request $request)
     {
         $user = Auth::user();

@@ -13,6 +13,14 @@ use App\Models\city_heroes;
 
 class HeroesVovCityController extends Controller
 {
+    /**
+     * redirect to the heroes_vov page, where they show the cities where 
+     * VOV heroes have been added
+     * (перенаправить на страницу heroes_vov, где показывают города, в 
+     * которых добавлены герои ВОВ)
+     * 
+     * @return profile/hereos_vov_city
+     */
     public function show(Request $request)
     {
         $user = Auth::user();

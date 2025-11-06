@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 
@@ -13,6 +12,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+
+use Exception;
 
 class ProfileController extends Controller
 {

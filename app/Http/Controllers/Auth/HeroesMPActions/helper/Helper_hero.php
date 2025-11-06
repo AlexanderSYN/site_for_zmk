@@ -19,19 +19,21 @@ class Helper_hero {
         return $new_path_image == null ? $old_path_image : $new_path_image;
     } 
 
-    //==========================================================================================
-    // for added heroes page!
-    // We get: the user's role, type, and hero's city. If role = user, then 
-    // we transfer to the page with the characters that he himself added, if the admin
-    // or moder then show all the characters, otherwise assume that the user has switched 
-    // and do the same as I wrote above. at the end, we get a query for sql
-    //
-    // для страницы добавленных героев!
-    // получаем: роль пользователя, тип и город героя. Eсли роль = user, тогда 
-    // перекидываем на страницу с героями, которых он сам добавил, если admin
-    // или moder тогда показать всех героев, иначе считать, что перешел user 
-    // и сделать также, как я писал выше. в конце получаем запрос для sql
-    //==========================================================================================
+    /**
+    * for added heroes page!
+    * We get: the user's role, type, and hero's city. If role = user, then 
+    * we transfer to the page with the characters that he himself added, if the admin
+    * or moder then show all the characters, otherwise assume that the user has switched 
+    * and do the same as I wrote above. at the end, we get a query for sql
+    *
+    * (для страницы добавленных героев!
+    * получаем: роль пользователя, тип и город героя. Eсли роль = user, тогда 
+    * перекидываем на страницу с героями, которых он сам добавил, если admin
+    * или moder тогда показать всех героев, иначе считать, что перешел user 
+    * и сделать также, как я писал выше. в конце получаем запрос для sql)
+
+    * @return heroes, there will be data from bd heroes (там будут данные из бд heroes)
+     */
     public static function get_current_url_for_added_heroes($role, $city, $type, $user_id)
     {
         // to get the city where the hero is located

@@ -93,15 +93,17 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- btn add_city -->
-                <form action="{{ route('add_city') }}" method="post">                    
-                    @csrf
-                    <input type="hidden" name="name_hero" value="ВОВ" />
+                @if ($user->role == "user" || $user->role == "admin")
+                    <!-- btn add_city -->
+                    <form action="{{ route('add_city') }}" method="post">                    
+                        @csrf
+                        <input type="hidden" name="name_hero" value="ВОВ" />
 
-                    <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ГОРОД
-                    </button>
-                </form>
+                        <button type="submit" class="btn_add_city_head">
+                              ДОБАВИТЬ ГОРОД
+                        </button>
+                    </form>
+                @endif
 
                 <!-- btn logout -->
                 <a href="{{ route('logout') }}" class="btn_logout_head" id="header_actions">
@@ -116,13 +118,24 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
+                @foreach ($errors->all() as $message)
+                    <div class="notice error">
+                        {{ $message }}
+                    </div>
+                @endforeach
+                @if (session()->has('success'))
+                    <div class="notice success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
                 <h1>Герои ВОВ (Выберите Город)</h1>
 
             @if($heroesVovCity->count() > 0)
                 @foreach ($heroesVovCity as $heroVovCity)
                     <div class="card_body">
-                            <h5 class="card_title">Город: {{ $heroVovCity->city }} ({{ $heroVovCity->type }})</h5>
-                            <h3>Описание: {{ $description_city }}</h3>
+                            <h3 class="card_title">Город: {{ $heroVovCity->city }} ({{ $heroVovCity->type }})</h3>
+                            <h4>Описание: {{ $heroVovCity->description }}</h4>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                                 <?php
@@ -142,8 +155,8 @@
                                     Создано: {{ $heroVovCity->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="{{  $heroVovCity->type == 'ВОВ' ? route('added_heroes_page_vov') 
-                                            : route('added_heroes_page_svo') }}" method="post">
+
+                            <form action="{{  route('added_heroes_page_vov') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
                                     value="{{ $heroVovCity->id }}" />
@@ -155,6 +168,18 @@
                                     Перейти
                                 </button>
                             </form>
+
+                            @if ($user->role == "user" || $user->role == "admin")
+                                <form action="{{ route('edit_city_vov') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_city"
+                                        value="{{ $heroVovCity->id }}" />
+                                    
+                                    <button type="submit" class="btn_edit">
+                                        ИЗМЕНИТЬ
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                 @endforeach
 

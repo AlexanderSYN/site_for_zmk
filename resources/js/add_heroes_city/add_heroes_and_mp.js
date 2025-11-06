@@ -17,6 +17,8 @@ let len_symb = 0;
 
 //================================
 // logic character checking
+// проверка на превышение лимита
+// текста
 //================================
 function update_symbol_count() {
     const current_len = description.value.length;

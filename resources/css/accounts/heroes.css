@@ -222,7 +222,7 @@ main .card_body {
 }
 main .card_body .card_title {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 45px;
 }
 main .card_body .btn_go {
   width: 18rem;
@@ -237,6 +237,20 @@ main .card_body .btn_go {
 }
 main .card_body .btn_go:hover {
   background: #2658a2;
+}
+main .card_body .btn_edit {
+  width: 18rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: rgb(52, 199, 89);
+  border-radius: 8px;
+  text-decoration: none;
+  color: #FFFFFF;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+main .card_body .btn_edit:hover {
+  background: #2c742b;
 }
 main .wrapper_for_hero {
   width: 1458px;

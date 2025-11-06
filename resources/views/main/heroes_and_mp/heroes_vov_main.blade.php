@@ -103,7 +103,6 @@
         <main class="flex-grow-1">
             <center>
                 <h1>Герои ВОВ ({{ $city }})</h1>
-
                 <h3>{{ $description_city }}</h3>
 
                 @if ($heroes_vov->count() > 0)

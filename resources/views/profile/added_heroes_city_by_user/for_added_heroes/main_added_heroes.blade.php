@@ -8,7 +8,7 @@
                         </h4>
                     </div>
                 @endif
-                 @foreach ($errors->all() as $message)
+                @foreach ($errors->all() as $message)
                     <div class="notice error">
                         {{ $message }}
                     </div>

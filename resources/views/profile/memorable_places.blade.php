@@ -93,15 +93,17 @@
 
 
             <div class="header_actions" id="header_actions">
-                <!-- btn add_city -->
-                <form action="{{ route('added_mp_page') }}" method="post">                    
-                    @csrf
-                    <input type="hidden" name="name_hero" value="ПМ" />
+                @if ($user->role == "user" || $user->role == "admin")
+                    <!-- btn add_city -->
+                    <form action="{{ route('added_mp_page') }}" method="post">                    
+                        @csrf
+                        <input type="hidden" name="name_hero" value="ПМ" />
 
-                    <button type="submit" class="btn_add_city_head">
-                          ДОБАВИТЬ ГОРОД
-                    </button>
-                </form>
+                        <button type="submit" class="btn_add_city_head">
+                              ДОБАВИТЬ ГОРОД
+                        </button>
+                    </form>
+                @endif
 
 
                 <!-- btn logout -->
@@ -117,12 +119,24 @@
         <!-- MAIN -->
         <main class="flex-grow-1">
             <center>
+                @foreach ($errors->all() as $message)
+                    <div class="notice error">
+                        {{ $message }}
+                    </div>
+                @endforeach
+                @if (session()->has('success'))
+                    <div class="notice success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
                 <h1>Памятные Места (Выберите Город)</h1>
 
             @if($memorable_places->count() > 0)
                 @foreach ($memorable_places as $mp_city)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $mp_city->city }} ({{ $mp_city->type }})</h5>
+                            <h4>Описание: {{ $mp_city->description }}</h4>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                         
@@ -143,11 +157,12 @@
                                     Создано: {{ $mp_city->created_at->format('d.m.Y H:i') }}
                                 </small>
                             </p>
-                            <form action="{{ route('added_mp_page') }}" method="post">
+
+                            <form action="{{  route('added_mp_page') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
                                     value="{{ $mp_city->id }}" />
-
+                                
                                 <input type="hidden" name="type" 
                                     value="{{ $mp_city->type }}" />
 
@@ -155,6 +170,18 @@
                                     Перейти
                                 </button>
                             </form>
+
+                            @if ($user->role == "user" || $user->role == "admin")
+                                <form action="{{ route('edit_city_mp') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_city"
+                                        value="{{ $mp_city->id }}" />
+                                
+                                    <button type="submit" class="btn_edit">
+                                        ИЗМЕНИТЬ
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                 @endforeach
             @else

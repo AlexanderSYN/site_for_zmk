@@ -103,6 +103,7 @@
         <main class="flex-grow-1">
             <center>
                 <h1>Памятные Места ({{ $city }})</h1>
+                <h3>{{ $description_city }}</h3>
 
                 @if ($memorable_places->count() > 0)
                     @foreach ($memorable_places as $mp)
