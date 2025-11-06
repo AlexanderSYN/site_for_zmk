@@ -16,7 +16,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name')->default('none');
-            $table->string('description')->default('none');
+            $table->string('description', 500)->default('none');
+            $table->string('status', 500)->default('none');
             $table->string('mp_link')->default('none');
             $table->string('city')->default('none');
             $table->string('image_mp')->default('none');

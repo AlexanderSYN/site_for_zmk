@@ -98,6 +98,7 @@
                     <form action="{{ route('add_city') }}" method="post">                    
                         @csrf
                         <input type="hidden" name="name_hero" value="СВО" />
+                        <input type="hidden" name="id_city" value="{{ $id_city }}" />
 
                         <button type="submit" class="btn_add_city_head">
                               ДОБАВИТЬ ГОРОД
@@ -171,15 +172,21 @@
                             </form>
 
                             @if ($user->role == "user" || $user->role == "admin")
-                                <form action="{{ route('edit_city_svo') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id_city"
-                                        value="{{ $heroSvoCity->id }}" />
+                                @if ($heroSvoCity->added_user_id == $user->id || 
+                                    $user->role == "admin")
+                                    
+                                    <form action="{{ route('edit_city_svo') }}" 
+                                        method="post">
+                                        @csrf
+                                        <input type="hidden" name="id_city"
+                                            value="{{ $heroSvoCity->id }}" />
                                 
-                                    <button type="submit" class="btn_edit">
-                                        ИЗМЕНИТЬ
-                                    </button>
-                                </form>
+                                        <button type="submit" class="btn_edit">
+                                            ИЗМЕНИТЬ
+                                        </button>
+                                    </form>
+
+                                @endif    
                             @endif
                         </div>
                 @endforeach

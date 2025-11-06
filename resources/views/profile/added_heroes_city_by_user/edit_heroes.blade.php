@@ -18,8 +18,8 @@
 
 
 </head>
-<!-- style="background:#EFEFEF" -->
-<body style=" background-image: url('/image/bg/old-paper-bg.png')">
+
+<body style="background-image: url('/image/bg/old-paper-bg.png')">
     
     <div class="d-flex flex-column justify-content-between min-vh-100">
         

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('city')->default('none');
-            $table->string('description')->default('none');
+            $table->string('description', 500)->default('none');
             $table->string('type')->default('none');
             $table->string('added_user_id')
                     ->consntrained('users') // refers to the users table

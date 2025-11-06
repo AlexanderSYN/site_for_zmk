@@ -36,13 +36,18 @@ class HeroesAddedController extends Controller
 
         // transferring data for the following pages to paginate
         // передача данных для пагинации страниц в paginate
-        $heroes->appends(['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city->city, 'role' => $user->role]);
+        $heroes->appends(['user' => $user, 'heroes' => $heroes, 'type' => $type, 
+                        'city' => $city->city, 'role' => $user->role]);
 
         return view('profile.added_heroes_city_by_user.added_heroes', 
             ['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city->city,
             'role' => $user->role]);
     }
 
+    //=================================================
+    // redirect to edit heroes page
+    // перекидывание на страницу редактирования героя
+    //=================================================
     public function edit_hero_user_page(Request $request)
     {
         $user = Auth::user();

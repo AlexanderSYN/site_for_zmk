@@ -47,6 +47,10 @@ class AddCityController extends Controller
         return view(route('main'), ['user' => $user]);
     }
 
+    //===================================
+    // adds a city to the database
+    // добавляет город в бд
+    //===================================
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -80,7 +84,6 @@ class AddCityController extends Controller
                 'description' => $description,
                 'type' => $user_selected_content,
                 'added_user_id' => $user->id,
-                'added_user_name' => $user->first_name
             ]);
 
             switch ($user_selected_content) {

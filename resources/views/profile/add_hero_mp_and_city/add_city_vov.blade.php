@@ -46,7 +46,6 @@
                             <!-- notifications -->
                             <ul>
                                 @foreach ($errors->all() as $message)
-
                                     <div class="notice error">
                                         {{ $message }}
                                     </div>
@@ -60,11 +59,11 @@
                             <input type="text" name="city"
                                 placeholder="Введите город" required/>
 
-                            <textarea name="description" class="description_city"
+                            <textarea name="description" id="description" class="description_city"
                             placeholder="Введите Описание Города" required></textarea>
+                            <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
-
-                            <button class="btn_entry">
+                            <button class="btn_entry" id="btn_add">
                                 ДОБАВИТЬ
                             </button>
                         </form>
@@ -82,7 +81,7 @@
     </div>
 
     <!-- JS -->
-    @vite('../../resources/js/for_register/show_hide_password.js')
+    @vite('../../resources/js/helpers/helper_symbols.js')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

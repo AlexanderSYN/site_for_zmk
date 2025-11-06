@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\city_heroes;
 
 class HeroesVovCityController extends Controller
@@ -39,7 +40,7 @@ class HeroesVovCityController extends Controller
         $city_bd = city_heroes::where('type', 'ВОВ')->first();
 
         return view('profile.heroes_vov_city',  ['user' => $user, 
-        'heroesVovCity' => $heroesVovCity, 'description_city' => $city_bd->description]);
+        'heroesVovCity' => $heroesVovCity, 'id_city' => $heroesVovCity]);
     }
     
 }

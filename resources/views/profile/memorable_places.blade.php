@@ -172,15 +172,20 @@
                             </form>
 
                             @if ($user->role == "user" || $user->role == "admin")
-                                <form action="{{ route('edit_city_mp') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id_city"
-                                        value="{{ $mp_city->id }}" />
+                                 @if ($mp_city->added_user_id == $user->id || 
+                                    $user->role == "admin")
+
+                                    <form action="{{ route('edit_city_mp') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id_city"
+                                            value="{{ $mp_city->id }}" />
                                 
-                                    <button type="submit" class="btn_edit">
-                                        ИЗМЕНИТЬ
-                                    </button>
-                                </form>
+                                        <button type="submit" class="btn_edit">
+                                            ИЗМЕНИТЬ
+                                        </button>
+                                    </form>
+
+                                @endif
                             @endif
                         </div>
                 @endforeach

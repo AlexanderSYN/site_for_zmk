@@ -15,6 +15,7 @@ class city_heroes extends Model
     protected $table = 'city';
 
     protected $fillable = [
+        'id',
         'city',
         'description',
         'type',

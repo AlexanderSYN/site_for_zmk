@@ -39,8 +39,8 @@
                      <input type="hidden" name="type"
                                 value="{{ $type == null ? session()->get('type') : $type  }}" />
 
-                            <input type="hidden" name="city"
-                                value="{{ $city == null ? session()->get('city') : $city  }}" />
+                    <input type="hidden" name="city"
+                            value="{{ $city == null ? session()->get('city') : $city  }}" />
                 </button>
             </form>
         </header>
@@ -97,7 +97,7 @@
                                 placeholder="Введите ФИО или Имя Героя" value="{{ old('name_hero') }}" required/>
 
                             <input type="text" name="hero_link"
-                                placeholder="Введите Ссылку На Источник" value="{{ old('hero_link') }}" />
+                                placeholder="Введите Ссылку На Источник (который в qr коде)" value="{{ old('hero_link') }}" />
 
                             <textarea id="description" name="description" class="description_hero"
                                 placeholder="Введите Описание Героя" value="{{ old('description') }}" required></textarea>

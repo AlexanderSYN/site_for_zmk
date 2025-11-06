@@ -39,6 +39,6 @@ class HeroesSvoCityController extends Controller
         $city_bd = city_heroes::where('type', 'СВО')->first();
 
         return view('profile.heroes_svo_city',  ['user' => $user, 
-        'heroesSvo' => $heroesSvoCity, 'description_city' => $city_bd->description]);
+        'heroesSvo' => $heroesSvoCity, 'id_city' => $heroesSvoCity]);
     }
 }

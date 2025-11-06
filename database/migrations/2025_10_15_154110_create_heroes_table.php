@@ -16,7 +16,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name_hero')->default('none');
-            $table->string('description_hero')->default('none'); // max 500 characters
+            $table->string('description_hero', 500)->default('none'); // max 500 characters
+            $table->string('status', 500)->default('none');
             $table->string('hero_link')->default('none');
             $table->string('city')->default('none');
             $table->string('type')->default('none');
