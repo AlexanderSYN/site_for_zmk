@@ -3,6 +3,11 @@
 use App\Http\Controllers\Auth\CityAndHeroes\AddCityController;
 use App\Http\Controllers\Auth\CityAndHeroes\CityActions;
 
+//=======================================
+// use => for add status to hero or mp
+//=======================================
+use App\Http\Controllers\Auth\HeroesMPAction\moder\AddStatusActions;
+
 //======================================
 // use => heroes vov, svo and mp (main)
 //======================================
@@ -162,6 +167,19 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/heroes_svo/added_heroes/upload', [HeroActionsController::class, 'upload_hero'])->name('upload_hero');
 
     //--------------------------------------------
+    // to add a status to a hero or MP
+    // для добавления статуса герою или ПМ
+    //--------------------------------------------
+    Route::get('/profile/heroes_vov/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_vov');
+    Route::post('/profile/heroes_vov/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_vov');
+
+    Route::get('/profile/heroes_svo/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_svo');
+    Route::post('/profile/heroes_svo/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_svo');
+
+    Route::get('/profile/heroes_vov/memorable_places/add_status', [AddStatusActions::class, 'show'])->name('add_status_mp');
+    Route::post('/profile/heroes_vov/memorable_places/add_status', [AddStatusActions::class, 'show'])->name('add_status_mp');
+
+    //--------------------------------------------
     // to return to the hero check (for_verifacations)
     // для возврата на проверку героя
     //--------------------------------------------
@@ -207,6 +225,12 @@ Route::middleware('auth')->group(function() {
     //========================================
     Route::get('/profile/memorable_places', [MemorablePlacesCityController::class, 'show'])->name('mp_profile_city');
     Route::post('/profile/memorable_places', [MemorablePlacesCityController::class, 'show'])->name('mp_profile_city');
+
+    //============================================
+    // redirect to add city memorable places page 
+    //============================================
+    Route::get('/profile/memorable_places/add_city', [AddCityController::class, 'store'])->name('mp_add_city');
+    Route::post('/profile/memorable_places/add_city', [AddCityController::class, 'store'])->name('mp_add_city');
 
     //=========================================
     // redirect to added memorable places page

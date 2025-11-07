@@ -98,7 +98,6 @@
                     <form action="{{ route('add_city') }}" method="post">                    
                         @csrf
                         <input type="hidden" name="name_hero" value="СВО" />
-                        <input type="hidden" name="id_city" value="{{ $id_city }}" />
 
                         <button type="submit" class="btn_add_city_head">
                               ДОБАВИТЬ ГОРОД

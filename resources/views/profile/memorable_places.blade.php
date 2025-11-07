@@ -95,7 +95,7 @@
             <div class="header_actions" id="header_actions">
                 @if ($user->role == "user" || $user->role == "admin")
                     <!-- btn add_city -->
-                    <form action="{{ route('added_mp_page') }}" method="post">                    
+                    <form action="{{ route('add_city') }}" method="post">                    
                         @csrf
                         <input type="hidden" name="name_hero" value="ПМ" />
 
@@ -132,8 +132,8 @@
 
                 <h1>Памятные Места (Выберите Город)</h1>
 
-            @if($memorable_places->count() > 0)
-                @foreach ($memorable_places as $mp_city)
+            @if($memorablePlaceCity->count() > 0)
+                @foreach ($memorablePlaceCity as $mp_city)
                     <div class="card_body">
                             <h5 class="card_title">Город: {{ $mp_city->city }} ({{ $mp_city->type }})</h5>
                             <h4>Описание: {{ $mp_city->description }}</h4>

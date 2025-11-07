@@ -98,7 +98,6 @@
                     <form action="{{ route('add_city') }}" method="post">                    
                         @csrf
                         <input type="hidden" name="name_hero" value="ВОВ" />
-                        <input type="hidden" name="id_city" value="{{ $id_city }}" />
 
                         <button type="submit" class="btn_add_city_head">
                               ДОБАВИТЬ ГОРОД
@@ -140,13 +139,26 @@
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
                                 <?php
-                                    try {
-                                        echo $heroVovCity->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVovCity->user->first_name . ' '; 
+                                    try { ?>
+                                        @if ($user->role == "user")
+                                            <?php echo $heroVovCity->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVovCity->user->first_name . ' ';
+                                            
+                                            echo $heroVovCity->user->last_name == $user->last_name 
+                                            ? ' ' :  $heroVovCity->user->last_name; ?> 
+
+                                        @elseif ($user->role == "admin" || $user->role == "moder")
+                                            <?php 
+                                            echo $heroVovCity->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $heroVovCity->user->first_name . ' '; 
+                                            
+                                            echo $heroVovCity->user->last_name == $user->last_name 
+                                            ? ' ' :  $heroVovCity->user->last_name . ' | 
+                                            id: ' . $heroVovCity->user->id . ' '; ?>
+                                        @endif 
                                         
-                                        echo $heroVovCity->user->last_name == $user->last_name 
-                                        ? ' ' :  $heroVovCity->user->last_name;
-                                    } catch (Exception $e) {
+                                        
+                                    <?php } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
                                     }
                                 ?>

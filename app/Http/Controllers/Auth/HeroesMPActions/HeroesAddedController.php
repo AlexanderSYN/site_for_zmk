@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class HeroesAddedController extends Controller
 {
-    //===========================
-    // for user and showing heroes
-    // для пользователей
-    // показываем героев
-    //============================
+    //=====================================================
+    // showing the characters that the user added himself
+    // показываем героев которых добавил сам user
+    //=====================================================
     public function show(Request $request)
     {
         $user = Auth::user();

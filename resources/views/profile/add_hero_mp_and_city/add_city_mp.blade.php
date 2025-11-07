@@ -17,14 +17,14 @@
 
 </head>
 <!-- style="background:#EFEFEF" -->
-<body style=" background-image: url('/image/bg/old-paper-bg.png')">
+<body style="background-image: url('/image/bg/old-paper-bg.png')">
     
     <div class="d-flex flex-column justify-content-between min-vh-100">
         
         <!-- HEADER -->
         <header id="up">
 
-            <a href="{{ route('heroes_svo_profile_city') }}">
+            <a href="{{ route('mp_profile_city') }}">
                <img 
                     class="back_arrow" src="../../image/back_black_arrow.png" 
                     alt="стрелка назад" width="130px"
@@ -60,11 +60,11 @@
                             <input type="text" name="city"
                                 placeholder="Введите город" required/>
 
-                            <textarea name="description" class="description_city"
+                            <textarea name="description" id="description" class="description_city"
                                 placeholder="Введите Описание Города" required></textarea>
+                            <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
-
-                            <button class="btn_entry">
+                            <button class="btn_entry" id="btn_add">
                                 ДОБАВИТЬ
                             </button>
                         </form>
@@ -82,7 +82,7 @@
     </div>
 
     <!-- JS -->
-    @vite('../../resources/js/for_register/show_hide_password.js')
+    @vite('../../resources/js/helpers/helper_symbols.js')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

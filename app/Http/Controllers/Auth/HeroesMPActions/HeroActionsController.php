@@ -30,14 +30,16 @@ class HeroActionsController extends Controller
         $user = Auth::user();
 
         $type = $request->input('type');
-        $city = $request->input('city');
+        $city = city_heroes::where('city', $request->input('city'))
+                            ->where('type', $type)
+                            ->first();
 
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
 
         return view('profile.add_hero_mp_and_city.add_hero', ['user' => $user, 
-                                            'city' => $city, 'type' => $type]);
+                                            'city' => $city->id, 'type' => $type]);
     }
 
     //=================================

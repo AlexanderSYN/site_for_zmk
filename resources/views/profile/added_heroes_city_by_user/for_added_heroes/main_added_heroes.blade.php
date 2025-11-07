@@ -91,7 +91,8 @@
                                 @endif
                                 
                                 <!-- add status -->
-                                <form action="" method="post" >
+                                <form action="{{ $type == "ВОВ" ? route('add_status_hero_vov')
+                                                : route('add_status_hero_svo')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="id_hero"
                                         value="{{ $hero->id }}" />
@@ -140,7 +141,8 @@
                                 </form>
 
                                 <!-- add status -->
-                                <form action="" method="post" >
+                                <form action="{{ $type == "ВОВ" ? route('add_status_hero_vov')
+                                                : route('add_status_hero_svo')}}" method="post">
                                     @csrf
                                     <input type="hidden" name="id_hero"
                                         value="{{ $hero->id }}" />
