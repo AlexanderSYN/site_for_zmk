@@ -290,6 +290,12 @@
     width: 360px;
     height: 52px;
   }
+  .wrapper_register textarea {
+    width: 23rem;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
   .wrap_politic_policy input[type=checkbox] {
     margin-left: -25rem;
   }
@@ -324,6 +330,12 @@
   .wrapper_register .btn_register {
     width: 360px;
     height: 52px;
+  }
+  .wrapper_register textarea {
+    width: 21rem;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
   }
   .wrap_politic_policy input[type=checkbox] {
     margin-left: -14rem;
@@ -361,5 +373,11 @@
   .wrapper_register .btn_register {
     width: 287px;
     height: 52px;
+  }
+  .wrapper_register textarea {
+    width: 18rem;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
   }
 }

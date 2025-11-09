@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\HeroesMPActions;
 
 use App\Http\Controllers\Controller;
+use App\Models\city_heroes;
 use App\Models\mp_added_by_user;
 
 use Illuminate\Http\Request;
@@ -26,16 +27,20 @@ class MPActionsController extends Controller
     //===============================
     public function show(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        $city = $request->input('city');
+            $city = city_heroes::where('id', $request->input('city_id'))->first();
+   
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
+            return view('profile.add_hero_mp_and_city.add_mp', ['user' => $user, 
+                                                'city_id' => $city->id, 'city' => $city->city]);
+        } catch (Exception $e) {
+            return redirect()->route('profile');
         }
-
-        return view('profile.add_hero_mp_and_city.add_mp', ['user' => $user, 
-                                            'city' => $city]);
     }
 
     //=======================
@@ -110,9 +115,9 @@ class MPActionsController extends Controller
             $pathForSave = $request->file('image_mp')->store("MP/{$city}/{$folderName}", 'public');
             $pathForSave_QR = $request->file('image_mp_qr')->store("MP/{$city}/{$folderName}/QR", 'public');
 
-             // add a mp to the database
+            // add a mp to the database
             // добавить Памятное Место в бд
-            $data = mp_added_by_user::create([
+            mp_added_by_user::create([
                 'name' => $name_mp,
                 'description' => $description,
                 'mp_link' => $mp_link,
@@ -122,6 +127,7 @@ class MPActionsController extends Controller
                 'added_user_id' => $user->id,
                 'isCheck' => false
             ]);
+
 
             return redirect()->route('add_mp_page', ['user' => $user, 
                         'city' => $city])
@@ -145,7 +151,6 @@ class MPActionsController extends Controller
     //==============================
     public function edit_mp_user(Request $request)
     {
-
         try {
             $user = Auth::user();
 
@@ -251,8 +256,6 @@ class MPActionsController extends Controller
                 Storage::disk('public')->delete($path_image_mp_qr);
             }
            
-
-
             $mp->delete();
 
             return redirect()->route('added_mp_page', 

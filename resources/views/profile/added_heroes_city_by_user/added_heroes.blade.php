@@ -117,7 +117,7 @@
 
         <!-- MAIN -->
         <main class="flex-grow-1">
-            @include('profile.added_heroes_city_by_user.for_added_heroes.main_added_heroes');
+            @include('profile.added_heroes_city_by_user.for_added_heroes.main_added_heroes')
         </main>
 
 

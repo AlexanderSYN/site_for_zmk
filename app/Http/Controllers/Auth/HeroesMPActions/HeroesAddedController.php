@@ -43,8 +43,7 @@ class HeroesAddedController extends Controller
                 ['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city->city,
                 'city_id' => $city->id, 'role' => $user->role]);
         } catch (Exception $e) {
-            // return redirect()->route('profile');
-            echo $e;
+            return redirect()->route('profile');
         }
     }
 
@@ -54,19 +53,23 @@ class HeroesAddedController extends Controller
     //=================================================
     public function edit_hero_user_page(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        $id = $request->input('id_hero');
-        $hero = heroes_added_by_user::where('id', $id)
-                                ->where('added_user_id', $user->id)
-                                ->first();
+            $id = $request->input('id_hero');
+            $hero = heroes_added_by_user::where('id', $id)
+                                    ->where('added_user_id', $user->id)
+                                    ->first();
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            return view('profile.added_heroes_city_by_user.edit_heroes', 
+                    ['user' => $user, 'hero' => $hero ]);
+        } catch (Exception $e) {
+            return redirect()->route('profile');
         }
-
-        return view('profile.added_heroes_city_by_user.edit_heroes', 
-                ['user' => $user, 'hero' => $hero ]);
     }
 
 }

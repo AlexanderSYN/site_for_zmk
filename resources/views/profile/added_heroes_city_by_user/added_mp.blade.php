@@ -97,7 +97,7 @@
                     <!-- btn add_city -->
                     <form action="{{ route('add_mp_page') }}" method="post">                    
                         @csrf
-                        <input type="hidden" name="city" value="{{ $city }}" />
+                        <input type="hidden" name="city_id" value="{{ $city_id }}" />
 
                         <button type="submit" class="btn_add_city_head">
                               ДОБАВИТЬ ПМ
@@ -215,7 +215,6 @@
 
                         <div style="display: grid;justify-content: center;">
                             {!! $memorable_places->links('vendor.pagination.bootstrap-4') !!}
-
                         </div>
                     </div>
                 @else

@@ -27,17 +27,21 @@ class HeroActionsController extends Controller
     //================================
     public function show(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        $type = $request->input('type');
-        $city_id = $request->input('city');
+            $type = $request->input('type');
+            $city_id = $request->input('city');
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            return view('profile.add_hero_mp_and_city.add_hero', ['user' => $user, 
+                                                'city_id' => $city_id, 'type' => $type]);
+        } catch (Exception $e) {
+            return redirect()->redirect('profile');
         }
-
-        return view('profile.add_hero_mp_and_city.add_hero', ['user' => $user, 
-                                            'city' => $city_id, 'type' => $type]);
     }
 
     //=================================
@@ -58,8 +62,8 @@ class HeroActionsController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
-                'name_hero' => 'required|string|max:255',
-                'hero_link' => 'required|string|max:255',
+                'name_hero' => 'string|max:255',
+                'hero_link' => 'string|max:255',
                 'description_hero' => 'required|string|max:500|min:10',
                 'type' => 'string|max:255',
                 'image_hero' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
@@ -134,7 +138,7 @@ class HeroActionsController extends Controller
 
             // add a hero to the database
             // добавить героя в бд
-            $data = heroes_added_by_user::create([
+            heroes_added_by_user::create([
                 'name_hero' => $name_hero,
                 'description_hero' => $description,
                 'hero_link' => $hero_link,
@@ -174,6 +178,9 @@ class HeroActionsController extends Controller
                                 'city' => $city, 'type' => $type])
                                 ->withInput()
                                 ->withErrors('Неизвестная ошибка!' . $e);
+                    break;
+                default:
+                    return redirect()->route('profile');
                     break;
             }
         }

@@ -155,7 +155,7 @@ $font-family_for_entry:"Roboto Mono";
 }
 
 //-------------------------------------------
-// for the register, add city and hero pages
+// for the register and hero pages
 //-------------------------------------------
 .wrapper_register {
     opacity: 0;
@@ -302,6 +302,12 @@ $font-family_for_entry:"Roboto Mono";
             height: 52px; 
         }
 
+        textarea {
+            width: 23rem;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
     }
 
     // checkbox
@@ -355,6 +361,13 @@ $font-family_for_entry:"Roboto Mono";
         .btn_register {
             width: 360px; 
             height: 52px; 
+        }
+
+        textarea {
+            width: 21rem;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
         }
 
     }
@@ -412,6 +425,13 @@ $font-family_for_entry:"Roboto Mono";
         .btn_register {
             width: 287px; 
             height: 52px; 
+        }
+
+        textarea {
+            width: 18rem;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
         }
 
     }

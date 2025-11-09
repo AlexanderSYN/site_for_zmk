@@ -9,7 +9,7 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('../../resources/css/accounts/accounts.css')
+    @vite('../../resources/css/accounts/city/add_city.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -36,7 +36,7 @@
         <!-- MAIN -->
         <main class="flex-grow-1" >
            <center>
-                <div class="wrapper_register">
+                <div class="wrapper_add_city">
                     <h1>ДОБАВЛЕНИЯ ГОРОДА</h1>
                     
                     <div class="wrapper_input">

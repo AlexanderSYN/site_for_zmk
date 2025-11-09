@@ -19,32 +19,37 @@ class AddCityController extends Controller
     //=============================================
     public function show(Request $request)
     {
-        $user = Auth::user();
-        $city = $request->input('name_hero');
+        try {
+            $user = Auth::user();
+            $city = $request->input('name_hero');
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
-        }
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
         
-        switch ($city) {
-            case "ВОВ":
-                return view('profile.add_hero_mp_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
-                break;
+            switch ($city) {
+                case "ВОВ":
+                    return view('profile.add_hero_mp_and_city.add_city_vov', ['user' => $user, 'city' => $city]);
+                    break;
             
-            case "СВО":
-                return view('profile.add_hero_mp_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
-                break;
+                case "СВО":
+                    return view('profile.add_hero_mp_and_city.add_city_svo', ['user' => $user, 'city' => $city]);
+                    break;
 
-            case "ПМ":
-                return view('profile.add_hero_mp_and_city.add_city_mp', ['user' => $user, 'city' => $city]);
-                break;
+                case "ПМ":
+                    return view('profile.add_hero_mp_and_city.add_city_mp', ['user' => $user, 'city' => $city]);
+                    break;
 
-            default: 
-                return redirect()->route('profile');
-                break;
+                default: 
+                    return redirect()->route('profile');
+                    break;
+            }
+
+            return view(route('main'), ['user' => $user]);
+            
+        } catch (Exception $e) {
+            return redirect()->route('profile');
         }
-
-        return view(route('main'), ['user' => $user]);
     }
 
     //===================================
@@ -53,13 +58,13 @@ class AddCityController extends Controller
     //===================================
     public function store(Request $request)
     {
-        $user = Auth::user();
-
-        $user_selected_content = $request->input('content');
-        $city = $request->input('city');
-        $description = $request->input('description');
-
         try {
+            $user = Auth::user();
+
+            $user_selected_content = $request->input('content');
+            $city = $request->input('city');
+            $description = $request->input('description');
+
             $validator = Validator::make($request->all(), [
                 'content' => 'required|string|max:255',
                 'description' => 'required|string|max:500'

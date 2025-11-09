@@ -25,7 +25,6 @@
         
         <!-- HEADER -->
         <header id="up">
-
             <form action="{{ route('added_mp_page') }}" method="post">
 
                 @csrf     
@@ -36,7 +35,7 @@
                     />
 
                     <input type="hidden" name="city"
-                        value="{{ $city == null ? session()->get('city') : $city  }}" />
+                        value="{{ $city_id == null ? session()->get('city_id') : $city_id  }}" />
                 </button>
             </form>
         </header>
@@ -70,7 +69,7 @@
                             </ul>
 
                             <input type="hidden" name="city"
-                                value="{{ $city == null ? session()->get('city') : $city  }}" />
+                                value="{{ $city_id == null ? session()->get('city_id') : $city_id  }}" />
 
                             <label class="input-file">
                                 <input type="file" name="image_mp" id="get_image_hero" accept="image/*" required />

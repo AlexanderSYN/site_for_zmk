@@ -9,7 +9,7 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('.../../resources/css/accounts/hero/add_hero.css')
+    @vite('../../resources/css/accounts/hero/add_hero.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 

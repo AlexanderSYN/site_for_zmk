@@ -20,13 +20,17 @@ class CityActions extends Controller
      */
     public function show(Request $request)
     {
-        $id = $request->input('id_city');
-        $user = Auth::user();
+        try {
+            $id = $request->input('id_city');
+            $user = Auth::user();
 
-        $city_bd = city_heroes::where('id', $id)->first();
+            $city_bd = city_heroes::where('id', $id)->first();
 
-        return view('profile.added_heroes_city_by_user.edit_info_about_city', 
-                ['role' => $user->role, 'id_city' => $id, 'city' => $city_bd]);
+            return view('profile.added_heroes_city_by_user.edit_info_about_city', 
+                    ['role' => $user->role, 'id_city' => $id, 'city' => $city_bd]);
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
     } 
 
     /**

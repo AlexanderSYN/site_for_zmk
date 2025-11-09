@@ -40,7 +40,7 @@
                                 value="{{ $type == null ? session()->get('type') : $type  }}" />
 
                     <input type="hidden" name="city"
-                            value="{{ $city == null ? session()->get('city') : $city  }}" />
+                            value="{{ $city_id == null ? session()->get('city_id') : $city_id  }}" />
                 </button>
             </form>
         </header>
@@ -50,7 +50,7 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
-                    @if ($city == null || $type == null)
+                    @if ($city_id == null || $type == null)
                         <div class="alert alert-danger">
                             <h4>
                             ❌ERROR: Тип героя или город не найден, пожалуйста 
@@ -86,7 +86,7 @@
                                 value="{{ $type == null ? session()->get('city') : $type }}" />
 
                             <input type="hidden" name="city"
-                                value="{{ $city == null ? session()->get('city') : $city  }}" />
+                                value="{{ $city_id == null ? session()->get('city_id') : $city_id  }}" />
 
                             <label class="input-file">
                                 <input type="file" name="image_hero" id="get_image_hero" accept="image/*" required />
@@ -113,7 +113,7 @@
                             <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
 
-                            @if ($city == null || $type == null)
+                            @if ($city_id == null || $type == null)
                                 <button class="btn_add_off" id="btn_add" disabled>
                                     ДОБАВИТЬ
                                 </button>

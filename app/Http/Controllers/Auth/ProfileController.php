@@ -82,33 +82,38 @@ class ProfileController extends Controller
 
     public function change_data(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'patronymic' => 'nullable|string|max:255',
-            'login' => 'required|string|max:255|unique:users,login,' . $user->id,
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id
-        ]);
+            $validator = Validator::make($request->all(), [
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'patronymic' => 'nullable|string|max:255',
+                'login' => 'required|string|max:255|unique:users,login,' . $user->id,
+                'email' => 'required|email|max:255|unique:users,email,' . $user->id
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator);
-        }  
+            if ($validator->fails()) {
+                return redirect()->back()
+                    ->withErrors($validator);
+            }  
 
-        User::where('id', $user->id)
-            ->update(array(
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'patronymic' => $request->patronymic,
-                'login' => $request->login,
-                'email' => Crypt::encrypt($request->email)
-            ));
+            User::where('id', $user->id)
+                ->update(array(
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'patronymic' => $request->patronymic,
+                    'login' => $request->login,
+                    'email' => Crypt::encrypt($request->email)
+                ));
             
 
-        return redirect()->route('profile')
-            ->with('success', 'Данные профиля успешно обновлены!');
+            return redirect()->route('profile')
+                ->with('success', 'Данные профиля успешно обновлены!');
+                
+        } catch (Exception $e) {
+            return redirect()->route('main');
+        }
     }
 }
 

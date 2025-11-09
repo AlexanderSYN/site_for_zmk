@@ -28,6 +28,7 @@ class MemorablePlacesCityController extends Controller
         // transferring data for the following pages to paginate
         $memorable_places->appends(['user' => $user, 'memorable_places' => $memorable_places]);
 
-        return view('profile.memorable_places',  ['user' => $user, 'memorablePlaceCity' => $memorable_places]);
+        return view('profile.memorable_places_city',  ['user' => $user, 
+        'memorablePlaceCity' => $memorable_places]);
     }
 }

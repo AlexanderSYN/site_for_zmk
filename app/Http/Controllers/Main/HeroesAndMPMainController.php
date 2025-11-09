@@ -104,7 +104,7 @@ class HeroesAndMPMainController extends Controller
 
     public function show_mp(Request $request)
     {
-        $city = city_heroes::where('city', $request->input('city'))
+        $city = city_heroes::where('id', $request->input('city'))
                             ->where('type', 'ПМ')
                             ->with('city_relation')
                             ->first();
