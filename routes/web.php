@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\CityAndHeroes\CityActions;
 //=======================================
 // use => for add status to hero or mp
 //=======================================
-use App\Http\Controllers\Auth\HeroesMPAction\moder\AddStatusActions;
+use App\Http\Controllers\Auth\HeroesMPActions\moderation\AddStatusHeroesActionsController;
 
 //======================================
 // use => heroes vov, svo and mp (main)
@@ -170,20 +170,17 @@ Route::middleware('auth')->group(function() {
     // to add a status to a hero or MP
     // для добавления статуса герою или ПМ
     //--------------------------------------------
-    Route::get('/profile/heroes_vov/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_vov');
-    Route::post('/profile/heroes_vov/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_vov');
+    Route::post('/profile/heroes_vov/added_heroes/add_status', [AddStatusHeroesActionsController::class, 'show'])->name('add_status_hero_vov');
+    Route::post('/profile/heroes_vov/added_heroes/add_status/add_in_bd', [AddStatusHeroesActionsController::class, 'add_status_in_bd'])->name('add_status_for_hero_in_bd');
 
-    Route::get('/profile/heroes_svo/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_svo');
-    Route::post('/profile/heroes_svo/added_heroes/add_status', [AddStatusActions::class, 'show'])->name('add_status_hero_svo');
-
-    Route::get('/profile/heroes_vov/memorable_places/add_status', [AddStatusActions::class, 'show'])->name('add_status_mp');
-    Route::post('/profile/heroes_vov/memorable_places/add_status', [AddStatusActions::class, 'show'])->name('add_status_mp');
+    Route::post('/profile/heroes_svo/added_heroes/add_status', [AddStatusHeroesActionsController::class, 'show'])->name('add_status_hero_svo');
+    Route::post('/profile/heroes_vov/memorable_places/add_status', [AddStatusHeroesActionsController::class, 'show'])->name('add_status_mp');
 
     //--------------------------------------------
     // to return to the hero check (for_verifacations)
     // для возврата на проверку героя
     //--------------------------------------------
-     Route::get('/profile/heroes_vov/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
+    Route::get('/profile/heroes_vov/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
     Route::post('/profile/heroes_vov/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');
     
     Route::get('/profile/heroes_svo/added_heroes/forVerification', [HeroActionsController::class, 'for_verification'])->name('for_verification');

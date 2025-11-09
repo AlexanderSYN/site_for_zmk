@@ -192,6 +192,22 @@ $font-family_for_entry:"Roboto Mono";
         gap: 8px; 
         display: inline-flex;
     }
+    .btn_add_off {
+        width: 434px; 
+        height: 56px; 
+        padding: 12px; 
+        margin-bottom: 20px;
+        color: $white;
+        cursor: default;
+        background: #605D5D;
+        overflow: hidden; 
+        border-radius: 8px; 
+        outline-offset: -1px; 
+        justify-content: center;
+        align-items: center; 
+        gap: 8px; 
+        display: inline-flex;
+    }
 
     .edit_hero {
         width: 314px;

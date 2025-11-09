@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth\HeroesMPActions\helper;
 
 use App\Models\heroes_added_by_user;
 use App\Models\city_heroes;
+use Exception;
 
 class Helper_hero {
     //=========================================================================
@@ -32,49 +33,53 @@ class Helper_hero {
     * или moder тогда показать всех героев, иначе считать, что перешел user 
     * и сделать также, как я писал выше. в конце получаем запрос для sql)
 
-    * @return heroes, there will be data from bd heroes (там будут данные из бд heroes)
+    * @return errors ? null : $heroes, there will be data from bd heroes (там будут данные из бд heroes)
      */
-    public static function get_current_url_for_added_heroes($role, $city, $type, $user_id)
+    public static function get_current_url_for_added_heroes($role, $city_id, $type, $user_id)
     {
         // to get the city where the hero is located
         // для получения города, в котором находится герой
-        $city_from_bd = city_heroes::where('id', $city->id)
-                                    ->where('type', $type)
-                                    ->first();
-        switch ($role) {
-            case 'user':
-                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
-                    ->where('type', $type)
-                    ->where('added_user_id', $user_id)
-                    ->with('user', 'city_relation')
-                    ->orderBy('name_hero', 'desc')
-                    ->paginate(10);
-                break;
-            case 'moder':
-                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
-                    ->where('type', $type)
-                    ->with('user', 'city_relation')
-                    ->orderBy('name_hero', 'desc')
-                    ->paginate(10);
-                break;
-            case 'admin':
-                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
-                    ->where('type', $type)
-                    ->with('user', 'city_relation')
-                    ->orderBy('name_hero', 'desc')
-                    ->paginate(10);
-                break;
-            default:
-                $heroes = heroes_added_by_user::where('city', $city_from_bd->id)
-                    ->where('type', $type)
-                    ->where('added_user_id', $user_id)
-                    ->with('user', 'city_relation')
-                    ->orderBy('name_hero', 'desc')
-                    ->paginate(10);
-                break;
+        try {
+            switch ($role) {
+                case 'user':
+                    $heroes = heroes_added_by_user::where('city', $city_id)
+                        ->where('type', $type)
+                        ->where('added_user_id', $user_id)
+                        ->with('user', 'city_relation')
+                        ->orderBy('name_hero', 'desc')
+                        ->paginate(10);
+                    break;
+                case 'moder':
+                    $heroes = heroes_added_by_user::where('city',  $city_id)
+                        ->where('type', $type)
+                        ->with('user', 'city_relation')
+                        ->orderBy('name_hero', 'desc')
+                        ->paginate(10);
+                    break;
+                case 'admin':
+                    $heroes = heroes_added_by_user::where('city',  $city_id)
+                        ->where('type', $type)
+                        ->with('user', 'city_relation')
+                        ->orderBy('name_hero', 'desc')
+                        ->paginate(10);
+                    break;
+                default:
+                    $heroes = heroes_added_by_user::where('city',  $city_id)
+                        ->where('type', $type)
+                        ->where('added_user_id', $user_id)
+                        ->with('user', 'city_relation')
+                        ->orderBy('name_hero', 'desc')
+                        ->paginate(10);
+                    break;
+            }
+
+            return $heroes;
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
         }
 
-        return $heroes;
+        
     }
 }
 

@@ -69,7 +69,7 @@ class ProfileController extends Controller
                 return view('profile.profile', ['user' => $user, 'email' => $decryptedEmail]);
                 break;
             case 'moder':
-                return view('moder.profile_moder', ['user' => $user, 'email' => $decryptedEmail]);
+                return view('moderation.profile_moder', ['user' => $user, 'email' => $decryptedEmail]);
                 break;
             case 'admin':
                 return view('admin.profile_admin', ['user' => $user, 'email' => $decryptedEmail]);

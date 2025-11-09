@@ -1,5 +1,5 @@
 <center>
-                @if ($type == null || $city == null)
+                @if ($type == null || $city_id == null)
                     <div class="alert alert-danger">
                         <h4>
                         ❌ERROR: Тип героя или город не найден, пожалуйста нажмите
@@ -20,7 +20,7 @@
                 @endif
 
                 <h1>Герои {{ $type != null ? $type : old('type') }}
-                    ({{ $city != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1>
+                    ({{ $city_id != null ? $city : old('city') }}) (Ваши Добавленные Герои)</h1>
 
                 <div style="background-color: rgba(255, 252, 252, 0.5);
                     margin-bottom: 0.5rem;
@@ -44,13 +44,19 @@
                                 </div>
                             @endif
 
+                            <!-- status -->
+                            @if ($hero->status != 'none')
+                                <div class="alert alert-primary">
+                                    СТАТУС: {{ $hero->status }}
+                                </div>
+                            @endif
+
                             @if ($role == "admin" || $role == "moder")
                                 <h3>
                                     Отправил : {{ $hero->user->first_name }} {{ $hero->user->last_name }}
                                     | id: {{ $hero->user->id }}
                                 </h3>
                             @endif
-
 
                             <h2>{{ $hero->name_hero }}</h2>
                             <h4>{{ $hero->description_hero }}</h4>

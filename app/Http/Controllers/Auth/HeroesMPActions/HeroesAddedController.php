@@ -9,8 +9,9 @@ use App\Models\city_heroes;
 use App\Http\Controllers\Auth\HeroesMPActions\helper\Helper_hero;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
+use Exception;
 
 class HeroesAddedController extends Controller
 {
@@ -20,27 +21,31 @@ class HeroesAddedController extends Controller
     //=====================================================
     public function show(Request $request)
     {
-        $user = Auth::user();
+        try {
+            $user = Auth::user();
 
-        $type = $request->input('type');
-        $city = city_heroes::where('id', $request->input('city'))
-                            ->where('type', $type)
-                            ->first();
+            $type = $request->input('type');
+            $city = city_heroes::where('id', $request->input('city'))
+                                ->where('type', $type)
+                                ->first();
 
-        if ($user->isBan) {
-            return redirect()->route('profile_banned');
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+        
+            $heroes = Helper_hero::get_current_url_for_added_heroes($user->role, $city->id, $type, $user->id);
+            // transferring data for the following pages to paginate
+            // передача данных для пагинации страниц в paginate
+            $heroes->appends(['user' => $user, 'heroes' => $heroes, 'type' => $type, 
+                            'city_id' => $city->id, 'role' => $user->role]);
+
+            return view('profile.added_heroes_city_by_user.added_heroes', 
+                ['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city->city,
+                'city_id' => $city->id, 'role' => $user->role]);
+        } catch (Exception $e) {
+            // return redirect()->route('profile');
+            echo $e;
         }
-
-        $heroes = Helper_hero::get_current_url_for_added_heroes($user->role, $city, $type, $user->id);
-
-        // transferring data for the following pages to paginate
-        // передача данных для пагинации страниц в paginate
-        $heroes->appends(['user' => $user, 'heroes' => $heroes, 'type' => $type, 
-                        'city' => $city->city, 'role' => $user->role]);
-
-        return view('profile.added_heroes_city_by_user.added_heroes', 
-            ['user' => $user, 'heroes' => $heroes, 'type' => $type, 'city' => $city->city,
-            'role' => $user->role]);
     }
 
     //=================================================

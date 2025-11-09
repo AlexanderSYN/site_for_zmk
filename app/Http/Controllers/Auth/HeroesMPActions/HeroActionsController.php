@@ -30,16 +30,14 @@ class HeroActionsController extends Controller
         $user = Auth::user();
 
         $type = $request->input('type');
-        $city = city_heroes::where('city', $request->input('city'))
-                            ->where('type', $type)
-                            ->first();
+        $city_id = $request->input('city');
 
         if ($user->isBan) {
             return redirect()->route('profile_banned');
         }
 
         return view('profile.add_hero_mp_and_city.add_hero', ['user' => $user, 
-                                            'city' => $city->id, 'type' => $type]);
+                                            'city' => $city_id, 'type' => $type]);
     }
 
     //=================================
@@ -51,7 +49,7 @@ class HeroActionsController extends Controller
     // (сохранить данные о герое в бд)
     //=================================
     public function store(Request $request)
-    {
+    {   
         try {
             $user = Auth::user();
 
@@ -60,12 +58,18 @@ class HeroActionsController extends Controller
             }
 
             $validator = Validator::make($request->all(), [
-                'name_hero' => 'string|max:255',
-                'hero_link' => 'string|max:255',
-                'description_hero' => 'string|max:255',
+                'name_hero' => 'required|string|max:255',
+                'hero_link' => 'required|string|max:255',
+                'description_hero' => 'required|string|max:500|min:10',
                 'type' => 'string|max:255',
                 'image_hero' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
                 'image_qr' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048'
+            ], [
+                'name_hero.required' => 'Название героя обязательно для заполнения',
+                'hero_link.string' => 'Поле обязательно для заполнения',
+                'description_hero.min' => 'Описание должно содержать минимум 10 символов',
+                'image_hero.max' => 'Размер изображения не должен превышать 10MB',
+                'image_qr.max' => 'Размер QR-кода не должен превышать 10MB'
             ]);
 
             // Check if validation fails
@@ -169,7 +173,7 @@ class HeroActionsController extends Controller
                     return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
                                 ->withInput()
-                                ->withErrors('Неизвестная ошибка!');
+                                ->withErrors('Неизвестная ошибка!' . $e);
                     break;
             }
         }

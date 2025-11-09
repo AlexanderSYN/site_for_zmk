@@ -120,3 +120,4 @@ class HeroesAndMPMainController extends Controller
         'description_city' => $city->description]);
     }
 }
+?>

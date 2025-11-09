@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавления Города</title>
+    <title>Добавление Статуса</title>
 
     <!-- ICON -->
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon"> 
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
 
     <!-- SCSS (CSS) -->
-    @vite('../../resources/css/accounts/accounts.css')
+    @vite('../resources/css/accounts/accounts.css')
 
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
@@ -26,7 +26,7 @@
 
             <a href="{{ route('heroes_svo_profile_city') }}">
                <img 
-                    class="back_arrow" src="../../image/back_black_arrow.png" 
+                    class="back_arrow" src="/image/back_black_arrow.png" 
                     alt="стрелка назад" width="130px"
                 />
             </a>
@@ -37,10 +37,11 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper_register">
-                    <h1>ДОБАВЛЕНИЯ ГОРОДА</h1>
+                    <h1>ДОБАВЛЕНИЯ СТАТУСЫ</h1>
+                    <h3 style="font-family: inherit;">ДЛЯ ГЕРОЯ: {{ $hero->name_hero }} ({{  $hero->type }})</h3>
                     
                     <div class="wrapper_input">
-                        <form action="{{ route('add_city_in_BD') }}" method="post">
+                        <form action="{{ route('add_status_for_hero_in_bd') }}" method="post">
                             @csrf
 
                             <!-- notifications -->
@@ -54,14 +55,12 @@
                                  
                             </ul>
 
-                            <input type="hidden" name="content"
-                                value="СВО" />
+                            <input type="hidden" name="id_hero"
+                                value="{{ $hero->id }}" />
 
-                            <input type="text" name="city"
-                                placeholder="Введите город" required/>
-
-                            <textarea name="description" id="description" class="description_city"
-                                placeholder="Введите Описание Города" required></textarea>
+                            <textarea name="status" id="description" class="description_city"
+                                placeholder="Введите Статус" required>{{ $hero->status }}</textarea>
+                            <p>(Чтобы удалить статус, введите: none)</p>
                             <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
                             <button class="btn_entry" id="btn_add">
@@ -82,7 +81,7 @@
     </div>
 
     <!-- JS -->
-    @vite('../resources/js/helpers/helper_symbols.js')
+    @vite('resources/js/helpers/helper_symbols.js')
 
     <!-- JS BootStrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

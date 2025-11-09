@@ -50,6 +50,15 @@
         <main class="flex-grow-1" >
            <center>
                 <div class="wrapper">
+                    @if ($city == null || $type == null)
+                        <div class="alert alert-danger">
+                            <h4>
+                            ❌ERROR: Тип героя или город не найден, пожалуйста 
+                            перезайдите на сайт, или перейдите на вкладку профиля
+                            , или просто нажмите на кнопку назад!❌
+                            </h4>
+                        </div>
+                    @endif
                     <h1>ДОБАВЛЕНИЯ ГЕРОЯ ({{ $type == null ? session()->get('type') : $type }})</h1>
                     
                     <div class="wrapper_input">
@@ -58,10 +67,10 @@
 
                             <!-- notifications -->
                             <ul>
-                       
                                 @foreach ($errors->all() as $message)
                                     <div class="notice error">
-                                        {{ $message }}
+                                        {{ $message == "validation.required" ? "Вы что-то забыли указать!" :
+                                            $message }}
                                     </div>
                                 @endforeach
 
@@ -74,7 +83,7 @@
                             </ul>
 
                             <input type="hidden" name="type"
-                                value="{{ $type == null ? session()->get('type') : $type  }}" />
+                                value="{{ $type == null ? session()->get('city') : $type }}" />
 
                             <input type="hidden" name="city"
                                 value="{{ $city == null ? session()->get('city') : $city  }}" />
@@ -104,9 +113,15 @@
                             <p class="max_symbols" id="max_symbols">символов 0 / 500</p>
 
 
-                            <button class="btn_add" id="btn_add">
-                                ДОБАВИТЬ
-                            </button>
+                            @if ($city == null || $type == null)
+                                <button class="btn_add_off" id="btn_add" disabled>
+                                    ДОБАВИТЬ
+                                </button>
+                            @else
+                                <button class="btn_add" id="btn_add">
+                                    ДОБАВИТЬ
+                                </button>
+                            @endif
                         </form>
                     </div>
                 </div>

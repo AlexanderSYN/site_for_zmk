@@ -99,7 +99,7 @@
                     <form action="{{ route('add_heroes_page_svo') }}" method="post">                    
                         @csrf
                         <input type="hidden" name="type" value="{{ $type }}" />
-                        <input type="hidden" name="city" value="{{ $city }}" />
+                        <input type="hidden" name="city" value="{{ $city_id }}" />
                     
                         <button type="submit" class="btn_add_city_head">
                               ДОБАВИТЬ ГЕРОЯ
