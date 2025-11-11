@@ -220,6 +220,57 @@ class MPActionsController extends Controller
 
     }
 
+    /**
+    * upload memorable place
+    * (выложить памятное место)
+    *
+    */
+    public function upload_mp(Request $request)
+    {
+        try {
+            $user = Auth::user();
+            $mp_id = $request->input('id_mp');
+            $mp = mp_added_by_user::where('id', $mp_id)->first();
+
+            $mp->update([
+                'updated_at' => now(),
+                'isCheck' => true
+            ]);
+
+            return redirect()->route('added_mp_page',
+            ['user' => $user, 'memorable_places' => $mp,'city' => $mp->city])
+            ->with('success', 'Памятное место: "'. $mp->name . '" выложено успешно!');
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
+    }
+
+    /**
+     * return the memorable place for verification
+     * (верните для проверки памятное место)
+     */
+    public function return_for_verification_mp(Request $request)
+    {
+        try {
+            $user = Auth::user();
+            $mp_id = $request->input('id_mp');
+            $mp = mp_added_by_user::where('id', $mp_id)->first();
+
+            $mp->update([
+                'updated_at' => now(),
+                'isCheck' => false
+            ]);
+
+            return redirect()->route('added_mp_page',
+                ['user' => $user, 'memorable_places' => $mp,'city' => $mp->city])
+                ->with('success', 'Памятное место: "'. $mp->name . '" на проверке!');
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
+    }
+
     //==========================
     // delete memorable place
     // (удалить памятное место)

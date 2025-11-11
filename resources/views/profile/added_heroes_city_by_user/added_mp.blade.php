@@ -201,7 +201,7 @@
                             <!-- moder -->
                             @elseif ($user->role == "moder")
                                 @if (!$mp->isCheck)
-                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    <form action="{{ route('upload_mp') }}" method="post" >
                                         @csrf
                                         <input type="hidden" name="id_mp"
                                             value="{{ $mp->id }}" />
@@ -213,7 +213,7 @@
                                     </form>
                                 
                                 @else
-                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    <form action="{{ route('return_for_verification_mp') }}" method="post" >
                                         @csrf
                                         <input type="hidden" name="id_mp"
                                             value="{{ $mp->id }}" />
@@ -261,7 +261,7 @@
                                 </form>
 
                                 @if (!$mp->isCheck)
-                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    <form action="{{ route('upload_mp') }}" method="post" >
                                         @csrf
                                         <input type="hidden" name="id_mp"
                                             value="{{ $mp->id }}" />
@@ -273,7 +273,7 @@
                                     </form>
                                 
                                 @else
-                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    <form action="{{ route('return_for_verification_mp') }}" method="post" >
                                         @csrf
                                         <input type="hidden" name="id_mp"
                                             value="{{ $mp->id }}" />

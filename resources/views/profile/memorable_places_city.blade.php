@@ -141,15 +141,28 @@
                                 <!-- we get the user's name through the link -->
                         
                                 <?php
-                                    try {
-                                        echo $mp_city->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $mp_city->user->first_name . ' '; 
+                                    try { ?>
+                                        @if ($user->role == "user")
+                                            <?php echo $mp_city->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $mp_city->user->first_name . ' ';
+                                            
+                                            echo $mp_city->user->last_name == $user->last_name 
+                                            ? ' ' :  $mp_city->user->last_name; ?> 
+
+                                        @elseif ($user->role == "admin" || $user->role == "moder")
+                                            <?php 
+                                            echo $mp_city->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $mp_city->user->first_name . ' '; 
+                                            
+                                            echo $mp_city->user->last_name == $user->last_name 
+                                            ? ' ' :  $mp_city->user->last_name . ' | 
+                                            id: ' . $mp_city->user->id . ' '; ?>
+                                        @endif 
                                         
-                                        echo $mp_city->user->last_name == $user->last_name 
-                                        ? ' ' :  $mp_city->user->last_name;
-                                    } catch (Exception $e) {
+                                        
+                                    <?php } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
-                                    }
+                                    }     
                                 ?>
 
                                 <br>

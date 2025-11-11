@@ -259,6 +259,17 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/memorable_places/added_mp/edit/update', [MPActionsController::class, 'edit_mp_user'])->name('edit_mp_user_in_bd');
 
     //=========================================
+    // upload memorable place
+    //=========================================
+    Route::post('/profile/memorable_places/uplod_mp', [MPActionsController::class, 'upload_mp'])->name('upload_mp');
+    Route::get('/profile/memorable_places/uplod_mp', [MPActionsController::class, 'upload_mp'])->name('upload_mp');
+    //=============================================
+    // return the memorable place for verification
+    //=============================================
+    Route::post('/profile/memorable_places/for_verifacation', [MPActionsController::class, 'return_for_verification_mp'])->name('return_for_verification_mp');
+    Route::get('/profile/memorable_places/for_verifacation', [MPActionsController::class, 'return_for_verification_mp'])->name('return_for_verification_mp');
+
+    //=========================================
     // delete memorable place
     //=========================================
     Route::post('/profile/memorable_places/added_mp/deleting',[MPActionsController::class, 'delete_mp'])->name('delete_mp');

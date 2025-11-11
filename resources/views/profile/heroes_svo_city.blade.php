@@ -138,17 +138,29 @@
                             <h3>Описание: {{ $heroSvoCity->description }}</h3>
                             <p class="card_text">
                                 <!-- we get the user's name through the link -->
-                        
                                 <?php
-                                    try {
-                                        echo $heroSvoCity->user->first_name == $user->first_name 
-                                        ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvoCity->user->first_name . ' '; 
+                                    try { ?>
+                                        @if ($user->role == "user")
+                                            <?php echo $heroSvoCity->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvoCity->user->first_name . ' ';
+                                            
+                                            echo $heroSvoCity->user->last_name == $user->last_name 
+                                            ? ' ' :  $heroSvoCity->user->last_name; ?> 
+
+                                        @elseif ($user->role == "admin" || $user->role == "moder")
+                                            <?php 
+                                            echo $heroSvoCity->user->first_name == $user->first_name 
+                                            ? "Добавили: Вы" : 'Добавил(-а): ' . $heroSvoCity->user->first_name . ' '; 
+                                            
+                                            echo $heroSvoCity->user->last_name == $user->last_name 
+                                            ? ' ' :  $heroSvoCity->user->last_name . ' | 
+                                            id: ' . $heroSvoCity->user->id . ' '; ?>
+                                        @endif 
                                         
-                                        echo $heroSvoCity->user->last_name == $user->last_name 
-                                        ? ' ' :  $heroSvoCity->user->last_name;
-                                    } catch (Exception $e) {
+                                        
+                                    <?php } catch (Exception $e) {
                                         echo"Пользователь не найден или был удален!"; 
-                                    }
+                                    }     
                                 ?>
 
                                 <br>
