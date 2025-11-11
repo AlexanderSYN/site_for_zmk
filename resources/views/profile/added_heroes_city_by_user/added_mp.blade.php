@@ -175,27 +175,128 @@
                             <img class="img_hero" src="{{ asset('storage/' . $mp->image_mp) }}" alt="{{ $mp->name_mp }} (картинка не найден) | " />
             
                             <img class="img_qr" src="{{ asset('storage/' . $mp->image_qr) }}" alt="QR код {{ $mp->name_mp }} (картинка не найден)" />
-
-                            <form action="{{ route('edit_mp_user_page') }}" method="post" >
-                                @csrf
-                                <input type="hidden" name="id_mp"
-                                    value="{{ $mp->id }}" />
-
-                                <button type="submit" class="edit_hero">
-                                    ИЗМЕНИТЬ
-                                </button>
-                            </form>
                             
-                           <form action="{{ route('delete_mp') }}" method="post" 
-                            onsubmit="return confirm('Вы уверены, что хотите удалить это Памятное Место?')">
-                                 @csrf
-                                <input type="hidden" name="id_mp"
-                                    value="{{ $mp->id }}" />
+                            <!-- user -->
+                            @if ($user->role == "user")
+                                <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    @csrf
+                                    <input type="hidden" name="id_mp"
+                                        value="{{ $mp->id }}" />
 
-                                <button type="submit" id="btn_delete" class="delete_hero">
-                                    УДАЛИТЬ
-                                </button>
-                            </form>
+                                    <button type="submit" class="edit_hero">
+                                        ИЗМЕНИТЬ
+                                    </button>
+                                </form>
+                            
+                                <form action="{{ route('delete_mp') }}" method="post" 
+                                onsubmit="return confirm('Вы уверены, что хотите удалить это Памятное Место?')">
+                                     @csrf
+                                    <input type="hidden" name="id_mp"
+                                        value="{{ $mp->id }}" />
+
+                                    <button type="submit" id="btn_delete" class="delete_hero">
+                                        УДАЛИТЬ
+                                    </button>
+                                </form>
+                            <!-- moder -->
+                            @elseif ($user->role == "moder")
+                                @if (!$mp->isCheck)
+                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                        @csrf
+                                        <input type="hidden" name="id_mp"
+                                            value="{{ $mp->id }}" />
+
+                                        <button type="submit" class="edit_hero" 
+                                            style="background-color: rgb(52, 199, 89);">
+                                            Выложить
+                                        </button>
+                                    </form>
+                                
+                                @else
+                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                        @csrf
+                                        <input type="hidden" name="id_mp"
+                                            value="{{ $mp->id }}" />
+
+                                        <button type="submit" class="edit_hero" 
+                                            style="background-color: red;">
+                                            НА ПРОВЕРКУ
+                                        </button>
+                                    </form>
+                                @endif
+                            
+                                <!-- add status -->
+                                <form action="{{ $type == "ВОВ" ? route('add_status_hero_vov')
+                                                : route('add_status_hero_svo')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_hero"
+                                        value="{{ $mp->id }}" />
+
+                                    <button type="submit" class="edit_hero">
+                                        ДОБАВИТЬ СТАТУС
+                                    </button>
+                                </form>
+                            <!-- admin -->
+                            @elseif ($user->role == "admin")
+                                <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                    @csrf
+                                    <input type="hidden" name="id_mp"
+                                        value="{{ $mp->id }}" />
+
+                                    <button type="submit" class="edit_hero">
+                                        ИЗМЕНИТЬ
+                                    </button>
+                                </form>
+                            
+                                <!-- add status -->
+                                <form action="{{ $type == "ВОВ" ? route('add_status_hero_vov')
+                                                : route('add_status_hero_svo')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_hero"
+                                        value="{{ $mp->id }}" />
+
+                                    <button type="submit" class="edit_hero">
+                                        ДОБАВИТЬ СТАТУС
+                                    </button>
+                                </form>
+
+                                @if (!$mp->isCheck)
+                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                        @csrf
+                                        <input type="hidden" name="id_mp"
+                                            value="{{ $mp->id }}" />
+
+                                        <button type="submit" class="edit_hero" 
+                                            style="background-color: rgb(52, 199, 89);">
+                                            Выложить
+                                        </button>
+                                    </form>
+                                
+                                @else
+                                    <form action="{{ route('edit_mp_user_page') }}" method="post" >
+                                        @csrf
+                                        <input type="hidden" name="id_mp"
+                                            value="{{ $mp->id }}" />
+
+                                        <button type="submit" class="edit_hero" 
+                                            style="background-color: red;">
+                                            НА ПРОВЕРКУ
+                                        </button>
+                                    </form>
+                                @endif
+
+                                <form action="{{ route('delete_mp') }}" method="post" 
+                                onsubmit="return confirm('Вы уверены, что хотите удалить это Памятное Место?')">
+                                     @csrf
+                                    <input type="hidden" name="id_mp"
+                                        value="{{ $mp->id }}" />
+
+                                    <button type="submit" id="btn_delete" class="delete_hero">
+                                        УДАЛИТЬ
+                                    </button>
+                                </form>
+
+                            @endif
 
                             
                         </div>

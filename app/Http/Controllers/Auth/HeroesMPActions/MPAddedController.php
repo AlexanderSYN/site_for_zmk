@@ -27,14 +27,33 @@ class MPAddedController extends Controller
                 return redirect()->route('profile_banned');
             }
 
-            $memorable_places = mp_added_by_user::where('id', $city->id)
+            if ($user->role == "admin" || $user->role == "moder") {
+                $memorable_places = mp_added_by_user::where('city', $city->id)
+                    ->with('user','city_relation')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(10);
+
+                $memorable_places->appends(['user' => $user, 
+                'memorable_places' => $memorable_places, 'type' => $type, 
+                'city_id' => $city->id, 'city' => $city->city, 'role' => $user->role]);
+            
+            } 
+            else if ($user->role == "user") {
+
+                $memorable_places = mp_added_by_user::where('city', $city->id)
                     ->where('added_user_id', $user->id)
                     ->with('user','city_relation')
                     ->orderBy('created_at', 'desc')
                     ->paginate(10);
-            $memorable_places->appends(['user' => $user, 
-            'memorable_places' => $memorable_places, 'type' => $type, 
-            'city_id' => $city->id, 'city' => $city->city, 'role' => $user->role]);
+
+                $memorable_places->appends(['user' => $user, 
+                'memorable_places' => $memorable_places, 'type' => $type, 
+                'city_id' => $city->id, 'city' => $city->city, 'role' => $user->role]);
+            
+            }
+            else {
+                return redirect()->route('profile');
+            }
      
             return view('profile.added_heroes_city_by_user.added_mp', 
                 ['user' => $user, 'memorable_places' => $memorable_places,'type' => $type,

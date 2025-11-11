@@ -112,7 +112,7 @@
                             
                             <form action="{{ route('memorable_places_main') }}" method="post">
                                 @csrf
-                                <input type="hidden" name="city" value="{{ $mp_city->city }}" />
+                                <input type="hidden" name="city" value="{{ $mp_city->id }}" />
                                 <button type="submit" class="btn">ПЕРЕЙТИ</button>
                             </form>
                         </div>

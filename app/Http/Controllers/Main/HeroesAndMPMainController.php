@@ -109,7 +109,7 @@ class HeroesAndMPMainController extends Controller
                             ->with('city_relation')
                             ->first();
 
-        $memorablePlaces = mp_added_by_user::where('city', $city->id)
+        $memorablePlaces = mp_added_by_user::where('city', $request->input('city'))
                                         ->where('isCheck', 1)
                                         ->paginate(10);
 

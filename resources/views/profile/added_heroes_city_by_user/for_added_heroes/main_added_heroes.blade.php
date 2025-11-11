@@ -1,3 +1,5 @@
+
+<!-- main for added_heroes page (for profil) -->
 <center>
                 @if ($type == null || $city_id == null)
                     <div class="alert alert-danger">
@@ -160,7 +162,7 @@
 
                                 <!-- upload hero -->
                                 @if (!$hero->isCheck)
-                                    @if (!$hero->isCheck)
+        
                                     <form action="{{ route('upload_hero') }}" method="post" >
                                         @csrf
                                         <input type="hidden" name="id_hero"
@@ -200,7 +202,7 @@
                                     </button>
                                 </form>
                             @endif
-                        @endif
+          
 
                         </div>
                     @endforeach
