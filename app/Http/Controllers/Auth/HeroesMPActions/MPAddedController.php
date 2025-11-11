@@ -13,6 +13,12 @@ use Exception;
 
 class MPAddedController extends Controller
 {
+    /**
+     * 
+     * redirect to added mp page
+     * (перекидывание на страницу добавленных пм)
+     * 
+     */
     public function show(Request $request)
     {
         try {
@@ -80,6 +86,7 @@ class MPAddedController extends Controller
 
             return view('profile.added_heroes_city_by_user.edit_mp', 
                     ['user' => $user, 'mp' => $mp]);
+                    
         } catch (Exception $e) {
             return redirect()->route('profile');
         }

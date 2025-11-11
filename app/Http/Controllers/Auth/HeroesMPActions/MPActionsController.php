@@ -79,6 +79,7 @@ class MPActionsController extends Controller
             $name_mp = $request->input('name_mp');
             $mp_link = $request->input('mp_link');
             $description = $request->input('description');
+            $city_id = city_heroes::where('id', $city)->first();
 
 
             // Check if hero already exists
@@ -87,7 +88,7 @@ class MPActionsController extends Controller
             
             if ($existingMP) {
                 return redirect()->route('add_mp_page', ['user' => $user, 
-                            'city' => $city])
+                            'city' => $city, 'city_id' => $city_id])
                             ->withInput()
                             ->withErrors('Такое Памятное Место уже есть на сайте!');
             }
@@ -100,14 +101,14 @@ class MPActionsController extends Controller
             // (сохраняем изображение в папку MP)
             if ($request->file('image_mp') == null) {
                 return redirect()->route('add_mp_page', ['user' => $user, 
-                        'city' => $city])
+                        'city' => $city, 'city_id' => $city_id])
                         ->withInput()
                         ->withErrors('Вы не выбрали картинку для Памятного Места!');
             }
 
             if ($request->file('image_mp_qr') == null) {
                 return redirect()->route('add_mp_page', ['user' => $user, 
-                        'city' => $city])
+                        'city' => $city, 'city_id' => $city_id])
                         ->withInput()
                         ->withErrors('Вы не выбрали картинку для Памятного Места!');
             }
@@ -130,14 +131,14 @@ class MPActionsController extends Controller
 
 
             return redirect()->route('add_mp_page', ['user' => $user, 
-                        'city' => $city])
+                        'city' => $city, 'city_id' => $city_id])
                         ->withInput()
                         ->with('success', 'Памятное Место успешно добавлено!');
 
 
         } catch (Exception $e) {
             return redirect()->route('add_mp_page', ['user' => $user, 
-                        'city' => $city])
+                        'city' => $city, 'city_id' => $city_id])
                         ->withInput()
                         ->withErrors('Неизвестная ошибка!');
         }
@@ -255,12 +256,12 @@ class MPActionsController extends Controller
             if ($path_image_mp_qr != null) {
                 Storage::disk('public')->delete($path_image_mp_qr);
             }
-           
+
             $mp->delete();
 
             return redirect()->route('added_mp_page', 
                     ['user' => $user, 'memorable_places' => $mp, 'city' => $city])
-                    ->with('success', 'Памятное Место: "' . $mp->name_mp . '" успешно удалено!');
+                    ->with('success', 'Памятное Место: "' . $mp->name . '" успешно удалено!');
 
 
         } catch (Exception $e) {
