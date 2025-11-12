@@ -126,6 +126,9 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
     Route::post('/profile/add_city/add_city_in_BD', [AddCityController::class, 'store'])->name('add_city_in_BD');
 
+    //--------------------------------------------
+    // choice city for hero page
+    //--------------------------------------------
     Route::get('/profile/heroes_vov', [HeroesVovCityController::class, 'show'])->name('heroes_vov_profile_city');
     Route::get('/profile/heroes_svo', [HeroesSvoCityController::class, 'show'])->name('heroes_svo_profile_city');
 
@@ -146,6 +149,15 @@ Route::middleware('auth')->group(function() {
     //--------------------
     Route::get('/profile/edit_city/updating', [CityActions::class, 'edit_city_user'])->name('edit_city_data_in_bd');
     Route::post('/profile/edit_city/updating', [CityActions::class, 'edit_city_user'])->name('edit_city_data_in_bd');
+
+    //=========================================
+    // delete city vov, svo
+    //=========================================
+    Route::get('/profile/heroes_vov/delete_city_svo', [HeroesAddedController::class, 'delete_city_vov'])->name('delete_city_vov');
+    Route::post('/profile/heroes_vov/delete_city_svo', [HeroesAddedController::class, 'delete_city_vov'])->name('delete_city_vov');
+
+    Route::get('/profile/heroes_svo/delete_city_svo', [HeroesAddedController::class, 'delete_city_svo'])->name('delete_city_svo');
+    Route::post('/profile/heroes_svo/delete_city_svo', [HeroesAddedController::class, 'delete_city_svo'])->name('delete_city_svo');
 
     //--------------------------------------------
     // redirect to added heroes page
@@ -230,6 +242,12 @@ Route::middleware('auth')->group(function() {
     Route::post('/profile/memorable_places/add_city', [AddCityController::class, 'store'])->name('mp_add_city');
 
     //=========================================
+    // delete city in mp (удалить город в пм)
+    //=========================================
+    Route::get('/profile/memorable_places/delete_city_mp', [MPAddedController::class, 'delete_city'])->name('delete_city_mp');
+    Route::post('/profile/memorable_places/delete_city_mp', [MPAddedController::class, 'delete_city'])->name('delete_city_mp');
+
+    //=========================================
     // redirect to added memorable places page
     //=========================================
     Route::get('/profile/memorable_places/added_mp', [MPAddedController::class, 'show'])->name('added_mp_page');
@@ -272,7 +290,7 @@ Route::middleware('auth')->group(function() {
     //=========================================
     // delete memorable place
     //=========================================
-    Route::post('/profile/memorable_places/added_mp/deleting',[MPActionsController::class, 'delete_mp'])->name('delete_mp');
+    Route::post('/profile/memorable_places/added_mp/deleting',[MPAddedController::class, 'delete_mp'])->name('delete_mp');
 });
 
 //--------------------------------------------

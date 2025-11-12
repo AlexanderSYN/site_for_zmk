@@ -64,7 +64,7 @@ class HeroActionsController extends Controller
             $validator = Validator::make($request->all(), [
                 'name_hero' => 'string|max:255',
                 'hero_link' => 'string|max:255',
-                'description_hero' => 'required|string|max:500|min:10',
+                'description_hero' => 'string|max:500|min:10',
                 'type' => 'string|max:255',
                 'image_hero' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
                 'image_qr' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048'
@@ -87,7 +87,7 @@ class HeroActionsController extends Controller
             $type = $request->input('type');
 
             $city = $request->input('city');
-            $city_for_bd = city_heroes::where('city', $request->input('city'))
+            $city_for_bd = city_heroes::where('id', $request->input('city'))
                     ->where('type', $type)
                     ->first();
                     
@@ -98,7 +98,7 @@ class HeroActionsController extends Controller
             // Check if hero already exists
             // (проверка - существует ли герой с таким именем или нет)
             $existingHero = heroes_added_by_user::where('name_hero', $name_hero)->exists();
-            
+           
             if ($existingHero) {
                 switch ($type) {
                     case "ВОВ":
@@ -137,7 +137,7 @@ class HeroActionsController extends Controller
             }
 
             // add a hero to the database
-            // добавить героя в бд
+            // добавить героя в бд            
             heroes_added_by_user::create([
                 'name_hero' => $name_hero,
                 'description_hero' => $description,
@@ -171,13 +171,13 @@ class HeroActionsController extends Controller
                 case "ВОВ":
                     return redirect()->route('add_heroes_page_vov', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
-                                ->withErrors('Неизвестная ошибка!' . $e);
+                                ->withErrors('Неизвестная ошибка!');
                     break;
                 case "СВО":
                     return redirect()->route('add_heroes_page_svo', ['user' => $user, 
                                 'city' => $city, 'type' => $type])
                                 ->withInput()
-                                ->withErrors('Неизвестная ошибка!' . $e);
+                                ->withErrors('Неизвестная ошибка!');
                     break;
                 default:
                     return redirect()->route('profile');
@@ -442,7 +442,6 @@ class HeroActionsController extends Controller
             else {
                 return redirect()->route('profile');
             }
-
 
         } catch (Exception $e) {
             if ($type == "СВО") {

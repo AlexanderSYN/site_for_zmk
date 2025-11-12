@@ -199,6 +199,23 @@
 
                                 @endif    
                             @endif
+
+                            @if ($user->role == "admin")
+                                @if ($heroSvoCity->added_user_id == $user->id || 
+                                    $user->role == "admin")
+                                    <form action="{{ route('delete_city_svo') }}" method="post"
+                                    onsubmit="return confirm('Вы уверены, что хотите удалить этот город?')">
+                                        @csrf
+                                        <input type="hidden" name="id_city"
+                                            value="{{ $heroSvoCity->id }}" />
+                                    
+                                        <button type="submit" class="btn_edit" style="
+                                            background: var(--Background-Brand-Default, red); ">
+                                            УДАЛИТЬ
+                                        </button>
+                                    </form>
+                                @endif
+                            @endif
                         </div>
                 @endforeach
 

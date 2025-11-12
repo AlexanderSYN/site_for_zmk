@@ -201,11 +201,19 @@ main {
             width: 123px;
             height: auto;
             margin-bottom: 1rem;
+            
+            &:hover {
+                border: 1px solid rgb(0, 0, 0);
+            }
         }
+
         .img_qr {
             width: 180px;
             height: auto;
             margin-bottom: 1rem;
+            &:hover {
+                border: 1px solid rgb(0, 0, 0);
+            }
         }
 
         &:hover {

@@ -92,4 +92,38 @@ class MPAddedController extends Controller
         }
 
     }
+
+    /**
+     * 
+     * delete city mp
+     * (удалить город пм)
+     * 
+     * @return errors ? profile : mp_profile_city
+     */
+    public function delete_city(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id_city = $request->input('id_city');
+            $city_in_bd = city_heroes::where('id', $id_city)->first();
+            
+            if ($city_in_bd == null) {
+                return redirect()->route('mp_profile_city')
+                    ->withErrors('Не удалось найти город!');
+            }
+
+            $city_in_bd->delete();
+
+            return redirect()->route('mp_profile_city')
+                    ->with('success', 'Город успешно удален!');
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
+    }
 }

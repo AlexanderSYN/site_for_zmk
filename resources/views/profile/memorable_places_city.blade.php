@@ -197,7 +197,23 @@
                                             ИЗМЕНИТЬ
                                         </button>
                                     </form>
+                                @endif
+                            @endif
 
+                            @if ($user->role == "admin")
+                                @if ($mp_city->added_user_id == $user->id || 
+                                    $user->role == "admin")
+                                    <form action="{{ route('delete_city_mp') }}" method="post"
+                                    onsubmit="return confirm('Вы уверены, что хотите удалить этот город?')">
+                                        @csrf
+                                        <input type="hidden" name="id_city"
+                                            value="{{ $mp_city->id }}" />
+                                    
+                                        <button type="submit" class="btn_edit" style="
+                                            background: var(--Background-Brand-Default, red); ">
+                                            УДАЛИТЬ
+                                        </button>
+                                    </form>
                                 @endif
                             @endif
                         </div>

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\city_heroes;
 
+use Exception;
+
 class HeroesVovCityController extends Controller
 {
     /**
@@ -43,4 +45,5 @@ class HeroesVovCityController extends Controller
         'heroesVovCity' => $heroesVovCity, 'id_city' => $heroesVovCity]);
     }
     
+
 }

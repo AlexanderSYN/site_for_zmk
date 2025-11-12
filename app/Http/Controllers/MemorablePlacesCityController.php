@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
+use Exception;
+
 class MemorablePlacesCityController extends Controller
 {
     public function show()
@@ -31,4 +33,5 @@ class MemorablePlacesCityController extends Controller
         return view('profile.memorable_places_city',  ['user' => $user, 
         'memorablePlaceCity' => $memorable_places]);
     }
+
 }

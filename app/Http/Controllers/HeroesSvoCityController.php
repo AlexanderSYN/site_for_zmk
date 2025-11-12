@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\city_heroes;
 
+use Exception;
+
 class HeroesSvoCityController extends Controller
 {
     /**
@@ -41,4 +43,6 @@ class HeroesSvoCityController extends Controller
         return view('profile.heroes_svo_city',  ['user' => $user, 
         'heroesSvo' => $heroesSvoCity, 'id_city' => $heroesSvoCity]);
     }
+
+    
 }

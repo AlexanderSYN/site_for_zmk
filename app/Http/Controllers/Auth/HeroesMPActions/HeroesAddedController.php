@@ -72,4 +72,72 @@ class HeroesAddedController extends Controller
         }
     }
 
+    /**
+     * 
+     * delete city vov
+     * (удалить город ВОВ)
+     * 
+     * @return errors ? profile : heroes_vov_profile_city
+     */
+    public function delete_city_vov(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id_city = $request->input('id_city');
+            $city_in_bd = city_heroes::where('id', $id_city)->first();
+            
+            if ($city_in_bd == null) {
+                return redirect()->route('heroes_vov_profile_city')
+                    ->withErrors('Не удалось найти город!');
+            }
+
+            $city_in_bd->delete();
+
+            return redirect()->route('heroes_vov_profile_city')
+                    ->with('success', 'Город успешно удален!');
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
+    }
+
+    /**
+     * 
+     * delete city svo
+     * (удалить город СВО)
+     * 
+     * @return errors ? profile : heroes_svo_profile_city
+     */
+    public function delete_city_svo(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            if ($user->isBan) {
+                return redirect()->route('profile_banned');
+            }
+
+            $id_city = $request->input('id_city');
+            $city_in_bd = city_heroes::where('id', $id_city)->first();
+            
+            if ($city_in_bd == null) {
+                return redirect()->route('heroes_svo_profile_city')
+                    ->withErrors('Не удалось найти город!');
+            }
+
+            $city_in_bd->delete();
+
+            return redirect()->route('heroes_svo_profile_city')
+                    ->with('success', 'Город успешно удален!');
+
+        } catch (Exception $e) {
+            return redirect()->route('profile');
+        }
+    }
+
 }

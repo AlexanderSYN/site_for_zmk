@@ -182,10 +182,16 @@ main .wrapper_for_hero .img_hero {
   height: auto;
   margin-bottom: 1rem;
 }
+main .wrapper_for_hero .img_hero:hover {
+  border: 1px solid rgb(0, 0, 0);
+}
 main .wrapper_for_hero .img_qr {
   width: 180px;
   height: auto;
   margin-bottom: 1rem;
+}
+main .wrapper_for_hero .img_qr:hover {
+  border: 1px solid rgb(0, 0, 0);
 }
 main .wrapper_for_hero:hover {
   border: 1px solid rgb(0, 0, 0);

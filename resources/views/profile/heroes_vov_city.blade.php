@@ -169,7 +169,7 @@
                                 </small>
                             </p>
 
-                            <form action="{{  route('added_heroes_page_vov') }}" method="post">
+                            <form action="{{ route('added_heroes_page_vov') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="city" 
                                     value="{{ $heroVovCity->id }}" />
@@ -192,6 +192,23 @@
                                     
                                         <button type="submit" class="btn_edit">
                                             ИЗМЕНИТЬ
+                                        </button>
+                                    </form>
+                                @endif
+                            @endif
+
+                            @if ($user->role == "admin")
+                                @if ($heroVovCity->added_user_id == $user->id || 
+                                    $user->role == "admin")
+                                    <form action="{{ route('delete_city_vov') }}" method="post"
+                                    onsubmit="return confirm('Вы уверены, что хотите удалить этот город?')">
+                                        @csrf
+                                        <input type="hidden" name="id_city"
+                                            value="{{ $heroVovCity->id }}" />
+                                    
+                                        <button type="submit" class="btn_edit" style="
+                                            background: var(--Background-Brand-Default, red); ">
+                                            УДАЛИТЬ
                                         </button>
                                     </form>
                                 @endif
