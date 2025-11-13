@@ -1,3 +1,11 @@
-добавить role => user, admin, moder 
+RU
 сделать redirect ко всем ролям 
-и сделать сообщения о статусе героя у обычного user
+делать логи при ошибках
+сделать в админке управления пользователями
+сделать поиск и фльтер
+
+EN
+make a redirect to all roles
+make logs in case of errors
+make a search and alter in the user management admin
+area
